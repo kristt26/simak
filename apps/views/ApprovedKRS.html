@@ -1,0 +1,291 @@
+<div class="box" ng-show="ShowKeuangan">
+    <div class="box-header with-border">
+        <h3 class="box-title">Daftar Pengajuan KRSM Mahasiswa</h3>
+        <div class="box-tools">
+            <div class="input-group input-group-sm" style="width: 150px;">
+                <input type="text" name="table_search" class="form-control pull-right" placeholder="Search"
+                    ng-model="CariJadwal">
+
+                <div class="input-group-btn">
+                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="box-body" style="height: 750px;">
+        <div class="box-body table-responsive no-padding">
+            <table class="table table-hover table-scroll" style="width: 100%;">
+                <thead>
+                    <tr>
+                        <th>Nama</th>
+                        <th>NPM</th>
+                        <th>Semester</th>
+                        <th>Dosen Wali</th>
+                        <th>Tanggal</th>
+                        <th class="pull-right">Action</th>
+                    </tr>
+                </thead>
+                <tbody style="height: 700px;">
+                    <tr ng-repeat="item in TemKrsm | filter : CariJadwal">
+                        <td>{{item.nmmhs}}</td>
+                        <td>{{item.npm}}</td>
+                        <td>{{item.sms}}</td>
+                        <td>{{item.dsn_wali}}</td>
+                        <td>{{item.tgkrsm}}</td>
+                        <td><button type="button" class="pull-right btn btn-default" id="Send"
+                                ng-click="Approved(item)">Approved
+                                <i class="fa fa-arrow-circle-right"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+
+    </div>
+    <!-- /.box-body -->
+    <div class="box-footer clearfix">
+        <button type="submit" class="btn btn-default" disabled><b>Total SKS: {{jmsks}}</b></button>
+        <!-- <button type="button" class="pull-right btn btn-default" id="Send" ng-click="AjukanKRS()">Ajukan KRS
+                                  <i class="fa fa-arrow-circle-right"></i></button> -->
+    </div>
+    <!-- /.box-footer-->
+</div>
+
+
+<div class="box" ng-show="ShowWali">
+    <div id="loading-bar-container"></div>
+    <div class="box-header with-border">
+        <h3 class="box-title">Pengajuan KRS Mahasiswa</h3>
+        <div class="box-tools">
+            <div class="input-group input-group-sm" style="width: 150px;">
+                <input type="text" name="table_search" ng-model="SearchText" class="form-control pull-right"
+                    placeholder="Search">
+
+                <div class="input-group-btn">
+                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="box-body" style="height: 250px;">
+        <div class="box-body table-responsive no-padding">
+            <table class="table table-hover table-scroll" style="width: 200%;">
+                <thead>
+                    <tr>
+                        <th>Nama</th>
+                        <th>NPM</th>
+                        <th>Kelas</th>
+                        <th>Semester</th>
+                        <th>Dosen Wali</th>
+                        <th>Tanggal</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody style="height: 200px;">
+                    <tr ng-repeat="item in TemKrsm | filter : SearchText">
+                        <td>{{item.nmmhs}}</td>
+                        <td>{{item.npm}}</td>
+                        <td>{{item.kelas}}</td>
+                        <td>{{item.sms}}</td>
+                        <td>{{item.dsn_wali}}</td>
+                        <td>{{item.tgkrsm}}</td>
+                        <td>
+                            <button type="submit" class="btn btn-danger" ng-click="ShowJadwalMahasiswa(item)">Tampil
+                                Detail</button>
+                            <button type="button" class="pull-right btn btn-default" id="Send"
+                                ng-click="Approved(item)">Approved
+                                <i class="fa fa-arrow-circle-right"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+
+    </div>
+    <!-- /.box-body -->
+    <div class="box-footer clearfix">
+    </div>
+    <!-- /.box-footer-->
+</div>
+
+
+
+<div ng-show="TampilJadwal">
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title">Kemajuan Studi &nbsp;<b>{{NamaSelected}}&nbsp;|&nbsp;{{NPMSelected}}</b></h3>
+            <div class="box-tools">
+                <div class="input-group input-group-sm" style="width: 150px;">
+                    <input type="text" name="table_search" class="form-control pull-right" ng-model="CariKemajuan"
+                        placeholder="Search">
+
+                    <div class="input-group-btn">
+                        <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box-body" style="height: 250px;">
+            <div class="box-body table-responsive no-padding">
+                <table class="table table-hover table-scroll" style="width: 100%;">
+                    <thead>
+                        <tr>
+                            <th>Semester</th>
+                            <th>Kode</th>
+                            <th>Matakuliah</th>
+                            <th>SKS</th>
+                            <th>Nilai Huruf</th>
+                            <th>nxsks</th>
+                            <th>Keterangan</th>
+                        </tr>
+                    </thead>
+                    <tbody style="height: 200px;">
+                        <tr ng-repeat="item in KemajuanStudi.Datas | filter : CariKemajuan">
+                            <td class="{{item.ngBinding}}">{{item.smt}}</td>
+                            <td class="{{item.ngBinding}}">{{item.kmk}}</td>
+                            <td class="{{item.ngBinding}}">{{item.nmmk}}</td>
+                            <td class="{{item.ngBinding}}">{{item.sks}}</td>
+                            <td class="{{item.ngBinding}}">{{item.nhuruf}}</td>
+                            <td class="{{item.ngBinding}}">{{item.nxsks}}</td>
+                            <td class="{{item.ngBinding}}">{{item.ket}}</td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+
+        </div>
+        <!-- /.box-body -->
+        <div class="box-footer clearfix">
+            <button type="submit" class="btn btn-default" disabled><b>Total SKS Tempuh:
+                    {{KemajuanStudi.SKS}}</b></button>
+            <button type="button" class="pull-right btn btn-default" id="Send" ng-click="AjukanKRS()">IPK :
+                {{KemajuanStudi.IPK}}
+            </button>
+        </div>
+        <!-- /.box-footer-->
+    </div>
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title">Jadwal Matakuliah</h3>
+            <div class="box-tools">
+                <div class="input-group input-group-sm" style="width: 150px;">
+                    <input type="text" name="table_search" class="form-control pull-right" placeholder="Search"
+                        ng-model="CariJadwal">
+
+                    <div class="input-group-btn">
+                        <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box-body" style="height: 250px;">
+            <div class="box-body table-responsive no-padding">
+                <table class="table table-hover table-scroll">
+                    <thead>
+                        <tr>
+                            <th>Semester</th>
+                            <th>Kelas</th>
+                            <th>Matakuliah</th>
+                            <th>SKS</th>
+                            <th>Ruangan</th>
+                            <th>Waktu Kuliah</th>
+                            <th>Dosen Pengampuh</th>
+                        </tr>
+                    </thead>
+                    <tbody style="height: 200px;">
+                        <tr ng-repeat="item in DatasJadwal | filter: { kelas: Kelas } | filter: CariJadwal |  orderBy : 'kelas'"
+                            ng-click="Pilih(item)">
+                            <td class="{{item.ngBinding}}">{{item.smt}}</td>
+                            <td class="{{item.ngBinding}}">{{item.kelas}}</td>
+                            <td class="{{item.ngBinding}}">{{item.nmmk}}</td>
+                            <td class="{{item.ngBinding}}">{{item.sks}}</td>
+                            <td class="{{item.ngBinding}}">{{item.ruangan}}</td>
+                            <td class="{{item.ngBinding}}">{{item.hari}},&nbsp;{{item.wm}}-{{item.ws}}</td>
+                            <td class="{{item.ngBinding}}">{{item.dsn_saji}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+        <!-- /.box-body -->
+        <div class="box-footer clearfix">
+            <div class="box-header with-border">
+                <button type="submit" class="btn btn-default" disabled><b>Total SKS: {{jmsks}}</b></button>
+                <div class="box-tools">
+                    <div class="input-group input-group-sm" style="width: 200px;">
+                        <input type="text" name="table_search" class="form-control pull-right"
+                            placeholder="Show By Kelas" ng-model="Kelas">
+
+                        <div class="input-group-btn">
+                            <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <button type="button" class="pull-right btn btn-default" id="Send" ng-click="AjukanKRS()">Ajukan KRS
+                                  <i class="fa fa-arrow-circle-right"></i></button> -->
+        </div>
+        <!-- /.box-footer-->
+    </div>
+
+
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title">Daftar Matakuliah yang Dipilih</h3>
+            <div class="box-tools">
+                <div class="input-group input-group-sm" style="width: 150px;">
+                    <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+
+                    <div class="input-group-btn">
+                        <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box-body" style="height: 400px;">
+            <div class="box-body table-responsive no-padding">
+                <table class="table table-scroll" style="width: 100%;">
+                    <thead>
+                        <tr>
+                            <th>Semester</th>
+                            <th>Matakuliah</th>
+                            <th>SKS</th>
+                            <th>Kelas</th>
+                            <th>Ruangan</th>
+                            <th>Waktu Kuliah</th>
+                            <th>Dosen Pengampuh</th>
+                            <!-- <th>Action</th> -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in Datatampung  | groupBy:'smt'">
+                            <td>{{item.smt}}</td>
+                            <td>{{item.nmmk}}</td>
+                            <td>{{item.sks}}</td>
+                            <td>{{item.kelas}}</td>
+                            <td>{{item.ruangan}}</td>
+                            <td>{{item.hari}},&nbsp;{{item.wm}}-{{item.ws}}</td>
+                            <td>{{item.dsn_saji}}</td>
+                            <!-- <td><button type="button" class="btn btn-default" ng-click="HapusPilihan(item)"><i
+                                        class="fa fa-remove"></i></button></td> -->
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+        </div>
+        <!-- /.box-body -->
+        <div class="box-footer clearfix">
+            <button type="submit" class="btn btn-default" disabled><b>Total SKS: {{jmsks}}</b></button>
+            <!-- <button type="button" class="pull-right btn btn-default" id="Send" ng-click="AjukanKRS()">Ajukan KRS
+                <i class="fa fa-arrow-circle-right"></i></button> -->
+        </div>
+        <!-- /.box-footer-->
+    </div>
+    <!-- /.box -->
+</div>

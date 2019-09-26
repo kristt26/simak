@@ -1,0 +1,240 @@
+<script src="../../node_modules/sweetalert2/dist/sweetalert2.js"></script>
+<script src="../../node_modules/swangular/swangular.js"></script>
+<section class="content-header">
+    <h1>
+        {{Title}}
+    </h1>
+    <ol class="breadcrumb">
+        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#Password">
+            Changes Password
+        </button>
+        <button ng-show="showPegawai" type="button" class="btn btn-info" data-toggle="modal" data-target="#Users">
+            Changes Username
+        </button>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <!-- Default box -->
+        <div class="col-md-6">
+            <!-- general form elements -->
+            <div class="box box-primary" ng-if="showPegawai==true">
+                <!-- /.box-header -->
+                <!-- form start -->
+                <form role="form">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="NIK">No Induk Pegawai</label>
+                            <input type="text" class="form-control" id="NIK" placeholder="NIK"
+                                ng-model="DatasProfile.NIK">
+                        </div>
+                        <div class="form-group">
+                            <label for="Nama">Nama</label>
+                            <input type="text" class="form-control" id="Nama" placeholder="Nama"
+                                ng-model="DatasProfile.Nama">
+                        </div>
+                        <div class="form-group">
+                            <label for="Kontak">Kontak</label>
+                            <input type="text" class="form-control" id="Kontak" placeholder="Kontak"
+                                ng-model="DatasProfile.Kontak">
+                        </div>
+                        <div class="form-group">
+                            <label for="Alamat">Alamat</label>
+                            <input type="text" class="form-control" id="Alamat" placeholder="Alamat"
+                                ng-model="DatasProfile.Alamat">
+                        </div>
+                        <div class="form-group">
+                            <label for="TempatLahir">Tempat Lahir</label>
+                            <input type="text" class="form-control" id="TempatLahir" placeholder="Tempat Lahir"
+                                ng-model="DatasProfile.TempatLahir">
+                        </div>
+                        <div class="form-group">
+                            <label for="TglLahir">Tanggal Lahir</label>
+                            <input type="date" class="form-control" id="TglLahir" placeholder="Tanggal Lahir"
+                                ng-model="DatasProfile.TanggalLahir">
+                        </div>
+                        <div class="form-group">
+                            <label for="NoSK">No SK</label>
+                            <input type="text" class="form-control" id="NoSK" placeholder="No SK"
+                                ng-model="DatasProfile.NoSK">
+                        </div>
+                    </div>
+                    <div class="box-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-info pull-right" ng-click='UpdateProfile()'>Update</button>
+                    </div>
+
+                </form>
+            </div>
+            <div class="box box-primary" ng-if="showMahasiswa==true">
+                <form role="form">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="npm">NPM</label>
+                            <input type="text" class="form-control" id="npm" ng-model="DatasProfile.npm" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="nmmhs">Nama</label>
+                            <input type="text" class="form-control" id="nmmhs" ng-model="DatasProfile.nmmhs">
+                        </div>
+                        <div class="form-group">
+                            <label for="TempatLahir">Tempat Lahir</label>
+                            <input type="text" class="form-control" id="tmlhr" placeholder="Tempat Lahir"
+                                ng-model="DatasProfile.tmlhr">
+                        </div>
+                        <div class="form-group">
+                            <label for="TglLahir">Tanggal Lahir</label>
+                            <input type="date" class="form-control" id="tglhr" placeholder="Tanggal Lahir"
+                                ng-model="DatasProfile.tglhr">
+                        </div>
+                        <div class="form-group">
+                            <label for="agama">Agama</label>
+                            <input type="text" class="form-control" id="agama" placeholder="Agama"
+                                ng-model="DatasProfile.agama">
+                        </div>
+                        <div class="form-group">
+                            <label for="kewarga">Kewarganegawaan</label>
+                            <input type="text" class="form-control" id="kewarga" ng-model="DatasProfile.kewarga">
+                        </div>
+                        <div class="form-group">
+                            <label for="pendidikan">Pendidikan Terakhir</label>
+                            <input type="text" class="form-control" id="pendidikan" ng-model="DatasProfile.pendidikan">
+                        </div>
+                        <div class="form-group">
+                            <label for="AsalSMU">Asal SMU</label>
+                            <input type="text" class="form-control" id="AsalSMU" ng-model="DatasProfile.nmsmu">
+                        </div>
+                        <div class="form-group">
+                            <label for="jursmu">Jurusan</label>
+                            <input type="text" class="form-control" id="jursmu" ng-model="DatasProfile.jursmu">
+                        </div>
+                        <div class="form-group">
+                            <label for="kotasmu">Kota SMU</label>
+                            <input type="text" class="form-control" id="kotasmu" ng-model="DatasProfile.kotasmu">
+                        </div>
+                        <div class="form-group">
+                            <label for="provsmu">Provinsi SMU</label>
+                            <input type="text" class="form-control" id="provsmu" ng-model="DatasProfile.provsmu">
+                        </div>
+                        <div class="form-group">
+                            <label for="pekerjaan">Pekerjaan</label>
+                            <input type="text" class="form-control" id="pekerjaan" ng-model="DatasProfile.pekerjaan">
+                        </div>
+                        <div class="form-group">
+                            <label for="almt">Alamat</label>
+                            <textarea type="text" class="form-control" id="almt"
+                                ng-model="DatasProfile.almt"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="notlp">Telp/HP</label>
+                            <input type="text" class="form-control" id="notlp" ng-model="DatasProfile.notlp">
+                        </div>
+                        <div class="form-group">
+                            <label for="status">Status Perkawinan</label>
+                            <input type="text" class="form-control" id="status" ng-model="DatasProfile.status">
+                        </div>
+                        <div class="form-group">
+                            <label for="jmsaudara">Jumlah Saudara</label>
+                            <input type="text" class="form-control" id="jmsaudara" ng-model="DatasProfile.jmsaudara">
+                        </div>
+                        <div class="form-group">
+                            <label for="nmayah">Nama Ayah Kandung</label>
+                            <input type="text" class="form-control" id="nmayah" ng-model="DatasProfile.nmayah">
+                        </div>
+                        <div class="form-group">
+                            <label for="nmibu">Nama Ibu Kandung</label>
+                            <input type="text" class="form-control" id="nmibu" ng-model="DatasProfile.nmibu">
+                        </div>
+                        <div class="form-group">
+                            <label for="sumbiaya">Sumber Biaya</label>
+                            <input type="text" class="form-control" id="sumbiaya" ng-model="DatasProfile.sumbiaya">
+                        </div>
+                        <div class="form-group">
+                            <label for="tgdaftar">Tanggal Daftar</label>
+                            <input type="date" class="form-control" id="tgdaftar" ng-model="DatasProfile.tgdaftar"
+                                disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="kurikulum">Kurikulum</label>
+                            <input type="text" class="form-control" id="kurikulum" ng-model="DatasProfile.kurikulum"
+                                disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="statuskul">Status Kuliah</label>
+                            <input type="text" class="form-control" id="statuskul" ng-model="DatasProfile.statuskul"
+                                disabled>
+                        </div>
+                    </div>
+                    <div class="box-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-info pull-right" ng-click='UpdateProfile()'>Update</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="modal modal-info fade" id="Password">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Ubah Password</h4>
+            </div>
+            <form>
+                <div class="modal-body">
+                    <div class="form-group has-feedback">
+                        <input type="password" class="form-control" placeholder=" Old Password"
+                            ng-model="DataPassword.OldPassword">
+                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                    </div>
+                    <div class="form-group has-feedback">
+                        <input type="password" class="form-control" placeholder="New Password" ng-model="passw1"
+                            aria-describedby="basic-addon1" required>
+                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                    </div>
+                    <div class="form-group has-feedback">
+                        <input type="password" class="form-control" placeholder="Retype New password" ng-model="passw2"
+                            aria-describedby="basic-addon1" required>
+                        <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
+                    </div>
+                    <div ng-show="error">Password No Macth</div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-outline" ng-click="UbahPassword()">Ubah</button>
+                </div>
+            </form>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<div class="modal modal-info fade" id="Users">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Ubah Username</h4>
+            </div>
+            <form>
+                <div class="modal-body">
+                    <div class="form-group has-feedback">
+                        <input type="text" class="form-control" placeholder=" New Username" ng-model="Username">
+                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-outline" ng-click="UbahPassword()">Ubah</button>
+                </div>
+            </form>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
