@@ -107,7 +107,7 @@
             var service = {};
             service.Token = $window.sessionStorage.getItem("Token");
             service.Header = getHeader();
-            service.Base = "http://10.10.10.2/RestSimak/";
+            service.Base = "http://stimiksepnop.ac.id/";
             function getHeader() {
                 var header = {
                     "content-type": "application/json",

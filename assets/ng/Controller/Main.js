@@ -4,6 +4,7 @@
         .controller("MainController", function ($scope, HomeService, Jadwal, KhsmService, $window, SweetAlert) {
             $scope.DatasHome = {};
             $scope.DatasJadwal = [];
+            $scope.DatasPenelitian=[];
             $scope.Khsm = {};
             $scope.Input = {};
             $scope.TahunAkademik = {};
@@ -17,6 +18,9 @@
                 if (response.Role == "Mahasiswa") {
                     HomeService.getTA().then(response => {
                         $scope.TahunAkademik = response;
+                    })
+                    HomeService.getPenelitian().then(response => {
+                        $scope.DatasPenelitian= response;
                     })
                     $scope.RoleMahasiswa = true;
                     $scope.DatasHome = angular.copy(response);
