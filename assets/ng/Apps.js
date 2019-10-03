@@ -112,7 +112,7 @@
             var service = {};
             service.Token = $window.sessionStorage.getItem("Token");
             service.Header = getHeader();
-            service.Base = "http://10.10.10.2/RestSimak/";
+            service.Base = "apisimak.stimiksepnop.ac.id/";
             function getHeader() {
                 var header = {
                     "content-type": "application/json",
@@ -153,7 +153,7 @@
                     $scope.RoleMahasiswa = true;
                     $http({
                         method: "GET",
-                        url: "http://10.10.10.2/rest_api1/api/jadwal/jadwalmahasiswa",
+                        url: "apisimak.stimiksepnop.ac.id/api/jadwal/jadwalmahasiswa",
                         headers: getHeader()
                     }).then(function (response) {
                         if (response.data.set == 'Krsm') {
@@ -221,7 +221,7 @@
             $scope.ProsesLogin = function (response) {
                 $http({
                     method: "POST",
-                    url: "http://10.10.10.2/rest_api1/api/users/login",
+                    url: "apisimak.stimiksepnop.ac.id/api/users/login",
                     header: {
                         "content-type": "application/json",
                     },
