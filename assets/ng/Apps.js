@@ -123,11 +123,11 @@
             return service;
         })
         .controller('View', ['$scope', '$http', '$window', function ($scope, $http, $window, $route) {
-            $scope.header = "assets/template/header.html";
-            $scope.sidebar = "assets/template/sidebar.html";
-            $scope.content = "assets/template/content.html";
-            $scope.footer = "assets/template/footer.html";
-            $scope.setting = "assets/template/setting.html";
+            $scope.header = "assets/Template/header.html";
+            $scope.sidebar = "assets/Template/sidebar.html";
+            $scope.content = "assets/Template/content.html";
+            $scope.footer = "assets/Template/footer.html";
+            $scope.setting = "assets/Template/setting.html";
             $scope.RoleAdmin = false;
             $scope.RoleMahasiswa = false;
             $scope.RoleDosen = false;
