@@ -16,6 +16,7 @@
             $scope.NamaSelected="";
             $scope.NPMSelected="";
             $scope.KemajuanStudi = [];
+            $scope.Tombol = false;
             DataStatus.status = $window.sessionStorage.getItem("SetStatus");
             if (DataStatus.status == "Dosen Wali" || DataStatus.status == "Prodi") {
                 $scope.ShowKeuangan = false;
@@ -91,6 +92,7 @@
                 })
             }
             $scope.Approved = function (item) {
+                $scope.Tombol = true;
                 SweetAlert.swal({
                     title: "Anda Yakin?",
                     text: "Anda akan Menyetujui KRSM Mahasiswa: " + item.nmmhs,
@@ -112,6 +114,7 @@
                                 $scope.DatasJadwal = [];
                                 DataStatus = {};
                                 $scope.Datatampung = [];
+                                $scope.Tombol = false;
                             }, error => {
                                 var index = $scope.TemKrsm.findIndex(TemKrsm => TemKrsm.Id == item.Id);
                                 $scope.TemKrsm.splice(index, 1);
@@ -122,6 +125,7 @@
                                 $scope.Datatampung = [];
                                 $scope.jmsks = 0;
                                 SweetAlert.swal("Approved!", "Your proses krsm has been approved.", "success");
+                                $scope.Tombol = false;
                             })
 
                         } else {

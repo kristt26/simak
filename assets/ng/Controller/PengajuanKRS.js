@@ -4,8 +4,7 @@
 
         .filter('total', function () {
             return function (input, property) {
-                if(input.length!=undefined)
-                {
+                if (input.length != undefined) {
                     var i = input.length;
                     var total = 0;
                     while (i--)
@@ -29,7 +28,9 @@
             $scope.DatasKrsm = [];
             $scope.CariJadwal = "";
             $scope.Kelas = "";
-            $scope.DatasKrsm.DetailKrsm=[];
+            $scope.Tombol = true;
+            $scope.DatasKrsm.DetailKrsm = [];
+
             // }, 5000);
 
             PengajuanService.get().then(response => {
@@ -52,14 +53,14 @@
                     $scope.showJadwal1 = false;
                     $scope.DatasTemKrsm = response.data.data;
                     Jadwal.get().then(response => {
-                        
+
                         var a = JSON.parse(response.data);
                         $scope.GetValue = angular.copy($scope.DatasJadwal[0]);
                         $scope.DatasJadwal = a;
-                        
+
                         MahasiswaService.get($scope.DatasTemKrsm.TemKrsm[0].npm).then(response => {
                             $scope.DatasJadwal = $filter('filter')(a, function (value) {
-                                return (value.kurikulum === response.data[0].kurikulum || value.kurikulum==='ALL') && value.kdps===response.data[0].kdps;
+                                return (value.kurikulum === response.data[0].kurikulum || value.kurikulum === 'ALL') && value.kdps === response.data[0].kdps;
                             });
                             $scope.GetValue = angular.copy($scope.DatasJadwal[0]);
                             angular.forEach($scope.DatasTemKrsm.TemDetailKrsm, function (value, key) {
@@ -75,7 +76,7 @@
                                 });
                             });
                         })
-                        
+
                     }, error => {
                         console.log(error);
                         // 
@@ -130,7 +131,7 @@
                             cancelButtonText: "No, Batal!",
                             closeOnConfirm: true,
                             closeOnCancel: true
-                            
+
                         },
                             function (isConfirm) {
                                 if (isConfirm) {
@@ -181,6 +182,7 @@
                         item.status = false;
                         item.ngBinding = "success";
                         $scope.DataTampung.push(item);
+                        $scope.Tombol=false;
                     } else
                         SweetAlert.swal("Info", "Total SKS yang ada pilih melebihi Batas)", "error");
                 }
@@ -248,7 +250,7 @@
                         }
                     }
                 );
-                
+
 
             }
             $scope.AjukanKRS = function () {
@@ -266,6 +268,7 @@
                     },
                         function (isConfirm) {
                             if (isConfirm) {
+                                $scope.Tombol=true;
                                 $scope.DataKrs = {
                                     'thakademik': $scope.GetValue.thakademik,
                                     'gg': $scope.GetValue.gg,
@@ -283,6 +286,7 @@
                                 data.DetailKrsm = $scope.DataTampung;
                                 PengajuanService.post(data).then(response => {
                                     SweetAlert.swal("Pengajuan!", response.message, "success");
+                                    $scope.Tombol=false;
                                 }, error => {
                                     SweetAlert.swal(response.message);
                                 });

@@ -99,6 +99,11 @@
                     url: "/Histori",
                     templateUrl: "apps/views/Histori.html",
                     controller: "HostoriController"
+                })
+                .state("Penelitian", {
+                    url: "/Penelitian",
+                    templateUrl: "apps/views/PenelitianMahasiswa.html",
+                    controller: "PenelitianController"
                 });
 
            
@@ -107,7 +112,7 @@
             var service = {};
             service.Token = $window.sessionStorage.getItem("Token");
             service.Header = getHeader();
-            service.Base = "http://stimiksepnop.ac.id/";
+            service.Base = "http://10.10.10.2/RestSimak/";
             function getHeader() {
                 var header = {
                     "content-type": "application/json",
@@ -153,7 +158,8 @@
                     }).then(function (response) {
                         if (response.data.set == 'Krsm') {
                             $scope.MenuMahasiswa = [
-                                { 'href': 'PengajuanKRS', 'Text': 'KRS' }
+                                { 'href': 'PengajuanKRS', 'Text': 'KRS' },
+                                { 'href': 'Penelitian', 'Text': 'Penelitian Mahasiswa' }
                             ]
                         } else
                         {
@@ -163,7 +169,8 @@
                         }
                     }, error => {
                         $scope.MenuMahasiswa = [
-                            { 'href': 'PengajuanKRS', 'Text': 'Pengajuan KRS' }
+                            { 'href': 'PengajuanKRS', 'Text': 'Pengajuan KRS' },
+                            { 'href': 'Penelitian', 'Text': 'Penelitian Mahasiswa' }
                         ]
                     });
                     

@@ -81,7 +81,7 @@
                     headers: AuthServiceHome.Header,
                 }).then(function (response) {
                     service.dataPenelitian = [];
-                    service.dataPenelitian = response.data[0];
+                    service.dataPenelitian = response.data.data;
                     service.instance = true;
                     deferred.resolve(service.dataPenelitian);
                 }, function (error) {

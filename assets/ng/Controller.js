@@ -19,7 +19,8 @@
         "BidikMisi",
         "PengajuanKRS",
         "Profile",
-        "Histori"
+        "Histori",
+        "Penelitian"
     ]);
     app.config(['cfpLoadingBarProvider', function (cfpLoadingBarProvider) {
         cfpLoadingBarProvider.parentSelector = '#loading-bar-container';
