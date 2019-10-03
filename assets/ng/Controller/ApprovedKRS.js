@@ -130,6 +130,7 @@
 
                         } else {
                             SweetAlert.swal("Cancelled", "Your proses krsm has been cancelled :)", "error");
+                            $scope.Tombol = false;
                         }
                     });
 
