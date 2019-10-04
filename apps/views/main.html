@@ -117,62 +117,8 @@
                     <ul class="nav nav-tabs">
                         <li class="active"><a href="" data-toggle="tab" data-target="#activity">Kemajuan Studi</a></li>
                         <li><a href="" data-toggle="tab" data-target="#timeline">Jadwal Kuliah </a></li>
-                        <li><a href="" data-toggle="tab" data-target="#Penelitian">Penelitian </a></li>
-                        <!-- <li><a href="" data-toggle="tab" data-target="#settings">Settings</a></li> -->
                     </ul>
                     <div class="tab-content">
-                        <div class="tab-pane" id="Penelitian">
-                            <div class="nav-tabs-custom">
-                                <ul class="nav nav-tabs">
-                                    <li class="active"><a href="" data-toggle="tab" data-target="#tab1">Riset (TA)</a>
-                                    </li>
-                                    <li><a href="" data-toggle="tab" data-target="#tab2">Kerja Praktek (KP)</a></li>
-                                    <li><a href="" data-toggle="tab" data-target="#tab3">Tab 3</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="tab-content">
-                                <div class="active tab-pane" id="tab1">
-                                    <div class="row"  style="height: 1000px;">
-                                        <div class="box-body table-responsive no-padding" height="500px">
-                                            <table class="table table-hover table-scroll">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Judul Riset</th>
-                                                        <th>NPM</th>
-                                                        <th>Nama Mahasiswa</th>
-                                                        <th>Pembimbing</th>
-                                                        <th>Penguji 1</th>
-                                                        <th>Penguji 2</th>
-                                                        <th>Penguji 3</th>
-                                                        <th>Tanggal Seminar</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr ng-repeat="item in DatasPenelitian.Riset">
-                                                        <td>{{item.jdl_riset}}</td>
-                                                        <td>{{item.npm}}</td>
-                                                        <td>{{item.nmmhs}}</td>
-                                                        <td>{{item.pemb}}</td>
-                                                        <td>{{item.peng1}}</td>
-                                                        <td>{{item.peng2}}</td>
-                                                        <td>{{item.peng3}}</td>
-                                                        <td>{{item.tgseminar}}</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <div class="tab-pane" id="tab2">
-                                    Tab2
-                                </div>
-                                <div class="tab-pane" id="tab3">
-                                    Tab3
-                                </div>
-                            </div>
-                        </div>
                         <div class="active tab-pane" id="activity">
                             <ul class="timeline timeline-inverse" ng-repeat="loop in DataLooping">
                                 <li class="time-label" style="color:white;">
@@ -198,34 +144,6 @@
                                     </div>
                                 </li>
                             </ul>
-
-                            <!-- <div class="box-body table-responsive no-padding">
-                                <table class="table table-hover" style="width: 100%;">
-                                    <thead>
-                                        <tr>
-                                            <th>Semester</th>
-                                            <th>Kode</th>
-                                            <th>Matakuliah</th>
-                                            <th>SKS</th>
-                                            <th>Nilai Huruf</th>
-                                            <th>nxsks</th>
-                                            <th>Keterangan</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr ng-repeat="item in Khsm.Datas | filter: { smt: '1' }">
-                                            <td>{{item.smt}}</td>
-                                            <td>{{item.kmk}}</td>
-                                            <td>{{item.nmmk}}</td>
-                                            <td>{{item.sks}}</td>
-                                            <td>{{item.nhuruf}}</td>
-                                            <td>{{item.nxsks}}</td>
-                                            <td>{{item.ket}}</td>
-                                        </tr>
-                                    </tbody>
-
-                                </table>
-                            </div> -->
                         </div>
                         <div class="tab-pane" id="timeline">
                             <ul class="timeline timeline-inverse">

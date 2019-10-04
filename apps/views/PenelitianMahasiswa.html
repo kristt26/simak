@@ -1,1 +1,131 @@
-<h1>Testing</h1>
+<section class="content">
+    <div class="row" style="margin-left: 10px; margin-right: 10px;">
+        <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="" data-toggle="tab" data-target="#riset">Riset (TA)</a></li>
+                <li><a href="" data-toggle="tab" data-target="#praktek">Kerja Praktek (KP)</a></li>
+                <li><a href="" data-toggle="tab" data-target="#jurnal">Jurnal</a></li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active" id="riset">
+                    <div class="box" style="margin-top: 20px">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">DAFTAR RISET MAHASISWA</h3>
+                            <div class="box-tools">
+                                <div class="input-group input-group-sm" style="width: 200px;">
+                                    <input type="text" name="table_search" class="form-control pull-right"
+                                        placeholder="Search" ng-model="CariRiset">
+
+                                    <div class="input-group-btn">
+                                        <button type="submit" class="btn btn-default"><i
+                                                class="fa fa-search"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-body" style="height: 750px;">
+                            <div class="box-body table-responsive no-padding">
+                                <table class="table table-hover table-scroll">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 20%;">Judul Riset</th>
+                                            <th style="width: 5%;">NPM</th>
+                                            <th>Nama Mahasiswa</th>
+                                            <th>Pembimbing</th>
+                                            <th>Penguji 1</th>
+                                            <th>Penguji 2</th>
+                                            <th>Penguji 3</th>
+                                            <th>Tanggal Seminar</th>
+                                            <th>File</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody style="height: 700px;">
+                                        <tr ng-repeat="item in DatasPenelitian.riset | filter : CariRiset">
+                                            <th style="text-align: justify; width: 20%;">{{item.jdl_riset}}</th>
+                                            <th style="width: 5%;">{{item.npm}}</th>
+                                            <th>{{item.nmmhs}}</th>
+                                            <th>{{item.pemb}}</th>
+                                            <th>{{item.peng1}}</th>
+                                            <th>{{item.peng2}}</th>
+                                            <th>{{item.peng3}}</th>
+                                            <th>{{item.tgseminar}}</th>
+                                            <th ng-show="item.strjudul>0"><a href="{{item.berkas_riset}}"
+                                                    class="btn btn-primary" target="_blank">Download</a></th>
+                                            <th ng-show="item.strjudul==0">Belum Ada File</th>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- /.tab-pane -->
+                <div class="tab-pane" id="praktek">
+                    <div class="box" style="margin-top: 20px">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">DAFTAR LAPORAN KERJA PRAKTEK MAHASISWA</h3>
+                            <div class="box-tools">
+                                <div class="input-group input-group-sm" style="width: 200px;">
+                                    <input type="text" name="table_search" class="form-control pull-right"
+                                        placeholder="Search" ng-model="CariPraktek">
+
+                                    <div class="input-group-btn">
+                                        <button type="submit" class="btn btn-default"><i
+                                                class="fa fa-search"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-body" style="height: 750px;">
+                            <div class="box-body table-responsive no-padding">
+                                <table class="table table-hover table-scroll">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 20%;">Judul</th>
+                                            <th style="width: 5%;">NPM</th>
+                                            <th>Nama Mahasiswa</th>
+                                            <th>Pembimbing</th>
+                                            <th>Penguji 1</th>
+                                            <th>Penguji 2</th>
+                                            <th>Tanggal Seminar</th>
+                                            <th>File</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody style="height: 700px;">
+                                        <tr ng-repeat="item in DatasPenelitian.kp | filter : CariRiset">
+                                            <th style="text-align: justify; width: 20%;">{{item.jdl_kp}}</th>
+                                            <th style="width: 5%;">{{item.npm}}</th>
+                                            <th>{{item.nmmhs}}</th>
+                                            <th>{{item.pemb}}</th>
+                                            <th>{{item.peng1}}</th>
+                                            <th>{{item.peng2}}</th>
+                                            <th>{{item.tgseminar}}</th>
+                                            <th ng-show="item.strjudul>0"><a href="{{item.berkas_kp}}"
+                                                    class="btn btn-primary" target="_blank">Download</a></th>
+                                            <th ng-show="item.strjudul==0">Belum Ada File</th>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- /.tab-pane -->
+                <div class="tab-pane" id="jurnal">
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                    when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                    It has survived not only five centuries, but also the leap into electronic typesetting,
+                    remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
+                    sheets containing Lorem Ipsum passages, and more recently with desktop publishing software
+                    like Aldus PageMaker including versions of Lorem Ipsum.
+                </div>
+                <!-- /.tab-pane -->
+            </div>
+            <!-- /.tab-content -->
+        </div>
+        <!-- nav-tabs-custom -->
+    </div>
+</section>

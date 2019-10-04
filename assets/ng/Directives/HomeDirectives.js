@@ -73,24 +73,6 @@
                 })
                 return deferred.promise;
             }
-            function AmbilPenelitian() {
-                var deferred = $q.defer();
-                $http({
-                    method: "GET",
-                    url: AuthService.Base+"api/Penelitian/AmbilPenelitian",
-                    headers: AuthServiceHome.Header,
-                }).then(function (response) {
-                    service.dataPenelitian = [];
-                    service.dataPenelitian = response.data.data;
-                    service.instance = true;
-                    deferred.resolve(service.dataPenelitian);
-                }, function (error) {
-                    // console.log(error);
-                    deferred.reject(error);
-                })
-                return deferred.promise;
-            }
-
-            return { get: getAction, getTA: getTahunAkademik, getPenelitian: AmbilPenelitian };
+            return { get: getAction, getTA: getTahunAkademik};
         })
 })(window.angular);
