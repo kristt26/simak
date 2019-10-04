@@ -158,8 +158,7 @@
                     }).then(function (response) {
                         if (response.data.set == 'Krsm') {
                             $scope.MenuMahasiswa = [
-                                { 'href': 'PengajuanKRS', 'Text': 'KRS' },
-                                { 'href': 'Penelitian', 'Text': 'Penelitian Mahasiswa' }
+                                { 'href': 'PengajuanKRS', 'Text': 'KRS' }
                             ]
                         } else
                         {
@@ -169,8 +168,7 @@
                         }
                     }, error => {
                         $scope.MenuMahasiswa = [
-                            { 'href': 'PengajuanKRS', 'Text': 'Pengajuan KRS' },
-                            { 'href': 'Penelitian', 'Text': 'Penelitian Mahasiswa' }
+                            { 'href': 'PengajuanKRS', 'Text': 'Pengajuan KRS' }
                         ]
                     });
                     
