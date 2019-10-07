@@ -29,6 +29,7 @@
             $scope.CariJadwal = "";
             $scope.Kelas = "";
             $scope.Tombol = true;
+            $scope.BatasReg = false;
             $scope.DatasKrsm.DetailKrsm = [];
 
             // }, 5000);
@@ -42,6 +43,7 @@
                     $scope.TemKrsmJadwal = false;
                     $scope.KrsmJadwal = false;
                     $scope.showJadwal1 = true;
+                    $scope.BatasReg = false;
                     $scope.DatasJadwal = response.data.data;
                     $scope.GetValue = angular.copy($scope.DatasJadwal[0]);
                 } else if (response.set == 'TemKrsm') {
@@ -51,6 +53,7 @@
                     $scope.TemKrsmJadwal = true;
                     $scope.KrsmJadwal = false;
                     $scope.showJadwal1 = false;
+                    $scope.BatasReg = false;
                     $scope.DatasTemKrsm = response.data.data;
                     Jadwal.get().then(response => {
 
@@ -92,16 +95,29 @@
                     $scope.showKrsm = true;
                     $scope.TemKrsmJadwal = false;
                     $scope.KrsmJadwal = false;
+                    $scope.showJadwal1 = false;
+                    $scope.BatasReg = false;
                     // SweetAlert.swal("KRS Anda telah selesai di proses");
                 } else if (response.set == 'Daftar Ulang') {
                     $scope.showKrsm = false;
                     $scope.showJadwal = false;
                     $scope.TemKrsmJadwal = false;
+                    $scope.showJadwal1 = false;
                     $scope.KrsmJadwal = false;
+                    $scope.BatasReg = false;
                     SweetAlert.swal("Anda Belum Terdaftar Silahkan hubungi bagian Program Studi");
+                } else if (response.set == 'BatasReg') {
+                    $scope.showKrsm = false;
+                    $scope.showJadwal = false;
+                    $scope.showJadwal1 = false;
+                    $scope.TemKrsmJadwal = false;
+                    $scope.KrsmJadwal = false;
+                    $scope.BatasReg = true;
+                    SweetAlert.swal("Registrasi KRS Telah Tutup, Silahkan Hubungi Program Studi");
                 } else {
                     $scope.showKrsm = false;
                     $scope.showJadwal = false;
+                    $scope.showJadwal1 = false;
                     $scope.TemKrsmJadwal = false;
                     $scope.KrsmJadwal = false;
                     SweetAlert.swal("Data Jadwal Belum Tersedia Segera Hubungi Bagian BAAK Untuk ketersediaan");

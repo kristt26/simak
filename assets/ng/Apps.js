@@ -158,17 +158,17 @@
                     }).then(function (response) {
                         if (response.data.set == 'Krsm') {
                             $scope.MenuMahasiswa = [
-                                { 'href': 'PengajuanKRS', 'Text': 'KRS' }
+                                { 'href': 'PengajuanKRS', 'Text': 'KRS', 'class':'fa fa-file' }
                             ]
                         } else
                         {
                             $scope.MenuMahasiswa = [
-                                { 'href': 'PengajuanKRS', 'Text': 'Pengajuan KRS' }
+                                { 'href': 'PengajuanKRS', 'Text': 'Pengajuan KRS', 'class':'fa fa-file' }
                             ]
                         }
                     }, error => {
                         $scope.MenuMahasiswa = [
-                            { 'href': 'PengajuanKRS', 'Text': 'Pengajuan KRS' }
+                            { 'href': 'PengajuanKRS', 'Text': 'Pengajuan KRS', 'class':'fa fa-file' }
                         ]
                     });
                     
