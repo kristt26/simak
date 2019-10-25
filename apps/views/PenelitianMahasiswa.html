@@ -26,11 +26,12 @@
                         <div class="box-body">
                             <div class="row">
                                 <div ng-repeat="item in DatasPenelitian.riset | filter : CariRiset"
-                                    style="margin-bottom: 15px;">
+                                    style="margin-bottom: 30px;">
                                     <p><b>{{item.jdl_riset}}</b><br>
-                                        Oleh {{item.nmmhs}}, &nbsp; {{item.pemb}}, &nbsp;
-                                        {{item.tgseminar}},&nbsp;&nbsp;<a href="{{item.berkas_riset}}"
-                                            target="_blank">Download</a></p>
+                                        <i>Oleh {{item.nmmhs}}, &nbsp; {{item.pemb}}</i>, &nbsp;
+                                            {{item.tgseminar}},&nbsp;&nbsp;<a ng-show="item.strjudul>0"
+                                            href="{{item.berkas_riset}}" target="_blank">Download</a><a
+                                            ng-show="item.strjudul==0">Belum ada File</a></p>
                                 </div>
                             </div>
                         </div>
@@ -57,10 +58,11 @@
                             <div class="row">
                                 <div ng-repeat="item in DatasPenelitian.kp | filter : CariRiset"
                                     style="margin-bottom: 15px;">
-                                    <p ng-hide = "item.jdl_kp == ''"><b>{{item.jdl_kp}}</b><br>
-                                        Oleh {{item.nmmhs}}, &nbsp; {{item.pemb}}, &nbsp;
-                                        {{item.tgseminar}},&nbsp;&nbsp;<a href="{{item.berkas_kp}}"
-                                            target="_blank">Download</a></p>
+                                    <p ng-hide="item.jdl_kp == ''"><b>{{item.jdl_kp}}</b><br>
+                                        <i>Oleh {{item.nmmhs}}, &nbsp; {{item.pemb}}</i> , &nbsp;
+                                        {{item.tgseminar}},&nbsp;&nbsp;<a ng-show="item.strjudul>0"
+                                            href="{{item.berkas_kp}}" target="_blank">Download</a><a
+                                            ng-show="item.strjudul==0" href="{{item.berkas_kp}}">Belum ada File</a></p>
                                 </div>
                             </div>
                         </div>
