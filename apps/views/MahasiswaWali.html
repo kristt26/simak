@@ -1,0 +1,56 @@
+<div id="loading-bar-container"></div>
+<div ng-init = "Init()">
+    <div class="box-header with-border">
+        <h3 class="box-title">Pengajuan KRS Mahasiswa</h3>
+        <div class="box-tools">
+            <div class="input-group input-group-sm" style="width: 150px;">
+                <input type="text" name="table_search" ng-model="SearchText" class="form-control pull-right"
+                    placeholder="Search">
+
+                <div class="input-group-btn">
+                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="box-body">
+        <div class="box-body table-responsive no-padding">
+            <table class="table table-hover table-scroll" style="width: 200%;">
+                <thead>
+                    <tr>
+                        <th>Nama</th>
+                        <th>NPM</th>
+                        <th>Kelas</th>
+                        <th>Semester</th>
+                        <th>Dosen Wali</th>
+                        <th>Tanggal</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in DataWali | filter : SearchText">
+                        <td>{{item.nmmhs}}</td>
+                        <td>{{item.npm}}</td>
+                        <td>{{item.kelas}}</td>
+                        <td>{{item.sms}}</td>
+                        <td>{{item.dsn_wali}}</td>
+                        <td>{{item.tgkrsm}}</td>
+                        <td>
+                            <button type="submit" class="btn btn-danger" ng-click="ShowJadwalMahasiswa(item)">Tampil
+                                Detail</button>
+                            <button type="button" class="pull-right btn btn-default" id="Send"
+                                ng-click="Approved(item)">Approved
+                                <i class="fa fa-arrow-circle-right"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+
+    </div>
+    <!-- /.box-body -->
+    <div class="box-footer clearfix">
+    </div>
+</div>
+<!-- /.box-footer-->

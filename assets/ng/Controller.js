@@ -20,7 +20,9 @@
         "PengajuanKRS",
         "Profile",
         "Histori",
-        "Penelitian"
+        "Penelitian",
+        "MahasiswaWali",
+        "BeritaAcara"
     ]);
     app.config(['cfpLoadingBarProvider', function (cfpLoadingBarProvider) {
         cfpLoadingBarProvider.parentSelector = '#loading-bar-container';

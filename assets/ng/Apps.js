@@ -104,6 +104,16 @@
                     url: "/Penelitian",
                     templateUrl: "apps/views/PenelitianMahasiswa.html",
                     controller: "PenelitianController"
+                })
+                .state("MahasiswaWali", {
+                    url: "/MahasiswaWali",
+                    templateUrl: "apps/views/MahasiswaWali.html",
+                    controller: "MahasiswaWaliController"
+                })
+                .state("BeritaAcara", {
+                    url: "/BeritaAcara",
+                    templateUrl: "apps/views/BeritaAcara.html",
+                    controller: "BeritaAcaraController"
                 });
 
            
@@ -178,7 +188,8 @@
                         { 'href': 'ApprovedKRS', 'Text': 'Perwalian', 'SetStatus': value.Nama },
                         { 'href': 'GradeNilai', 'Text': 'Grade Nilai', 'SetStatus': value.Nama },
                         { 'href': 'Kurikulum', 'Text': 'Kurikulum', 'SetStatus': value.Nama },
-                        { 'href': 'ConversiKHS', 'Text': 'Conversi KHS', 'SetStatus': value.Nama }
+                        { 'href': 'ConversiKHS', 'Text': 'Conversi KHS', 'SetStatus': value.Nama }, 
+                        { 'href': 'BeritaAcara', 'Text': 'Berita Acara', 'SetStatus': value.Nama }
                     ]
                 } else if (value.Nama == "Dosen") {
                     $scope.RoleDosen = true;
@@ -188,12 +199,19 @@
                     ]
                 } else if (value.Nama == "Dosen Wali") {
                     $scope.RoleWali = true;
-                    $scope.MenuWali = [{ 'href': 'ApprovedKRS', 'Text': 'ApprovedKRS', 'SetStatus': value.Nama }]
+                    $scope.MenuWali = [
+                        { 
+                            'href': 'ApprovedKRS', 'Text': 'ApprovedKRS', 'SetStatus': value.Nama 
+                        },
+                        {
+                            'href': 'MahasiswaWali', 'Text': 'Mahasiswa Wali', 'SetStatus': value.Nama
+                        }
+                    ]
                 } else if (value.Nama == "Baak") {
                     $scope.RoleBaak = true;
                 } else if (value.Nama == "Keuangan") {
                     $scope.RoleKeuangan = true;
-                    $scope.MenuKeuangan = [{ 'href': 'ApprovedKRS', 'Text': 'ApprovedKRS', 'SetStatus': value.Nama }]
+                    $scope.MenuKeuangan = [{ 'href': 'ApprovedKRS', 'Text': 'ApprovedKRS', 'SetStatus': value.Nama }, { 'href': 'BeritaAcara', 'Text': 'Berita Acara', 'SetStatus': value.Nama }]
                 } else if(value.Nama == "Kemahasiswaan"){
                     $scope.RoleKemahasiswaan = true;
                     $scope.MenuKemahasiswaan = [{ 'href': 'BidikMisi', 'Text': 'Bidik Misi', 'SetStatus': value.Nama }]

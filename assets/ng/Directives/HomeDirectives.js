@@ -73,6 +73,19 @@
                 })
                 return deferred.promise;
             }
-            return { get: getAction, getTA: getTahunAkademik};
+            function getMahasiswaWali(item) {
+                var deferred = $q.defer();
+                $http({
+                    method: "GET",
+                    url: item,
+                    headers: AuthServiceHome.header
+                }).then(function(response){
+                    deferred.resolve();
+                }, function(error){
+                    deferred.reject();
+                })
+                
+            }
+            return { get: getAction, getTA: getTahunAkademik, getWali: getMahasiswaWali};
         })
 })(window.angular);
