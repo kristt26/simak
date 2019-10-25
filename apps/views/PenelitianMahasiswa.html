@@ -26,8 +26,8 @@
                         <div class="box-body">
                             <div class="row">
                                 <div ng-repeat="item in DatasPenelitian.riset | filter : CariRiset"  style="margin-bottom: 30px;">
-                                    <H4><b>{{item.jdl_riset}}</b></H4>
-                                    <p>Oleh {{item.nmmhs}}, &nbsp; Pembimbing {{item.pemb}} &nbsp;&nbsp;&nbsp;<a href="{{item.berkas_riset}}"
+                                    <p><b>{{item.jdl_riset}}</b><br>
+                                    Oleh {{item.nmmhs}}, &nbsp; {{item.pemb}}, &nbsp; {{item.tgseminar}},&nbsp;&nbsp;<a href="{{item.berkas_riset}}"
                                     target="_blank">Download</a></p>
                                 </div>
                             </div>
