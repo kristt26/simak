@@ -26,7 +26,7 @@
                         <div class="box-body">
                             <div class="row">
                                 <div ng-repeat="item in DatasPenelitian.riset | filter : CariRiset"
-                                    style="margin-bottom: 30px;">
+                                    style="margin-bottom: 15px;">
                                     <p><b>{{item.jdl_riset}}</b><br>
                                         Oleh {{item.nmmhs}}, &nbsp; {{item.pemb}}, &nbsp;
                                         {{item.tgseminar}},&nbsp;&nbsp;<a href="{{item.berkas_riset}}"
@@ -56,7 +56,7 @@
                         <div class="box-body">
                             <div class="row">
                                 <div ng-repeat="item in DatasPenelitian.kp | filter : CariRiset"
-                                    style="margin-bottom: 30px;">
+                                    style="margin-bottom: 15px;">
                                     <p ng-hide = "item.jdl_kp == ''"><b>{{item.jdl_kp}}</b><br>
                                         Oleh {{item.nmmhs}}, &nbsp; {{item.pemb}}, &nbsp;
                                         {{item.tgseminar}},&nbsp;&nbsp;<a href="{{item.berkas_kp}}"
