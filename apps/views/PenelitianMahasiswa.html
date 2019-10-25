@@ -25,10 +25,10 @@
                         </div>
                         <div class="box-body">
                             <div class="row">
-                                <div ng-repeat="item in DatasPenelitian.riset | filter : CariRiset">
-                                    <H3 style="color: dodgerblue;">{{item.jdl_riset}}</H3>
-                                    <h4 style="margin-right: 30px;">Oleh {{item.nmmhs}}, &nbsp; Pembimbing {{item.pemb}}</h4><a href="{{item.berkas_riset}}"
-                                    class="btn btn-primary" target="_blank">Download</a>
+                                <div ng-repeat="item in DatasPenelitian.riset | filter : CariRiset"  style="margin-bottom: 30px;">
+                                    <H4><b>{{item.jdl_riset}}</b></H4>
+                                    <p>Oleh {{item.nmmhs}}, &nbsp; Pembimbing {{item.pemb}} &nbsp;&nbsp;&nbsp;<a href="{{item.berkas_riset}}"
+                                    target="_blank">Download</a></p>
                                 </div>
                             </div>
                         </div>
