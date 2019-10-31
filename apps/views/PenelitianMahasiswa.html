@@ -6,11 +6,11 @@
                 <li><a href="" data-toggle="tab" data-target="#praktek">Kerja Praktek (KP)</a></li>
                 <li><a href="" data-toggle="tab" data-target="#jurnal">Jurnal</a></li>
             </ul>
-            <div class="tab-content">
+            <div class="tab-content" style="margin-left: 20px;">
                 <div class="tab-pane active" id="riset">
                     <div class="box" style="margin-top: 20px">
                         <div class="box-header with-border">
-                            <h3 class="box-title">DAFTAR RISET MAHASISWA</h3>
+                            <h3 class="box-title" style="margin-left: 20px;">DAFTAR RISET MAHASISWA</h3>
                             <div class="box-tools">
                                 <div class="input-group input-group-sm" style="width: 200px;">
                                     <input type="text" name="table_search" class="form-control pull-right"
@@ -24,7 +24,7 @@
                             </div>
                         </div>
                         <div class="box-body">
-                            <div class="row">
+                            <div class="row" style="margin-left: 20px;">
                                 <div ng-repeat="item in DatasPenelitian.riset | filter : CariRiset"
                                     style="margin-bottom: 30px;">
                                     <p><b>{{item.jdl_riset}}</b><br>
@@ -41,7 +41,7 @@
                 <div class="tab-pane" id="praktek">
                     <div class="box" style="margin-top: 20px">
                         <div class="box-header with-border">
-                            <h3 class="box-title">DAFTAR LAPORAN KERJA PRAKTEK MAHASISWA</h3>
+                            <h3 class="box-title" style="margin-left: 20px;">DAFTAR LAPORAN KERJA PRAKTEK MAHASISWA</h3>
                             <div class="box-tools">
                                 <div class="input-group input-group-sm" style="width: 200px;">
                                     <input type="text" name="table_search" class="form-control pull-right"
@@ -55,7 +55,7 @@
                             </div>
                         </div>
                         <div class="box-body">
-                            <div class="row">
+                            <div class="row" style="margin-left: 20px;">
                                 <div ng-repeat="item in DatasPenelitian.kp | filter : CariRiset"
                                     style="margin-bottom: 15px;">
                                     <p ng-hide="item.jdl_kp == ''"><b>{{item.jdl_kp}}</b><br>
