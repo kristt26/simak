@@ -8,13 +8,11 @@
                 var deferred = $q.defer();
                 $http({
                     method: "GET",
-                    url: AuthService.Base+"beritaacara",
+                    url: AuthService.Base+"api/BeritaAcara/LaporanBa",
                     headers: AuthService.Header
                 }).then(function (response) {
                     service.data = [];
-                    var a = JSON.parse(angular.copy(response.data.data));
-                    response.data.data= a;
-                    service.data = response.data;
+                    service.data = response.data.data;
                     service.instance = true;
                     deferred.resolve(service.data);
                 }, function (error) {

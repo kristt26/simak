@@ -34,28 +34,51 @@
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab_1">
-                            <table class="table table-striped table-bordered" datatable="ng" dt-options="vm.dtOptions"
-                                dt-instance="vm.dtInstance" width="100%" dt-column-defs="vm.dtColumnDefs">
-                                <thead>
-                                    <tr>
-                                        <th>Sr</th>
-                                        <th>Name</th>
-                                        <th>Age</th>
-                                        <th>Salary</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr ng-repeat="user in DatasBa">
-                                        <td>{{$index + 1}}</td>
-                                        <td>
-                                            {{user.employee_name}}
-                                        </td>
-                                        <td>{{user.employee_age}}</td>
-                                        <td>{{user.employee_salary}}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <div class="box-group" id="accordion">
+                                <!-- we are adding the .panel class so bootstrap.js collapse plugin detects it -->
+                                <div class="panel box box-primary" ng-repeat='item in DatasBa'>
+                                    <div class="box-header with-border">
+                                        <h4 class="box-title">
+                                                <span class="time"><i class="fa fa-clock-o"></i> 5 mins ago</span>
+                                            <a data-toggle="collapse" data-parent="#accordion" data-target="#{{$index}}" class="timeline-header no-border"
+                                                href="">
+                                                {{$index+1}}. &nbsp;{{item.Matakuliah}} &nbsp;||&nbsp; {{item.kelas}} 
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="{{$index}}"
+                                        ng-class="{'panel-collapse collapse in': $index==0, 'panel-collapse collapse': $index>0}">
+                                        <div class="box-body">
+                                            <table class="table table-striped table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>No</th>
+                                                        <th>Tanggal</th>
+                                                        <th>Materi</th>
+                                                        <th>Hadir</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="ba in item.BeritaAcara">
+                                                        <td>{{$index + 1}}</td>
+                                                        <td>
+                                                            {{ba.tanggal}}
+                                                        </td>
+                                                        <td>
+                                                            {{ba.materi}}
+                                                        </td>
+                                                        <td>
+                                                            {{ba.hadir}}
+                                                        </td>
+
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                         <!-- /.tab-pane -->
                         <div class="tab-pane" id="tab_2">
