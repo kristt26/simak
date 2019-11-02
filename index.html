@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="assets/bower_components/Ionicons/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="assets/dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="assets/dist/css/main.css">
   <!-- <link rel="stylesheet" href="node_modules/sweetalert2/dist/sweetalert2.css"> -->
   <!-- iCheck -->
   <link rel="stylesheet" href="plugins/iCheck/square/blue.css">
@@ -75,15 +76,14 @@
     href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 
-<body class="hold-transition login-page" ng-controller="Login">
-  <div class="login-box">
+<body class="hold-transition login-page" ng-controller="Login" >
+  <div class="login-box" style="height: 75vh;">
     <div class="login-logo">
-      <img src="assets/img/Logo.png" width="50%">
+      <img src="assets/img/Logostimik.png" width="50%">
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
       <p class="login-box-msg">Sign in here</p>
-
       <form ng-submit="ProsesLogin()">
         <div class="form-group has-feedback">
           <input type="text" class="form-control" placeholder="Username" required ng-model="DataInput.Username">

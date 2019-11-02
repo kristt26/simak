@@ -26,7 +26,7 @@
     ]);
     app.config(['cfpLoadingBarProvider', function (cfpLoadingBarProvider) {
         cfpLoadingBarProvider.parentSelector = '#loading-bar-container';
-        cfpLoadingBarProvider.spinnerTemplate = '<div><span class="fa fa-spinner fa-4x">Loading</div>';
+        cfpLoadingBarProvider.spinnerTemplate = '<div class="spinnerMain"><div class="spinnerAnimation"></div><span>Loding...</span></div>';
     }]);
 
 

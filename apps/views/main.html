@@ -128,15 +128,14 @@
                                 </li>
                                 <li ng-repeat="item in Khsm.Datas | filter: { smt: loop.semester }">
                                     <i class="fa fa-item bg-blue"></i>
-                                    <div class="timeline-item" ng-if="item.ket=='L'"
-                                        style="background-color: rgb(21, 192, 235);">
-                                        <span class="time" style="color:black;">SKS: &nbsp;{{item.sks}} &nbsp;|&nbsp;
+                                    <div class="timeline-item" ng-if="item.ket=='L'" >
+                                        <span class="time">SKS: &nbsp;{{item.sks}} &nbsp;|&nbsp;
                                             Nilai: &nbsp;{{item.nhuruf}} &nbsp;|&nbsp; Keterangan:
                                             &nbsp;{{item.ket}}</span>
-                                        <h3 class="timeline-header" style="color:black;">{{item.nmmk}}</h3>
+                                        <h3 class="timeline-header">{{item.nmmk}}</h3>
                                     </div>
                                     <div class="timeline-item" ng-if="item.ket!='L'"
-                                        style="background-color: rgb(214, 18, 18); color:white;">
+                                        style="background-color: rgb(214, 18, 18) !important; color:white;">
                                         <span class="time" style="color:white;">SKS: &nbsp;{{item.sks}} &nbsp;|&nbsp;
                                             Nilai: &nbsp;{{item.nhuruf}} &nbsp;|&nbsp; Keterangan:
                                             &nbsp;{{item.ket}}</span>
@@ -322,6 +321,7 @@
 
                 <div class="box box-primary">
                     <div class="box-body box-profile">
+                           
                         <!-- <img class="profile-user-img img-responsive img-circle" src="../../dist/img/user4-128x128.jpg"
                                 alt="User profile picture"> -->
                         <h3 class="profile-username text-center">{{DatasHome.Nama}}</h3>

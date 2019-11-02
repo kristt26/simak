@@ -118,6 +118,45 @@
 
            
         })
+            .directive('chooseFile', function() {
+                return {
+                    link: function(scope, elem, attrs) {
+                        var button = elem.find('img');
+                        var input = angular.element(elem[0].querySelector('input#fileInput'));
+                        button.bind('click', function() {
+                            input[0].click();
+                        });
+                    input.bind('change', function(e) {
+                        scope.$apply(function() {
+                            var files = e.target.files;
+                            if (files[0]) {
+                                var f = files[0];
+                                var im=window.URL.createObjectURL(f);
+                                var a = document.getElementsByClassName('photoProfile');
+                                for (var i = 0; i < a.length; i++) {
+                                    a[i].src=im;   
+                                }
+                               // scope.model.fileName = f.name;
+                               var r = new FileReader();
+                                r.onload = (function(theFile) {
+                                  
+                                    return function(e) {
+                                        var binaryData = e.target.result;
+                                        //Converting Binary Data to base 64
+                                        var base64String = window.btoa(binaryData);
+                                        //showing file converted to base64
+                                       // scope.model.buktiBayar = base64String;
+                                    };
+                                })(f);
+                                r.readAsBinaryString(f);
+                            } else {
+                              //  scope.model.buktiBayar = null;
+                            }
+                        });
+                    });
+                }
+            };
+        })
         .factory("AuthService", function ($window) {
             var service = {};
             service.Token = $window.sessionStorage.getItem("Token");
@@ -259,5 +298,6 @@
                 })
             }
         }])
+      
         ;
 })(window.angular);
