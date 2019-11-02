@@ -39,11 +39,16 @@
                                 <div class="panel box box-primary" ng-repeat='item in DatasBa'>
                                     <div class="box-header with-border">
                                         <h4 class="box-title">
+                                            <div class="timeline-item">
                                                 <span class="time"><i class="fa fa-clock-o"></i> 5 mins ago</span>
-                                            <a data-toggle="collapse" data-parent="#accordion" data-target="#{{$index}}" class="timeline-header no-border"
-                                                href="">
-                                                {{$index+1}}. &nbsp;{{item.Matakuliah}} &nbsp;||&nbsp; {{item.kelas}} 
-                                            </a>
+                                                <h3 class="timeline-header no-border"><a data-toggle="collapse" data-parent="#accordion"
+                                                    data-target="#{{$index}}" class="timeline-header no-border" href="">
+                                                    {{$index+1}}. &nbsp;{{item.Matakuliah}} &nbsp;||&nbsp;
+                                                    {{item.kelas}}
+                                                </a></h3>
+                                                
+                                            </div>
+
                                         </h4>
                                     </div>
                                     <div id="{{$index}}"
