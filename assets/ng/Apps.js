@@ -136,19 +136,54 @@
                                 for (var i = 0; i < a.length; i++) {
                                     a[i].src=im;   
                                 }
-                               // scope.model.fileName = f.name;
+                              // scope.model.fileName = f.name;
                                var r = new FileReader();
                                 r.onload = (function(theFile) {
                                   
                                     return function(e) {
-                                        var binaryData = e.target.result;
-                                        //Converting Binary Data to base 64
-                                        var base64String = window.btoa(binaryData);
-                                        //showing file converted to base64
-                                       // scope.model.buktiBayar = base64String;
+                                        var img = document.createElement("img");
+										img.src = e.target.result;
+									setTimeout(z=>{
+										var canvas = document.createElement("canvas");
+										var ctx = canvas.getContext("2d");
+										ctx.drawImage(img,0,0);
+						
+										var MAX_WIDTH = 400;
+										var MAX_HEIGHT = 300;
+										var width = img.width;
+										var height = img.height;
+						
+										if (width > height) {
+											if (width > MAX_WIDTH) {
+												height *= MAX_WIDTH / width;
+												width = MAX_WIDTH;
+											}
+										} else {
+											if (height > MAX_HEIGHT) {
+												width *= MAX_HEIGHT / height;
+												height = MAX_HEIGHT;
+											}
+										}
+										canvas.width = width;
+										canvas.height = height;
+										var ctx = canvas.getContext("2d");
+										ctx.drawImage(img, 0, 0,width,height);
+						
+									var 	dataurl = canvas.toDataURL(f.type);
+										//document.getElementById('output').src = dataurl;
+	
+										var parts = dataurl.split(';base64,');
+										var contentType = parts[0].split(':')[1];
+										var raw = window.atob(parts[1]);
+										//Converting Binary Data to base 64
+										var base64String = window.btoa(raw);
+										//showing file converted to base64
+										scope.dataGambar = base64String;
+									},200)	
+
                                     };
                                 })(f);
-                                r.readAsBinaryString(f);
+                                r.readAsDataURL(f);
                             } else {
                               //  scope.model.buktiBayar = null;
                             }
@@ -186,6 +221,8 @@
             $scope.RoleKeuangan = false;
             $scope.RoleUser = $window.sessionStorage.getItem("Role");
             $scope.NamaUser = $window.sessionStorage.getItem("NamaUser");
+            $scope.dataGambar="";
+          
             function getHeader() {
                 var header = {
                     "content-type": "application/json",
@@ -260,6 +297,15 @@
                 }
             });
            
+           
+            $scope.uploadFotoProfile = function(data){
+               
+                
+
+
+            }
+
+
             $scope.SetStatus = function (item) {
                 $window.sessionStorage.setItem("SetStatus", item);
             }

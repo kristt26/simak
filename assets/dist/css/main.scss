@@ -1,28 +1,81 @@
+$acrylic80: rgba(221, 221, 221, 0.8);
+$acrylic70: rgba(221, 221, 221, 0.7);
+$acrylic60: rgba(221, 221, 221, 0.6);
+$acrylic50: rgba(221, 221, 221, 0.5);
+$acrylic40: rgba(221, 221, 221, 0.4);
+$acrylic30: rgba(221, 221, 221, 0.3);
+$acrylic20: rgba(221, 221, 221, 0.2);
+$acrylic10: rgba(221, 221, 221, 0.1);
+$acrylic0: rgba(221, 221, 221, 0.07);
 
+body {
+  background: url("../img/bghover1.png") !important;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  .wrapper {
+    min-height: 0px !important;
+  }
+}
+.main-footer{
+  background: $acrylic70;
+}
+
+.skin-blue .main-header .navbar {
+  background-image: none !important;
+  background-color: $acrylic40;
+  box-shadow: 2px 2px #888888;
+}
+.skin-blue .main-header .logo {
+  background-image: none !important;
+  background-color: $acrylic0;
+  box-shadow: 0px 1px #888888;
+}
+
+.skin-blue .wrapper {
+  background-color: $acrylic10 !important;
+}
+.skin-blue .content-wrapper {
+  background-color: $acrylic10 !important;
+  box-shadow: 1px 2px #888888;
+  max-height: 100vh !important;
+}
+.skin-blue .main-sidebar {
+  background-color: $acrylic50 !important;
+  box-shadow: 1px 2px #888888;
+  color: red;
+}
+
+.skin-blue .sidebar a {
+  color: #014c6f !important;
+}
 .timeline > li > .fa,
 .timeline > li > .glyphicon,
 .timeline > li > .ion {
   top: 6px;
 }
 
-.time-label{
-   span{
+.time-label {
+  span {
     min-width: 70px !important;
-   }
-}
-
-.timeline-item{
-    background-color:#3c8dbc !important;
-    .timeline-header, .time{
-        color: white !important;
-    }
-
-
-}
-
-.bg-blue {
-    background-color:#2c688a !important;
   }
+}
+
+.timeline-item {
+  background-color: #3c8dbc3d !important;
+  .timeline-header,
+  .time {
+    color: white !important;
+  }
+}
+
+.text-muted {
+  color: rgb(255, 255, 255);
+  text-align: right;
+}
+.bg-blue {
+  background-color: #3c8dbcf1 !important;
+}
 
 .spinnerMain {
   display: flex;
@@ -42,6 +95,23 @@
     margin-left: 10px;
   }
 }
+.skin-blue .main-header li.user-header {
+  background: transparent !important;
+}
+
+.dropdown-menu {
+  background-color: $acrylic80 !important;
+  border-color: transparent;
+  .user-header {
+    p {
+      color: black !important;
+    }
+  }
+  .user-footer {
+    background-color: transparent !important;
+    border-color: transparent;
+  }
+}
 
 @keyframes spin {
   0% {
@@ -53,22 +123,196 @@
 }
 
 .content-wrapper {
- min-height: 100vh;
+  min-height: 100vh;
+  background: transparent;
 }
 
-.tab-content{
+.login-box-body,
+.register-box-body {
+  background: transparent !important;
+  padding: 20px !important;
+  color: $acrylic60;
+  font-size: 20px !important;
+}
+
+.horizontal-scroll {
+  overflow-y: auto;
+  height: 100vh;
+}
+
+.box-body {
+  color: rgb(54, 54, 54);
+  margin: 5px;
+  padding: 0px !important;
+  border-radius: 5px;
+
+  .box-blur {
+    border-radius: 5px;
+    background: $acrylic50;
     padding: 20px !important;
+    padding-top: 10px !important;
+  }
 }
 
-.login-box-body, .register-box-body {
-    background: rgba(255, 255, 255, 0.76) !important;
-    padding: 35px !important;
-    color: #571914;
-    font-size: 20px !important;
-}
-
-.box-body{
+.tab-content {
+  padding: 0 !important;
+  .tab-pane {
     padding: 20px !important;
+    background-color: $acrylic30;
+    filter: blur(0px) !important;
+  }
 }
 
+.box-title {
+  color: whitesmoke;
+}
+.content {
+  background: transparent !important;
+  background-size: cover;
+  padding: 0px !important;
+}
 
+.nav-tabs-custom {
+  background: transparent !important;
+  color: white;
+  .nav-tabs {
+    border-color: transparent !important;
+    li.active > a {
+      background-color: rgba(255, 255, 255, 0.3);
+      color: #444;
+    }
+    li.active:hover > a {
+      background-color: white !important;
+      color: #444;
+    }
+  }
+  .tab-content {
+    background: transparent !important;
+  }
+}
+
+.blurred-box {
+  top: calc(50% - 175px);
+  left: calc(50% - 125px);
+  background: inherit;
+  border-radius: 2p;
+  overflow: hidden;
+}
+
+.blurred-box:after {
+  content: "";
+  background: inherit;
+  left: -25px;
+  left: position;
+  right: 0;
+  top: -25px;
+  top: position;
+  bottom: 0;
+  box-shadow: inset 0 0 0 200px rgba(255, 255, 255, 0.05);
+  filter: blur(10px);
+}
+
+.blurrePanel {
+  content: "";
+  box-shadow: inset 0 0 0 50% rgba(255, 255, 255, 0.05);
+  filter: blur(5px);
+  height: 100vh;
+}
+
+.login-page {
+  padding: 0px;
+  filter: blur(2px);
+}
+
+.login-logo,
+.register-logo {
+  margin: 0px;
+}
+
+.bg-text {
+  position: absolute;
+  background-color: $acrylic30;
+  color: white;
+  font-weight: bold;
+  border: 1px solid #8d8c8c;
+  border-radius: 5px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 30%;
+  height: 50%;
+  padding: 20px 25px;
+  text-align: center;
+  .bg-text-container {
+    top: 50%;
+    transform: translateY(10%);
+    .login-logo {
+      img {
+        width: 80px;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 0px) {
+  .bg-text {
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 60%;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .bg-text {
+    transform: translate(-50%, -50%);
+    width: 60%;
+    height: 60%;
+  }
+}
+
+@media screen and (min-width: 850px) {
+  .bg-text {
+    transform: translate(-50%, -50%);
+    width: 50%;
+    height: 50%;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .bg-text {
+    transform: translate(-50%, -50%);
+    width: 25%;
+    height: 50%;
+    text-align: center;
+  }
+}
+
+.box {
+  margin: 5px;
+  position: relative;
+  border-radius: 5px;
+  background: rgba(161, 160, 160, 0.623);
+  border-top: 3px solid #d2d6de;
+  margin-bottom: 20px;
+  width: 100%;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+table,
+th,
+td {
+  color: #3c8dbc;
+}
+
+.form-control {
+  background: $acrylic0;
+}
+
+.box-footer {
+  background: $acrylic30;
+  button {
+    background: $acrylic10;
+  }
+}

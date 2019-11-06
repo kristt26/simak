@@ -110,21 +110,21 @@
   <!-- Site wrapper -->
   <div class="wrapper">
 
-    <choose-file ng-controller="View">
+    <div ng-controller="View" >
       <div ng-include="header"></div>
 
-      <aside class="main-sidebar">
+      <aside choose-file ng-model="dataGambar" class="main-sidebar">
         <!-- sidebar: style can be found in sidebar.less -->
         <section class="sidebar">
           <!-- Sidebar user panel -->
           <div class="user-panel">
             <div class="pull-left image ">
                 <img id="userImg" src="assets/dist/img/User_Circle.png" class="img-circle photoProfile" alt="User Image">
-                <input id="fileInput" type="file" class="ng-hide">
+                <input class="ng-hide"  id="fileInput" type="file"/>
             </div>
             <div class="pull-left info">
               <p>{{NamaUser}}</p>
-              <a href="javascript:void(0)"><i class="fa fa-circle text-success"></i> Online</a>
+              <a href="javascript:void(0)" ng-click="uploadFotoProfile(dataGambar)"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
           </div>
           <ul class="sidebar-menu" data-widget="tree">
