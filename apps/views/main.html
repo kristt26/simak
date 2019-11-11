@@ -1,520 +1,431 @@
 <div id="loading-bar-container"></div>
 <div ng-if="RoleMahasiswa==true">
-    <section class="content-header">
-        <h1>
-            BASE PROFILE
-        </h1>
-    </section>
-
-    <section class="content">
-
-        <div class="row">
-            <div class="col-md-3">
-
-                <div class="box box-primary">
-                    <div class="box-body box-profile">
-                        <!-- <img class="profile-user-img img-responsive img-circle" src="../../dist/img/user4-128x128.jpg"
-                            alt="User profile picture"> -->
-
-                        <h3 class="profile-username text-center">{{DatasHome.nmmhs}}</h3>
-
-                        <p class="text-muted text-center"><b>{{DatasHome.npm}}</b></p>
-                        <p class="text-muted text-center">{{DatasHome.nmps}}&nbsp;({{DatasHome.jenjang1}})</p>
-
-                        <ul class="list-group list-group-unbordered">
-                            <li class="list-group-item">
-                                <b>Tahun Akademik</b> <a
-                                    class="pull-right"><b>{{TahunAkademik.thakademik}}&nbsp;{{TahunAkademik.gg}}</b></a>
-                            </li>
-                            <li class="list-group-item">
-                                <b>IPK</b> <a class="pull-right"><b>{{Khsm.IPK}}</b></a>
-                            </li>
-                            <li class="list-group-item">
-                                <b>SKS Tempuh</b> <a class="pull-right"><b>{{Khsm.SKS}}</b></a>
-                            </li>
-                            <li class="list-group-item">
-                                <b>Dosen Wali</b> <a class="pull-right"><b>{{DatasHome.nmdsn}}</b></a><br><br>
-                            </li>
-                            <li class="list-group-item">
-                                <b>Kaprodi</b> <a class="pull-right"><b>{{DatasHome.Nama}}</b></a><br><br>
-                            </li>
-
-
-                            <!-- <li class="list-group-item">
-                                <b>Friends</b> <a class="pull-right">13,287</a>
-                            </li> -->
-                        </ul>
-                        <!-- <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a> -->
-                    </div>
-                </div>
-                <div class="box box-primary">
+    <section class="row content horizontal-scroll">
+        <div class="col-md-3" style="padding: 2px;">
+            <div class="box-body">
+                <div class="box-blur">
                     <div class="box-header with-border">
+                        <h3 class="box-title">Base Profile</h3>
+                    </div>
+                    <h3 class="profile-username text-center">{{DatasHome.nmmhs}}</h3>
+
+                    <p class="text-muted text-center"><b>{{DatasHome.npm}}</b></p>
+                    <p class="text-muted text-center">{{DatasHome.nmps}}&nbsp;({{DatasHome.jenjang1}})</p>
+                    <hr>
+
+                    <strong><i class="fa fa-map-marker margin-r-5"></i>Tahun Akademik</strong>
+                    <p class="text-muted">{{TahunAkademik.thakademik}}&nbsp;{{TahunAkademik.gg}}</p>
+                    <hr />
+
+                    <strong><i class="fa fa-map-marker margin-r-5"></i>IPK</strong>
+                    <p class="text-muted">{{Khsm.IPK}}</p>
+                    <hr />
+
+                    <strong><i class="fa fa-map-marker margin-r-5"></i>SKS Tempuh</strong>
+                    <p class="text-muted">{{Khsm.SKS}}</p>
+                    <hr />
+
+                    <strong><i class="fa fa-map-marker margin-r-5"></i>Dosen Wali</strong>
+                    <p class="text-muted">{{DatasHome.nmdsn}}</p>
+                    <hr />
+
+                    <strong><i class="fa fa-map-marker margin-r-5"></i>Kaprodi</strong>
+                    <p class="text-muted">{{DatasHome.Nama}}</p>
+
+                </div>
+
+            </div>
+
+            <div class="box-body">
+                <div class="box-blur">
+                    <div class="box-header">
                         <h3 class="box-title">Info Detail</h3>
                     </div>
-                    <div class="box-body">
-                        <strong><i class="fa fa-map-marker margin-r-5"></i>Tempat Tanggal Lahir</strong>
-                        <p class="text-muted">{{DatasHome.tmlhr}}, {{DatasHome.tglhr}}</p>
-                        <hr>
-                        <strong><i class="fa fa-book margin-r-5"></i>Agama</strong>
-                        <p class="text-muted">
-                            {{DatasHome.agama}}
-                        </p>
-                        <hr>
-                        <strong><i class="fa fa-book margin-r-5"></i>Pendidikan Terakhir</strong>
-                        <p class="text-muted">
-                            {{DatasHome.pendidikan}}
-                        </p>
-                        <hr>
-                        <strong><i class="fa fa-map-marker margin-r-5"></i>Alamat</strong>
-                        <p class="text-muted">{{DatasHome.almt}}</p>
-                        <hr>
-                        <strong><i class="fa fa-map-marker margin-r-5"></i>Telp</strong>
-                        <p class="text-muted">{{DatasHome.notlp}}</p>
-                        <hr>
-                        <strong><i class="fa fa-pencil margin-r-5"></i> Skills</strong>
-
-                        <!-- <p>
-                            <span class="label label-danger">UI Design</span>
-                            <span class="label label-success">Coding</span>
-                            <span class="label label-info">Javascript</span>
-                            <span class="label label-warning">PHP</span>
-                            <span class="label label-primary">Node.js</span>
-                        </p> -->
-
-                        <!-- <hr>
-
-                        <strong><i class="fa fa-file-text-o margin-r-5"></i> Notes</strong>
-
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p> -->
-                    </div>
+                    <hr>
+                    <strong><i class="fa fa-map-marker margin-r-5"></i>Tempat Tanggal Lahir</strong>
+                    <p class="text-muted">{{DatasHome.tmlhr}}, {{DatasHome.tglhr}}</p>
+                    <hr>
+                    <strong><i class="fa fa-book margin-r-5"></i>Agama</strong>
+                    <p class="text-muted">
+                        {{DatasHome.agama}}
+                    </p>
+                    <hr>
+                    <strong><i class="fa fa-book margin-r-5"></i>Pendidikan Terakhir</strong>
+                    <p class="text-muted">
+                        {{DatasHome.pendidikan}}
+                    </p>
+                    <hr>
+                    <strong><i class="fa fa-map-marker margin-r-5"></i>Alamat</strong>
+                    <p class="text-muted">{{DatasHome.almt}}</p>
+                    <hr>
+                    <strong><i class="fa fa-map-marker margin-r-5"></i>Telp</strong>
+                    <p class="text-muted">{{DatasHome.notlp}}</p>
+                    <hr>
+                    <strong><i class="fa fa-pencil margin-r-5"></i> Skills</strong>
                 </div>
-                <div class="box box-primary">
+            </div>
+            <div class="box-body">
+                <div class="box-blur">
                     <div class="box-header with-border">
                         <h3 class="box-title">Info Sekolah Asal</h3>
                     </div>
-                    <div class="box-body">
-                        <strong><i class="fa fa-map-marker margin-r-5"></i>Nama Sekolah</strong>
-                        <p class="text-muted">{{DatasHome.nmsmu}}</p>
-                        <hr>
-                        <strong><i class="fa fa-book margin-r-5"></i>Jurusan</strong>
-                        <p class="text-muted">
-                            {{DatasHome.jursmu}}
-                        </p>
-                        <hr>
-                        <strong><i class="fa fa-book margin-r-5"></i>Alamat</strong>
-                        <p class="text-muted">
-                            {{DatasHome.kabsmu}}, Provinsi {{DatasHome.provsmu}}
-                        </p>
-                        <hr>
-                        <strong><i class="fa fa-map-marker margin-r-5"></i>Asal Sekolah</strong>
-                        <p class="text-muted">{{DatasHome.nmsmu}}</p>
-                        <hr>
-                    </div>
+                    <strong><i class="fa fa-map-marker margin-r-5"></i>Nama Sekolah</strong>
+                    <p class="text-muted">{{DatasHome.nmsmu}}</p>
+                    <hr>
+                    <strong><i class="fa fa-book margin-r-5"></i>Jurusan</strong>
+                    <p class="text-muted">
+                        {{DatasHome.jursmu}}
+                    </p>
+                    <hr>
+                    <strong><i class="fa fa-book margin-r-5"></i>Alamat</strong>
+                    <p class="text-muted">
+                        {{DatasHome.kabsmu}}, Provinsi {{DatasHome.provsmu}}
+                    </p>
+                    <hr>
+                    <strong><i class="fa fa-map-marker margin-r-5"></i>Asal Sekolah</strong>
+                    <p class="text-muted">{{DatasHome.nmsmu}}</p>
                 </div>
             </div>
-            <div class="col-md-9">
-                <div class="nav-tabs-custom">
-                    <ul class="nav nav-tabs">
-                        <li class="active"><a href="" data-toggle="tab" data-target="#activity">Kemajuan Studi</a></li>
-                        <li><a href="" data-toggle="tab" data-target="#timeline">Jadwal Kuliah </a></li>
-                    </ul>
-                    <div class="tab-content">
-                        <div class="active tab-pane" id="activity">
-                            <ul class="timeline timeline-inverse" ng-repeat="loop in DataLooping">
-                                <li class="time-label" style="color:white;">
-                                    <span class="bg-red">
-                                        Semester {{loop.semester}}
-                                    </span>
-                                </li>
-                                <li ng-repeat="item in Khsm.Datas | filter: { smt: loop.semester }">
-                                    <i class="fa fa-item bg-blue"></i>
-                                    <div class="timeline-item" ng-if="item.ket=='L'" >
-                                        <span class="time">SKS: &nbsp;{{item.sks}} &nbsp;|&nbsp;
-                                            Nilai: &nbsp;{{item.nhuruf}} &nbsp;|&nbsp; Keterangan:
-                                            &nbsp;{{item.ket}}</span>
-                                        <h3 class="timeline-header">{{item.nmmk}}</h3>
-                                    </div>
-                                    <div class="timeline-item" ng-if="item.ket!='L'"
-                                        style="background-color: rgb(214, 18, 18) !important; color:white;">
-                                        <span class="time" style="color:white;">SKS: &nbsp;{{item.sks}} &nbsp;|&nbsp;
-                                            Nilai: &nbsp;{{item.nhuruf}} &nbsp;|&nbsp; Keterangan:
-                                            &nbsp;{{item.ket}}</span>
-                                        <h3 class="timeline-header" style="color:white;">{{item.nmmk}}</h3>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="tab-pane" id="timeline">
-                            <ul class="timeline timeline-inverse">
-                                <li class="time-label">
-                                    <span class="bg-red">
-                                        Senin
-                                    </span>
-                                </li>
-                                <li ng-repeat="item in DatasJadwal | filter: { hari: 'Senin' }">
-                                    <i class="fa fa-item bg-blue"></i>
-
-                                    <div class="timeline-item">
-                                        <span class="time"><i class="fa fa-clock-o"></i> {{item.wm}} s/d
-                                            {{item.ws}} | Ruang: {{item.ruangan}}</span>
-                                        <h3 class="timeline-header">{{item.nmmk}}</h3>
-                                    </div>
-                                </li>
-                            </ul>
-                            <ul class="timeline timeline-inverse">
-                                <li class="time-label">
-                                    <span class="bg-red">
-                                        Selasa
-                                    </span>
-                                </li>
-                                <li ng-repeat="item in DatasJadwal | filter: { hari: 'Selasa' }">
-                                    <i class="fa fa-item bg-blue"></i>
-
-                                    <div class="timeline-item">
-                                        <span class="time"><i class="fa fa-clock-o"></i> {{item.wm}} s/d
-                                            {{item.ws}} | Ruang: {{item.ruangan}}</span>
-                                        <h3 class="timeline-header">{{item.nmmk}}</h3>
-                                    </div>
-                                </li>
-                            </ul>
-                            <ul class="timeline timeline-inverse">
-                                <li class="time-label">
-                                    <span class="bg-red">
-                                        Rabu
-                                    </span>
-                                </li>
-                                <li ng-repeat="item in DatasJadwal | filter: { hari: 'Rabu' }">
-                                    <i class="fa fa-item bg-blue"></i>
-
-                                    <div class="timeline-item">
-                                        <span class="time"><i class="fa fa-clock-o"></i> {{item.wm}} s/d
-                                            {{item.ws}} | Ruang: {{item.ruangan}}</span>
-                                        <h3 class="timeline-header">{{item.nmmk}}</h3>
-                                    </div>
-                                </li>
-                            </ul>
-                            <ul class="timeline timeline-inverse">
-                                <li class="time-label">
-                                    <span class="bg-red">
-                                        Kamis
-                                    </span>
-                                </li>
-                                <li ng-repeat="item in DatasJadwal | filter: { hari: 'Kamis' }">
-                                    <i class="fa fa-item bg-blue"></i>
-
-                                    <div class="timeline-item">
-                                        <span class="time"><i class="fa fa-clock-o"></i> {{item.wm}} s/d
-                                            {{item.ws}} | Ruang: {{item.ruangan}}</span>
-                                        <h3 class="timeline-header">{{item.nmmk}}</h3>
-                                    </div>
-                                </li>
-                            </ul>
-                            <ul class="timeline timeline-inverse">
-                                <li class="time-label">
-                                    <span class="bg-red">
-                                        Jumat
-                                    </span>
-                                </li>
-                                <li ng-repeat="item in DatasJadwal | filter: { hari: 'Jumat' }">
-                                    <i class="fa fa-item bg-blue"></i>
-
-                                    <div class="timeline-item">
-                                        <span class="time"><i class="fa fa-clock-o"></i> {{item.wm}} s/d
-                                            {{item.ws}} | Ruang: {{item.ruangan}}</span>
-                                        <h3 class="timeline-header">{{item.nmmk}}</h3>
-                                    </div>
-                                </li>
-                            </ul>
-                            <ul class="timeline timeline-inverse">
-                                <li class="time-label">
-                                    <span class="bg-red">
-                                        Sabtu
-                                    </span>
-                                </li>
-                                <li ng-repeat="item in DatasJadwal | filter: { hari: 'Sabtu' }">
-                                    <i class="fa fa-item bg-blue"></i>
-
-                                    <div class="timeline-item">
-                                        <span class="time"><i class="fa fa-clock-o"></i> {{item.wm}} s/d
-                                            {{item.ws}} | Ruang: {{item.ruangan}}</span>
-                                        <h3 class="timeline-header">{{item.nmmk}}</h3>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="tab-pane" id="settings">
-                            <!-- <form class="form-horizontal">
-                                <div class="form-group">
-                                    <label for="inputName" class="col-sm-2 control-label">Name</label>
-
-                                    <div class="col-sm-10">
-                                        <input type="email" class="form-control" id="inputName" placeholder="Name">
-                                    </div>
+        </div>
+        <div class="col-md-9" style="padding: 0;">
+            <div class="nav-tabs-custom" style="margin: 5px;">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="" data-toggle="tab" data-target="#activity">Kemajuan Studi</a></li>
+                    <li><a href="" data-toggle="tab" data-target="#timeline">Jadwal Kuliah </a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="active tab-pane" id="activity">
+                        <ul class="timeline timeline-inverse" ng-repeat="loop in DataLooping">
+                            <li class="time-label" style="color:white;">
+                                <span class="bg-red">
+                                    Semester {{loop.semester}}
+                                </span>
+                            </li>
+                            <li ng-repeat="item in Khsm.Datas | filter: { smt: loop.semester }">
+                                <i class="fa fa-item bg-blue"></i>
+                                <div class="timeline-item" ng-if="item.ket=='L'">
+                                    <span class="time">SKS: &nbsp;{{item.sks}} &nbsp;|&nbsp;
+                                        Nilai: &nbsp;{{item.nhuruf}} &nbsp;|&nbsp; Keterangan:
+                                        &nbsp;{{item.ket}}</span>
+                                    <h3 class="timeline-header">{{item.nmmk}}</h3>
                                 </div>
-                                <div class="form-group">
-                                    <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+                                <div class="timeline-item" ng-if="item.ket!='L'"
+                                    style="background-color: rgb(214, 18, 18) !important; color:white;">
+                                    <span class="time" style="color:white;">SKS: &nbsp;{{item.sks}} &nbsp;|&nbsp;
+                                        Nilai: &nbsp;{{item.nhuruf}} &nbsp;|&nbsp; Keterangan:
+                                        &nbsp;{{item.ket}}</span>
+                                    <h3 class="timeline-header" style="color:white;">{{item.nmmk}}</h3>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane" id="timeline">
+                        <ul class="timeline timeline-inverse">
+                            <li class="time-label">
+                                <span class="bg-red">
+                                    Senin
+                                </span>
+                            </li>
+                            <li ng-repeat="item in DatasJadwal | filter: { hari: 'Senin' }">
+                                <i class="fa fa-item bg-blue"></i>
 
-                                    <div class="col-sm-10">
-                                        <input type="email" class="form-control" id="inputEmail" placeholder="Email">
-                                    </div>
+                                <div class="timeline-item">
+                                    <span class="time"><i class="fa fa-clock-o"></i> {{item.wm}} s/d
+                                        {{item.ws}} | Ruang: {{item.ruangan}}</span>
+                                    <h3 class="timeline-header">{{item.nmmk}}</h3>
                                 </div>
-                                <div class="form-group">
-                                    <label for="inputName" class="col-sm-2 control-label">Name</label>
+                            </li>
+                        </ul>
+                        <ul class="timeline timeline-inverse">
+                            <li class="time-label">
+                                <span class="bg-red">
+                                    Selasa
+                                </span>
+                            </li>
+                            <li ng-repeat="item in DatasJadwal | filter: { hari: 'Selasa' }">
+                                <i class="fa fa-item bg-blue"></i>
 
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputName" placeholder="Name">
-                                    </div>
+                                <div class="timeline-item">
+                                    <span class="time"><i class="fa fa-clock-o"></i> {{item.wm}} s/d
+                                        {{item.ws}} | Ruang: {{item.ruangan}}</span>
+                                    <h3 class="timeline-header">{{item.nmmk}}</h3>
                                 </div>
-                                <div class="form-group">
-                                    <label for="inputExperience" class="col-sm-2 control-label">Experience</label>
+                            </li>
+                        </ul>
+                        <ul class="timeline timeline-inverse">
+                            <li class="time-label">
+                                <span class="bg-red">
+                                    Rabu
+                                </span>
+                            </li>
+                            <li ng-repeat="item in DatasJadwal | filter: { hari: 'Rabu' }">
+                                <i class="fa fa-item bg-blue"></i>
 
-                                    <div class="col-sm-10">
-                                        <textarea class="form-control" id="inputExperience"
-                                            placeholder="Experience"></textarea>
-                                    </div>
+                                <div class="timeline-item">
+                                    <span class="time"><i class="fa fa-clock-o"></i> {{item.wm}} s/d
+                                        {{item.ws}} | Ruang: {{item.ruangan}}</span>
+                                    <h3 class="timeline-header">{{item.nmmk}}</h3>
                                 </div>
-                                <div class="form-group">
-                                    <label for="inputSkills" class="col-sm-2 control-label">Skills</label>
+                            </li>
+                        </ul>
+                        <ul class="timeline timeline-inverse">
+                            <li class="time-label">
+                                <span class="bg-red">
+                                    Kamis
+                                </span>
+                            </li>
+                            <li ng-repeat="item in DatasJadwal | filter: { hari: 'Kamis' }">
+                                <i class="fa fa-item bg-blue"></i>
 
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputSkills" placeholder="Skills">
-                                    </div>
+                                <div class="timeline-item">
+                                    <span class="time"><i class="fa fa-clock-o"></i> {{item.wm}} s/d
+                                        {{item.ws}} | Ruang: {{item.ruangan}}</span>
+                                    <h3 class="timeline-header">{{item.nmmk}}</h3>
                                 </div>
-                                <div class="form-group">
-                                    <div class="col-sm-offset-2 col-sm-10">
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox"> I agree to the <a href="#">terms and
-                                                    conditions</a>
-                                            </label>
-                                        </div>
-                                    </div>
+                            </li>
+                        </ul>
+                        <ul class="timeline timeline-inverse">
+                            <li class="time-label">
+                                <span class="bg-red">
+                                    Jumat
+                                </span>
+                            </li>
+                            <li ng-repeat="item in DatasJadwal | filter: { hari: 'Jumat' }">
+                                <i class="fa fa-item bg-blue"></i>
+
+                                <div class="timeline-item">
+                                    <span class="time"><i class="fa fa-clock-o"></i> {{item.wm}} s/d
+                                        {{item.ws}} | Ruang: {{item.ruangan}}</span>
+                                    <h3 class="timeline-header">{{item.nmmk}}</h3>
                                 </div>
-                                <div class="form-group">
-                                    <div class="col-sm-offset-2 col-sm-10">
-                                        <button type="submit" class="btn btn-danger">Submit</button>
-                                    </div>
+                            </li>
+                        </ul>
+                        <ul class="timeline timeline-inverse">
+                            <li class="time-label">
+                                <span class="bg-red">
+                                    Sabtu
+                                </span>
+                            </li>
+                            <li ng-repeat="item in DatasJadwal | filter: { hari: 'Sabtu' }">
+                                <i class="fa fa-item bg-blue"></i>
+
+                                <div class="timeline-item">
+                                    <span class="time"><i class="fa fa-clock-o"></i> {{item.wm}} s/d
+                                        {{item.ws}} | Ruang: {{item.ruangan}}</span>
+                                    <h3 class="timeline-header">{{item.nmmk}}</h3>
                                 </div>
-                            </form> -->
-                        </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="tab-pane" id="settings">
+
                     </div>
                 </div>
             </div>
         </div>
-
     </section>
 </div>
 
 <!-- View Pegawai -->
 <div ng-if="RolePegawai==true">
-    <section class="content-header">
-        <h1>
-            BASE PROFILE
-        </h1>
-    </section>
+    <section class="row content horizontal-scroll">
+        <div class="col-md-3" style="padding: 2px;">
+            <div class="box-body">
+                <div class="box-blur">
+                    <div class="box-header">
+                        <h3 class="box-title">Base Profile</h3>
+                    </div>
+                    <hr>
+                    <h3 class="profile-username text-center">{{DatasHome.Nama}}</h3>
+                   <h4 class="text-center">{{DatasHome.NIK}}</h4>
+                    <hr>
+                    <strong><i class="fa fa-map-marker margin-r-5"></i>Tahun Akademin</strong>
+                    <p class="text-muted">{{TahunAkademik.thakademik}}&nbsp;{{TahunAkademik.gg}}</p>
+                    <hr>
+                    <strong><i class="fa fa-map-marker margin-r-5"></i>Status</strong>
+                    <p class="text-muted">{{DatasHome.Status}}</p>
+                    <hr>
+                  
+                </div>
+            </div>
+            <div class="box-body">
 
-    <section class="content">
-
-        <div class="row">
-            <div class="col-md-3">
-
-                <div class="box box-primary">
-                    <div class="box-body box-profile">
-                           
-                        <!-- <img class="profile-user-img img-responsive img-circle" src="../../dist/img/user4-128x128.jpg"
-                                alt="User profile picture"> -->
-                        <h3 class="profile-username text-center">{{DatasHome.Nama}}</h3>
-                        <p class="text-muted text-center"><b>{{DatasHome.NIK}}</b></p>
-
-                        <ul class="list-group list-group-unbordered">
-                            <li class="list-group-item">
-                                <b>Tahun Akademik</b> <a
-                                    class="pull-right"><b>{{TahunAkademik.thakademik}}&nbsp;{{TahunAkademik.gg}}</b></a>
+                <div class="box-blur">
+                    <div class="box-header">
+                        <h3 class="box-title">Info Pegawai</h3>
+                    </div>
+                    <hr>
+                    <strong><i class="fa fa-book margin-r-5"></i>NIDN</strong>
+                    <p class="text-muted">
+                        {{DatasHome.nidn}}
+                    </p>
+                    <hr>
+                    <strong><i class="fa fa-map-marker margin-r-5"></i>Tempat Tanggal Lahir</strong>
+                    <p class="text-muted">{{DatasHome.TempatLahir}}, {{DatasHome.TanggalLahir}}</p>
+                    <hr>
+                    <strong><i class="fa fa-book margin-r-5"></i>Alamat</strong>
+                    <p class="text-muted">
+                        {{DatasHome.Alamat}}
+                    </p>
+                    <hr>
+                    <strong><i class="fa fa-book margin-r-5"></i>Kontak</strong>
+                    <p class="text-muted">
+                        {{DatasHome.Kontak}}
+                    </p>
+                    <hr>
+                    <strong><i class="fa fa-book margin-r-5"></i>Tahun Masuk</strong>
+                    <p class="text-muted">
+                        {{DatasHome.TahunMasuk}}
+                    </p>
+                    <strong><i class="fa fa-book margin-r-5"></i>Pendidikan Terakhir</strong>
+                    <p class="text-muted">
+                        {{DatasHome.pendakhir}}
+                    </p>
+                    <hr>
+                    <strong><i class="fa fa-book margin-r-5"></i>Spesifikasi Dosen</strong>
+                    <p class="text-muted">
+                        {{DatasHome.spekdsn}}
+                    </p>
+                    <hr>
+                    <strong><i class="fa fa-book margin-r-5"></i>Status Dosen</strong>
+                    <p class="text-muted">
+                        {{DatasHome.stdsn}}
+                    </p>
+                    <hr>
+                    <strong><i class="fa fa-book margin-r-5"></i>SK Dosen</strong>
+                    <p class="text-muted">
+                        {{DatasHome.noskstimik}}
+                    </p>
+                    <hr>
+                    <strong><i class="fa fa-book margin-r-5"></i>Tanggal SK Dosen</strong>
+                    <p class="text-muted">
+                        {{DatasHome.tgskstimik}}
+                    </p>
+                    <hr>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9" style="padding: 2px;">
+            <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="" data-toggle="tab" data-target="#activity">Jadwal Mengajar</a></li>
+                    <li><a href="" data-toggle="tab" data-target="#nilai">Nilai Mahasiswa</a></li>
+                    <li><a href="" data-toggle="tab" data-target="#wali">Mahasiswa Wali</a></li>
+                    <!-- <li><a href="" data-toggle="tab" data-target="#settings">Settings</a></li> -->
+                </ul>
+                <div class="tab-content">
+                    <div class="active tab-pane" id="activity">
+                        <ul class="timeline timeline-inverse">
+                            <li class="time-label">
+                                <span class="bg-red">
+                                    Senin
+                                </span>
                             </li>
-                            <li class="list-group-item">
-                                <b>Status</b> <a class="pull-right"><b>{{DatasHome.Status}}</b></a>
+                            <li ng-repeat="item in DatasJadwal | filter: { hari: 'Senin' }">
+                                <i class="fa fa-item bg-blue"></i>
+
+                                <div class="timeline-item">
+                                    <span class="time"><i class="fa fa-clock-o"></i> {{item.wm}} s/d
+                                        {{item.ws}} | Ruang: {{item.ruangan}}</span>
+                                    <h3 class="timeline-header">{{item.nmmk}} | Kelas : {{item.kelas}}</h3>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="timeline timeline-inverse">
+                            <li class="time-label">
+                                <span class="bg-red">
+                                    Selasa
+                                </span>
+                            </li>
+                            <li ng-repeat="item in DatasJadwal | filter: { hari: 'Selasa' }">
+                                <i class="fa fa-item bg-blue"></i>
+
+                                <div class="timeline-item">
+                                    <span class="time"><i class="fa fa-clock-o"></i> {{item.wm}} s/d
+                                        {{item.ws}} | Ruang: {{item.ruangan}}</span>
+                                    <h3 class="timeline-header">{{item.nmmk}} | Kelas : {{item.kelas}}</h3>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="timeline timeline-inverse">
+                            <li class="time-label">
+                                <span class="bg-red">
+                                    Rabu
+                                </span>
+                            </li>
+                            <li ng-repeat="item in DatasJadwal | filter: { hari: 'Rabu' }">
+                                <i class="fa fa-item bg-blue"></i>
+
+                                <div class="timeline-item">
+                                    <span class="time"><i class="fa fa-clock-o"></i> {{item.wm}} s/d
+                                        {{item.ws}} | Ruang: {{item.ruangan}}</span>
+                                    <h3 class="timeline-header">{{item.nmmk}} | Kelas : {{item.kelas}}</h3>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="timeline timeline-inverse">
+                            <li class="time-label">
+                                <span class="bg-red">
+                                    Kamis
+                                </span>
+                            </li>
+                            <li ng-repeat="item in DatasJadwal | filter: { hari: 'Kamis' }">
+                                <i class="fa fa-item bg-blue"></i>
+
+                                <div class="timeline-item">
+                                    <span class="time"><i class="fa fa-clock-o"></i> {{item.wm}} s/d
+                                        {{item.ws}} | Ruang: {{item.ruangan}}</span>
+                                    <h3 class="timeline-header">{{item.nmmk}} | Kelas : {{item.kelas}}</h3>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="timeline timeline-inverse">
+                            <li class="time-label">
+                                <span class="bg-red">
+                                    Jumat
+                                </span>
+                            </li>
+                            <li ng-repeat="item in DatasJadwal | filter: { hari: 'Jumat' }">
+                                <i class="fa fa-item bg-blue"></i>
+
+                                <div class="timeline-item">
+                                    <span class="time"><i class="fa fa-clock-o"></i> {{item.wm}} s/d
+                                        {{item.ws}} | Ruang: {{item.ruangan}}</span>
+                                    <h3 class="timeline-header">{{item.nmmk}} | Kelas : {{item.kelas}}</h3>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="timeline timeline-inverse">
+                            <li class="time-label">
+                                <span class="bg-red">
+                                    Sabtu
+                                </span>
+                            </li>
+                            <li ng-repeat="item in DatasJadwal | filter: { hari: 'Sabtu' }">
+                                <i class="fa fa-item bg-blue"></i>
+
+                                <div class="timeline-item">
+                                    <span class="time"><i class="fa fa-clock-o"></i> {{item.wm}} s/d
+                                        {{item.ws}} | Ruang: {{item.ruangan}}</span>
+                                    <h3 class="timeline-header">{{item.nmmk}} | Kelas : {{item.kelas}}</h3>
+                                </div>
                             </li>
                         </ul>
                     </div>
-                </div>
-                <div class="box box-primary">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Info Pegawai</h3>
+                    <div class="tab-pane" id="nilai">
+                        <h3>Ongoing</h3>
                     </div>
-                    <div class="box-body">
-                        <strong><i class="fa fa-book margin-r-5"></i>NIDN</strong>
-                        <p class="text-muted">
-                            {{DatasHome.nidn}}
-                        </p>
-                        <hr>
-                        <strong><i class="fa fa-map-marker margin-r-5"></i>Tempat Tanggal Lahir</strong>
-                        <p class="text-muted">{{DatasHome.TempatLahir}}, {{DatasHome.TanggalLahir}}</p>
-                        <hr>
-                        <strong><i class="fa fa-book margin-r-5"></i>Alamat</strong>
-                        <p class="text-muted">
-                            {{DatasHome.Alamat}}
-                        </p>
-                        <hr>
-                        <strong><i class="fa fa-book margin-r-5"></i>Kontak</strong>
-                        <p class="text-muted">
-                            {{DatasHome.Kontak}}
-                        </p>
-                        <hr>
-                        <strong><i class="fa fa-book margin-r-5"></i>Tahun Masuk</strong>
-                        <p class="text-muted">
-                            {{DatasHome.TahunMasuk}}
-                        </p>
-                        <strong><i class="fa fa-book margin-r-5"></i>Pendidikan Terakhir</strong>
-                        <p class="text-muted">
-                            {{DatasHome.pendakhir}}
-                        </p>
-                        <hr>
-                        <strong><i class="fa fa-book margin-r-5"></i>Spesifikasi Dosen</strong>
-                        <p class="text-muted">
-                            {{DatasHome.spekdsn}}
-                        </p>
-                        <hr>
-                        <strong><i class="fa fa-book margin-r-5"></i>Status Dosen</strong>
-                        <p class="text-muted">
-                            {{DatasHome.stdsn}}
-                        </p>
-                        <hr>
-                        <strong><i class="fa fa-book margin-r-5"></i>SK Dosen</strong>
-                        <p class="text-muted">
-                            {{DatasHome.noskstimik}}
-                        </p>
-                        <hr>
-                        <strong><i class="fa fa-book margin-r-5"></i>Tanggal SK Dosen</strong>
-                        <p class="text-muted">
-                            {{DatasHome.tgskstimik}}
-                        </p>
-                        <hr>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-9">
-                <div class="nav-tabs-custom">
-                    <ul class="nav nav-tabs">
-                        <li class="active"><a href="" data-toggle="tab" data-target="#activity">Jadwal Mengajar</a></li>
-                        <li><a href="" data-toggle="tab" data-target="#nilai">Nilai Mahasiswa</a></li>
-                        <li><a href="" data-toggle="tab" data-target="#wali">Mahasiswa Wali</a></li>
-                        <!-- <li><a href="" data-toggle="tab" data-target="#settings">Settings</a></li> -->
-                    </ul>
-                    <div class="tab-content">
-                        <div class="active tab-pane" id="activity">
-                            <ul class="timeline timeline-inverse">
-                                <li class="time-label">
-                                    <span class="bg-red">
-                                        Senin
-                                    </span>
-                                </li>
-                                <li ng-repeat="item in DatasJadwal | filter: { hari: 'Senin' }">
-                                    <i class="fa fa-item bg-blue"></i>
 
-                                    <div class="timeline-item">
-                                        <span class="time"><i class="fa fa-clock-o"></i> {{item.wm}} s/d
-                                            {{item.ws}} | Ruang: {{item.ruangan}}</span>
-                                        <h3 class="timeline-header">{{item.nmmk}} | Kelas : {{item.kelas}}</h3>
-                                    </div>
-                                </li>
-                            </ul>
-                            <ul class="timeline timeline-inverse">
-                                <li class="time-label">
-                                    <span class="bg-red">
-                                        Selasa
-                                    </span>
-                                </li>
-                                <li ng-repeat="item in DatasJadwal | filter: { hari: 'Selasa' }">
-                                    <i class="fa fa-item bg-blue"></i>
-
-                                    <div class="timeline-item">
-                                        <span class="time"><i class="fa fa-clock-o"></i> {{item.wm}} s/d
-                                            {{item.ws}} | Ruang: {{item.ruangan}}</span>
-                                        <h3 class="timeline-header">{{item.nmmk}} | Kelas : {{item.kelas}}</h3>
-                                    </div>
-                                </li>
-                            </ul>
-                            <ul class="timeline timeline-inverse">
-                                <li class="time-label">
-                                    <span class="bg-red">
-                                        Rabu
-                                    </span>
-                                </li>
-                                <li ng-repeat="item in DatasJadwal | filter: { hari: 'Rabu' }">
-                                    <i class="fa fa-item bg-blue"></i>
-
-                                    <div class="timeline-item">
-                                        <span class="time"><i class="fa fa-clock-o"></i> {{item.wm}} s/d
-                                            {{item.ws}} | Ruang: {{item.ruangan}}</span>
-                                        <h3 class="timeline-header">{{item.nmmk}} | Kelas : {{item.kelas}}</h3>
-                                    </div>
-                                </li>
-                            </ul>
-                            <ul class="timeline timeline-inverse">
-                                <li class="time-label">
-                                    <span class="bg-red">
-                                        Kamis
-                                    </span>
-                                </li>
-                                <li ng-repeat="item in DatasJadwal | filter: { hari: 'Kamis' }">
-                                    <i class="fa fa-item bg-blue"></i>
-
-                                    <div class="timeline-item">
-                                        <span class="time"><i class="fa fa-clock-o"></i> {{item.wm}} s/d
-                                            {{item.ws}} | Ruang: {{item.ruangan}}</span>
-                                        <h3 class="timeline-header">{{item.nmmk}} | Kelas : {{item.kelas}}</h3>
-                                    </div>
-                                </li>
-                            </ul>
-                            <ul class="timeline timeline-inverse">
-                                <li class="time-label">
-                                    <span class="bg-red">
-                                        Jumat
-                                    </span>
-                                </li>
-                                <li ng-repeat="item in DatasJadwal | filter: { hari: 'Jumat' }">
-                                    <i class="fa fa-item bg-blue"></i>
-
-                                    <div class="timeline-item">
-                                        <span class="time"><i class="fa fa-clock-o"></i> {{item.wm}} s/d
-                                            {{item.ws}} | Ruang: {{item.ruangan}}</span>
-                                        <h3 class="timeline-header">{{item.nmmk}} | Kelas : {{item.kelas}}</h3>
-                                    </div>
-                                </li>
-                            </ul>
-                            <ul class="timeline timeline-inverse">
-                                <li class="time-label">
-                                    <span class="bg-red">
-                                        Sabtu
-                                    </span>
-                                </li>
-                                <li ng-repeat="item in DatasJadwal | filter: { hari: 'Sabtu' }">
-                                    <i class="fa fa-item bg-blue"></i>
-
-                                    <div class="timeline-item">
-                                        <span class="time"><i class="fa fa-clock-o"></i> {{item.wm}} s/d
-                                            {{item.ws}} | Ruang: {{item.ruangan}}</span>
-                                        <h3 class="timeline-header">{{item.nmmk}} | Kelas : {{item.kelas}}</h3>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="tab-pane" id="nilai">
-                            <h3>Ongoing</h3>
-                        </div>
-
-                        <div class="tab-pane" id="wali">
-                            
+                    <div class="tab-pane" id="wali">
 
 
 
-                            
-                        </div>
+
+
                     </div>
                 </div>
             </div>
         </div>
-
     </section>
 </div>
