@@ -30,8 +30,22 @@
             })
             return deferred.promise;
         }
-
-        return { getPenelitian: AmbilPenelitian };
+        function AmbilPublikasi() {
+            var deferred = $q.defer();
+            $http({
+                method: "GET",
+                url: AuthService.Base+"api/Penelitian/AmbilPenelitian",
+                headers: AuthService.Header,
+            }).then(function (response) {
+                service.dataPenelitian = response.data.data;
+                deferred.resolve(service.dataPenelitian);
+            }, function (error) {
+                // console.log(error);
+                deferred.reject(error);
+            })
+            return deferred.promise;
+        }
+        return { getPenelitian: AmbilPenelitian, getPublikasi: AmbilPublikasi };
     });
     
 })(window.angular);

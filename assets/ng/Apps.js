@@ -115,8 +115,6 @@
                     templateUrl: "apps/views/BeritaAcara.html",
                     controller: "BeritaAcaraController"
                 });
-
-           
         })
             .directive('chooseFile', function() {
                 return {
