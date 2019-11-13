@@ -15,6 +15,7 @@
     .factory('PenelitianService', function ($http, $q, AuthServicePenelitian, AuthService) {
         var service = {};
         service.dataPenelitian = [];
+        service.dataPublikasi = [];
         function AmbilPenelitian() {
             var deferred = $q.defer();
             $http({
@@ -34,11 +35,14 @@
             var deferred = $q.defer();
             $http({
                 method: "GET",
-                url: AuthService.Base+"api/Penelitian/AmbilPenelitian",
+                url: AuthService.Base+"api/Dosen/GetDosen",
                 headers: AuthService.Header,
             }).then(function (response) {
-                service.dataPenelitian = response.data.data;
-                deferred.resolve(service.dataPenelitian);
+                service.dataPublikasi = response.data.data;
+                angular.forEach(service.dataPublikasi, function(value, key){
+                    value.Publikasi = JSON.parse(angular.copy(value.Publikasi));
+                })
+                deferred.resolve(service.dataPublikasi);
             }, function (error) {
                 // console.log(error);
                 deferred.reject(error);

@@ -3,7 +3,7 @@
         <ul class="nav nav-tabs">
             <li class="active"><a href="" data-toggle="tab" data-target="#riset">Riset (TA)</a></li>
             <li><a href="" data-toggle="tab" data-target="#praktek">Kerja Praktek (KP)</a></li>
-            <li><a href="" data-toggle="tab" data-target="#jurnal">Jurnal</a></li>
+            <li><a href="" data-toggle="tab" data-target="#publikasi">Publikasi</a></li>
         </ul>
         <div class="tab-content">
             <div class="tab-pane active" id="riset">
@@ -12,7 +12,7 @@
                     <div class="box-tools">
                         <div class="input-group input-group-sm" style="width: 200px;">
                             <input type="text" name="table_search" class="form-control pull-right"
-                                placeholder="Search" ng-model="CariRiset">
+                                placeholder="Search" ng-model="Cari">
 
                             <div class="input-group-btn">
                                 <button type="submit" class="btn btn-default"><i
@@ -23,7 +23,7 @@
                 </div>
                 <div class="box-body">
                     <div class="row" style="padding: 20px;">
-                        <div ng-repeat="item in DatasPenelitian.riset | filter : CariRiset"
+                        <div ng-repeat="item in DatasPenelitian.riset | filter : Cari"
                             style="margin-bottom: 30px;">
                             <p><b>{{item.jdl_riset}}</b><br>
                                 <i>Oleh {{item.nmmhs}}, &nbsp; {{item.pemb}}</i>, &nbsp;
@@ -41,7 +41,7 @@
                     <div class="box-tools">
                         <div class="input-group input-group-sm" style="width: 200px;">
                             <input type="text" name="table_search" class="form-control pull-right"
-                                placeholder="Search" ng-model="CariPraktek">
+                                placeholder="Search" ng-model="Cari">
 
                             <div class="input-group-btn">
                                 <button type="submit" class="btn btn-default"><i
@@ -52,7 +52,7 @@
                 </div>
                 <div class="box-body">
                     <div class="row" style="margin-left: 20px;">
-                        <div ng-repeat="item in DatasPenelitian.kp | filter : CariRiset"
+                        <div ng-repeat="item in DatasPenelitian.kp | filter : Cari"
                             style="margin-bottom: 15px;">
                             <p ng-hide="item.jdl_kp == ''"><b>{{item.jdl_kp}}</b><br>
                                 <i>Oleh {{item.nmmhs}}, &nbsp; {{item.pemb}}</i> , &nbsp;
@@ -64,14 +64,34 @@
                 </div>
             </div>
             <!-- /.tab-pane -->
-            <div class="tab-pane" id="jurnal">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                It has survived not only five centuries, but also the leap into electronic typesetting,
-                remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
-                sheets containing Lorem Ipsum passages, and more recently with desktop publishing software
-                like Aldus PageMaker including versions of Lorem Ipsum.
+            <div class="tab-pane" id="publikasi">
+                <div class="box-header with-border">
+                    <h3 class="box-title" >DAFTAR PUBLIKASI DOSEN</h3>
+                    <div class="box-tools">
+                        <div class="input-group input-group-sm" style="width: 200px;">
+                            <input type="text" name="table_search" class="form-control pull-right"
+                                placeholder="Search" ng-model="Cari">
+
+                            <div class="input-group-btn">
+                                <button type="submit" class="btn btn-default"><i
+                                        class="fa fa-search"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="row" style="padding: 20px;">
+                        <div ng-repeat="itemDosen in DatasPublikasi | filter : Cari"
+                            style="margin-bottom: 30px;">
+                            <div ng-repeat="item in itemDosen.Publikasi">
+                                <p><b>{{item.title}}</b><br>
+                                    <i>Oleh {{item.authors}}, &nbsp; Jurnal {{item.venue}}</i>, &nbsp;
+                                    <a href="https://scholar.google.co.id/citations?hl=id&user={{item.scholarId}}" target="_blank">Download</a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
             </div>
             <!-- /.tab-pane -->
         </div>

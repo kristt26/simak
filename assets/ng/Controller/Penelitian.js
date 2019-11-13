@@ -2,8 +2,9 @@
     "use strict"
     angular.module("Penelitian",['PenelitianDirectives'])
     .controller("PenelitianController", function ($scope, $http, PenelitianService) {
-        $scope.CariRiset = "";
+        $scope.Cari = "";
         $scope.DatasPenelitian =[];
+        $scope.DatasPublikasi =[];
 
         PenelitianService.getPenelitian().then(response => {
             $scope.DatasPenelitian= response;
@@ -15,7 +16,11 @@
                 var str = value.berkas_kp.substring(31);
                 value.strjudul = str.length;
             })
-        })        
+        });
+        PenelitianService.getPublikasi().then(response => {
+            $scope.DatasPublikasi = response;
+        })
+
     })
     
 })(window.angular);
