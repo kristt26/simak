@@ -1,10 +1,25 @@
 (function (angular) {
     'use strict'
-    angular.module('BeritaAcara', ['BeritaAcaraDirective'])
-        .controller('BeritaAcaraController', function ($scope, BaService, $compile, DTOptionsBuilder, DTColumnBuilder, DTColumnDefBuilder) {
+    angular.module('BeritaAcara', ['BeritaAcaraDirective', 'MatakuliahDirective'])
+        .controller('BeritaAcaraController', function ($scope, BaService, $compile, DTOptionsBuilder, DTColumnBuilder, DTColumnDefBuilder, $window, SweetAlert, MatakuliahService) {
             $scope.DatasBa = [];
+            $scope.DatasPersetujuan = [];
+            $scope.Cari = "";
+            $scope.Hide = true;
+            $scope.Matakuliah = [];
+            $scope.DataPrint = [];
             BaService.getlaporan().then(response => {
                 $scope.DatasBa = response.data;
+                angular.forEach($scope.DatasBa, function (value, key) {
+                    if (value.beritaacara.length > 0) {
+                        $scope.DataPrint.push(angular.copy(value));
+                    }
+                })
+            }, error => {
+                console.log(error);
+            });
+            BaService.getPersetujuan().then(response => {
+                $scope.DatasPersetujuan = response;
             }, error => {
                 console.log(error);
             });
@@ -20,17 +35,99 @@
                 DTColumnBuilder.newColumn('firstName').withTitle('First name'),
                 DTColumnBuilder.newColumn('lastName').withTitle('Last name')
             ];
-            // $scope.vm = this;
-            // $scope.vm.message = '';
-            // $scope.vm.dtInstance = {};
-            // $scope.vm.persons = {};
-            // // $scope.vm.dtColumnDefs = [DTColumnDefBuilder.newColumnDef(2).notSortable()];
-            // $scope.vm.dtOptions = DTOptionsBuilder.newOptions()
-            //     
-            // $scope.vm.dtColumns = [
-            //     DTColumnBuilder.newColumn('id').withTitle('ID'),
-            //     DTColumnBuilder.newColumn('firstName').withTitle('First name'),
-            //     DTColumnBuilder.newColumn('lastName').withTitle('Last name')
-            // ];
+            $scope.Setujui = function (item) {
+                SweetAlert.swal({
+                    title: "Anda Yakin?",
+                    text: "Anda akan Menyetujui Berita Acara?",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Yes, Approved!",
+                    cancelButtonText: "No, cancel!",
+                    closeOnConfirm: true,
+                    closeOnCancel: true
+                },
+                    function (isConfirm) {
+                        if (isConfirm) {
+                            item.persetujuan1 = $window.sessionStorage.getItem("NamaUser");
+                            BaService.putPersetujuan(item).then(response => {
+                                SweetAlert.swal("Approved!", "Your proses Update Berita Acara has been approved.", "success");
+                            }, error => {
+                                SweetAlert.swal("Cancelled", "Proses Gagal :)", "error");
+                                item.persetujuan1 = null;
+                            });
+                        } else {
+                            SweetAlert.swal("Cancelled", "Proses Dibatalkan :)", "error");
+                            $scope.Tombol = false;
+                        }
+                    });
+            }
+            $scope.Hapus= function(item){
+                SweetAlert.swal({
+                    title: "Anda Yakin?",
+                    text: "Anda akan Menghapus Berita Acara?",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Yes, Approved!",
+                    cancelButtonText: "No, cancel!",
+                    closeOnConfirm: true,
+                    closeOnCancel: true
+                },
+                    function (isConfirm) {
+                        if (isConfirm) {
+                            BaService.deleteBa(item).then(response => {
+                                SweetAlert.swal("Approved!", "Berhasil", "success");
+                                var index = $scope.DatasPersetujuan.indexOf(item);
+                                $scope.DatasPersetujuan.splice(index, 1); 
+                            }, error => {
+                                SweetAlert.swal("Cancelled", "Proses Gagal :)", "error");
+                                item.persetujuan1 = null;
+                            });
+                        } else {
+                            SweetAlert.swal("Cancelled", "Proses Dibatalkan :)", "error");
+                            $scope.Tombol = false;
+                        }
+                    });
+            }
+            $scope.PrintBA = function (DaftarBa) {
+                var innerContents = document.getElementById(DaftarBa).innerHTML;
+                var popupWinindow = window.open('', '_blank', 'width=600,height=700,scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=no');
+                popupWinindow.document.open();
+                popupWinindow.document.write('<html><head><link href="assets/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"><link href="assets/dist/css/AdminLTE.min.css" rel="stylesheet"><link href="assets/dist/css/skins/_all-skins.min.css" rel="stylesheet"></head><body onload="window.print()"><div>' + innerContents + '</html>');
+                popupWinindow.document.close();
+            }
+            $scope.toExcell = function (item) {
+                var htmltable = document.getElementById(item);
+                var html = htmltable.outerHTML;
+                window.open('data:application/vnd.ms-excel,' + encodeURIComponent(html));
+            }
+            $scope.Rekap = function (DaftarBa) {
+                SweetAlert.swal({
+                    title: "Anda Yakin?",
+                    text: "Anda akan melakukan rekap Berita Acara, Proses rekap tidak dapat diulang",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Yes, Approved!",
+                    cancelButtonText: "No, cancel!",
+                    closeOnConfirm: true,
+                    closeOnCancel: true
+                },
+                    function (isConfirm) {
+                        if (isConfirm) {
+                            BaService.putRekap().then(response => {
+                                SweetAlert.swal("Approved!", "Your proses Update Berita Acara has been approved.", "success");
+
+                            }, error => {
+                                SweetAlert.swal("Cancelled", "Proses Gagal :)", "error");
+                                item.persetujuan1 = null;
+                            });
+                        } else {
+                            SweetAlert.swal("Cancelled", "Proses Dibatalkan :)", "error");
+                            $scope.Tombol = false;
+                        }
+                    });
+            }
         });
 })(window.angular);

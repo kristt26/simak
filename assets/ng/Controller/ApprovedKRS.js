@@ -13,8 +13,8 @@
             $scope.TampilJadwal = false;
             $scope.Datatampung = [];
             $scope.jmsks = 0;
-            $scope.NamaSelected="";
-            $scope.NPMSelected="";
+            $scope.NamaSelected = "";
+            $scope.NPMSelected = "";
             $scope.KemajuanStudi = [];
             $scope.Tombol = false;
             DataStatus.status = $window.sessionStorage.getItem("SetStatus");
@@ -45,7 +45,7 @@
             }
 
             $scope.ShowJadwalMahasiswa = function (item) {
-                $scope.jmsks =0;
+                $scope.jmsks = 0;
                 $scope.NamaSelected = item.nmmhs;
                 $scope.NPMSelected = item.npm;
                 $scope.TampilJadwal = true;
@@ -133,8 +133,6 @@
                             $scope.Tombol = false;
                         }
                     });
-
-
             }
         });
 })(window.angular);
