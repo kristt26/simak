@@ -24,7 +24,7 @@
                 <div class="box-body">
                     <div class="row" style="padding: 20px;">
                         <div ng-repeat="item in DatasPenelitian.riset | filter : Cari"
-                            style="margin-bottom: 30px;">
+                            style="margin-bottom: 15px;">
                             <p><b>{{item.jdl_riset}}</b><br>
                                 <i>Oleh {{item.nmmhs}}, &nbsp; {{item.pemb}}</i>, &nbsp;
                                     {{item.tgseminar}},&nbsp;&nbsp;<a ng-show="item.strjudul>0"
@@ -37,7 +37,7 @@
             <!-- /.tab-pane -->
             <div class="tab-pane" id="praktek">
                 <div class="box-header with-border">
-                    <h3 class="box-title" style="margin-left: 20px;">DAFTAR LAPORAN KERJA PRAKTEK MAHASISWA</h3>
+                    <h3 class="box-title">DAFTAR LAPORAN KERJA PRAKTEK MAHASISWA</h3>
                     <div class="box-tools">
                         <div class="input-group input-group-sm" style="width: 200px;">
                             <input type="text" name="table_search" class="form-control pull-right"
@@ -51,7 +51,7 @@
                     </div>
                 </div>
                 <div class="box-body">
-                    <div class="row" style="margin-left: 20px;">
+                    <div class="row" style="padding: 20px;">
                         <div ng-repeat="item in DatasPenelitian.kp | filter : Cari"
                             style="margin-bottom: 15px;">
                             <p ng-hide="item.jdl_kp == ''"><b>{{item.jdl_kp}}</b><br>
@@ -82,11 +82,11 @@
                 <div class="box-body">
                     <div class="row" style="padding: 20px;">
                         <div ng-repeat="itemDosen in DatasPublikasi | filter : Cari"
-                            style="margin-bottom: 30px;">
-                            <div ng-repeat="item in itemDosen.Publikasi">
+                            style="margin-bottom: 15px;">
+                            <div ng-repeat="item in itemDosen.Publikasi.publications">
                                 <p><b>{{item.title}}</b><br>
                                     <i>Oleh {{item.authors}}, &nbsp; Jurnal {{item.venue}}</i>, &nbsp;
-                                    <a href="https://scholar.google.co.id/citations?hl=id&user={{item.scholarId}}" target="_blank">Download</a>
+                                    <a href="https://scholar.google.co.id/citations?hl=id&user={{itemDosen.scholarId}}" target="_blank">Link</a>
                             </div>
                             
                         </div>
