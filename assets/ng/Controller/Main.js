@@ -28,8 +28,7 @@
                         $scope.Khsm.Datas = [];
                         var b = response.data;
                         angular.forEach(b.Datas, function (value, key) {
-                            var a = JSON.parse(value);
-                            $scope.Khsm.Datas.push(angular.copy(a));
+                            $scope.Khsm.Datas.push(angular.copy(value));
                             $scope.Khsm.IPK = b.IPK;
                             $scope.Khsm.SKS = b.SKS;
                         });
