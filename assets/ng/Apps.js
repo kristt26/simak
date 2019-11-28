@@ -201,7 +201,7 @@
             service.Base = "http://restsimak.stimiksepnop.ac.id/";
             function getHeader() {
                 var header = {
-                    "content-type": "application/json",
+                    "content-type": "text/plain",
                     "authorization": service.Token
                 }
                 return header;
@@ -227,7 +227,7 @@
 
             function getHeader() {
                 var header = {
-                    "content-type": "application/json",
+                    "content-type": "text.plain",
                     "authorization": $window.sessionStorage.getItem("Token")
                 }
                 return header;

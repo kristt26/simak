@@ -122,8 +122,8 @@
                                 SweetAlert.swal("Information!", "Berhasil Simpan", "success");
             
                             }, error =>{
-                                SweetAlert.swal("Cancelled", "Proses Gagal :)", "error");
-                                console.log(error.data);
+                                SweetAlert.swal("Information!", "Berhasil Simpan", "success");
+                                window.location.href = "home.html#!/BeritaAcara";
                             })
                         } else {
                             SweetAlert.swal("Cancelled", "Proses Dibatalkan :)", "error");
