@@ -3,7 +3,6 @@
     angular.module('KemajuanStudiDirective', [])
         .factory("KhsmService", ["$q", "AuthService", "$http", function ($q, AuthService, $http) {
             var service = {};
-            service.data = [];
             function getAction(item) {
                 var deferred = $q.defer();
                 $http({
@@ -12,7 +11,7 @@
                     headers: AuthService.Header,
                     //data: item
                 }).then(function (response) {
-                    service.data = [];
+                    service.data = {};
                     service.data = response.data;
                     service.instance = true;
                     deferred.resolve(service.data);

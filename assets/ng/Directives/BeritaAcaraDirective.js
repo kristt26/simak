@@ -91,6 +91,22 @@
                 })
                 return deferred.promise;
             }
-            return { getlaporan: laporan, getPersetujuan: persetujuan, putPersetujuan: ubahpersetujuan, putRekap: rekapBa, deleteBa: HapusBa};
+            function TambahBA(item) {
+                var deferred = $q.defer();
+                $http({
+                    method: "POST",
+                    url: AuthService.Base+"api/beritaacara/AddBaMengajar",
+                    headers: AuthService.Header,
+                    data: item
+                }).then(function (response) {
+                    service.message = response.data.data;
+                    deferred.resolve(service.message);
+                }, function (error) {
+                    // console.log(error);
+                    deferred.reject(error);
+                })
+                return deferred.promise;
+            }
+            return { getlaporan: laporan, getPersetujuan: persetujuan, putPersetujuan: ubahpersetujuan, putRekap: rekapBa, deleteBa: HapusBa, addBA: TambahBA};
     });
 })(window.angular);

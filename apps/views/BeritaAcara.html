@@ -13,7 +13,7 @@
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
                         <li class="active"><a href="" data-target="#tab_2" data-toggle="tab">Persetujuan</a></li>
-                        <li><a href="" data-target="#tab_3" data-toggle="tab">Tab 3</a></li>
+                        <li><a href="" data-target="#tab_3" data-toggle="tab">Input Manual</a></li>
                         <!-- <li><a href="" data-target="#tab_1" data-toggle="tab">Laporan</a></li> -->
                     </ul>
                     <div class="tab-content">
@@ -144,14 +144,55 @@
                         </div>
                         <!-- /.tab-pane -->
                         <div class="tab-pane" id="tab_3">
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                            when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                            It has survived not only five centuries, but also the leap into electronic typesetting,
-                            remaining essentially unchanged. It was popularised in the 1960s with the release of
-                            Letraset
-                            sheets containing Lorem Ipsum passages, and more recently with desktop publishing software
-                            like Aldus PageMaker including versions of Lorem Ipsum.
+                            <form role="form">
+                                <div class="box-body">
+                                    <div class="form-group">
+                                        <label for="NIK">Matakuliah</label>
+                                        <!-- <select2 ng-model="SelectedMatakuliah" onSelect="GetDataDosen()" class="form-control select2" s2-options="val as val.nmmk + ' - ' + val.kelas for val in DatasJadwal"></select2> -->
+                                        <select ui-select2 ng-model="SelectedMatakuliah" ng-change="GetDataDosen()" class="form-control select2">
+                                            <option value=""></option>
+                                            <option ng-repeat="item in DatasJadwal"  value="{{item}}">{{item.nmmk}} - {{item.kelas}} - {{item.nmps}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group" ng-show = "ShowDetailDosen">
+                                        <label for="Nama">Nama Dosen</label>
+                                        <input type="text" class="form-control" id="Nama" ng-model="DataDosen.nmdsn" disabled>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="tanggal">Tanggal Pertemuan</label>
+                                        <input type="date" class="form-control" id="tanggal" placeholder="Tanggal" ng-model="TanggalInput">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="jumlah">Jumlah Mahasiswa</label>
+                                        <input type="text" class="form-control" id="jumlah" placeholder="Alamat" ng-model="Input.jumlah" ng-change="JumlahHadir()">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="hadir">Hadir</label>
+                                        <input type="text" class="form-control" id="hadir" ng-model="Input.hadir" disabled>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="alpha">Tanpa Keterangan</label>
+                                        <input type="text" class="form-control" id="alpha" placeholder="Alpha" ng-model="Input.alpha" ng-change="JumlahHadir()">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="sakit">Sakit</label>
+                                        <input type="text" class="form-control" id="sakit" placeholder="Sakit" ng-model="Input.sakit" ng-change="JumlahHadir()">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="izin">Izin</label>
+                                        <input type="text" class="form-control" id="izin" placeholder="Izin" ng-model="Input.izin" ng-change="JumlahHadir()">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="materi">Materi</label>
+                                        <textarea type="text" rows="5px" class="form-control" id="materi" placeholder="Materi" ng-model="Input.materi"></textarea>
+                                    </div>
+                                </div>
+                                <div class="box-footer">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-info pull-right" ng-click='Simpan()'>Simpan</button>
+                                </div>
+            
+                            </form>
                         </div>
                     </div>
                 </div>

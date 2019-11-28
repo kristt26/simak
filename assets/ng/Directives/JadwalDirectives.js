@@ -68,6 +68,22 @@
                 })
                 return deferred.promise;            
             }
-            return { get: getAction, getJadwal: getJadwalMahasiswa, getJadwalKuliah: JadwalKuliah, getJadwalDosen: JadwalDosen};
+            function DataDosen(item){
+                var deferred = $q.defer();
+                var Url = AuthService.Base+"api/Pengampuh/GetPengampuh?idpengampu="+item.idpengampu;
+                $http({
+                    method: "GET",
+                    url: Url,
+                    headers: AuthService.Header,
+                }).then(function (response) {
+                    service.DataDosen = response.data.data;
+                    deferred.resolve(service.DataDosen);
+                }, function (error) {
+                    // console.log(error);
+                    deferred.reject(error);
+                })
+                return deferred.promise;  
+            }
+            return { get: getAction, getJadwal: getJadwalMahasiswa, getJadwalKuliah: JadwalKuliah, getJadwalDosen: JadwalDosen, getDosen: DataDosen};
         }]);
-})(window.angular);
+})(window.angular);1
