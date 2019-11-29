@@ -33,7 +33,7 @@
         }
         $scope.Proses = function(){
             KhsmService.put($scope.SelectedMatakuliah).then(response =>{
-                var a = response;
+                alert("Berhasil");
             }, error =>{
                 console.log(error.data);
             })
