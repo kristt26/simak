@@ -198,10 +198,11 @@
             var service = {};
             service.Token = $window.sessionStorage.getItem("Token");
             service.Header = getHeader();
+            // service.Base = "http://localhost/RestSimak/";
             service.Base = "http://restsimak.stimiksepnop.ac.id/";
             function getHeader() {
                 var header = {
-                    "content-type": "text/plain",
+                    "content-type": "application/json",
                     "authorization": service.Token
                 }
                 return header;
@@ -271,7 +272,7 @@
                 } else if (value.Nama == "Dosen") {
                     $scope.RoleDosen = true;
                     $scope.MenuDosen = [
-                        { 'href': 'GradeNilai', 'Text': 'Input Nilai', 'SetStatus': value.Nama },
+                        { 'href': 'NilaiMahasiswa', 'Text': 'Input Nilai', 'SetStatus': value.Nama },
                         { 'href': 'Kurikulum', 'Text': 'Kurikulum', 'SetStatus': value.Nama }
                     ]
                 } else if (value.Nama == "Dosen Wali") {
