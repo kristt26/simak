@@ -89,15 +89,11 @@
             }
             $scope.GetDataDosen = function(){
                 var a = JSON.parse($scope.SelectedMatakuliah);
-                Jadwal.getDosen(a).then(response =>{
-                    $scope.DataDosen =  $scope.SelectedMatakuliah.nmdsn;
-                    $scope.Input.nidn=$scope.SelectedMatakuliah.nidn;
+                $scope.DataDosen =  a.nmdsn;
+                    $scope.Input.nidn = a.nidn;
                     $scope.Input.idjadwal = a.idjadwal;
                     $scope.Input.kmk = a.kmk;
                     $scope.ShowDetailDosen = true;
-                }, error =>{
-                    console.log(error);
-                })
             }
             $scope.Simpan = function(){
                 var Tanggal = angular.copy($scope.TanggalInput);
