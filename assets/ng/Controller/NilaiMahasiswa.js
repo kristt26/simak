@@ -6,6 +6,7 @@
         $scope.SelectedMatakuliah="";
         $scope.GradeNilai = [];
         $scope.Nilai = 0;
+        $scope.Show = true;
 
         GradeNilaiService.get().then(response => {
             $scope.GradeNilai = response;
@@ -32,10 +33,13 @@
             })
         }
         $scope.Proses = function(){
+            $scope.Show = false;
             KhsmService.put($scope.SelectedMatakuliah).then(response =>{
                 alert("Berhasil");
+                $scope.Show = true;
             }, error =>{
                 console.log(error.data);
+                $scope.Show = true;
             })
         }
     });
