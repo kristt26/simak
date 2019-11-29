@@ -1,7 +1,7 @@
 (function (angular) {
     'use strict'
     angular.module('BeritaAcara', ['BeritaAcaraDirective', 'JadwalDirectives', 'MatakuliahDirective'])
-        .controller('BeritaAcaraController', function ($scope, BaService, $compile, DTOptionsBuilder, DTColumnBuilder, DTColumnDefBuilder, $window, SweetAlert, Jadwal, MatakuliahService) {
+        .controller('BeritaAcaraController', function ($scope, BaService, $compile, DTOptionsBuilder, DTColumnBuilder, $state, DTColumnDefBuilder, $window, SweetAlert, Jadwal, MatakuliahService) {
             // $scope.select2Options = {
             //     allowClear:true
             // };
@@ -123,7 +123,7 @@
             
                             }, error =>{
                                 SweetAlert.swal("Information!", "Berhasil Simpan", "success");
-                                window.location.href = "home.html#!/BeritaAcara";
+                                $state.reload();
                             })
                         } else {
                             SweetAlert.swal("Cancelled", "Proses Dibatalkan :)", "error");
