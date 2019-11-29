@@ -13,7 +13,7 @@
             $scope.DatasMatakuliah = [];
             $scope.DataPrint = [];
             $scope.SelectedMatakuliah="";
-            $scope.DataDosen = {};
+            $scope.DataDosen="";
             $scope.Input={};
             $scope.Input.hadir=0;
             $scope.Input.jumlah=0;
@@ -90,8 +90,8 @@
             $scope.GetDataDosen = function(){
                 var a = JSON.parse($scope.SelectedMatakuliah);
                 Jadwal.getDosen(a).then(response =>{
-                    $scope.DataDosen =  response[0];
-                    $scope.Input.nidn=$scope.DataDosen.nidn;
+                    $scope.DataDosen =  $scope.SelectedMatakuliah.nmdsn;
+                    $scope.Input.nidn=$scope.SelectedMatakuliah.nidn;
                     $scope.Input.idjadwal = a.idjadwal;
                     $scope.Input.kmk = a.kmk;
                     $scope.ShowDetailDosen = true;
