@@ -1,12 +1,13 @@
-$acrylic80: rgba(221, 221, 221, 0.8);
-$acrylic70: rgba(221, 221, 221, 0.7);
-$acrylic60: rgba(221, 221, 221, 0.6);
 $acrylic50: rgba(221, 221, 221, 0.5);
 $acrylic40: rgba(221, 221, 221, 0.4);
 $acrylic30: rgba(221, 221, 221, 0.3);
 $acrylic20: rgba(221, 221, 221, 0.2);
 $acrylic10: rgba(221, 221, 221, 0.1);
-$acrylic0: rgba(221, 221, 221, 0.07);
+
+$primaryColor: #ffff;
+$secoundColor: #0c0c0c;
+$thirdColor: #a73232fb;
+$fourthColor: #3c8dbc;
 
 body {
   background: url("../img/bghover1.png") !important;
@@ -17,18 +18,42 @@ body {
     min-height: 0px !important;
   }
 }
-.main-footer{
-  background: $acrylic70;
+
+a {
+  color: $primaryColor !important;
+}
+a:hover {
+  background: $thirdColor !important;
+}
+table,
+th,
+td {
+  color: $primaryColor;
+}
+
+tr:hover {
+  background: $thirdColor !important;
+}
+
+.user-footer {
+  padding: 30px !important;
+  .btn-flat {
+    background: $fourthColor !important;
+  }
+}
+
+.main-footer {
+  background: $acrylic50;
 }
 
 .skin-blue .main-header .navbar {
   background-image: none !important;
-  background-color: $acrylic40;
+  background-color: $thirdColor;
   box-shadow: 2px 2px #888888;
 }
 .skin-blue .main-header .logo {
   background-image: none !important;
-  background-color: $acrylic0;
+  background-color: $thirdColor;
   box-shadow: 0px 1px #888888;
 }
 
@@ -43,10 +68,10 @@ body {
 .skin-blue .main-sidebar {
   background-color: $acrylic50 !important;
   box-shadow: 1px 2px #888888;
-  color: red;
+  color: $thirdColor;
 }
 
-.skin-blue .sidebar a {
+.skin-blue .sidebar {
   color: #014c6f !important;
 }
 .timeline > li > .fa,
@@ -56,8 +81,17 @@ body {
 }
 
 .time-label {
-  span {
+  .time-label-container {
+    display: inline;
+    background: $thirdColor !important;
+    padding: 10px;
+    border-radius: 5px;
+    min-height: 30px !important;
     min-width: 70px !important;
+    margin: 10px;
+    span {
+      margin: 10px;
+    }
   }
 }
 
@@ -65,12 +99,12 @@ body {
   background-color: #3c8dbc3d !important;
   .timeline-header,
   .time {
-    color: white !important;
+    color: $primaryColor !important;
   }
 }
 
 .text-muted {
-  color: rgb(255, 255, 255);
+  color: $primaryColor;
   text-align: right;
 }
 .bg-blue {
@@ -80,7 +114,7 @@ body {
 .spinnerMain {
   display: flex;
   .spinnerAnimation {
-    border: 8px solid #f3f3f3;
+    border: 8px solid $primaryColor;
     border-radius: 80%;
     border-top: 8px solid #3498db;
     border-right: 8px solid #3498db;
@@ -100,11 +134,11 @@ body {
 }
 
 .dropdown-menu {
-  background-color: $acrylic80 !important;
+  background-color: $thirdColor !important;
   border-color: transparent;
   .user-header {
     p {
-      color: black !important;
+      color: $primaryColor !important;
     }
   }
   .user-footer {
@@ -131,7 +165,7 @@ body {
 .register-box-body {
   background: transparent !important;
   padding: 20px !important;
-  color: $acrylic60;
+  color: $acrylic50;
   font-size: 20px !important;
 }
 
@@ -141,7 +175,7 @@ body {
 }
 
 .box-body {
-  color: rgb(54, 54, 54);
+  color: $secoundColor;
   margin: 5px;
   padding: 0px !important;
   border-radius: 5px;
@@ -164,7 +198,7 @@ body {
 }
 
 .box-title {
-  color: whitesmoke;
+  color: $primaryColor;
 }
 .content {
   background: transparent !important;
@@ -174,7 +208,7 @@ body {
 
 .nav-tabs-custom {
   background: transparent !important;
-  color: white;
+  color: $primaryColor;
   .nav-tabs {
     border-color: transparent !important;
     li.active > a {
@@ -182,7 +216,7 @@ body {
       color: #444;
     }
     li.active:hover > a {
-      background-color: white !important;
+      background-color: $primaryColor !important;
       color: #444;
     }
   }
@@ -231,8 +265,8 @@ body {
 
 .bg-text {
   position: absolute;
-  background-color: $acrylic30;
-  color: white;
+  background-color: $acrylic50;
+  color: $primaryColor;
   font-weight: bold;
   border: 1px solid #8d8c8c;
   border-radius: 5px;
@@ -242,8 +276,8 @@ body {
   transform: translate(-50%, -50%);
   z-index: 2;
   width: 30%;
-  height: 50%;
-  padding: 20px 25px;
+  height: 40% !important;
+  padding: 0px 25px;
   text-align: center;
   .bg-text-container {
     top: 50%;
@@ -260,7 +294,7 @@ body {
   .bg-text {
     transform: translate(-50%, -50%);
     width: 80%;
-    height: 60%;
+    
   }
 }
 
@@ -268,7 +302,6 @@ body {
   .bg-text {
     transform: translate(-50%, -50%);
     width: 60%;
-    height: 60%;
   }
 }
 
@@ -276,7 +309,6 @@ body {
   .bg-text {
     transform: translate(-50%, -50%);
     width: 50%;
-    height: 50%;
   }
 }
 
@@ -284,32 +316,77 @@ body {
   .bg-text {
     transform: translate(-50%, -50%);
     width: 25%;
-    height: 50%;
     text-align: center;
   }
 }
+
+
+//Height
+@media screen and (min-height: 0px) {
+  .bg-text {
+    transform: translate(-50%, -50%);
+    height: 90% !important;
+    .bg-text-container {
+      top: 50%;
+      .login-logo {
+        img {
+          width: 30px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-height: 400px) {
+  .bg-text {
+    transform: translate(-50%, -50%);
+    height: 80% !important;
+    .bg-text-container {
+      top: 50%;
+      .login-logo {
+        img {
+          width: 50px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-height: 800px) {
+  .bg-text {
+    transform: translate(-50%, -50%);
+    height: 40% !important;
+    .bg-text-container {
+      top: 50%;
+      .login-logo {
+        img {
+          width: 100px;
+        }
+      }
+    }
+  }
+}
+
+//endHeight
 
 .box {
   margin: 5px;
   position: relative;
   border-radius: 5px;
   background: rgba(161, 160, 160, 0.623);
-  border-top: 3px solid #d2d6de;
+  border-top: 3px solid $primaryColor;
   margin-bottom: 20px;
   width: 100%;
+  padding: 20px;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
 }
 
-table,
-th,
-td {
-  color: #3c8dbc;
-}
-
 .form-control {
-  background: $acrylic0;
+  background: $acrylic10;
 }
-
+.box-header {
+  margin: 0, 20px;
+}
 .box-footer {
   background: $acrylic30;
   button {
