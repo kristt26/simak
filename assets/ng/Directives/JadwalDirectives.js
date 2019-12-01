@@ -86,4 +86,4 @@
             }
             return { get: getAction, getJadwal: getJadwalMahasiswa, getJadwalKuliah: JadwalKuliah, getJadwalDosen: JadwalDosen, getDosen: DataDosen};
         }]);
-})(window.angular);1
+})(window.angular);

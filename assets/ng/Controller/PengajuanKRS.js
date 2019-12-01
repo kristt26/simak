@@ -114,6 +114,14 @@
                     $scope.KrsmJadwal = false;
                     $scope.BatasReg = true;
                     SweetAlert.swal("Registrasi KRS Telah Tutup, Silahkan Hubungi Program Studi");
+                } else if(response.set == 'MulaiReg'){
+                    $scope.showKrsm = false;
+                    $scope.showJadwal = false;
+                    $scope.showJadwal1 = false;
+                    $scope.TemKrsmJadwal = false;
+                    $scope.KrsmJadwal = false;
+                    $scope.BatasReg = true;
+                    SweetAlert.swal("Registrasi KRS Belum di Buka");
                 } else {
                     $scope.showKrsm = false;
                     $scope.showJadwal = false;
