@@ -17,16 +17,14 @@
                     </select>
                 </div>
                 <div class="input-group input-group-sm" style="width: 500px;" ng-hide="Tombol">
-                    <select ui-select2 ng-model="SelectedMatakuliah" ng-change="GetMahasiswa()" disabled
+                    <select ng-model="SelectedMatakuliah" ng-change="GetMahasiswa()" disabled
                         class="form-control select2">
                         <option value=""></option>
-                        <option ng-repeat="item in DatasMatakuliah" value="{{item}}">{{item.nmmk}} - {{item.kelas}} -
-                            {{item.nmps}}</option>
                     </select>
                 </div>
             </div>
         </div>
-        <div class="box-body" style="height:auto;">
+        <div class="box-body" style="height:auto;" ng-show="Show">
             <div class="box-body table-responsive no-padding">
                 <table class="table table-hover table-scroll">
                     <thead>
@@ -56,9 +54,8 @@
                 </table>
             </div>
             <div class="box-footer">
-                <button type="button" class="btn btn-danger" ng-show="Tombol">Close</button>
-                <button type="button" class="btn btn-danger" disabled ng-hide="Tombol">Close</button>
-                <button type="button" class="btn btn-info pull-right" ng-click='Proses()'>Simpan</button>
+                <button type="button" class="btn btn-info pull-right" ng-click='Proses()' ng-show="Tombol">Simpan</button>
+                <button type="button" class="btn btn-info pull-right" ng-click='Proses()' ng-hide="Tombol" disabled>Simpan</button>
             </div>
         </div>
     </div>

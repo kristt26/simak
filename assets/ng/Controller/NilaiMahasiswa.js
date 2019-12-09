@@ -6,7 +6,7 @@
         $scope.SelectedMatakuliah="";
         $scope.GradeNilai = [];
         $scope.Nilai = 0;
-        $scope.Show = true;
+        $scope.Show = false;
         $scope.Tombol = true;
 
         GradeNilaiService.get().then(response => {
@@ -22,6 +22,7 @@
         $scope.GetMahasiswa = function(){
             var a = JSON.parse($scope.SelectedMatakuliah);
             $scope.SelectedMatakuliah = a;
+            $scope.Show = true;
         }
         $scope.Hitung = function(item){
             item.nilai = parseInt(item.nilai);
@@ -48,20 +49,19 @@
             },
                 function (isConfirm) {
                     if (isConfirm) {
-                        $scope.Show = true;
-                        $scope.Tombol=true;
+                        $scope.Tombol=false;
                         KhsmServicee.put($scope.SelectedMatakuliah).then(response =>{
                             SweetAlert.swal("Information!", "Berhasil", "success");
-                            $scope.Tombol=false;
-                            $scope.Show = true;
+                            $scope.Tombol=true;
+                            $scope.Show = false;
                         }, error =>{
                             SweetAlert.swal(response.message);
                             $scope.Show = true;
-                            $scope.Tombol=false;
+                            $scope.Tombol=true;
                         })
                     } else {
                         SweetAlert.swal("Cancelled", "Anda Membatalkan Proses:)", "error");
-                        $scope.Tombol = false;
+                        $scope.Tombol = true;
                     }
                 });
             
