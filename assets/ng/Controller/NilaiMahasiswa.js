@@ -1,7 +1,7 @@
 (function(angular){
     'use strict'
     angular.module('NilaiMahasiswa', ['KhsmDirectives', 'GradeNilaiDirectives'])
-    .controller('NilaiMahasiswaController', function($scope, KhsmServicee, GradeNilaiService){
+    .controller('NilaiMahasiswaController', function($scope, KhsmServiceee, GradeNilaiService){
         $scope.DatasMatakuliah = [];
         $scope.SelectedMatakuliah="";
         $scope.GradeNilai = [];
@@ -14,7 +14,7 @@
         }, error => {
             console.log(error.data);
         })
-        KhsmService.get().then(response =>{
+        KhsmServicee.get().then(response =>{
             $scope.DatasMatakuliah = response;
         }, error => {
             console.log();
@@ -50,7 +50,7 @@
                     if (isConfirm) {
                         $scope.Show = true;
                         $scope.Tombol=true;
-                        KhsmService.put($scope.SelectedMatakuliah).then(response =>{
+                        KhsmServicee.put($scope.SelectedMatakuliah).then(response =>{
                             SweetAlert.swal("Information!", "Berhasil", "success");
                             $scope.Tombol=false;
                             $scope.Show = true;
