@@ -7,7 +7,7 @@
         $scope.GradeNilai = [];
         $scope.Nilai = 0;
         $scope.Show = true;
-        $scope.Tombol = false;
+        $scope.Tombol = true;
 
         GradeNilaiService.get().then(response => {
             $scope.GradeNilai = response;
