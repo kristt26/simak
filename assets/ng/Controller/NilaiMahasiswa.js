@@ -7,6 +7,7 @@
         $scope.GradeNilai = [];
         $scope.Nilai = 0;
         $scope.Show = true;
+        $scope.Tombol = false;
 
         GradeNilaiService.get().then(response => {
             $scope.GradeNilai = response;
@@ -33,14 +34,37 @@
             })
         }
         $scope.Proses = function(){
-            $scope.Show = false;
-            KhsmService.put($scope.SelectedMatakuliah).then(response =>{
-                alert("Berhasil");
-                $scope.Show = true;
-            }, error =>{
-                console.log(error.data);
-                $scope.Show = true;
-            })
+            SweetAlert.swal({
+                title: "Confirmation!!!!",
+                text: "Anda Yakin???",
+                type: "info",
+                showCancelButton: true,
+                confirmButtonColor: "#104daa",
+                confirmButtonText: "Yes",
+                cancelButtonColor: "#bb2717",
+                cancelButtonText: "cancel!",
+                closeOnConfirm: true,
+                closeOnCancel: true
+            },
+                function (isConfirm) {
+                    if (isConfirm) {
+                        $scope.Show = true;
+                        $scope.Tombol=true;
+                        KhsmService.put($scope.SelectedMatakuliah).then(response =>{
+                            SweetAlert.swal("Information!", "Berhasil", "success");
+                            $scope.Tombol=false;
+                            $scope.Show = true;
+                        }, error =>{
+                            SweetAlert.swal(response.message);
+                            $scope.Show = true;
+                            $scope.Tombol=false;
+                        })
+                    } else {
+                        SweetAlert.swal("Cancelled", "Anda Membatalkan Proses:)", "error");
+                        $scope.Tombol = false;
+                    }
+                });
+            
         }
     });
 })(window.angular);

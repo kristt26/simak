@@ -1,7 +1,7 @@
 (function (angular) {
     'use strict'
     angular.module('KhsmDirectives', [])
-        .factory('KhsmService', function ($q, AuthService, $http) {
+        .factory('KhsmServicee', function ($q, AuthService, $http) {
             var service = {};
             service.data = [];
             function getAction(){
