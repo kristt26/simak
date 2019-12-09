@@ -37,7 +37,7 @@
             SweetAlert.swal({
                 title: "Confirmation!!!!",
                 text: "Anda Yakin???",
-                type: "info",
+                type: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#104daa",
                 confirmButtonText: "Yes",
