@@ -7,7 +7,7 @@
         $scope.GradeNilai = [];
         $scope.Nilai = 0;
         $scope.Show = true;
-        $scope.Tombol = "true";
+        $scope.Tombol = true;
 
         GradeNilaiService.get().then(response => {
             $scope.GradeNilai = response;
@@ -49,19 +49,19 @@
                 function (isConfirm) {
                     if (isConfirm) {
                         $scope.Show = true;
-                        $scope.Tombol="true";
+                        $scope.Tombol=true;
                         KhsmServicee.put($scope.SelectedMatakuliah).then(response =>{
                             SweetAlert.swal("Information!", "Berhasil", "success");
-                            $scope.Tombol="false";
+                            $scope.Tombol=false;
                             $scope.Show = true;
                         }, error =>{
                             SweetAlert.swal(response.message);
                             $scope.Show = true;
-                            $scope.Tombol="false";
+                            $scope.Tombol=false;
                         })
                     } else {
                         SweetAlert.swal("Cancelled", "Anda Membatalkan Proses:)", "error");
-                        $scope.Tombol = "false";
+                        $scope.Tombol = false;
                     }
                 });
             

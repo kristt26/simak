@@ -8,15 +8,22 @@
         <div class="box-header with-border">
             <h3 class="box-title">INPUT NILAI MAHASISWA</h3>
             <div class="box-tools">
-                <div class="input-group input-group-sm" style="width: 500px;">
-                    <select ui-select2 ng-model="SelectedMatakuliah" ng-change="GetMahasiswa()" ng-disabled="Tombol === 'true'"
+                <div class="input-group input-group-sm" style="width: 500px;" ng-show="Tombol">
+                    <select ui-select2 ng-model="SelectedMatakuliah" ng-change="GetMahasiswa()"
                         class="form-control select2">
                         <option value=""></option>
                         <option ng-repeat="item in DatasMatakuliah" value="{{item}}">{{item.nmmk}} - {{item.kelas}} -
                             {{item.nmps}}</option>
                     </select>
                 </div>
-                
+                <div class="input-group input-group-sm" style="width: 500px;" ng-hide="Tombol">
+                    <select ui-select2 ng-model="SelectedMatakuliah" ng-change="GetMahasiswa()" disabled
+                        class="form-control select2">
+                        <option value=""></option>
+                        <option ng-repeat="item in DatasMatakuliah" value="{{item}}">{{item.nmmk}} - {{item.kelas}} -
+                            {{item.nmps}}</option>
+                    </select>
+                </div>
             </div>
         </div>
         <div class="box-body" style="height:auto;">
@@ -49,7 +56,8 @@
                 </table>
             </div>
             <div class="box-footer">
-                <button type="button" class="btn btn-danger" ng-disabled="Tombol === 'true'">Close</button>
+                <button type="button" class="btn btn-danger" ng-show="Tombol">Close</button>
+                <button type="button" class="btn btn-danger" disabled ng-hide="Tombol">Close</button>
                 <button type="button" class="btn btn-info pull-right" ng-click='Proses()'>Simpan</button>
             </div>
         </div>
