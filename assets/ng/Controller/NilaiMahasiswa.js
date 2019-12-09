@@ -1,7 +1,7 @@
 (function(angular){
     'use strict'
     angular.module('NilaiMahasiswa', ['KhsmDirectives', 'GradeNilaiDirectives'])
-    .controller('NilaiMahasiswaController', function($scope, KhsmServicee, GradeNilaiService){
+    .controller('NilaiMahasiswaController', function($scope, KhsmServicee, GradeNilaiService, SweetAlert){
         $scope.DatasMatakuliah = [];
         $scope.SelectedMatakuliah="";
         $scope.GradeNilai = [];
