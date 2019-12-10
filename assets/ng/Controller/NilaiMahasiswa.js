@@ -25,10 +25,10 @@
             $scope.Show = true;
         }
         $scope.Hitung = function(item){
-            item.nilai = parseInt(item.nilai);
+            item.nilai = parseFloat(item.nilai);
             angular.forEach($scope.GradeNilai, function(value, key){
-                if(item.nilai >= parseInt(value.range_awal) && item.nilai <= parseInt(value.range_akhir)){
-                    item.nxsks = parseInt(item.sks) * parseInt(value.bobot);
+                if(item.nilai >= parseFloat(value.range_awal) && item.nilai <= parseFloat(value.range_akhir)){
+                    item.nxsks = parseFloat(item.sks) * parseFloat(value.bobot);
                     item.nhuruf = value.nilai;
                     item.ket = value.kets;
                 }
