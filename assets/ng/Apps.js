@@ -116,10 +116,10 @@
                     controller: "BeritaAcaraController"
                 });
         })
-        .run(['uiSelect2Config', function(uiSelect2Config) {
+        .run(['uiSelect2Config', function (uiSelect2Config) {
             uiSelect2Config.placeholder = "Placeholder text";
         }])
-        
+
         .directive('chooseFile', function () {
             return {
                 link: function (scope, elem, attrs) {
@@ -209,7 +209,7 @@
             }
             return service;
         })
-        .controller('View', ['$scope', '$http', '$window', function ($scope, $http, $window, $route) {
+        .controller('View', function ($scope, $http, $window, SweetAlert, AuthService) {
             $scope.header = "assets/Template/header.html";
             $scope.sidebar = "assets/Template/sidebar.html";
             $scope.content = "assets/Template/content.html";
@@ -235,6 +235,36 @@
             }
             if ($window.sessionStorage.getItem("Username") == undefined || $window.sessionStorage.getItem("Username") == "" || $window.sessionStorage.getItem("Username") == null) {
                 window.location.href = "index.html";
+            } else {
+                var Url = AuthService.Base + "api/PenilaianDosen/CekPenilaianDosen?npm=" + $window.sessionStorage.getItem("Username");
+                $http({
+                    method: "GET",
+                    url: Url,
+                    headers: {
+                        "content-type": "text.plain",
+                        "authorization": $window.sessionStorage.getItem("Token")
+                    }
+                }).then(function (response) {
+                    if (response.data !== "Periode Evaluasi Telah Berakhir") {
+                        if(response.data !== "Anda Sudah Melakukan Penilaian Dosen"){
+                            sessionStorage.clear();
+                            SweetAlert.swal({
+                                title: "Information!",
+                                text: "Silahkan Lakukan Evaluasi Pembelajaran Dosen terlebih dahulu!!!",
+                                type: "info",
+                                showCancelButton: false,
+                                confirmButtonColor: "#DD6B55",
+                                confirmButtonText: "OK",
+                                closeOnConfirm: true
+                            },
+                                function (isConfirm) {
+                                    if (isConfirm) {
+                                        window.location.href = "index.html";
+                                    }
+                                });
+                        }
+                    }
+                });
             }
             var a = JSON.parse($scope.RoleUser);
             angular.forEach(a, function (value, key) {
@@ -316,7 +346,7 @@
                 sessionStorage.clear();
                 window.location.href = "index.html";
             }
-        }])
+        })
         .controller("Login", ['$scope', '$http', '$window', function (
             $scope, $http, $window
         ) {
