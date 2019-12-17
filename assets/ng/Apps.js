@@ -114,6 +114,11 @@
                     url: "/BeritaAcara",
                     templateUrl: "apps/views/BeritaAcara.html",
                     controller: "BeritaAcaraController"
+                })
+                .state("EvaluasiPembelajaran", {
+                    url: "/EvaluasiPembelajaran",
+                    templateUrl: "apps/views/EvaluasiPembelajaran.html",
+                    controller: "EvaluasiPembelajaranController"
                 });
         })
         .run(['uiSelect2Config', function (uiSelect2Config) {
@@ -199,7 +204,7 @@
             service.Token = $window.sessionStorage.getItem("Token");
             service.Header = getHeader();
             // service.Base = "http://localhost/RestSimak/";
-            service.Base = "http://restsimak.stimiksepnop.ac.id/";
+            service.Base = "https://www.restsimak.stimiksepnop.ac.id/";
             function getHeader() {
                 var header = {
                     "content-type": "application/json",
@@ -247,7 +252,7 @@
                 }).then(function (response) {
                     if (response.data !== "Periode Evaluasi Telah Berakhir") {
                         if(response.data !== "Anda Sudah Melakukan Penilaian Dosen"){
-                            sessionStorage.clear();
+                            // sessionStorage.clear();
                             SweetAlert.swal({
                                 title: "Information!",
                                 text: "Silahkan Lakukan Evaluasi Pembelajaran Dosen terlebih dahulu!!!",
@@ -259,7 +264,7 @@
                             },
                                 function (isConfirm) {
                                     if (isConfirm) {
-                                        window.location.href = "index.html";
+                                        window.location.href = "home.html#!/EvaluasiPembelajaran";
                                     }
                                 });
                         }
@@ -272,16 +277,18 @@
                     $scope.RoleMahasiswa = true;
                     $http({
                         method: "GET",
-                        url: "http://restsimak.stimiksepnop.ac.id/api/jadwal/jadwalmahasiswa",
+                        url: "https://www.restsimak.stimiksepnop.ac.id/api/jadwal/jadwalmahasiswa",
                         headers: getHeader()
                     }).then(function (response) {
                         if (response.data.set == 'Krsm') {
                             $scope.MenuMahasiswa = [
-                                { 'href': 'PengajuanKRS', 'Text': 'KRS', 'class': 'fa fa-file' }
+                                { 'href': 'PengajuanKRS', 'Text': 'KRS', 'class': 'fa fa-file' },
+                                { 'href': 'EvaluasiPembelajaran', 'Text': 'Evaluasi Pembelajaran', 'class': 'fa fa-file' }
                             ]
                         } else {
                             $scope.MenuMahasiswa = [
-                                { 'href': 'PengajuanKRS', 'Text': 'Pengajuan KRS', 'class': 'fa fa-file' }
+                                { 'href': 'PengajuanKRS', 'Text': 'Pengajuan KRS', 'class': 'fa fa-file' },
+                                { 'href': 'EvaluasiPembelajaran', 'Text': 'Evaluasi Pembelajaran', 'class': 'fa fa-file' }
                             ]
                         }
                     }, error => {
@@ -354,7 +361,7 @@
             $scope.ProsesLogin = function (response) {
                 $http({
                     method: "POST",
-                    url: "http://restsimak.stimiksepnop.ac.id//api/users/login",
+                    url: "https://www.restsimak.stimiksepnop.ac.id/api/users/login",
                     header: {
                         "content-type": "application/json",
                     },

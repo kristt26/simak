@@ -22,7 +22,8 @@
         "Histori",
         "Penelitian",
         "MahasiswaWali",
-        "BeritaAcara"
+        "BeritaAcara",
+        "EvaluasiPembelajaran"
     ]);
     app.config(['cfpLoadingBarProvider', function (cfpLoadingBarProvider) {
         cfpLoadingBarProvider.parentSelector = '#loading-bar-container';
