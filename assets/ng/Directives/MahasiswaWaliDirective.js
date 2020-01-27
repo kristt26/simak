@@ -25,7 +25,7 @@
             var deferred = $q.defer();
             $http({
                 method: "get",
-                url: AuthService.Base+"MahasiswaWali",
+                url: AuthService.Base+"api/MahasiswaWali",
                 headers: AuthService.Header,
             }).then(function (response) {
                 service.message = response.data.data;
