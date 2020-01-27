@@ -21,6 +21,21 @@
             })
             return deferred.promise;
         }
-        return { get: getAction};
+        function AmbilMahasiswa() {
+            var deferred = $q.defer();
+            $http({
+                method: "get",
+                url: AuthService.Base+"MahasiswaWali",
+                headers: AuthService.Header,
+            }).then(function (response) {
+                service.message = response.data.data;
+                deferred.resolve(service.message);
+            }, function (error) {
+                // console.log(error);
+                deferred.reject(error);
+            })
+            return deferred.promise;
+        }
+        return { get: getAction, getMahasiswa: AmbilMahasiswa};
     }]);
 })(window.angular);
