@@ -18,23 +18,19 @@
             <table class="table table-hover table-scroll" style="width: 200%;">
                 <thead>
                     <tr>
-                        <th>Nama</th>
                         <th>NPM</th>
+                        <th>Nama</th>
                         <th>Kelas</th>
                         <th>Semester</th>
-                        <th>Dosen Wali</th>
-                        <th>Tanggal</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="item in DataWali | filter : SearchText">
-                        <td>{{item.nmmhs}}</td>
                         <td>{{item.npm}}</td>
+                        <td>{{item.nmmhs}}</td>
                         <td>{{item.kelas}}</td>
-                        <td>{{item.sms}}</td>
-                        <td>{{item.dsn_wali}}</td>
-                        <td>{{item.tgkrsm}}</td>
+                        <td>{{item.Semester}}</td>
                         <td>
                             <button type="submit" class="btn btn-danger" ng-click="ShowJadwalMahasiswa(item)">Tampil
                                 Detail</button>
