@@ -23,7 +23,8 @@
         "Penelitian",
         "MahasiswaWali",
         "BeritaAcara",
-        "EvaluasiPembelajaran"
+        "EvaluasiPembelajaran",
+        "UserAkses"
     ]);
     app.config(['cfpLoadingBarProvider', function (cfpLoadingBarProvider) {
         cfpLoadingBarProvider.parentSelector = '#loading-bar-container';

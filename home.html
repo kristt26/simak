@@ -62,6 +62,7 @@
   <script src="assets/ng/Controller/MahasiswaWali.js"></script>
   <script src="assets/ng/Controller/BeritaAcara.js"></script>
   <script src="assets/ng/Controller/EvaluasiPembelajaran.js"></script>
+  <script src="assets/ng/Controller/UserAkses.js"></script>
 
   <!-- Directive -->
   <script src="assets/ng/Directives/ApprovedDirectives.js"></script>
@@ -79,13 +80,14 @@
   <script src="assets/ng/Directives/GradeNilaiDirectives.js"></script>
   <script src="assets/ng/Directives/EvaluasiPembelajaranDirectives.js"></script>
   <script src="assets/ng/Directives/TahunAkademikDirectives.js"></script>
+  
 
   <!-- Data Table -->
   <script src="assets/node_modules/datatables.net/js/jquery.dataTables.min.js"></script>
   <script src="assets/node_modules/angular-datatables/dist/angular-datatables.min.js"></script>
   <!-- Directive -->
   <style type="text/css">
-    /* .well {
+    .well {
       background: none;
       width: 90%;
     }
@@ -104,7 +106,7 @@
 
     .table-scroll thead>tr>th {
       border: none;
-    } */
+    }
   </style>
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -206,6 +208,19 @@
               </a>
               <ul class="treeview-menu">
                 <li ng-repeat="item in MenuKemahasiswaan"><a ui-sref="{{item.href}}" ui-sref-opts="{reload: true}"
+                    ng-click="SetStatus(item.SetStatus)"><i class="fa fa-th"></i> <span>{{item.Text}}</span></a></li>
+              </ul>
+            </li>
+            <li class="treeview" ng-show="RoleBaak">
+              <a href="javascript:void(0)">
+                <i class="fa fa-pie-chart"></i>
+                <span>BAAK</span>
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+                <li ng-repeat="item in MenuWali"><a ui-sref="{{item.href}}" ui-sref-opts="{reload: true}"
                     ng-click="SetStatus(item.SetStatus)"><i class="fa fa-th"></i> <span>{{item.Text}}</span></a></li>
               </ul>
             </li>

@@ -110,7 +110,22 @@
                 })
                 return deferred.promise;
             }
+            function insertAction(params) {
+                var deferred = $q.defer();
+                $http({
+                    method: "POST",
+                    url: AuthService.Base+"api/users/register",
+                    headers: AuthService.Header,
+                    data: params
+                }).then(function (response) {
+                    service.message = response.data.message;
+                    deferred.resolve(service.message);
+                }, function (error) {
+                    deferred.reject(error);
+                })
+                return deferred.promise;
+            }
             // getAction();
-            return { post: postAction, getBiodata: getProfile, put: putAction };
+            return { post: postAction, getBiodata: getProfile, put: putAction, insert: insertAction };
         });
 })(window.angular);

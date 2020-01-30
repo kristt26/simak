@@ -119,6 +119,11 @@
                     url: "/EvaluasiPembelajaran",
                     templateUrl: "apps/views/EvaluasiPembelajaran.html",
                     controller: "EvaluasiPembelajaranController"
+                })
+                .state("UserAkses", {
+                    url: "/UserAkses",
+                    templateUrl: "apps/views/UserAkses.html",
+                    controller: "UserAksesController"
                 });
         })
         .run(['uiSelect2Config', function (uiSelect2Config) {
@@ -324,6 +329,14 @@
                     ]
                 } else if (value.Nama == "Baak") {
                     $scope.RoleBaak = true;
+                    $scope.MenuWali = [
+                        {
+                            'href': 'DosenWali', 'Text': 'Dosen Wali', 'SetStatus': value.Nama
+                        },
+                        {
+                            'href': 'UserAkses', 'Text': 'User', 'SetStatus': value.Nama
+                        }
+                    ]
                 } else if (value.Nama == "Keuangan") {
                     $scope.RoleKeuangan = true;
                     $scope.MenuKeuangan = [{ 'href': 'ApprovedKRS', 'Text': 'ApprovedKRS', 'SetStatus': value.Nama }, { 'href': 'BeritaAcara', 'Text': 'Berita Acara', 'SetStatus': value.Nama }]

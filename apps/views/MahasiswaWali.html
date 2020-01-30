@@ -1,52 +1,50 @@
 <div id="loading-bar-container"></div>
-<div ng-init = "Init()">
-    <div class="box-header with-border">
-        <h3 class="box-title">Pengajuan KRS Mahasiswa</h3>
-        <div class="box-tools">
-            <div class="input-group input-group-sm" style="width: 150px;">
-                <input type="text" name="table_search" ng-model="SearchText" class="form-control pull-right"
-                    placeholder="Search">
+<div class="box-header with-border">
+    <h3 class="box-title">Daftar Mahasiswa Wali</h3>
+    <div class="box-tools">
+        <div class="input-group input-group-sm" style="width: 150px;">
+            <input type="text" name="table_search" ng-model="SearchText" class="form-control pull-right"
+                placeholder="Search">
 
-                <div class="input-group-btn">
-                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                </div>
+            <div class="input-group-btn">
+                <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
             </div>
         </div>
     </div>
-    <div class="box-body">
-        <div class="box-body table-responsive no-padding">
-            <table class="table table-hover table-scroll" style="width: 200%;">
-                <thead>
-                    <tr>
-                        <th>NPM</th>
-                        <th>Nama</th>
-                        <th>Kelas</th>
-                        <th>Semester</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="item in DataWali | filter : SearchText">
-                        <td>{{item.npm}}</td>
-                        <td>{{item.nmmhs}}</td>
-                        <td>{{item.kelas}}</td>
-                        <td>{{item.Semester}}</td>
-                        <td>
-                            <button type="submit" class="btn btn-danger" ng-click="ShowJadwalMahasiswa(item)">Tampil
-                                Detail</button>
-                            <button type="button" class="pull-right btn btn-default" id="Send"
-                                ng-click="Approved(item)">Approved
-                                <i class="fa fa-arrow-circle-right"></i></button>
-                        </td>
-                    </tr>
-                </tbody>
-
-            </table>
-        </div>
-
+</div>
+<div class="box-body" style="height: 750px;">
+    <div class="box-body table-responsive no-padding">
+        <table class="table table-hover table-scroll" style="width: 100%;">
+            <thead>
+                <tr>
+                    <th>Nama/NPM</th>
+                    <th>Kelas</th>
+                    <th>SMT Tempuh</th>
+                    <th>SKS Tempuh</th>
+                    <th>IPK</th>
+                    <th>Kontak</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody style="height: 700px;">
+                <tr ng-repeat="item in DataWali | filter : SearchText | orderBy:'IPK'">
+                    <td>{{item.npm}}&nbsp;-&nbsp;{{item.nmmhs}}</td>
+                    <td>{{item.kelas}}</td>
+                    <td>{{item.Semester}}</td>
+                    <td>{{item.SKSLulus}}</td>
+                    <td>{{item.IPK | number : 2}}</td>
+                    <td style="width: 5%">{{item.notlp}}</td>
+                    <td style="width: 10%">
+                        <button type="submit" class="btn btn-danger" ng-click="ShowJadwalMahasiswa(item)">Tampil
+                            Detail</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
-    <!-- /.box-body -->
-    <div class="box-footer clearfix">
-    </div>
+
+</div>
+<!-- /.box-body -->
+<div class="box-footer clearfix">
 </div>
 <!-- /.box-footer-->
