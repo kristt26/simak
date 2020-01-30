@@ -60,8 +60,7 @@
                     var b = response.data;
                     $scope.KemajuanStudi.Datas = [];
                     angular.forEach(b.Datas, function (value, key) {
-                        var a = JSON.parse(value);
-                        $scope.KemajuanStudi.Datas.push(angular.copy(a));
+                        $scope.KemajuanStudi.Datas.push(angular.copy(value));
                         $scope.KemajuanStudi.IPK = b.IPK;
                         $scope.KemajuanStudi.SKS = b.SKS;
                     });
