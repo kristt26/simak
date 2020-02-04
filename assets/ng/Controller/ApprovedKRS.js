@@ -135,7 +135,7 @@
                             }
                         });
                 } else {
-                    SweetAlert.swal("Cancelled", "Ada kesalahan pada pada pengajuan KRS Mahasiswa, Mohon mahasiswa memperbaikinya!!!!", "error");
+                    SweetAlert.swal("Cancelled", "Ada baris kosong pada KRS Mahasiswa yang bersangkutan, Mohon mahasiswa menghapus baris tersebut", "error");
                 }
             }
         });
