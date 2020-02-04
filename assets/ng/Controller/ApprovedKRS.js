@@ -92,7 +92,7 @@
             }
             $scope.Approved = function (item) {
                 $scope.Tombol = true;
-                if ($scope.jmsks != NaN && $scope.jmsks != 0) {
+                if ($scope.jmsks != NaN) {
                     SweetAlert.swal({
                         title: "Anda Yakin?",
                         text: "Anda akan Menyetujui KRSM Mahasiswa: " + item.nmmhs,
