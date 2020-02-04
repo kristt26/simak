@@ -69,7 +69,7 @@
                 })
 
                 angular.forEach($scope.Datatampung, function (value, key) {
-                    $scope.jmsks += value.sks;
+                    $scope.jmsks += parseInt(value.sks);
                     angular.forEach($scope.DatasTampil, function (value1, key1) {
                         if (value.kmk == value1.kmk && value.kelas == value1.kelas) {
                             value.ruangan = value1.ruangan;

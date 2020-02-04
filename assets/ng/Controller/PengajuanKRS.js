@@ -14,7 +14,7 @@
             }
         })
 
-        .controller('PengajuanKRSController', function ($scope, PengajuanService, $window, Jadwal, $filter, $state, SweetAlert, MahasiswaService) {
+        .controller('PengajuanKRSController', function ($scope, PengajuanService, $window, Jadwal, $filter, $state, SweetAlert, MahasiswaService, $sce) {
 
             // setTimeout(x => {
             $scope.GetValue;
@@ -32,7 +32,6 @@
             $scope.BatasReg = false;
             $scope.DatasKrsm.DetailKrsm = [];
 
-            // }, 5000);
 
             PengajuanService.get().then(response => {
                 $scope.jmsks = 0;
@@ -55,6 +54,13 @@
                     $scope.showJadwal1 = false;
                     $scope.BatasReg = false;
                     $scope.DatasTemKrsm = response.data.data;
+                    SweetAlert.swal(
+                        {
+                            title: 'Information!',
+                            type: 'info',
+                            text: 'Pengajuan KRS anda sudah di <strong>' + $scope.DatasTemKrsm.TemKrsm[0].status + '</strong>',
+                            html:true
+                        });
                     Jadwal.get().then(response => {
 
                         var a = JSON.parse(response.data);
@@ -114,7 +120,7 @@
                     $scope.KrsmJadwal = false;
                     $scope.BatasReg = true;
                     SweetAlert.swal("Registrasi KRS Telah Tutup, Silahkan Hubungi Program Studi");
-                } else if(response.set == 'MulaiReg'){
+                } else if (response.set == 'MulaiReg') {
                     $scope.showKrsm = false;
                     $scope.showJadwal = false;
                     $scope.showJadwal1 = false;
@@ -206,7 +212,7 @@
                         item.status = false;
                         item.ngBinding = "success";
                         $scope.DataTampung.push(item);
-                        $scope.Tombol=false;
+                        $scope.Tombol = false;
                     } else
                         SweetAlert.swal("Info", "Total SKS yang ada pilih melebihi Batas)", "error");
                 }
@@ -292,7 +298,7 @@
                     },
                         function (isConfirm) {
                             if (isConfirm) {
-                                $scope.Tombol=true;
+                                $scope.Tombol = true;
                                 $scope.DataKrs = {
                                     'thakademik': $scope.GetValue.thakademik,
                                     'gg': $scope.GetValue.gg,
@@ -310,7 +316,7 @@
                                 data.DetailKrsm = $scope.DataTampung;
                                 PengajuanService.post(data).then(response => {
                                     SweetAlert.swal("Pengajuan!", response.message, "success");
-                                    $scope.Tombol=false;
+                                    $scope.Tombol = false;
                                 }, error => {
                                     SweetAlert.swal(response.message);
                                 });

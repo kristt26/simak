@@ -1,6 +1,6 @@
 (function (angular) {
     'use strict';
-    angular.module("Apps", ["Ctrl", "ngAnimate", "ui.router", "oitozero.ngSweetAlert", "datatables", "ui.select2", "ui.toggle"])
+    angular.module("Apps", ["Ctrl", "ngAnimate", "ui.router", "oitozero.ngSweetAlert", "datatables", "ui.select2", "ui.toggle", "ngSanitize"])
         .config(function ($stateProvider, $urlRouterProvider) {
             $urlRouterProvider.otherwise('Main');
             $stateProvider
