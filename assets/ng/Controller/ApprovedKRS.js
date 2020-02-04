@@ -69,7 +69,7 @@
                 })
 
                 angular.forEach($scope.Datatampung, function (value, key) {
-                    $scope.jmsks += parseInt(value.sks);
+                    $scope.jmsks += value.sks;
                     angular.forEach($scope.DatasTampil, function (value1, key1) {
                         if (value.kmk == value1.kmk && value.kelas == value1.kelas) {
                             value.ruangan = value1.ruangan;
@@ -92,46 +92,51 @@
             }
             $scope.Approved = function (item) {
                 $scope.Tombol = true;
-                SweetAlert.swal({
-                    title: "Anda Yakin?",
-                    text: "Anda akan Menyetujui KRSM Mahasiswa: " + item.nmmhs,
-                    type: "warning",
-                    showCancelButton: true,
-                    confirmButtonColor: "#DD6B55",
-                    confirmButtonText: "Yes, Approved!",
-                    cancelButtonText: "No, cancel!",
-                    closeOnConfirm: true,
-                    closeOnCancel: true
-                },
-                    function (isConfirm) {
-                        if (isConfirm) {
-                            ApprovedService.put(item).then(response => {
-                                var index = $scope.TemKrsm.findIndex(TemKrsm => TemKrsm.Id == item.Id);
-                                $scope.TemKrsm.splice(index, 1);
-                                SweetAlert.swal("Approved!", "Your proses krsm has been approved.", "success");
-                                $scope.TampilJadwal = false;
-                                $scope.DatasJadwal = [];
-                                DataStatus = {};
-                                $scope.Datatampung = [];
-                                $scope.Tombol = false;
-                            }, error => {
-                                var index = $scope.TemKrsm.findIndex(TemKrsm => TemKrsm.Id == item.Id);
-                                $scope.TemKrsm.splice(index, 1);
-                                alert(response.message);
-                                $scope.TampilJadwal = false;
-                                $scope.DatasJadwal = [];
-                                DataStatus = {};
-                                $scope.Datatampung = [];
-                                $scope.jmsks = 0;
-                                SweetAlert.swal("Approved!", "Your proses krsm has been approved.", "success");
-                                $scope.Tombol = false;
-                            })
+                if ($scope.jmsks != NaN && $scope.jmsks != 0) {
+                    SweetAlert.swal({
+                        title: "Anda Yakin?",
+                        text: "Anda akan Menyetujui KRSM Mahasiswa: " + item.nmmhs,
+                        type: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#0be7fb",
+                        confirmButtonText: "Yes, Approved!",
+                        cancelButtonText: "No, Batal!",
+                        closeOnConfirm: false,
+                        closeOnCancel: false,
+                        showLoaderOnConfirm: true
+                    },
+                        function (isConfirm) {
+                            if (isConfirm) {
+                                ApprovedService.put(item).then(response => {
+                                    var index = $scope.TemKrsm.findIndex(TemKrsm => TemKrsm.Id == item.Id);
+                                    $scope.TemKrsm.splice(index, 1);
+                                    SweetAlert.swal("Approved!", "Your proses krsm has been approved.", "success");
+                                    $scope.TampilJadwal = false;
+                                    $scope.DatasJadwal = [];
+                                    DataStatus = {};
+                                    $scope.Datatampung = [];
+                                    $scope.Tombol = false;
+                                }, error => {
+                                    var index = $scope.TemKrsm.findIndex(TemKrsm => TemKrsm.Id == item.Id);
+                                    $scope.TemKrsm.splice(index, 1);
+                                    alert(response.message);
+                                    $scope.TampilJadwal = false;
+                                    $scope.DatasJadwal = [];
+                                    DataStatus = {};
+                                    $scope.Datatampung = [];
+                                    $scope.jmsks = 0;
+                                    SweetAlert.swal("Approved!", "Your proses krsm has been approved.", "success");
+                                    $scope.Tombol = false;
+                                })
 
-                        } else {
-                            SweetAlert.swal("Cancelled", "Your proses krsm has been cancelled :)", "error");
-                            $scope.Tombol = false;
-                        }
-                    });
+                            } else {
+                                SweetAlert.swal("Cancelled", "Your proses krsm has been cancelled :)", "error");
+                                $scope.Tombol = false;
+                            }
+                        });
+                } else {
+                    SweetAlert.swal("Cancelled", "Ada kesalahan pada pada pengajuan KRS Mahasiswa, Mohon mahasiswa memperbaikinya!!!!", "error");
+                }
             }
         });
 })(window.angular);

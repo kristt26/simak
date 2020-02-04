@@ -70,7 +70,8 @@
                     confirmButtonText: "Yes, Approved!",
                     cancelButtonText: "No, cancel!",
                     closeOnConfirm: true,
-                    closeOnCancel: true
+                    closeOnCancel: true,
+                    showLoaderOnConfirm: true
                 },
                     function (isConfirm) {
                         if (isConfirm) {

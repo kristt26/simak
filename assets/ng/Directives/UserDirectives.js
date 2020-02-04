@@ -125,7 +125,36 @@
                 })
                 return deferred.promise;
             }
+            function AmbilUser() {
+                var deferred = $q.defer();
+                $http({
+                    method: "GET",
+                    url: AuthService.Base+"api/users/get",
+                    headers: AuthService.Header
+                }).then(function (response) {
+                    service.message = response.data.data;
+                    deferred.resolve(service.message);
+                }, function (error) {
+                    deferred.reject(error);
+                })
+                return deferred.promise;
+            }
+            function ResetPassword(params) {
+                var deferred = $q.defer();
+                $http({
+                    method: "PUT",
+                    url: AuthService.Base+"api/users/reset",
+                    headers: AuthService.Header,
+                    data: params
+                }).then(function (response) {
+                    service.message = response.data;
+                    deferred.resolve(service.message);
+                }, function (error) {
+                    deferred.reject(error);
+                })
+                return deferred.promise;
+            }
             // getAction();
-            return { post: postAction, getBiodata: getProfile, put: putAction, insert: insertAction };
+            return { post: postAction, getBiodata: getProfile, put: putAction, insert: insertAction, getUser: AmbilUser, resetPass: ResetPassword };
         });
 })(window.angular);
