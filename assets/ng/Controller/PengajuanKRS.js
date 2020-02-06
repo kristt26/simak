@@ -286,15 +286,16 @@
             $scope.AjukanKRS = function () {
                 if ($scope.DataTampung.length > 0) {
                     SweetAlert.swal({
-                        title: "Anda Yakin?",
+                        title: "Confirmation!!!",
                         text: "Anda akan melakukan pengajuan KRSM",
                         type: "warning",
                         showCancelButton: true,
-                        confirmButtonColor: "#DD6B55",
-                        confirmButtonText: "Yes, Ajukkan!",
-                        cancelButtonText: "No, cancel!",
-                        closeOnConfirm: true,
-                        closeOnCancel: true
+                        confirmButtonColor: "#0be7fb",
+                        confirmButtonText: "Yes, Ubah!",
+                        cancelButtonText: "No, Batal!",
+                        closeOnConfirm: false,
+                        closeOnCancel: false,
+                        showLoaderOnConfirm: true
                     },
                         function (isConfirm) {
                             if (isConfirm) {
@@ -314,13 +315,13 @@
                                 var data = {};
                                 data.krsm = $scope.DataKrs;
                                 data.DetailKrsm = $scope.DataTampung;
+
                                 PengajuanService.post(data).then(response => {
-                                    SweetAlert.swal("Pengajuan!", response.message, "success");
+                                    SweetAlert.swal("Approved!", response.message, "success");
                                     $scope.Tombol = false;
                                 }, error => {
-                                    SweetAlert.swal(response.message);
+                                    SweetAlert.swal("Gagal!!!", error.data.message, "error");
                                 });
-
                             } else {
                                 SweetAlert.swal("Cancelled", "Your proses krsm has been cancelled:)", "error");
                                 $scope.Tombol = false;
@@ -330,5 +331,6 @@
                     SweetAlert.swal("Woi!!!!!! \n Pilih Matakuliah dulu");
                 }
             }
+            
         });
 })(window.angular);

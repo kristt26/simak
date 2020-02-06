@@ -8,20 +8,10 @@
         <div class="box">
             <div class="box-header with-border">
                 <h3 class="box-title">Pilih Matakuliah yang akan di kontrak dengan Bijak</h3>
-                <div class="box-tools">
-                    <div class="input-group input-group-sm" style="width: 150px;">
-                        <input type="text" name="table_search" class="form-control pull-right" placeholder="Search"
-                            ng-model="CariJadwal">
-
-                        <div class="input-group-btn">
-                            <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                        </div>
-                    </div>
-                </div>
             </div>
-            <div class="box-body" style="height: 250px;">
+            <div class="box-body">
                 <div class="box-body table-responsive no-padding">
-                    <table class="table table-hover table-scroll">
+                    <table datatable="ng" class="table table-bordered table-hover">
                         <thead>
                             <tr>
                                 <th width="5%">Semester</th>
@@ -49,7 +39,6 @@
                 </div>
 
             </div>
-            <!-- /.box-body -->
             <div class="box-footer clearfix">
                 <div class="box-header with-border">
                     <button type="submit" class="btn btn-default" disabled><b>Total SKS: {{jmsks}}</b></button>
@@ -64,30 +53,17 @@
                         </div>
                     </div>
                 </div>
-                <!-- <button type="button" class="pull-right btn btn-default" id="Send" ng-click="AjukanKRS()">Ajukan KRS
-                              <i class="fa fa-arrow-circle-right"></i></button> -->
             </div>
-            <!-- /.box-footer-->
         </div>
-        <!-- /.box -->
 
 
         <div class="box" ng-show="showJadwal1">
             <div class="box-header with-border">
                 <h3 class="box-title">Daftar Matakuliah yang Dipilih</h3>
-                <div class="box-tools">
-                    <div class="input-group input-group-sm" style="width: 150px;">
-                        <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
-
-                        <div class="input-group-btn">
-                            <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                        </div>
-                    </div>
-                </div>
             </div>
-            <div class="box-body" style="height: 400px;">
+            <div class="box-body">
                 <div class="box-body table-responsive no-padding">
-                    <table class="table table-scroll">
+                    <table datatable="ng" class="table table-bordered table-hover">
                         <thead>
                             <tr>
                                 <th>Semester</th>
@@ -119,40 +95,23 @@
                 </div>
 
             </div>
-            <!-- /.box-body -->
             <div class="box-footer clearfix">
                 <button type="submit" class="btn btn-default" disabled><b>Total SKS: {{jmsks}}</b></button>
                 <button type="button" class="pull-right btn btn-default" id="Send" ng-click="AjukanKRS()" ng-disabled= "Tombol">Ajukan KRS
                     <i class="fa fa-arrow-circle-right"></i></button>
             </div>
-            <!-- /.box-footer-->
         </div>
     </div>
 
 
-
-
-
-    <!-- Menampilkan Data TemKrs -->
     <div ng-show="TemKrsmJadwal">
-
         <div class="box">
             <div class="box-header with-border">
                 <h3 class="box-title">Pilih Matakuliah yang akan di kontrak dengan Bijak</h3>
-                <div class="box-tools">
-                    <div class="input-group input-group-sm" style="width: 150px;">
-                            <input type="text" name="table_search" class="form-control pull-right" placeholder="Search"
-                            ng-model="CariJadwal">
-
-                        <div class="input-group-btn">
-                            <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                        </div>
-                    </div>
-                </div>
             </div>
-            <div class="box-body" style="height: 250px;">
+            <div class="box-body">
                 <div class="box-body table-responsive no-padding">
-                    <table class="table table-hover table-scroll">
+                    <table datatable="ng" class="table table-bordered table-hover">
                         <thead>
                             <tr>
                                 <th style="width: 10%">Semester</th>
@@ -179,31 +138,18 @@
                 </div>
 
             </div>
-            <!-- /.box-body -->
             <div class="box-footer clearfix">
                 <button type="submit" class="btn btn-default" disabled><b>Total SKS: {{jmsks}}</b></button>
-                <!-- <button type="button" class="pull-right btn btn-default" id="Send" ng-click="AjukanKRS()">Ajukan KRS
-                                      <i class="fa fa-arrow-circle-right"></i></button> -->
             </div>
-            <!-- /.box-footer-->
         </div>
         <div class="box">
 
             <div class="box-header with-border">
                 <h3 class="box-title">Daftar Matakuliah Yang Telah diajukan</h3>
-                <div class="box-tools">
-                    <div class="input-group input-group-sm" style="width: 150px;">
-                        <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
-
-                        <div class="input-group-btn">
-                            <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                        </div>
-                    </div>
-                </div>
             </div>
-            <div class="box-body" style="height: 400px;">
+            <div class="box-body">
                 <div class="box-body table-responsive no-padding">
-                    <table class="table table-hover table-scroll">
+                    <table datatable="ng" class="table table-bordered table-hover">
                         <thead>
                             <tr>
                                 <th width="10%">Semester</th>
@@ -232,33 +178,19 @@
                 </div>
 
             </div>
-            <!-- /.box-body -->
             <div class="box-footer clearfix">
                 <button type="submit" class="btn btn-default" disabled><b>Total SKS: {{jmsks}}</b></button>
-                <!-- <button type="button" class="pull-right btn btn-default" id="Send" ng-click="AjukanKRS()">Ajukan KRS
-                                      <i class="fa fa-arrow-circle-right"></i></button> -->
             </div>
-            <!-- /.box-footer-->
         </div>
-        <!-- /.box -->
     </div>
     <div ng-show="showKrsm">
         <div class="box">
             <div class="box-header with-border">
                 <h3 class="box-title">KRS Anda</h3>
-                <div class="box-tools">
-                    <div class="input-group input-group-sm" style="width: 150px;">
-                        <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
-
-                        <div class="input-group-btn">
-                            <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                        </div>
-                    </div>
-                </div>
             </div>
-            <div class="box-body" style="height: 600px;">
+            <div class="box-body">
                 <div class="box-body table-responsive no-padding">
-                    <table class="table table-hover table-scroll">
+                    <table class="table table-bordered table-hover">
                         <thead>
                             <tr>
                                 <th width="3%">No</th>
@@ -282,27 +214,27 @@
                                 <td>{{item.nxsks}}</td>
                                 <td>{{item.ket}}</td>
                             </tr>
+                        
+                            
+                        </tbody>
+                        <tfoot>
                             <tr>
-                                <td colspan="4"  width="73%"><b>Total</b></td>
+                                <td colspan="4" width="73%"><b>Total</b></td>
                                 <td>{{DatasKrsm.DetailKrsm|total:'sks'}}</td>
                                 <td></td>
                                 <td ng-if="DatasKrsm.DetailKrsm|total:'nxsks'!=NaN">{{DatasKrsm.DetailKrsm|total:'nxsks'}}</td>
                                 <td></td>
+                                <td></td>
                             </tr>
-                        </tbody>
+                        </tfoot>
 
                     </table>
                 </div>
             </div>
-            <!-- /.box-body -->
             <div class="box-footer clearfix">
                 <button type="submit" style="margin: 5px;" class="btn btn-default" disabled><b>IP Semester Anda: {{((DatasKrsm.DetailKrsm|total:'nxsks') / (DatasKrsm.DetailKrsm|total:'sks')) | number:2}}</b></button>
-                <!-- <button type="button" class="pull-right btn btn-default" id="Send" ng-click="AjukanKRS()">Ajukan KRS
-                                      <i class="fa fa-arrow-circle-right"></i></button> -->
             </div>
-            <!-- /.box-footer-->
         </div>
-        <!-- /.box -->
     </div>
 </section>
 

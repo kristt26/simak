@@ -37,6 +37,7 @@
                 ApprovedService.get(DataStatus).then(response => {
                     $scope.jmsks = 0;
                     $scope.TemKrsm = response.data.TemKrsm;
+                    $scope.Histori = response.data.Histori;
                 }, error => {
                     alert(error.data);
                 });
