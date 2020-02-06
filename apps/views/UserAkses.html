@@ -12,56 +12,127 @@
 
 <!-- Main content -->
 <section class="content">
+    <div class="row" style="padding-left: 20px;">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Custom Tabs -->
+                <div class="nav-tabs-custom">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="" data-target="#pegawai" data-toggle="tab">Pegawai</a></li>
+                        <li><a href="" data-target="#mahasiswa" data-toggle="tab">Mahasiswa</a></li>
+                        <!-- <li><a href="" data-target="#tab_1" data-toggle="tab">Laporan</a></li> -->
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="pegawai">
+                            <table datatable="ng" class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>NIK</th>
+                                        <th>Nama</th>
+                                        <th>Status</th>
+                                        <th>Alamat</th>
+                                        <th>Kontak</th>
+                                        <th>Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr ng-repeat="item in DatasDosen" ng-click="Pilih(item)">
+                                        <td>{{$index+1}}</td>
+                                        <td>{{item.NIK}}</td>
+                                        <td>{{item.Nama}}</td>
+                                        <td>{{item.Status}}</td>
+                                        <td>{{item.Alamat}}</td>
+                                        <td>{{item.Kontak}}</td>
+                                        <td>
+                                            <button ng-if="item.userStatus !==null"  class="btn btn-warning" ng-click="Reset(item)">Reset</button>
+                                            <button ng-if="item.userStatus ===null"  class="btn btn-default" disabled>Reset</button>
+                                            <toggle ng-if="item.userStatus !==null" ng-model="item.userStatus"
+                                                ng-change="Activate(item)" on-class="btn-primary"></toggle>
+                                            <button ng-if="item.userStatus ===null" class="btn btn-default" disabled>NA</button>
+                                            <button ng-if="item.userStatus !==null" type="button" class="btn btn-info"
+                                                data-toggle="modal" ng-click="GetRole(item)" data-target="#addRole">Role</button>
+                                            <button ng-if="item.userStatus ===null" type="button" class="btn btn-default"
+                                                data-toggle="modal" disabled>Role</button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                            </table>
 
-    <div class="box">
-        <div class="box-header with-border">
-            <h3 class="box-title">Daftar User</h3>
-            <div class="box-tools">
-                <div class="input-group input-group-sm" style="width: 150px;">
-                    <input type="text" name="table_search" class="form-control pull-right" placeholder="Search"
-                        ng-model="CariJadwal">
-
-                    <div class="input-group-btn">
-                        <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                        </div>
+                        <!-- /.tab-pane -->
+                        <div class="tab-pane" id="mahasiswa">
+                            <table datatable="ng" class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>NPM</th>
+                                        <th>Nama</th>
+                                        <th>Status Kuliah</th>
+                                        <th>Alamat</th>
+                                        <th>Telp</th>
+                                        <th>Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr ng-repeat="item in DatasMahasiswa">
+                                        <td>{{$index+1}}</td>
+                                        <td>{{item.npm}}</td>
+                                        <td>{{item.nmmhs}}</td>
+                                        <td>{{item.statuskul}}</td>
+                                        <td>{{item.almt}}</td>
+                                        <td>{{item.notlp}}</td>
+                                        <td>
+                                            <button ng-if="item.userStatus !==null"  class="btn btn-warning" ng-click="Reset(item)">Reset</button>
+                                            <button ng-if="item.userStatus ===null"  class="btn btn-default" disabled>Reset</button>
+                                            <toggle ng-if="item.userStatus !==null" ng-model="item.userStatus"
+                                                ng-change="Activate(item)" on-class="btn-primary"></toggle>
+                                            <!-- <button ng-if="item.userStatus ===null" class="btn btn-default" disabled>NA</button> -->
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="box-body" style="height: 700px;">
-            <div class="box-body table-responsive no-padding">
-                <table class="table table-hover table-scroll">
-                    <thead>
-                        <tr>
-                            <th width="5%">No</th>
-                            <th width="10%">NIK</th>
-                            <th>Nama</th>
-                            <th width="5%">Status</th>
-                            <th>Alamat</th>
-                            <th>Kontak</th>
-                            <th width="15%" colspan="3">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody style="height: 680px;">
-                        <tr ng-repeat="item in DatasDosen" ng-click="Pilih(item)">
-                            <td width="5%">{{$index+1}}</td>
-                            <td width="10%">{{item.NIK}}</td>
-                            <td>{{item.Nama}}</td>
-                            <td width="5%">{{item.Status}}</td>
-                            <td>{{item.Alamat}}</td>
-                            <td>{{item.Kontak}}</td>
-                            <td width="15%">
-                                <button class="btn btn-warning" ng-click="Setujui(ba)">Reset</button>
-                                <toggle ng-if="item.userStatus !==null" ng-model="item.userStatus" ng-change="changed(item)"
-                                    on-class="btn-primary"></toggle>
-                                <button ng-if="item.userStatus ===null" class="btn btn-info" disabled>NA</button>
-                                <button class="btn btn-danger" ng-click="Hapus(ba)">Role</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-        </div>
     </div>
+    <div class="modal modal-info fade" id="addRole">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Info Modal</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="box">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Role Akses</h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <table class="table table-bordered">
+                                <tr>
+                                    <th>Role</th>
+                                    <th>Status</th>
+                                </tr>
+                                <tr ng-repeat="item in DatasRole">
+                                    <td>{{item.Nama}}</td>
+                                    <td>
+                                        <toggle ng-model="item.status" ng-change="changedRole(item)"
+                                            on-class="btn-primary"></toggle>
+                                    </td>
+                                </tr>
 
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
 </section>

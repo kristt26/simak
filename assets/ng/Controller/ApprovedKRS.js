@@ -1,7 +1,7 @@
 (function (angular) {
     'use strict'
     angular.module('ApprovedKRS', ['ApprovedDirectives', 'JadwalDirectives', 'KemajuanStudiDirective'])
-        .controller('ApprovedKRSController', function ($scope, ApprovedService, $window, Jadwal, $filter, $http, KhsmService, SweetAlert) {
+        .controller('ApprovedKRSController', function ($scope, ApprovedService, $window, Jadwal, $filter, $http, KhsmService, SweetAlert, DTOptionsBuilder, DTColumnDefBuilder) {
             $scope.ShowKeuangan = false;
             $scope.ShowWali = false;
             var DataStatus = {};
@@ -17,7 +17,14 @@
             $scope.NPMSelected = "";
             $scope.KemajuanStudi = [];
             $scope.Tombol = false;
+            $scope.Histori = [];
             DataStatus.status = $window.sessionStorage.getItem("SetStatus");
+            $scope.dtOptions = DTOptionsBuilder.newOptions().withPaginationType('full_numbers').withDisplayLength(2);
+            $scope.dtColumnDefs = [
+                DTColumnDefBuilder.newColumnDef(0),
+                DTColumnDefBuilder.newColumnDef(1).notVisible(),
+                DTColumnDefBuilder.newColumnDef(2).notSortable()
+            ];
             if (DataStatus.status == "Dosen Wali" || DataStatus.status == "Prodi") {
                 $scope.ShowKeuangan = false;
                 $scope.ShowWali = true;
@@ -39,6 +46,7 @@
                 $scope.ShowWali = false;
                 ApprovedService.get(DataStatus).then(response => {
                     $scope.TemKrsm = response.data.TemKrsm;
+                    $scope.Histori = response.data.Histori;
                 }, error => {
                     alert(error.data);
                 });
@@ -84,12 +92,12 @@
                 });
             }
 
-            $scope.Pilih = function (item) {
-                $http({
-                    method: "POST",
+            // $scope.Pilih = function (item) {
+            //     $http({
+            //         method: "POST",
 
-                })
-            }
+            //     })
+            // }
             $scope.Approved = function (item) {
                 $scope.Tombol = true;
                 if ($scope.jmsks != NaN) {
@@ -111,6 +119,7 @@
                                     var index = $scope.TemKrsm.findIndex(TemKrsm => TemKrsm.Id == item.Id);
                                     $scope.TemKrsm.splice(index, 1);
                                     SweetAlert.swal("Approved!", "Your proses krsm has been approved.", "success");
+                                    $scope.Histori.push(angular.copy(item));
                                     $scope.TampilJadwal = false;
                                     $scope.DatasJadwal = [];
                                     DataStatus = {};
@@ -119,6 +128,7 @@
                                 }, error => {
                                     var index = $scope.TemKrsm.findIndex(TemKrsm => TemKrsm.Id == item.Id);
                                     $scope.TemKrsm.splice(index, 1);
+                                    $scope.Histori.push(angular.copy(item));
                                     alert(response.message);
                                     $scope.TampilJadwal = false;
                                     $scope.DatasJadwal = [];

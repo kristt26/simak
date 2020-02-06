@@ -1,6 +1,6 @@
 (function (angular) {
     'use strict';
-    angular.module("Apps", ["Ctrl", "ngAnimate", "ui.router", "oitozero.ngSweetAlert", "datatables", "ui.select2", "ui.toggle", "ngSanitize"])
+    angular.module("Apps", ["Ctrl", "ngAnimate", "ui.router", "oitozero.ngSweetAlert", "datatables", "ui.select2", "ui.toggle", "ngSanitize", "datatables", "ngResource"])
         .config(function ($stateProvider, $urlRouterProvider) {
             $urlRouterProvider.otherwise('Main');
             $stateProvider
@@ -208,8 +208,8 @@
             var service = {};
             service.Token = $window.sessionStorage.getItem("Token");
             service.Header = getHeader();
-            // service.Base = "http://localhost/RestSimak/";
-            service.Base = "https://www.restsimak.stimiksepnop.ac.id/";
+            service.Base = "http://localhost/RestSimak/";
+            // service.Base = "https://www.restsimak.stimiksepnop.ac.id/";
             function getHeader() {
                 var header = {
                     "content-type": "application/json",

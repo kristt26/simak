@@ -154,7 +154,51 @@
                 })
                 return deferred.promise;
             }
+            function AmbilRole() {
+                var deferred = $q.defer();
+                $http({
+                    method: "GET",
+                    url: AuthService.Base+"api/users/getRole",
+                    headers: AuthService.Header
+                }).then(function (response) {
+                    service.message = response.data.data;
+                    deferred.resolve(service.message);
+                }, function (error) {
+                    deferred.reject(error);
+                })
+                return deferred.promise;
+            }
+            function changeUserinRole(params) {
+                var deferred = $q.defer();
+                $http({
+                    method: "POST",
+                    url: AuthService.Base+"api/users/changeUserInRole",
+                    headers: AuthService.Header,
+                    data: params
+                }).then(function (response) {
+                    service.message = response.data;
+                    deferred.resolve(service.message);
+                }, function (error) {
+                    deferred.reject(error);
+                })
+                return deferred.promise;
+            }
+            function userUpdate(params) {
+                var deferred = $q.defer();
+                $http({
+                    method: "PUT",
+                    url: AuthService.Base+"api/users/userUpdate",
+                    headers: AuthService.Header,
+                    data: params
+                }).then(function (response) {
+                    service.message = response.data;
+                    deferred.resolve(service.message);
+                }, function (error) {
+                    deferred.reject(error);
+                })
+                return deferred.promise;
+            }
             // getAction();
-            return { post: postAction, getBiodata: getProfile, put: putAction, insert: insertAction, getUser: AmbilUser, resetPass: ResetPassword };
+            return { post: postAction, getBiodata: getProfile, put: putAction, insert: insertAction, getUser: AmbilUser, resetPass: ResetPassword, getRole: AmbilRole, postUserinRole: changeUserinRole, putUser: userUpdate };
         });
 })(window.angular);
