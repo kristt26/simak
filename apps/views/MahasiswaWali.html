@@ -1,50 +1,84 @@
 <div id="loading-bar-container"></div>
 <div class="box-header with-border">
     <h3 class="box-title">Daftar Mahasiswa Wali</h3>
-    <div class="box-tools">
-        <div class="input-group input-group-sm" style="width: 150px;">
-            <input type="text" name="table_search" ng-model="SearchText" class="form-control pull-right"
-                placeholder="Search">
-
-            <div class="input-group-btn">
-                <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+</div>
+<div class="box-body">
+    <div class="row" style="padding-left: 20px;">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Custom Tabs -->
+                <div class="nav-tabs-custom">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="" data-target="#listmahasiswa" data-toggle="tab">List Mahasiswa</a></li>
+                        <li><a href="" data-target="#warning" data-toggle="tab">Mahasiswa Warning</a></li>
+                        <!-- <li><a href="" data-target="#tab_1" data-toggle="tab">Laporan</a></li> -->
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="listmahasiswa">
+                            <div class="box-body table-responsive no-padding">
+                                <table datatable="ng" class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Nama/NPM</th>
+                                            <th>Kelas</th>
+                                            <th>SMT Tempuh</th>
+                                            <th>SKS Tempuh</th>
+                                            <th>IPK</th>
+                                            <th>Kontak</th>
+                                            <th style="width: 10%">Action</th style="width: 10%">
+                                        </tr>
+                                    </thead>
+                                    <tbody style="height: 700px;">
+                                        <tr ng-repeat="item in DataWali | filter : SearchText | orderBy:'IPK'">
+                                            <td>{{item.npm}}&nbsp;-&nbsp;{{item.nmmhs}}</td>
+                                            <td>{{item.kelas}}</td>
+                                            <td>{{item.Semester}}</td>
+                                            <td>{{item.SKSLulus}}</td>
+                                            <td>{{item.IPK | number : 2}}</td>
+                                            <td>{{item.notlp}}</td>
+                                            <td style="width: 10%">
+                                                <button type="submit" class="btn btn-danger" ng-click="ShowJadwalMahasiswa(item)">Tampil
+                                                    Detail</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="warning">
+                            <div class="box-body table-responsive no-padding">
+                                <table datatable="ng" class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Nama/NPM</th>
+                                            <th>Kelas</th>
+                                            <th>SMT Tempuh</th>
+                                            <th>SKS Tempuh</th>
+                                            <th>IPK</th>
+                                            <th>Kontak</th>
+                                            <th style="width: 10%">Action</th style="width: 10%">
+                                        </tr>
+                                    </thead>
+                                    <tbody style="height: 700px;">
+                                        <tr ng-repeat="item in ListMonitoring orderBy:'IPK'">
+                                            <td>{{item.npm}}&nbsp;-&nbsp;{{item.nmmhs}}</td>
+                                            <td>{{item.kelas}}</td>
+                                            <td>{{item.Semester}}</td>
+                                            <td>{{item.SKSLulus}}</td>
+                                            <td>{{item.IPK | number : 2}}</td>
+                                            <td>{{item.notlp}}</td>
+                                            <td style="width: 10%">
+                                                <button type="submit" class="btn btn-danger" ng-click="ShowJadwalMahasiswa(item)">Tampil
+                                                    Detail</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
-<div class="box-body" style="height: 750px;">
-    <div class="box-body table-responsive no-padding">
-        <table class="table table-hover table-scroll" style="width: 100%;">
-            <thead>
-                <tr>
-                    <th>Nama/NPM</th>
-                    <th>Kelas</th>
-                    <th>SMT Tempuh</th>
-                    <th>SKS Tempuh</th>
-                    <th>IPK</th>
-                    <th>Kontak</th>
-                    <th style="width: 10%">Action</th style="width: 10%">
-                </tr>
-            </thead>
-            <tbody style="height: 700px;">
-                <tr ng-repeat="item in DataWali | filter : SearchText | orderBy:'IPK'">
-                    <td>{{item.npm}}&nbsp;-&nbsp;{{item.nmmhs}}</td>
-                    <td>{{item.kelas}}</td>
-                    <td>{{item.Semester}}</td>
-                    <td>{{item.SKSLulus}}</td>
-                    <td>{{item.IPK | number : 2}}</td>
-                    <td>{{item.notlp}}</td>
-                    <td style="width: 10%">
-                        <button type="submit" class="btn btn-danger" ng-click="ShowJadwalMahasiswa(item)">Tampil
-                            Detail</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-</div>
-<!-- /.box-body -->
-<div class="box-footer clearfix">
-</div>
-<!-- /.box-footer-->
