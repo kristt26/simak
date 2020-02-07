@@ -3,7 +3,6 @@
     angular.module("MahasiswaWali", ["MahasiswaWaliDirective"])
     .controller("MahasiswaWaliController", function($scope, $http, WaliMahasiswa){
         $scope.DataWali = [];
-        $scope.SearchText="";
         $scope.ListMonitoring = [];
         WaliMahasiswa.getMahasiswa().then(response => {
             $scope.DataWali = response;
@@ -12,7 +11,7 @@
         });
 
         WaliMahasiswa.getList().then(response =>{
-            $scope.ListMonitoring = response.data;
+            $scope.ListMonitoring = response.data.data;
         });
     });
 })(window.angular);
