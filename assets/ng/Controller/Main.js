@@ -41,16 +41,16 @@
                     $scope.peringatan="";
                     WaliMahasiswa.getList().then(response =>{
                         $scope.ListMonitoring = response;
-                        if(parseInt($scope.ListMonitoring.data[0].SMT_Tempuh)<=12 && parseInt($scope.ListMonitoring.data[0].SKS_Lulus)<100){
-                            $scope.peringatan = $scope.ListMonitoring.pesan + " TERAKHIR";
-                        }else if(parseInt($scope.ListMonitoring.data[0].SMT_Tempuh)<=10 && parseInt($scope.ListMonitoring.data[0].SKS_Lulus)<90){
-                            $scope.peringatan = $scope.ListMonitoring.pesan + " TERAKHIR";
-                        }else if(parseInt($scope.ListMonitoring.data[0].SMT_Tempuh)<=8 && parseInt($scope.ListMonitoring.data[0].SKS_Lulus)<700 && parseInt($scope.ListMonitoring.data[0].IPK<2)){
-                            $scope.peringatan = $scope.ListMonitoring.pesan + " 3";
+                        if(parseInt($scope.ListMonitoring.data[0].SMT_Tempuh)<=4 || (parseInt($scope.ListMonitoring.data[0].SKS_Lulus)<30 && parseInt($scope.ListMonitoring.data[0].IPK<1))){
+                            $scope.peringatan = $scope.ListMonitoring.pesan + " 1";
                         }else if(parseInt($scope.ListMonitoring.data[0].SMT_Tempuh)<=6 && parseInt($scope.ListMonitoring.data[0].SKS_Lulus)<50){
                             $scope.peringatan = $scope.ListMonitoring.pesan + " 2";
-                        }else if(parseInt($scope.ListMonitoring.data[0].SMT_Tempuh)<=4 && parseInt($scope.ListMonitoring.data[0].SKS_Lulus)<30 && parseInt($scope.ListMonitoring.data[0].IPK<1)){
-                            $scope.peringatan = $scope.ListMonitoring.pesan + " 1";
+                        }else if(parseInt($scope.ListMonitoring.data[0].SMT_Tempuh)<=8 || (parseInt($scope.ListMonitoring.data[0].SKS_Lulus)<700 && parseInt($scope.ListMonitoring.data[0].IPK<2))){
+                            $scope.peringatan = $scope.ListMonitoring.pesan + " 3";
+                        }else if(parseInt($scope.ListMonitoring.data[0].SMT_Tempuh)<=10 && parseInt($scope.ListMonitoring.data[0].SKS_Lulus)<90){
+                            $scope.peringatan = $scope.ListMonitoring.pesan + " TERAKHIR";
+                        }else if(parseInt($scope.ListMonitoring.data[0].SMT_Tempuh)<=12 && parseInt($scope.ListMonitoring.data[0].SKS_Lulus)<100){
+                            $scope.peringatan = $scope.ListMonitoring.pesan + " TERAKHIR";
                         }
                        
                     });
