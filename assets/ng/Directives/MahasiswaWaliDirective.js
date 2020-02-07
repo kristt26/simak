@@ -43,7 +43,7 @@
                 url: AuthService.Base+"api/MahasiswaMonitoring/getList",
                 headers: AuthService.Header,
             }).then(function (response) {
-                service.message = response.data.data;
+                service.message = response.data;
                 deferred.resolve(service.message);
             }, function (error) {
                 // console.log(error);

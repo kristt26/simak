@@ -21,11 +21,10 @@
                                         <tr>
                                             <th>Nama/NPM</th>
                                             <th>Kelas</th>
-                                            <th>SMT Tempuh</th>
+                                            <th>Semester</th>
                                             <th>SKS Tempuh</th>
                                             <th>IPK</th>
                                             <th>Kontak</th>
-                                            <th style="width: 10%">Action</th style="width: 10%">
                                         </tr>
                                     </thead>
                                     <tbody style="height: 700px;">
@@ -36,10 +35,6 @@
                                             <td>{{item.SKSLulus}}</td>
                                             <td>{{item.IPK | number : 2}}</td>
                                             <td>{{item.notlp}}</td>
-                                            <td style="width: 10%">
-                                                <button type="submit" class="btn btn-danger" ng-click="ShowJadwalMahasiswa(item)">Tampil
-                                                    Detail</button>
-                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -51,26 +46,25 @@
                                     <thead>
                                         <tr>
                                             <th>Nama/NPM</th>
-                                            <th>Kelas</th>
-                                            <th>SMT Tempuh</th>
-                                            <th>SKS Tempuh</th>
+                                            <th>SKS Lulus</th>
+                                            <th>SKS Sisa</th>
                                             <th>IPK</th>
-                                            <th>Kontak</th>
-                                            <th style="width: 10%">Action</th style="width: 10%">
+                                            <th>Semester</th>
+                                            <th>Program Studi</th>
+                                            <th>Semester Butuh</th>
+                                            <th>Status</th>
                                         </tr>
                                     </thead>
                                     <tbody style="height: 700px;">
-                                        <tr ng-repeat="item in ListMonitoring | orderBy:'IPK'">
+                                        <tr ng-repeat="item in ListMonitoring | orderBy:'Status'">
                                             <td>{{item.npm}}&nbsp;-&nbsp;{{item.nmmhs}}</td>
-                                            <td>{{item.kelas}}</td>
-                                            <td>{{item.Semester}}</td>
-                                            <td>{{item.SKSLulus}}</td>
+                                            <td>{{item.SKS_Lulus}}</td>
+                                            <td>{{item.SKS_Sisa}}</td>
                                             <td>{{item.IPK | number : 2}}</td>
-                                            <td>{{item.notlp}}</td>
-                                            <td style="width: 10%">
-                                                <button type="submit" class="btn btn-danger" ng-click="ShowJadwalMahasiswa(item)">Tampil
-                                                    Detail</button>
-                                            </td>
+                                            <td>{{item.SMT}}</td>
+                                            <td>{{item.nmps}}</td>
+                                            <td>{{item.SMT_Butuh}}</td>
+                                            <td>{{item.Status}}</td>
                                         </tr>
                                     </tbody>
                                 </table>
