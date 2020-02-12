@@ -86,6 +86,7 @@
   <script src="assets/ng/Directives/GradeNilaiDirectives.js"></script>
   <script src="assets/ng/Directives/EvaluasiPembelajaranDirectives.js"></script>
   <script src="assets/ng/Directives/TahunAkademikDirectives.js"></script>
+  <script src="assets/ng/Directives/BidikMisiDirectives.js"></script>
 
 
   <!-- Data Table -->
@@ -132,11 +133,11 @@
     <div ng-controller="View">
       <div ng-include="header"></div>
 
-      <aside choose-file ng-model="dataGambar" class="main-sidebar">
+      <aside class="main-sidebar">
         <!-- sidebar: style can be found in sidebar.less -->
         <section class="sidebar">
           <!-- Sidebar user panel -->
-          <div class="user-panel">
+          <div  choose-file ng-model="dataGambar" class="user-panel">
             <div class="pull-left image ">
               <img id="userImg" src="assets/dist/img/User_Circle.png" class="img-circle photoProfile" alt="User Image">
               <input class="ng-hide" id="fileInput" type="file" />

@@ -12,14 +12,14 @@
             $scope.DatasJadwal = [];
             $scope.DatasMatakuliah = [];
             $scope.DataPrint = [];
-            $scope.SelectedMatakuliah="";
-            $scope.DataDosen="";
-            $scope.Input={};
-            $scope.Input.hadir=0;
-            $scope.Input.jumlah=0;
-            $scope.Input.alpha=0;
-            $scope.Input.sakit=0;
-            $scope.Input.izin=0;
+            $scope.SelectedMatakuliah = "";
+            $scope.DataDosen = "";
+            $scope.Input = {};
+            $scope.Input.hadir = 0;
+            $scope.Input.jumlah = 0;
+            $scope.Input.alpha = 0;
+            $scope.Input.sakit = 0;
+            $scope.Input.izin = 0;
             $scope.ShowDetailDosen = false;
             $scope.TanggalInput;
             BaService.getlaporan().then(response => {
@@ -32,15 +32,15 @@
             }, error => {
                 console.log(error);
             });
-            
+
             MatakuliahService.getMatakuliah().then(response => {
                 $scope.DatasMatakuliah = response;
             }, error => {
                 console.log(error);
             })
-            Jadwal.get().then(response=>{
+            Jadwal.get().then(response => {
                 $scope.DatasJadwal = JSON.parse(response.data);
-            },error =>{
+            }, error => {
                 console.log(error);
             })
             BaService.getPersetujuan().then(response => {
@@ -66,11 +66,11 @@
                     text: "Anda akan Menyetujui Berita Acara?",
                     type: "warning",
                     showCancelButton: true,
-                    confirmButtonColor: "#DD6B55",
+                    confirmButtonColor: "#0be7fb",
                     confirmButtonText: "Yes, Approved!",
-                    cancelButtonText: "No, cancel!",
-                    closeOnConfirm: true,
-                    closeOnCancel: true,
+                    cancelButtonText: "No, Batal!",
+                    closeOnConfirm: false,
+                    closeOnCancel: false,
                     showLoaderOnConfirm: true
                 },
                     function (isConfirm) {
@@ -88,20 +88,20 @@
                         }
                     });
             }
-            $scope.GetDataDosen = function(){
+            $scope.GetDataDosen = function () {
                 var a = JSON.parse($scope.SelectedMatakuliah);
-                $scope.DataDosen =  a.nmdsn;
-                    $scope.Input.nidn = a.nidn;
-                    $scope.Input.idjadwal = a.idjadwal;
-                    $scope.Input.kmk = a.kmk;
-                    $scope.ShowDetailDosen = true;
+                $scope.DataDosen = a.nmdsn;
+                $scope.Input.nidn = a.nidn;
+                $scope.Input.idjadwal = a.idjadwal;
+                $scope.Input.kmk = a.kmk;
+                $scope.ShowDetailDosen = true;
             }
-            $scope.Simpan = function(){
+            $scope.Simpan = function () {
                 var Tanggal = angular.copy($scope.TanggalInput);
                 var day = Tanggal.getDate();
                 var monthIndex = Tanggal.getMonth();
                 var year = Tanggal.getFullYear();
-                $scope.Input.tanggal = year+"-"+(monthIndex+1)+"-"+day;
+                $scope.Input.tanggal = year + "-" + (monthIndex + 1) + "-" + day;
                 SweetAlert.swal({
                     title: "Anda Yakin?",
                     text: "Anda akan melakukan rekap Berita Acara, Proses rekap tidak dapat diulang",
@@ -117,8 +117,8 @@
                         if (isConfirm) {
                             BaService.addBA($scope.Input).then(response => {
                                 SweetAlert.swal("Information!", "Berhasil Simpan", "success");
-            
-                            }, error =>{
+
+                            }, error => {
                                 SweetAlert.swal("Information!", "Berhasil Simpan", "success");
                                 $state.reload();
                             })
@@ -126,12 +126,12 @@
                             SweetAlert.swal("Cancelled", "Proses Dibatalkan :)", "error");
                         }
                     });
-                
+
             }
-            $scope.JumlahHadir = function(){
-                    $scope.Input.hadir = parseInt($scope.Input.jumlah)-parseInt($scope.Input.alpha)-parseInt($scope.Input.sakit)-parseInt($scope.Input.izin);
+            $scope.JumlahHadir = function () {
+                $scope.Input.hadir = parseInt($scope.Input.jumlah) - parseInt($scope.Input.alpha) - parseInt($scope.Input.sakit) - parseInt($scope.Input.izin);
             }
-            $scope.Hapus= function(item){
+            $scope.Hapus = function (item) {
                 SweetAlert.swal({
                     title: "Anda Yakin?",
                     text: "Anda akan Menghapus Berita Acara?",
@@ -148,7 +148,7 @@
                             BaService.deleteBa(item).then(response => {
                                 SweetAlert.swal("Approved!", "Berhasil", "success");
                                 var index = $scope.DatasPersetujuan.indexOf(item);
-                                $scope.DatasPersetujuan.splice(index, 1); 
+                                $scope.DatasPersetujuan.splice(index, 1);
                             }, error => {
                                 SweetAlert.swal("Cancelled", "Proses Gagal :)", "error");
                                 item.persetujuan1 = null;
