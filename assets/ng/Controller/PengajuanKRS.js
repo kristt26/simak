@@ -62,19 +62,16 @@
                             html:true
                         });
                     Jadwal.get().then(response => {
-
                         var a = JSON.parse(response.data);
-                        $scope.GetValue = angular.copy($scope.DatasJadwal[0]);
-                        $scope.DatasJadwal = a;
-
+                        
+                        $scope.GetValue = angular.copy(a[0]);
                         MahasiswaService.get($scope.DatasTemKrsm.TemKrsm[0].npm).then(response => {
-                            $scope.DatasJadwal = $filter('filter')(a, function (value) {
+                            a = $filter('filter')(a, function (value) {
                                 return (value.kurikulum === response.data[0].kurikulum || value.kurikulum === 'ALL') && value.kdps === response.data[0].kdps;
                             });
-                            $scope.GetValue = angular.copy($scope.DatasJadwal[0]);
                             angular.forEach($scope.DatasTemKrsm.TemDetailKrsm, function (value, key) {
                                 $scope.jmsks += parseInt(value.sks);
-                                angular.forEach($scope.DatasJadwal, function (value1, key1) {
+                                angular.forEach(a, function (value1, key1) {
                                     if (value.kmk == value1.kmk && value.kelas == value1.kelas) {
                                         value1.status = true;
                                         value1.ngBinding = "success";
@@ -84,11 +81,9 @@
                                     }
                                 });
                             });
+                            $scope.DatasJadwal = a;
                         })
 
-                    }, error => {
-                        console.log(error);
-                        // 
                     });
 
                 } else if (response.set == 'Krsm') {
@@ -159,8 +154,9 @@
                             confirmButtonColor: "#0be7fb",
                             confirmButtonText: "Yes, Ubah!",
                             cancelButtonText: "No, Batal!",
-                            closeOnConfirm: true,
-                            closeOnCancel: true
+                            closeOnConfirm: false,
+                            closeOnCancel: true,
+                            showLoaderOnConfirm: true
 
                         },
                             function (isConfirm) {
@@ -181,7 +177,7 @@
                                     data.krsm = $scope.DataKrs;
                                     data.DetailKrsm = item;
                                     PengajuanService.post(data).then(response => {
-                                        alert(response.message);
+                                        SweetAlert.swal("Information!!!", response.message, "success");
                                         $scope.jmsks += parseInt(angular.copy(item.sks));
                                         item.status = false;
                                         item.ngBinding = "success";
@@ -239,7 +235,7 @@
                     confirmButtonColor: "red",
                     confirmButtonText: "Hapus!",
                     cancelButtonText: "Batal!",
-                    closeOnConfirm: true,
+                    closeOnConfirm: false,
                     closeOnCancel: true,
                     showLoaderOnConfirm: true
                 },
@@ -261,6 +257,7 @@
                             data.krsm = $scope.DataKrs;
                             data.DetailKrsm = item;
                             PengajuanService.delete(item).then(response => {
+                                SweetAlert.swal("Information!!!", "Item berhasil di hapus", "success");
                                 var kmk = angular.copy(item.kmk);
                                 $scope.jmsks -= parseInt(angular.copy(item.sks));
                                 $scope.Data = $scope.DatasTemKrsm.TemDetailKrsm

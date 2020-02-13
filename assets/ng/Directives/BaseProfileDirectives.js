@@ -1,6 +1,6 @@
 (function (angular) {
     'use strict'
-    angular.module('HomeDirectives', [])
+    angular.module('BaseProfileDirectives', [])
         .factory('AuthServiceHome', function ($window) {
             var service = {};
             service.Token = $window.sessionStorage.getItem("Token");
@@ -34,7 +34,7 @@
             return service;
         })
 
-        .factory('HomeService', function ($http, $q, AuthServiceHome, AuthService) {
+        .factory('BaseProfileService', function ($http, $q, AuthServiceHome, AuthService) {
             var service = {};
             service.data = [];
             service.dataTA = [];

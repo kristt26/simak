@@ -1,7 +1,7 @@
 (function (angular) {
     'use strict'
-    angular.module('Main', ['HomeDirectives', 'JadwalDirectives', 'KemajuanStudiDirective', 'MahasiswaWaliDirective'])
-        .controller("MainController", function ($scope, HomeService, Jadwal, KhsmService, $window, SweetAlert, WaliMahasiswa) {
+    angular.module('BaseProfile', ['BaseProfileDirectives', 'JadwalDirectives', 'KemajuanStudiDirective', 'MahasiswaWaliDirective'])
+        .controller("BaseProfileController", function ($scope, BaseProfileService, Jadwal, KhsmService, $window, SweetAlert, WaliMahasiswa) {
             $scope.DatasHome = {};
             $scope.DatasJadwal = [];
             $scope.Khsm = {};
@@ -14,9 +14,9 @@
             $scope.ListMonitoring = [];
             $scope.DataLooping = [{ semester: '1' }, { semester: '2' }, { semester: '3' }, { semester: '4' }, { semester: '5' }, { semester: '6' }, { semester: '7' }, { semester: '8' }];
             $scope.Input.npm = $window.sessionStorage.getItem("Username");
-            HomeService.get().then(response => {
+            BaseProfileService.get().then(response => {
                 if (response.Role == "Mahasiswa") {
-                    HomeService.getTA().then(response => {
+                    BaseProfileService.getTA().then(response => {
                         $scope.TahunAkademik = response;
                     })
                     $scope.RoleMahasiswa = true;
@@ -56,7 +56,7 @@
                     });
 
                 }else{
-                    HomeService.getTA().then(response => {
+                    BaseProfileService.getTA().then(response => {
                         $scope.TahunAkademik = response;
                         Jadwal.getJadwalDosen().then(response => {
                             $scope.DatasJadwal =  response;

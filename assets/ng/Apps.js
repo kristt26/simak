@@ -2,13 +2,18 @@
     'use strict';
     angular.module("Apps", ["Ctrl", "ngAnimate", "ui.router", "oitozero.ngSweetAlert", "datatables", "ui.select2", "ui.toggle", "ngSanitize", "datatables", "ngResource"])
         .config(function ($stateProvider, $urlRouterProvider) {
-            $urlRouterProvider.otherwise('Main');
+            $urlRouterProvider.otherwise('Beranda');
             $stateProvider
                 // HOME STATES AND NESTED VIEWS ========================================
-                .state("Main", {
+                .state("Beranda", {
                     url: "/Main",
-                    templateUrl: "apps/views/main.html",
-                    controller: "MainController"
+                    templateUrl: "apps/views/Beranda.html",
+                    controller: "BerandaController"
+                })
+                .state("BaseProfile", {
+                    url: "/baseprofile",
+                    templateUrl: "apps/views/BaseProfile.html",
+                    controller: "BaseProfileController"
                 })
                 .state("Pegawai", {
                     url: "/Pegawai",
@@ -253,8 +258,8 @@
             var service = {};
             service.Token = $window.sessionStorage.getItem("Token");
             service.Header = getHeader();
-            // service.Base = "http://localhost/RestSimak/";
-            service.Base = "https://www.restsimak.stimiksepnop.ac.id/";
+            service.Base = "http://localhost/RestSimak/";
+            // service.Base = "https://www.restsimak.stimiksepnop.ac.id/";
             function getHeader() {
                 var header = {
                     "content-type": "application/json",
@@ -327,7 +332,7 @@
                     $scope.RoleMahasiswa = true;
                     $http({
                         method: "GET",
-                        url: "https://www.restsimak.stimiksepnop.ac.id/api/jadwal/jadwalmahasiswa",
+                        url: AuthService.Base + "api/jadwal/jadwalmahasiswa",
                         headers: getHeader()
                     }).then(function (response) {
                         if (response.data.set == 'Krsm') {

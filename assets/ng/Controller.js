@@ -2,7 +2,8 @@
     'use strict'
     var app = angular.module("Ctrl", [
         "angular-loading-bar",
-        "Main",
+        "Beranda",
+        "BaseProfile",
         "Pegawai",
         "Jabatan",
         "Mahasiswa",

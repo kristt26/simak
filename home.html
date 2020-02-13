@@ -50,7 +50,8 @@
   <script src="assets/ng/Controller/Jabatan.js"></script>
   <script src="assets/ng/Controller/Mahasiswa.js"></script>
   <script src="assets/ng/Controller/Jadwal.js"></script>
-  <script src="assets/ng/Controller/Main.js"></script>
+  <script src="assets/ng/Controller/Beranda.js"></script>
+  <script src="assets/ng/Controller/BaseProfile.js"></script>
   <script src="assets/ng/Controller/Prodi.js"></script>
   <script src="assets/ng/Controller/TahunAkademik.js"></script>
   <script src="assets/ng/Controller/GradeNilai.js"></script>
@@ -76,7 +77,7 @@
   <script src="assets/ng/Directives/JadwalDirectives.js"></script>
   <script src="assets/ng/Directives/KemajuanStudiDirective.js"></script>
   <script src="assets/ng/Directives/UserDirectives.js"></script>
-  <script src="assets/ng/Directives/HomeDirectives.js"></script>
+  <script src="assets/ng/Directives/BaseProfileDirectives.js"></script>
   <script src="assets/ng/Directives/MahasiswaDirectives.js"></script>
   <script src="assets/ng/Directives/PenelitianDirectives.js"></script>
   <script src="assets/ng/Directives/MahasiswaWaliDirective.js"></script>
@@ -150,7 +151,8 @@
           </div>
           <ul class="sidebar-menu" data-widget="tree">
             <li class="header">Menu Akses</li>
-            <li><a ui-sref="Main"><i class="fa fa-th"></i> <span>Home</span></a></li>
+            <li><a ui-sref="Beranda"><i class="fa fa-th"></i> <span>Beranda</span></a></li>
+            <li><a ui-sref="BaseProfile"><i class="fa fa-th"></i> <span>Profile</span></a></li>
 
             <li class="treeview" ng-show="RoleKeuangan">
               <a href="javascript:void(0)">
