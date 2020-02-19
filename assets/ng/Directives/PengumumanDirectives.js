@@ -39,6 +39,23 @@
             })
             return deferred.promise;
         }
-        return { post: postAction, get: getAction};
+        function deleteAction(id) {
+            var deferred = $q.defer();
+            $http({
+                method: "DELETE",
+                url: AuthService.Base+"api/Pengumuman/Hapus?id="+id,
+                headers: AuthService.Header
+            }).then(function (response) {
+                service.data = {};
+                service.data = response.data.message;
+                service.instance = true;
+                deferred.resolve(service.data);
+            }, function (error) {
+                // console.log(error);
+                deferred.reject(error);
+            })
+            return deferred.promise;
+        }
+        return { post: postAction, get: getAction, delete: deleteAction};
     });
 })(window.angular);

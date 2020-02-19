@@ -21,6 +21,7 @@
                                     <th>Tanggal Selesai Publish</th>
                                     <th>Keterangan</th>
                                     <th>Berkas</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody style="height: 700px;">
@@ -31,10 +32,12 @@
                                     <td>{{item.keterangan}}</td>
                                     <td>
                                         <a href="" ng-click="selected(item)" data-toggle="modal" data-target="#TampilGambar"><img ng-src="{{item.file}}" width="70px" height="70px" class="img-responsive "/></a>
-                                        <!-- <button type="button" class="btn btn-info btn-circle" data-toggle="modal" data-target="#TampilGambar">
-                                            <img ng-src="{{item.file}}" width="70px" height="70px" class="img-responsive "/>
-                                        </button> -->
-                                        <!-- <a href="" ng-click="open()"><img ng-src="{{item.file}}" width="70px" height="70px" class="img-responsive "/></a></td> -->
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger" ng-click="Hapus(item)">
+                                            Hapus
+                                        </button>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>

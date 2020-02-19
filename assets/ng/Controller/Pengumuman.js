@@ -19,6 +19,37 @@
             $scope.selected = function (item) {
                 $scope.File = item.File;
             }
+            $scope.Hapus = function(item){
+                SweetAlert.swal({
+                    title: "Anda Yakin?",
+                    text: "Menghapus data pengumuman",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#0be7fb",
+                    confirmButtonText: "Yes, Hapus!",
+                    cancelButtonText: "No, Batal!",
+                    closeOnConfirm: false,
+                    closeOnCancel: false,
+                    showLoaderOnConfirm: true
+                },
+                    function (isConfirm) {
+                        if (isConfirm) {
+                            var file = $scope.myFile;
+                            var set = 'pengumuman';
+                            PengumumanService.delete(item.id).then(response => {
+                                fileDelete.delete(item.berkas, set).then(response => {
+                                    var index = $scope.dataPengumuman.indexOf(item);
+                                    $scope.dataPengumuman.splice(index, 1);
+                                    SweetAlert.swal("Information!", "Data di hapus", "success");
+                                })
+                            }, error => {
+                                SweetAlert.swal("Cancelled", "Gagal Menghapus!!! :)", "error");
+                            })
+                        } else {
+                            SweetAlert.swal("Cancelled", "Your proses krsm has been cancelled :)", "error");
+                        }
+                    });
+            }
             $scope.Simpan = function () {
                 SweetAlert.swal({
                     title: "Anda Yakin?",
@@ -26,7 +57,7 @@
                     type: "warning",
                     showCancelButton: true,
                     confirmButtonColor: "#0be7fb",
-                    confirmButtonText: "Yes, Approved!",
+                    confirmButtonText: "Yes, Simpan!",
                     cancelButtonText: "No, Batal!",
                     closeOnConfirm: false,
                     closeOnCancel: false,
@@ -53,7 +84,7 @@
                                     $scope.input ={};
                                 }, error => {
                                     fileDelete.delete(set, $scope.input.berkas).then(response => {
-
+                                        SweetAlert.swal("Approved!", "Gagal Menyimpan", "error");
                                     }, error => {
 
                                     })
@@ -63,7 +94,6 @@
                             });
                         } else {
                             SweetAlert.swal("Cancelled", "Your proses krsm has been cancelled :)", "error");
-                            $scope.Tombol = false;
                         }
                     });
 
