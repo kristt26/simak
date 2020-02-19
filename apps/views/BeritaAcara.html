@@ -44,7 +44,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr ng-repeat="ba in item.beritaacara | filter:Cari">
+                                                    <tr ng-repeat="ba in item.beritaacara">
                                                         <td>{{$index + 1}}</td>
                                                         <td>
                                                             {{ba.tanggal}}
@@ -89,7 +89,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr ng-repeat="ba in DatasPersetujuan | filter:Cari">
+                                    <tr ng-repeat="ba in DatasPersetujuan | orderBy:'-idbamengajardosen'">
                                         <td>{{$index + 1}}</td>
                                         <td>
                                             {{ba.tanggal}}
@@ -117,6 +117,8 @@
                                                 ng-click="Setujui(ba)">Setujui</button>
                                             <button ng-show="ba.persetujuan1==null" class="btn btn-danger"
                                                 ng-click="Hapus(ba)">Hapus</button>
+                                                <h5 ng-show="ba.persetujuan1!=null">Valid</h5>
+                                            <!-- <button ng-show="ba.persetujuan1!=null" class="btn btn-info" disabled></button> -->
                                         </td>
                                     </tr>
                                 </tbody>

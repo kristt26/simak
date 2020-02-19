@@ -95,7 +95,7 @@
                 var deferred = $q.defer();
                 $http({
                     method: "POST",
-                    url: AuthService.Base+"api/beritaacara/AddBaMengajar",
+                    url: AuthService.Base+"api/beritaacara/AddBaMengajar?akses=keuangan",
                     headers: AuthService.Header,
                     data: item
                 }).then(function (response) {

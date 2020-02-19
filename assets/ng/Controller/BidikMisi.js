@@ -2,7 +2,7 @@
     'use strict'
     angular.module('BidikMisi', ['BidikMisiDirectives'])
         .controller('BidikMisiController', function ($scope, fileUpload, BidikMisiService, $sce) {
-            $scope.dataGambar= "http://localhost/RestSimak/assets/file/058080157466509.pdf";
+            $scope.dataGambar= "http://localhost/RestSimak/assets/file/304902569082339.png";
             $scope.dataGambar = $sce.trustAsResourceUrl($scope.dataGambar);
             
             // BidikMisiService.get().then(response=>{

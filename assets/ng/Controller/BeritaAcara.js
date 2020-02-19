@@ -104,23 +104,39 @@
                 $scope.Input.tanggal = year + "-" + (monthIndex + 1) + "-" + day;
                 SweetAlert.swal({
                     title: "Anda Yakin?",
-                    text: "Anda akan melakukan rekap Berita Acara, Proses rekap tidak dapat diulang",
+                    text: "Tambah Berita acara",
                     type: "warning",
                     showCancelButton: true,
                     confirmButtonColor: "#DD6B55",
                     confirmButtonText: "Yes, Approved!",
                     cancelButtonText: "No, cancel!",
-                    closeOnConfirm: true,
-                    closeOnCancel: true
+                    closeOnConfirm: false,
+                    closeOnCancel: true,
+                    showLoaderOnConfirm: true
                 },
                     function (isConfirm) {
                         if (isConfirm) {
                             BaService.addBA($scope.Input).then(response => {
+                                var a = JSON.parse($scope.SelectedMatakuliah);
+                                $scope.Input.idbamengajardosen = response.id;
+                                $scope.Input.persetujuan1 = null;
+                                $scope.Input.persetujuan2 = null;
+                                $scope.Input.status = "non";
+                                $scope.Input.nmmk = a.nmmk;
+                                $scope.Input.sks = a.sks;
+                                $scope.Input.smt = a.smt;
+                                $scope.Input.kdps = a.kdps;
+                                $scope.Input.kelas = a.kelas;
+                                $scope.Input.dsn_saji = a.dsn_saji;
+                                $scope.Input.nmmk = a.nmmk;
+                                $scope.DatasPersetujuan.push(angular.copy($scope.Input));
                                 SweetAlert.swal("Information!", "Berhasil Simpan", "success");
+                                $scope.SelectedMatakuliah = "";
+                                $scope.Input={};
 
                             }, error => {
-                                SweetAlert.swal("Information!", "Berhasil Simpan", "success");
-                                $state.reload();
+                                SweetAlert.swal("Information!", "Data Gagal Simpan", "error");
+                                // $state.reload();
                             })
                         } else {
                             SweetAlert.swal("Cancelled", "Proses Dibatalkan :)", "error");
