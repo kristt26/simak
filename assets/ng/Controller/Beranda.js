@@ -14,5 +14,8 @@
                 })
                 $scope.dataPengumuman = response;
             })
+            $scope.selected = function (item) {
+                $scope.File = item.File;
+            }
         })
 })(window.angular);
