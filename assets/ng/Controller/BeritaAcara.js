@@ -118,7 +118,7 @@
                         if (isConfirm) {
                             BaService.addBA($scope.Input).then(response => {
                                 var a = JSON.parse($scope.SelectedMatakuliah);
-                                $scope.Input.idbamengajardosen = response.id;
+                                $scope.Input.idbamengajardosen = response;
                                 $scope.Input.persetujuan1 = null;
                                 $scope.Input.persetujuan2 = null;
                                 $scope.Input.status = "non";
