@@ -1,6 +1,17 @@
 (function (angular) {
     'use strict';
-    angular.module("Apps", ["Ctrl", "ngAnimate", "ui.router", "oitozero.ngSweetAlert", "serviceFile", "datatables", "ui.select2", "ui.toggle", "ngSanitize", "datatables", "ngResource"])
+    angular.module("Apps", [
+        "Ctrl", 
+        "ngAnimate", 
+        "ui.router", 
+        "oitozero.ngSweetAlert", 
+        "serviceFile", "datatables", 
+        "ui.select2", 
+        "ui.toggle", 
+        "ngSanitize", 
+        "datatables", 
+        "ngResource"
+    ])
         .config(function ($stateProvider, $urlRouterProvider) {
             $urlRouterProvider.otherwise('Beranda');
             $stateProvider
@@ -134,123 +145,7 @@
         .run(['uiSelect2Config', function (uiSelect2Config) {
             uiSelect2Config.placeholder = "Placeholder text";
         }])
-        .directive('datepicker', function() {
-            return {
-               restrict: 'A',
-               require: 'ngModel',
-               compile: function() {
-                  return {
-                     pre: function(scope, element, attrs, ngModelCtrl) {
-                        var format, dateObj;
-                        format = (!attrs.dpFormat) ? 'yyyy-m-d' : attrs.dpFormat;
-                        if (!attrs.initDate && !attrs.dpFormat) {
-                           // If there is no initDate attribute than we will get todays date as the default
-                           dateObj = new Date();
-                           scope[attrs.ngModel] = dateObj.getDate() + '/' + (dateObj.getMonth() + 1) + '/' + dateObj.getFullYear();
-                        } else if (!attrs.initDate) {
-                           // Otherwise set as the init date
-                           scope[attrs.ngModel] = attrs.initDate;
-                        } else {
-                           // I could put some complex logic that changes the order of the date string I
-                           // create from the dateObj based on the format, but I'll leave that for now
-                           // Or I could switch case and limit the types of formats...
-                        }
-                        // Initialize the date-picker
-                        $(element).datepicker({
-                           format: format,
-                        }).on('changeDate', function(ev) {
-                           // To me this looks cleaner than adding $apply(); after everything.
-                           scope.$apply(function () {
-                              ngModelCtrl.$setViewValue(ev.format(format));
-                           });
-                        });
-                     }
-                  }
-               }
-            }
-         })
-        // .directive('chooseFile', function () {
-        //     return {
-        //         link: function (scope, elem, attrs) {
-        //             var button = elem.find('img');
-        //             var input = angular.element(elem[0].querySelector('input#fileInput'));
-        //             button.bind('click', function () {
-        //                 input[0].click();
-        //                 scope.$apply(function() {
-        //                 modelSetter(scope, element[0].files[0]);
-        //              });
-        //             });
-        //             input.bind('change', function (e) {
-        //                 scope.$apply(function () {
-        //                     var files = e.target.files;
-        //                     if (files[0]) {
-        //                         var f = files[0];
-        //                         var im = window.URL.createObjectURL(f);
-        //                         var a = document.getElementsByClassName('photoProfile');
-        //                         for (var i = 0; i < a.length; i++) {
-        //                             a[i].src = im;
-        //                         }
-        //                         // scope.model.fileName = f.name;
-        //                         var r = new FileReader();
-        //                         r.onload = (function (theFile) {
-
-        //                             return function (e) {
-        //                                 var img = document.createElement("img");
-        //                                 img.src = e.target.result;
-        //                                 setTimeout(z => {
-        //                                     var canvas = document.createElement("canvas");
-        //                                     var ctx = canvas.getContext("2d");
-        //                                     if (files[0].type === "application/pdf") {
-
-        //                                     } else {
-        //                                         ctx.drawImage(img, 0, 0);
-        //                                         var MAX_WIDTH = 400;
-        //                                         var MAX_HEIGHT = 300;
-        //                                         var width = img.width;
-        //                                         var height = img.height;
-
-        //                                         if (width > height) {
-        //                                             if (width > MAX_WIDTH) {
-        //                                                 height *= MAX_WIDTH / width;
-        //                                                 width = MAX_WIDTH;
-        //                                             }
-        //                                         } else {
-        //                                             if (height > MAX_HEIGHT) {
-        //                                                 width *= MAX_HEIGHT / height;
-        //                                                 height = MAX_HEIGHT;
-        //                                             }
-        //                                         }
-        //                                         canvas.width = width;
-        //                                         canvas.height = height;
-        //                                         var ctx = canvas.getContext("2d");
-        //                                         ctx.drawImage(img, 0, 0, width, height);
-
-        //                                         var dataurl = canvas.toDataURL(f.type);
-        //                                         //document.getElementById('output').src = dataurl;
-
-        //                                         var parts = dataurl.split(';base64,');
-        //                                         var contentType = parts[0].split(':')[1];
-        //                                         var raw = window.atob(parts[1]);
-        //                                         //Converting Binary Data to base 64
-        //                                         var base64String = window.btoa(raw);
-        //                                         //showing file converted to base64
-        //                                         // scope.dataGambar = base64String;
-        //                                         return 
-        //                                     }
-
-        //                                 }, 200)
-
-        //                             };
-        //                         })(f);
-        //                         r.readAsDataURL(f);
-        //                     } else {
-        //                         //  scope.model.buktiBayar = null;
-        //                     }
-        //                 });
-        //             });
-        //         }
-        //     };
-        // })
+        
         .factory("AuthService", function ($window) {
             var service = {};
             service.Token = $window.sessionStorage.getItem("Token");
@@ -266,7 +161,7 @@
             }
             return service;
         })
-        .controller('View', function ($scope, $http, $window, SweetAlert, AuthService) {
+        .controller('View', function ($scope, $http, $window, SweetAlert, AuthService, covertFileGambar, fileToBase64) {
             $scope.header = "assets/Template/header.html";
             $scope.sidebar = "assets/Template/sidebar.html";
             $scope.content = "assets/Template/content.html";
@@ -282,7 +177,14 @@
             $scope.RoleUser = $window.sessionStorage.getItem("Role");
             $scope.NamaUser = $window.sessionStorage.getItem("NamaUser");
             $scope.dataGambar = "";
-
+            $scope.Pict = "assets/dist/img/User_Circle.png";
+            var a = JSON.parse($scope.RoleUser);
+            var statusMahasiswa = false;
+            angular.forEach(a, function (value) {
+                if (value.Nama == "Mahasiswa") {
+                    statusMahasiswa = true;
+                }
+            })
             function getHeader() {
                 var header = {
                     "content-type": "text.plain",
@@ -293,106 +195,124 @@
             if ($window.sessionStorage.getItem("Username") == undefined || $window.sessionStorage.getItem("Username") == "" || $window.sessionStorage.getItem("Username") == null) {
                 window.location.href = "index.html";
             } else {
-                var Url = AuthService.Base + "api/PenilaianDosen/CekPenilaianDosen?npm=" + $window.sessionStorage.getItem("Username");
-                $http({
-                    method: "GET",
-                    url: Url,
-                    headers: {
-                        "content-type": "text.plain",
-                        "authorization": $window.sessionStorage.getItem("Token")
-                    }
-                }).then(function (response) {
-                    if (response.data !== "Periode Evaluasi Telah Berakhir") {
-                        if (response.data !== "Anda Sudah Melakukan Penilaian Dosen") {
-                            // sessionStorage.clear();
-                            SweetAlert.swal({
-                                title: "Information!",
-                                text: "Silahkan Lakukan Evaluasi Pembelajaran Dosen terlebih dahulu!!!",
-                                type: "info",
-                                showCancelButton: false,
-                                confirmButtonColor: "#DD6B55",
-                                confirmButtonText: "OK",
-                                closeOnConfirm: true
-                            },
-                                function (isConfirm) {
-                                    if (isConfirm) {
-                                        window.location.href = "home.html#!/EvaluasiPembelajaran";
-                                    }
-                                });
+                if (statusMahasiswa) {
+                    var Url = AuthService.Base + "api/PenilaianDosen/CekPenilaianDosen?npm=" + $window.sessionStorage.getItem("Username");
+                    $http({
+                        method: "GET",
+                        url: Url,
+                        headers: AuthService.Header
+                    }).then(function (response) {
+                        if (response.data.message !== "Periode Evaluasi Telah Berakhir") {
+                            if (response.data.message !== "Anda Sudah Melakukan Penilaian Dosen") {
+                                // sessionStorage.clear();
+                                SweetAlert.swal({
+                                    title: "Information!",
+                                    text: "Silahkan Lakukan Evaluasi Pembelajaran Dosen terlebih dahulu!!!",
+                                    type: "info",
+                                    showCancelButton: false,
+                                    confirmButtonColor: "#DD6B55",
+                                    confirmButtonText: "OK",
+                                    closeOnConfirm: true
+                                },
+                                    function (isConfirm) {
+                                        if (isConfirm) {
+                                            window.location.href = "home.html#!/EvaluasiPembelajaran";
+                                        }
+                                    });
+                            }
                         }
+                        if(response.data.photo !== null){
+                            var url = AuthService.Base + 'assets/file/photo/' + response.data.photo;
+                            fileToBase64.convert(url, function (base64Img) {
+                                $scope.Pict = base64Img;
+                            })
+                        }
+                    });
+                } else {
+                    $http({
+                        method: "GET",
+                        url: AuthService.Base+"api/home/getHome?role=Pegawai",
+                        headers: AuthService.Header,
+                    }).then(function (response) {
+                        if(response.data.data[0].photo !== null){
+                            var url = AuthService.Base + 'assets/file/photo/' + response.data.data[0].photo;
+                            fileToBase64.convert(url, function (base64Img) {
+                                $scope.Pict = base64Img;
+                            })
+                        }
+                    })
+                }
+                angular.forEach(a, function (value, key) {
+                    if (value.Nama == "Mahasiswa") {
+                        $scope.RoleMahasiswa = true;
+                        $http({
+                            method: "GET",
+                            url: AuthService.Base + "api/jadwal/jadwalmahasiswa",
+                            headers: getHeader()
+                        }).then(function (response) {
+                            if (response.data.set == 'Krsm') {
+                                $scope.MenuMahasiswa = [
+                                    { 'href': 'PengajuanKRS', 'Text': 'KRS', 'class': 'fa fa-file' },
+                                    { 'href': 'EvaluasiPembelajaran', 'Text': 'Evaluasi Pembelajaran', 'class': 'fa fa-file' }
+                                ]
+                            } else {
+                                $scope.MenuMahasiswa = [
+                                    { 'href': 'PengajuanKRS', 'Text': 'Pengajuan KRS', 'class': 'fa fa-file' },
+                                    { 'href': 'EvaluasiPembelajaran', 'Text': 'Evaluasi Pembelajaran', 'class': 'fa fa-file' }
+                                ]
+                            }
+                        }, error => {
+                            $scope.MenuMahasiswa = [
+                                { 'href': 'PengajuanKRS', 'Text': 'Pengajuan KRS', 'class': 'fa fa-file' }
+                            ]
+                        });
+    
+                    } else if (value.Nama == "Prodi") {
+                        $scope.RoleKaprodi = true;
+                        $scope.MenuKaprodi = [
+                            { 'href': 'ApprovedKRS', 'Text': 'Perwalian', 'SetStatus': value.Nama },
+                            { 'href': 'GradeNilai', 'Text': 'Grade Nilai', 'SetStatus': value.Nama },
+                            { 'href': 'Kurikulum', 'Text': 'Kurikulum', 'SetStatus': value.Nama },
+                            { 'href': 'ConversiKHS', 'Text': 'Conversi KHS', 'SetStatus': value.Nama },
+                            { 'href': 'BeritaAcara', 'Text': 'Berita Acara', 'SetStatus': value.Nama },
+                            { 'href': 'Pengumuman', 'Text': 'Pengumuman', 'SetStatus': value.Nama }
+    
+                        ]
+                    } else if (value.Nama == "Dosen") {
+                        $scope.RoleDosen = true;
+                        $scope.MenuDosen = [
+                            { 'href': 'NilaiMahasiswa', 'Text': 'Input Nilai', 'SetStatus': value.Nama },
+                            { 'href': 'Kurikulum', 'Text': 'Kurikulum', 'SetStatus': value.Nama }
+                        ]
+                    } else if (value.Nama == "Dosen Wali") {
+                        $scope.RoleWali = true;
+                        $scope.MenuWali = [
+                            {
+                                'href': 'ApprovedKRS', 'Text': 'ApprovedKRS', 'SetStatus': value.Nama
+                            },
+                            {
+                                'href': 'MahasiswaWali', 'Text': 'Mahasiswa Wali', 'SetStatus': value.Nama
+                            }
+                        ]
+                    } else if (value.Nama == "Ka Baak") {
+                        $scope.RoleKaBaak = true;
+                        $scope.MenuKaBaak = [
+                            { 'href': 'UserAkses', 'Text': 'User', 'SetStatus': value.Nama },
+                            { 'href': 'Pengumuman', 'Text': 'Pengumuman', 'SetStatus': value.Nama }
+                        ]
+                    } else if (value.Nama == "Keuangan") {
+                        $scope.RoleKeuangan = true;
+                        $scope.MenuKeuangan = [{ 'href': 'ApprovedKRS', 'Text': 'ApprovedKRS', 'SetStatus': value.Nama }, { 'href': 'BeritaAcara', 'Text': 'Berita Acara', 'SetStatus': value.Nama }]
+                    } else if (value.Nama == "Kemahasiswaan") {
+                        $scope.RoleKemahasiswaan = true;
+                        $scope.MenuKemahasiswaan = [{ 'href': 'BidikMisi', 'Text': 'Bidik Misi', 'SetStatus': value.Nama }]
+                    }
+                    else {
+                        $scope.RoleAdmin = true;
                     }
                 });
             }
-            var a = JSON.parse($scope.RoleUser);
-            angular.forEach(a, function (value, key) {
-                if (value.Nama == "Mahasiswa") {
-                    $scope.RoleMahasiswa = true;
-                    $http({
-                        method: "GET",
-                        url: AuthService.Base + "api/jadwal/jadwalmahasiswa",
-                        headers: getHeader()
-                    }).then(function (response) {
-                        if (response.data.set == 'Krsm') {
-                            $scope.MenuMahasiswa = [
-                                { 'href': 'PengajuanKRS', 'Text': 'KRS', 'class': 'fa fa-file' },
-                                { 'href': 'EvaluasiPembelajaran', 'Text': 'Evaluasi Pembelajaran', 'class': 'fa fa-file' }
-                            ]
-                        } else {
-                            $scope.MenuMahasiswa = [
-                                { 'href': 'PengajuanKRS', 'Text': 'Pengajuan KRS', 'class': 'fa fa-file' },
-                                { 'href': 'EvaluasiPembelajaran', 'Text': 'Evaluasi Pembelajaran', 'class': 'fa fa-file' }
-                            ]
-                        }
-                    }, error => {
-                        $scope.MenuMahasiswa = [
-                            { 'href': 'PengajuanKRS', 'Text': 'Pengajuan KRS', 'class': 'fa fa-file' }
-                        ]
-                    });
-
-                } else if (value.Nama == "Prodi") {
-                    $scope.RoleKaprodi = true;
-                    $scope.MenuKaprodi = [
-                        { 'href': 'ApprovedKRS', 'Text': 'Perwalian', 'SetStatus': value.Nama },
-                        { 'href': 'GradeNilai', 'Text': 'Grade Nilai', 'SetStatus': value.Nama },
-                        { 'href': 'Kurikulum', 'Text': 'Kurikulum', 'SetStatus': value.Nama },
-                        { 'href': 'ConversiKHS', 'Text': 'Conversi KHS', 'SetStatus': value.Nama },
-                        { 'href': 'BeritaAcara', 'Text': 'Berita Acara', 'SetStatus': value.Nama },
-                        { 'href': 'Pengumuman', 'Text': 'Pengumuman', 'SetStatus': value.Nama }
-                        
-                    ]
-                } else if (value.Nama == "Dosen") {
-                    $scope.RoleDosen = true;
-                    $scope.MenuDosen = [
-                        { 'href': 'NilaiMahasiswa', 'Text': 'Input Nilai', 'SetStatus': value.Nama },
-                        { 'href': 'Kurikulum', 'Text': 'Kurikulum', 'SetStatus': value.Nama }
-                    ]
-                } else if (value.Nama == "Dosen Wali") {
-                    $scope.RoleWali = true;
-                    $scope.MenuWali = [
-                        {
-                            'href': 'ApprovedKRS', 'Text': 'ApprovedKRS', 'SetStatus': value.Nama
-                        },
-                        {
-                            'href': 'MahasiswaWali', 'Text': 'Mahasiswa Wali', 'SetStatus': value.Nama
-                        }
-                    ]
-                } else if (value.Nama == "Ka Baak") {
-                    $scope.RoleKaBaak = true;
-                    $scope.MenuKaBaak = [
-                        { 'href': 'UserAkses', 'Text': 'User', 'SetStatus': value.Nama },
-                        { 'href': 'Pengumuman', 'Text': 'Pengumuman', 'SetStatus': value.Nama }
-                    ]
-                } else if (value.Nama == "Keuangan") {
-                    $scope.RoleKeuangan = true;
-                    $scope.MenuKeuangan = [{ 'href': 'ApprovedKRS', 'Text': 'ApprovedKRS', 'SetStatus': value.Nama }, { 'href': 'BeritaAcara', 'Text': 'Berita Acara', 'SetStatus': value.Nama }]
-                } else if (value.Nama == "Kemahasiswaan") {
-                    $scope.RoleKemahasiswaan = true;
-                    $scope.MenuKemahasiswaan = [{ 'href': 'BidikMisi', 'Text': 'Bidik Misi', 'SetStatus': value.Nama }]
-                }
-                else {
-                    $scope.RoleAdmin = true;
-                }
-            });
+            
 
 
             $scope.uploadFotoProfile = function (data) {
@@ -419,7 +339,7 @@
             $scope.ProsesLogin = function (response) {
                 $http({
                     method: "POST",
-                    url: AuthService.Base +  "api/users/login",
+                    url: AuthService.Base + "api/users/login",
                     header: {
                         "content-type": "application/json",
                     },
