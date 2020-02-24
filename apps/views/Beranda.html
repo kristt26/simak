@@ -7,14 +7,14 @@
 <section class="content">
     <div class="row" style="padding-left: 20px; padding-right: 20px; margin-top:30px;">
         <div class="col-md-12">
-            <div class="row">
+            <div class="row" style="margin: 20px;">
                 <div class="row">
                     <div class="col-sm-6 col-md-2" ng-click="selected(item)" ng-repeat="item in dataPengumuman"  data-toggle="modal" data-target="#showpic">
                         <div class="thumbnail">
                             <img data-ng-src="{{item.file}}" style="width: fit-content; height: 400px;" data-err-src="images/png/jpg/avatar.png"/>
                             <div class="caption">
                                 <h3>{{item.pengumuman}}</h3>
-                                <p>{{item.keterangan}}</p>
+                                <p style="font-size: 1px !important;">{{item.keterangan}}</p>
                             </div>
                         </div>
                     </div>
