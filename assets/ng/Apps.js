@@ -337,7 +337,7 @@
         ) {
             $scope.DataInput = {};
             $scope.ProsesLogin = function (response) {
-                SweetAlert.swal("Approved!", "Sistem Lagi Maintenance", "success");
+                SweetAlert.swal("Information!", "Sistem Lagi Maintenance", "success");
                 // $http({
                 //     method: "POST",
                 //     url: AuthService.Base + "api/users/login",
