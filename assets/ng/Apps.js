@@ -337,29 +337,29 @@
         ) {
             $scope.DataInput = {};
             $scope.ProsesLogin = function (response) {
-                SweetAlert.swal("Information!", "Sistem Lagi Maintenance", "success");
-                // $http({
-                //     method: "POST",
-                //     url: AuthService.Base + "api/users/login",
-                //     header: {
-                //         "content-type": "application/json",
-                //     },
-                //     data: $scope.DataInput
-                // }).then(function (response) {
-                //     if (response.data.status)
-                //         var Tampung = response.data;
-                //     var j = Tampung.data;
-                //     var Datarole = JSON.stringify(j.RoleUser.Role);
-                //     $window.sessionStorage.setItem("Token", j.Token);
-                //     $window.sessionStorage.setItem("Username", j.Username);
-                //     $window.sessionStorage.setItem("Email", j.Email);
-                //     $window.sessionStorage.setItem("NamaUser", j.NamaUser);
-                //     $window.sessionStorage.setItem("Role", Datarole);
-                //     window.location.href = "home.html";
-                // }, function (error) {
-                //     console.log(error);
-                //     alert(error.data.message);
-                // })
+                // SweetAlert.swal("Information!", "Sistem Lagi Maintenance", "success");
+                $http({
+                    method: "POST",
+                    url: AuthService.Base + "api/users/login",
+                    header: {
+                        "content-type": "application/json",
+                    },
+                    data: $scope.DataInput
+                }).then(function (response) {
+                    if (response.data.status)
+                        var Tampung = response.data;
+                    var j = Tampung.data;
+                    var Datarole = JSON.stringify(j.RoleUser.Role);
+                    $window.sessionStorage.setItem("Token", j.Token);
+                    $window.sessionStorage.setItem("Username", j.Username);
+                    $window.sessionStorage.setItem("Email", j.Email);
+                    $window.sessionStorage.setItem("NamaUser", j.NamaUser);
+                    $window.sessionStorage.setItem("Role", Datarole);
+                    window.location.href = "home.html";
+                }, function (error) {
+                    console.log(error);
+                    alert(error.data.message);
+                })
             }
         })
 
