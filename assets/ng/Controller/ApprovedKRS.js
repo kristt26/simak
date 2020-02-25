@@ -122,7 +122,7 @@
                                     SweetAlert.swal("Approved!", "Your proses krsm has been approved.", "success");
                                     $scope.Histori.push(angular.copy(item));
                                     $scope.TampilJadwal = false;
-                                    $scope.DatasJadwal = [];
+                                    // $scope.DatasJadwal = [];
                                     DataStatus = {};
                                     $scope.Datatampung = [];
                                     $scope.Tombol = false;
@@ -132,7 +132,7 @@
                                     $scope.Histori.push(angular.copy(item));
                                     alert(response.message);
                                     $scope.TampilJadwal = false;
-                                    $scope.DatasJadwal = [];
+                                    // $scope.DatasJadwal = [];
                                     DataStatus = {};
                                     $scope.Datatampung = [];
                                     $scope.jmsks = 0;
