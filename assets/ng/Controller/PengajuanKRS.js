@@ -31,6 +31,7 @@
             $scope.Tombol = true;
             $scope.BatasReg = false;
             $scope.DatasKrsm.DetailKrsm = [];
+            $scope.jmsks;
 
 
             PengajuanService.get().then(response => {
@@ -45,6 +46,48 @@
                     $scope.BatasReg = false;
                     $scope.DatasJadwal = response.data.data;
                     $scope.GetValue = angular.copy($scope.DatasJadwal[0]);
+                    if (response.mahasiswa.kurikulum == "2018") {
+                        if (parseInt(response.semester) + 1 == 2) {
+                            var agama;
+                            if (response.mahasiswa.agama == "Islam") {
+                                agama = "Islam";
+                            } else {
+                                agama = "Kristen";
+                            }
+                            angular.forEach($scope.DatasJadwal, function (value) {
+                                if (parseInt(value.smt) == 2) {
+                                    if (value.nmmk == "PENDIDIKAN AGAMA") {
+                                        if (agama == "Islam" && value.kelas == "A") {
+                                            $scope.jmsks += parseInt(angular.copy(value.sks));
+                                            value.status = false;
+                                            value.ngBinding = "success";
+                                            $scope.DataTampung.push(value);
+                                        } else if (agama == "Kristen" && value.kelas == "B") {
+                                            $scope.jmsks += parseInt(angular.copy(value.sks));
+                                            value.status = false;
+                                            value.ngBinding = "success";
+                                            $scope.DataTampung.push(value);
+                                        }
+                                    } else if(response.mahasiswa.kelas == value.kelas) {
+                                        $scope.jmsks += parseInt(angular.copy(value.sks));
+                                        value.status = false;
+                                        value.ngBinding = "success";
+                                        $scope.DataTampung.push(value);
+                                    }
+                                    // $scope.Tombol = false;
+                                }
+                            })
+                        } else {
+                            angular.forEach($scope.DatasJadwal, function (value) {
+                                if (parseInt(value.smt) == response.semester+1 && response.mahasiswa.kelas == value.kelas) {
+                                    $scope.jmsks += parseInt(angular.copy(value.sks));
+                                    value.status = false;
+                                    value.ngBinding = "success";
+                                    $scope.DataTampung.push(value);
+                                }
+                            })
+                        }
+                    }
                 } else if (response.set == 'TemKrsm') {
 
                     $scope.showJadwal = false;
@@ -59,11 +102,11 @@
                             title: 'Information!',
                             type: 'info',
                             text: 'Pengajuan KRS anda sudah di <strong>' + $scope.DatasTemKrsm.TemKrsm[0].status + '</strong>',
-                            html:true
+                            html: true
                         });
                     Jadwal.get().then(response => {
                         var a = JSON.parse(response.data);
-                        
+
                         $scope.GetValue = angular.copy(a[0]);
                         MahasiswaService.get($scope.DatasTemKrsm.TemKrsm[0].npm).then(response => {
                             a = $filter('filter')(a, function (value) {
@@ -328,6 +371,6 @@
                     SweetAlert.swal("Woi!!!!!! \n Pilih Matakuliah dulu");
                 }
             }
-            
+
         });
 })(window.angular);

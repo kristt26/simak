@@ -190,7 +190,8 @@
         <h3 style="margin-bottom: 20px;">REKAP BERITA ACARA<BR> MENGAJAR DOSEN</h3>
     </center>
     <div ng-repeat="item in DataPrint | orderBy: ['Matakuliah', 'kelas']">
-        <h4 style="margin-top: 20px;">Matakuliah :{{item.Matakuliah}}<br>Dosen :{{item.dosen}} <br> Kelas: {{item.kelas}} <br> Total Pertemuan :{{item.beritaacara.length}}
+        <h4 style="margin-top: 20px;">Matakuliah :{{item.Matakuliah}}<br>Dosen :{{item.dosen}} 
+            <br> Kelas: {{item.kelas}} <br> Total Pertemuan :{{item.beritaacara.length}} <br> Program Studi : {{item.jurusan}}
         </h4>
         <table class="table table-striped table-bordered">
             <thead>
