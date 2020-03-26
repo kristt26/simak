@@ -4,7 +4,7 @@
     .factory("BaService", function($q, AuthService, $http){
         var service = {};
             service.data = [];
-            function laporan() {
+            function getlaporan() {
                 var deferred = $q.defer();
                 $http({
                     method: "GET",
@@ -21,6 +21,25 @@
                 })
                 return deferred.promise;
             }
+
+            function laporan() {
+                var deferred = $q.defer();
+                $http({
+                    method: "GET",
+                    url: AuthService.Base+"api/BeritaAcara/laporan",
+                    headers: AuthService.Header
+                }).then(function (response) {
+                    service.data = [];
+                    service.data = response.data.data;
+                    service.instance = true;
+                    deferred.resolve(service.data);
+                }, function (error) {
+                    // console.log(error);
+                    deferred.reject(error);
+                })
+                return deferred.promise;
+            }
+
             function persetujuan() {
                 var deferred = $q.defer();
                 $http({
@@ -107,6 +126,6 @@
                 })
                 return deferred.promise;
             }
-            return { getlaporan: laporan, getPersetujuan: persetujuan, putPersetujuan: ubahpersetujuan, putRekap: rekapBa, deleteBa: HapusBa, addBA: TambahBA};
+            return { getlaporan: getlaporan, getPersetujuan: persetujuan, putPersetujuan: ubahpersetujuan, putRekap: rekapBa, deleteBa: HapusBa, addBA: TambahBA, laporan:laporan};
     });
 })(window.angular);

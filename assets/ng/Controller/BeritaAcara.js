@@ -6,6 +6,7 @@
             //     allowClear:true
             // };
             $scope.DatasBa = [];
+            $scope.DatasLaporan = [];
             $scope.DatasPersetujuan = [];
             $scope.Cari = "";
             $scope.Hide = true;
@@ -29,8 +30,9 @@
                         $scope.DataPrint.push(angular.copy(value));
                     }
                 })
-            }, error => {
-                console.log(error);
+                BaService.laporan().then(laporan=>{
+                    $scope.DatasLaporan=laporan
+                })
             });
 
             MatakuliahService.getMatakuliah().then(response => {
@@ -182,6 +184,15 @@
                 popupWinindow.document.write('<html><head><link href="assets/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"><link href="assets/dist/css/AdminLTE.min.css" rel="stylesheet"><link href="assets/dist/css/skins/_all-skins.min.css" rel="stylesheet"></head><body onload="window.print()"><div>' + innerContents + '</html>');
                 popupWinindow.document.close();
             }
+
+            $scope.Printlaporan = function (LaporanBa) {
+                var innerContents = document.getElementById(LaporanBa).innerHTML;
+                var popupWinindow = window.open('', '_blank', 'width=600,height=700,scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=no');
+                popupWinindow.document.open();
+                popupWinindow.document.write('<html><head><link href="assets/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"><link href="assets/dist/css/AdminLTE.min.css" rel="stylesheet"><link href="assets/dist/css/skins/_all-skins.min.css" rel="stylesheet"></head><body onload="window.print()"><div>' + innerContents + '</html>');
+                popupWinindow.document.close();
+            }
+
             $scope.toExcell = function (item) {
                 var htmltable = document.getElementById(item);
                 var html = htmltable.outerHTML;
