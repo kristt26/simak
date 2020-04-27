@@ -12,11 +12,11 @@
                 var file = $scope.myFile;
                 console.log('file is ');
                 console.dir(file);
-                var uploadUrl = fileUpload.upload(file).then(response => {
-                    var a = response;
-                }, function (error) {
-                    console.log(error);
-                });
+                // var uploadUrl = fileUpload.upload(file).then(response => {
+                //     var a = response;
+                // }, function (error) {
+                //     console.log(error);
+                // });
             };
             
         });

@@ -59,9 +59,6 @@
                 $scope.NPMSelected = item.npm;
                 $scope.TampilJadwal = true;
                 $scope.DatasTampil = angular.copy($scope.DatasJadwal);
-                // $scope.DatasTampil = $filter('filter')(angular.copy($scope.DatasJadwal), function (value) {
-                //     return value.kelas === item.kelas;
-                // });
                 $scope.Datatampung = item.detailTemKrsm[0];
                 var data = {};
                 data.npm = item.npm;
@@ -86,19 +83,10 @@
                             value.wm = value1.wm;
                             value.ws = value1.ws;
                             value.dsn_saji = value1.dsn_saji;
-                            // value1.status = true;
-                            // value1.ngBinding = "success";
                         }
                     });
                 });
             }
-
-            // $scope.Pilih = function (item) {
-            //     $http({
-            //         method: "POST",
-
-            //     })
-            // }
             $scope.Approved = function (item) {
                 $scope.Tombol = true;
                 if ($scope.jmsks != NaN) {
@@ -122,7 +110,6 @@
                                     SweetAlert.swal("Approved!", "Your proses krsm has been approved.", "success");
                                     $scope.Histori.push(angular.copy(item));
                                     $scope.TampilJadwal = false;
-                                    // $scope.DatasJadwal = [];
                                     DataStatus = {};
                                     $scope.Datatampung = [];
                                     $scope.Tombol = false;
@@ -132,7 +119,6 @@
                                     $scope.Histori.push(angular.copy(item));
                                     alert(response.message);
                                     $scope.TampilJadwal = false;
-                                    // $scope.DatasJadwal = [];
                                     DataStatus = {};
                                     $scope.Datatampung = [];
                                     $scope.jmsks = 0;

@@ -150,8 +150,8 @@
             var service = {};
             service.Token = $window.sessionStorage.getItem("Token");
             service.Header = getHeader();
-            // service.Base = "http://localhost/RestSimak/";
-            service.Base = "https://www.restsimak.stimiksepnop.ac.id/";
+            service.Base = "http://localhost/RestSimak/";
+            // service.Base = "https://www.restsimak.stimiksepnop.ac.id/";
             function getHeader() {
                 var header = {
                     "content-type": "application/json",
@@ -298,7 +298,8 @@
                         $scope.RoleKaBaak = true;
                         $scope.MenuKaBaak = [
                             { 'href': 'UserAkses', 'Text': 'User', 'SetStatus': value.Nama },
-                            { 'href': 'Pengumuman', 'Text': 'Pengumuman', 'SetStatus': value.Nama }
+                            { 'href': 'Pengumuman', 'Text': 'Pengumuman', 'SetStatus': value.Nama },
+                            { 'href': 'BeritaAcara', 'Text': 'Berita Acara', 'SetStatus': value.Nama }
                         ]
                     } else if (value.Nama == "Keuangan") {
                         $scope.RoleKeuangan = true;

@@ -7,12 +7,10 @@
         <div class="row" style="padding-left: 20px;">
             <div class="row">
                 <div class="col-md-12">
-                    <!-- Custom Tabs -->
                     <div class="nav-tabs-custom">
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="" data-target="#persetujuan" data-toggle="tab">Persetujuan</a></li>
                             <li><a href="" data-target="#histori" data-toggle="tab">Histori</a></li>
-                            <!-- <li><a href="" data-target="#tab_1" data-toggle="tab">Laporan</a></li> -->
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane active" id="persetujuan">
@@ -93,7 +91,6 @@
             <ul class="nav nav-tabs">
                 <li class="active"><a href="" data-target="#persetujuanWali" data-toggle="tab">Persetujuan</a></li>
                 <li><a href="" data-target="#historiWali" data-toggle="tab">Histori</a></li>
-                <!-- <li><a href="" data-target="#tab_1" data-toggle="tab">Laporan</a></li> -->
             </ul>
             <div class="tab-content">
                 <div class="tab-pane active" id="persetujuanWali">
@@ -162,8 +159,6 @@
     </div>
 </div>
 
-
-
 <div ng-show="TampilJadwal">
     <div class="box">
         <div class="box-header with-border">
@@ -199,7 +194,6 @@
             </div>
 
         </div>
-        <!-- /.box-body -->
         <div class="box-footer clearfix">
             <button type="submit" class="btn btn-default" disabled><b>Total SKS Tempuh:
                     {{KemajuanStudi.SKS}}</b></button>
@@ -207,7 +201,6 @@
                 {{KemajuanStudi.IPK}}
             </button>
         </div>
-        <!-- /.box-footer-->
     </div>
     <div class="box">
         <div class="box-header with-border">
@@ -243,7 +236,6 @@
             </div>
 
         </div>
-        <!-- /.box-body -->
         <div class="box-footer clearfix">
             <div class="box-header with-border">
                 <button type="submit" class="btn btn-default" disabled><b>Total SKS: {{jmsks}}</b></button>
@@ -258,10 +250,7 @@
                     </div>
                 </div>
             </div>
-            <!-- <button type="button" class="pull-right btn btn-default" id="Send" ng-click="AjukanKRS()">Ajukan KRS
-                                  <i class="fa fa-arrow-circle-right"></i></button> -->
         </div>
-        <!-- /.box-footer-->
     </div>
 
 
@@ -281,7 +270,6 @@
                             <th>Ruangan</th>
                             <th>Waktu Kuliah</th>
                             <th>Dosen Pengampuh</th>
-                            <!-- <th>Action</th> -->
                         </tr>
                     </thead>
                     <tbody>
@@ -293,8 +281,6 @@
                             <td>{{item.ruangan}}</td>
                             <td>{{item.hari}},&nbsp;{{item.wm}}-{{item.ws}}</td>
                             <td>{{item.dsn_saji}}</td>
-                            <!-- <td><button type="button" class="btn btn-default" ng-click="HapusPilihan(item)"><i
-                                        class="fa fa-remove"></i></button></td> -->
                         </tr>
                     </tbody>
                 </table>
@@ -302,13 +288,8 @@
             </div>
 
         </div>
-        <!-- /.box-body -->
         <div class="box-footer clearfix">
             <button type="submit" class="btn btn-default" disabled><b>Total SKS: {{jmsks}}</b></button>
-            <!-- <button type="button" class="pull-right btn btn-default" id="Send" ng-click="AjukanKRS()">Ajukan KRS
-                <i class="fa fa-arrow-circle-right"></i></button> -->
         </div>
-        <!-- /.box-footer-->
     </div>
-    <!-- /.box -->
 </div>
