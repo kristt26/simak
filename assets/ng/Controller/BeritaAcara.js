@@ -23,6 +23,7 @@
             $scope.Input.izin = 0;
             $scope.ShowDetailDosen = false;
             $scope.TanggalInput;
+            $scope.TanggalLaporan = new Date();
             BaService.getlaporan().then(response => {
                 $scope.DatasBa = response.data;
                 angular.forEach($scope.DatasBa, function (value, key) {
