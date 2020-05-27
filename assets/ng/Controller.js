@@ -25,7 +25,8 @@
         "MahasiswaWali",
         "BeritaAcara",
         "EvaluasiPembelajaran",
-        "UserAkses"
+        "UserAkses",
+        "TagihanPembayaran"
     ]);
     app.config(['cfpLoadingBarProvider', function (cfpLoadingBarProvider) {
         cfpLoadingBarProvider.parentSelector = '#loading-bar-container';

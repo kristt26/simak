@@ -101,6 +101,11 @@
                     templateUrl: "apps/views/PengajuanKRS.html",
                     controller: "PengajuanKRSController"
                 })
+                .state("Tagihan", {
+                    url: "/Tagihan",
+                    templateUrl: "apps/views/Tagihan.html",
+                    controller: "TagihanController"
+                })
                 .state("Laporan", {
                     url: "/Laporan",
                     templateUrl: "apps/views/Laporan.html",
@@ -253,12 +258,14 @@
                             if (response.data.set == 'Krsm') {
                                 $scope.MenuMahasiswa = [
                                     { 'href': 'PengajuanKRS', 'Text': 'KRS', 'class': 'fa fa-file' },
-                                    { 'href': 'EvaluasiPembelajaran', 'Text': 'Evaluasi Pembelajaran', 'class': 'fa fa-file' }
+                                    { 'href': 'EvaluasiPembelajaran', 'Text': 'Evaluasi Pembelajaran', 'class': 'fa fa-check' },
+                                    { 'href': 'Tagihan', 'Text': 'Tagihan Pembayaran', 'class': 'fa fa-money' }
                                 ]
                             } else {
                                 $scope.MenuMahasiswa = [
                                     { 'href': 'PengajuanKRS', 'Text': 'Pengajuan KRS', 'class': 'fa fa-file' },
-                                    { 'href': 'EvaluasiPembelajaran', 'Text': 'Evaluasi Pembelajaran', 'class': 'fa fa-file' }
+                                    { 'href': 'EvaluasiPembelajaran', 'Text': 'Evaluasi Pembelajaran', 'class': 'fa fa-check' },
+                                    { 'href': 'Tagihan', 'Text': 'Tagihan Pembayaran', 'class': 'fa fa-money' }
                                 ]
                             }
                         }, error => {
