@@ -48,7 +48,7 @@
                     $scope.gg = "GENAP";
                 }
     
-                var Url = "http://restsimak.stimiksepnop.ac.id/api/sksMahasiswa/AmbilSks?npm=" + $window.sessionStorage.getItem("Username") + "&thakademik=" + $scope.thakademik + "&gg=" + $scope.gg;
+                var Url = "https://restsimak.stimiksepnop.ac.id/api/sksMahasiswa/AmbilSks?npm=" + $window.sessionStorage.getItem("Username") + "&thakademik=" + $scope.thakademik + "&gg=" + $scope.gg;
                 $http({
                     method: "GET",
                     url: Url,
