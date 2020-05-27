@@ -11,7 +11,7 @@
                 var settings = {
                     "async": true,
                     "crossDomain": true,
-                    "url": "http://stimik.ip-dynamic.com:8081/keuangan/api/datas/read/ReadDataPembayaran.php?npm=" + $window.sessionStorage.getItem("Username"),
+                    "url": "https://www.keuangan.stimiksepnop.ac.id/api/datas/read/ReadDataPembayaran.php?npm=" + $window.sessionStorage.getItem("Username"),
                     "method": "GET",
                     "headers": {}
                   }
