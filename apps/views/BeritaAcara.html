@@ -71,10 +71,10 @@
                         </div>
                         <!-- /.tab-pane -->
                         <div class="tab-pane active" id="tab_2">
-                            <button class="btn btn-primary pull-right" ng-click="PrintBA('LaporanBa')">Print Laporan</button>
-                            <button class="btn btn-primary pull-right" ng-click="PrintBA('DaftarBa')">Print</button>
-                            <button class="btn btn-primary pull-right" ng-click="toExcell('DaftarBa')">to Excell</button>
-                            <button class="btn btn-primary pull-right" ng-click="Rekap('DaftarBa')">Rekap</button>
+                            <button ng-if="ClearItem" class="btn btn-primary pull-right" ng-click="PrintBA('LaporanBa')">Print Laporan</button>
+                            <button ng-if="ClearItem" class="btn btn-primary pull-right" ng-click="PrintBA('DaftarBa')">Print</button>
+                            <button ng-if="ClearItem" class="btn btn-primary pull-right" ng-click="toExcell('DaftarBa')">to Excell</button>
+                            <button ng-if="ClearItem" class="btn btn-primary pull-right" ng-click="Rekap('DaftarBa')">Rekap</button>
                             <table datatable="ng" class="table table-bordered table-hover">
                                 <thead>
                                     <tr>
@@ -86,7 +86,7 @@
                                         <th style="width: 35%;">Materi</th>
                                         <th>Hadir</th>
                                         <th>Status</th>
-                                        <th style="width: 10%;">Action</th>
+                                        <th ng-if="ClearItem" style="width: 10%;">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -113,7 +113,7 @@
                                         <td>
                                             {{ba.persetujuan1}}
                                         </td>
-                                        <td>
+                                        <td ng-if="ClearItem" >
                                             <button ng-show="ba.persetujuan1==null" class="btn btn-warning"
                                                 ng-click="Setujui(ba)">Setujui</button>
                                             <button ng-show="ba.persetujuan1==null" class="btn btn-danger"

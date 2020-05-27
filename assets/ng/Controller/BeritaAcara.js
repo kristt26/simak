@@ -1,10 +1,11 @@
 (function (angular) {
     'use strict'
     angular.module('BeritaAcara', ['BeritaAcaraDirective', 'JadwalDirectives', 'MatakuliahDirective'])
-        .controller('BeritaAcaraController', function ($scope, BaService, $compile, DTOptionsBuilder, DTColumnBuilder, $state, DTColumnDefBuilder, $window, SweetAlert, Jadwal, MatakuliahService) {
+        .controller('BeritaAcaraController', function ($scope, BaService, $compile, DTOptionsBuilder, DTColumnBuilder, $state, DTColumnDefBuilder, $window, SweetAlert, Jadwal, MatakuliahService, AuthRole) {
             // $scope.select2Options = {
             //     allowClear:true
             // };
+            $scope.ClearItem = AuthRole.Role;
             $scope.DatasBa = [];
             $scope.DatasLaporan = [];
             $scope.DatasPersetujuan = [];

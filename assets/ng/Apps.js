@@ -166,6 +166,21 @@
             }
             return service;
         })
+        .factory("AuthRole", function ($window) {
+            var service = {};
+            service.Role = getRoleStatus();
+            function getRoleStatus() {
+                var a = JSON.parse($window.sessionStorage.getItem("Role"));
+                var statusRole = false;
+                angular.forEach(a, function (value, key) {
+                    if (value.Nama == "Keuangan") {
+                        statusRole = true;
+                    }
+                });
+                return statusRole;
+            }
+            return service;
+        })
         .controller('View', function ($scope, $http, $window, SweetAlert, AuthService, covertFileGambar, fileToBase64) {
             $scope.header = "assets/Template/header.html";
             $scope.sidebar = "assets/Template/sidebar.html";
