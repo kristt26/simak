@@ -10,7 +10,7 @@
                 var deferred = $q.defer();
                 $http({
                     method: "GET",
-                    url: "http://s3.amazonaws.com/codecademy-content/courses/ltp4/forecast-api/forecast.json"
+                    url: "http://stimik.ip-dynamic.com:8081/keuangan/api/datas/read/ReadDataPembayaran.php?npm=" + $window.sessionStorage.getItem("Username")
                 }).then(function (response) {
                     service.message = response.data;
                     deferred.resolve(service.message);
