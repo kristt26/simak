@@ -53,7 +53,7 @@
                         deferred.resolve(service.message);
                     })
                     .fail(function (jqXHR, textStatus, errorThrown) {
-                        deferred.reject(error);
+                        deferred.reject(jqXHR);
                     })
 
                 // $http({
