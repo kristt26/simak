@@ -50,9 +50,13 @@
                 $.ajax(settings).done(function (response) {
                     service.message = response;
                     deferred.resolve(service.message);
-                }, error(function (err) {
-                    deferred.reject(err);
-                }));
+                })
+                .fail(function(xhr, status, error) {
+                    //Ajax request failed.
+                    var errorMessage = xhr.status + ': ' + xhr.statusText
+                    console.log(errorMessage);
+                    deferred.reject(error);
+                ;
 
                 // $http({
                 //     method: "POST",
