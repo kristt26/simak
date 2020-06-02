@@ -36,37 +36,37 @@
             function Simpan(item) {
                 var deferred = $q.defer();
                 item.NPM = AuthService.dataUser.Username;
-                var settings = {
-                    "async": true,
-                    "crossDomain": true,
-                    "url": "https://keuangan.stimiksepnop.ac.id/api/datas/create/UploadTransaksiBayar.php",
-                    "method": "POST",
-                    "headers": {
-                        "content-type": "application/json"
-                    },
-                    "data": item
-                }
+                // var settings = {
+                //     "async": true,
+                //     "crossDomain": true,
+                //     "url": "http://localhost/keuangan/api/datas/create/UploadTransaksiBayar.php",
+                //     "method": "POST",
+                //     "headers": {
+                //         "content-type": "application/json"
+                //     },
+                //     "data": item
+                // }
 
-                $.ajax(settings)
-                    .done(function (response) {
-                        service.message = response;
-                        deferred.resolve(service.message);
-                    })
-                    .fail(function (jqXHR, textStatus, errorThrown) {
-                        deferred.reject(jqXHR);
-                    })
+                // $.ajax(settings)
+                //     .done(function (response) {
+                //         service.message = response;
+                //         deferred.resolve(service.message);
+                //     })
+                //     .fail(function (jqXHR, textStatus, errorThrown) {
+                //         deferred.reject(jqXHR);
+                //     })
 
-                // $http({
-                //     method: "POST",
-                //     url: "https://keuangan.stimiksepnop.ac.id/api/datas/create/CreatePembayaranByMhs.php",
-                //     data: item
-                // }).then(function (response) {
-                //     service.message = response.data;
-                //     deferred.resolve(service.message);
-                // }, function (error) {
-                //     // console.log(error);
-                //     deferred.reject(error);
-                // })
+                $http({
+                    method: "POST",
+                    url: "https://keuangan.stimiksepnop.ac.id/api/datas/create/CreatePembayaranByMhs.php",
+                    data: item
+                }).then(function (response) {
+                    service.message = response.data;
+                    deferred.resolve(service.message);
+                }, function (error) {
+                    // console.log(error);
+                    deferred.reject(error);
+                })
                 return deferred.promise;
             }
             function TahunAkademik() {
