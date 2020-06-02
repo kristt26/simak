@@ -14,12 +14,12 @@
                     "url": "https://www.keuangan.stimiksepnop.ac.id/api/datas/read/ReadDataPembayaran.php?npm=" + $window.sessionStorage.getItem("Username"),
                     "method": "GET",
                     "headers": {}
-                  }
-                  
-                  $.ajax(settings).done(function (response) {
+                }
+
+                $.ajax(settings).done(function (response) {
                     service.message = response;
                     deferred.resolve(service.message);
-                  });
+                });
                 // $http({
                 //     method: "GET",
                 //     url: "http://stimik.ip-dynamic.com:8081/keuangan/api/datas/read/ReadDataPembayaran.php?npm=" + $window.sessionStorage.getItem("Username")
@@ -34,23 +34,41 @@
             }
 
             function Simpan(item) {
-              var deferred = $q.defer();
-              item.NPM = AuthService.dataUser.Username;
-                $http({
-                    method: "POST",
-                    url: "https://keuangan.stimiksepnop.ac.id/api/datas/create/CreatePembayaranByMhs.php",
-                    data: item
-                }).then(function (response) {
-                    service.message = response.data;
+                var deferred = $q.defer();
+                item.NPM = AuthService.dataUser.Username;
+                var settings = {
+                    "async": true,
+                    "crossDomain": true,
+                    "url": "https://keuangan.stimiksepnop.ac.id/api/datas/create/CreatePembayaranByMhs.php",
+                    "method": "POST",
+                    "headers": {
+                        "content-type": "application/json"
+                    },
+                    "data": item
+                }
+
+                $.ajax(settings).done(function (response) {
+                    service.message = response;
                     deferred.resolve(service.message);
-                }, function (error) {
-                    // console.log(error);
-                    deferred.reject(error);
-                })
+                }, error(function (err) {
+                    deferred.reject(err);
+                }));
+
+                // $http({
+                //     method: "POST",
+                //     url: "https://keuangan.stimiksepnop.ac.id/api/datas/create/CreatePembayaranByMhs.php",
+                //     data: item
+                // }).then(function (response) {
+                //     service.message = response.data;
+                //     deferred.resolve(service.message);
+                // }, function (error) {
+                //     // console.log(error);
+                //     deferred.reject(error);
+                // })
                 return deferred.promise;
             }
             function TahunAkademik() {
-              var deferred = $q.defer();
+                var deferred = $q.defer();
                 $http({
                     method: "GET",
                     url: "https://keuangan.stimiksepnop.ac.id/api/datas/read/ReadTA.php",
@@ -67,6 +85,6 @@
                 return deferred.promise;
             }
 
-            return { get: getAction, post:Simpan, GetTA:TahunAkademik};
+            return { get: getAction, post: Simpan, GetTA: TahunAkademik };
         }]);
 })(window.angular);
