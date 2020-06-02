@@ -39,7 +39,7 @@
                 var settings = {
                     "async": true,
                     "crossDomain": true,
-                    "url": "https://keuangan.stimiksepnop.ac.id/api/datas/create/CreatePembayaranByMhs.php",
+                    "url": "https://keuangan.stimiksepnop.ac.id/api/datas/create/UploadTransaksiBayar.php",
                     "method": "POST",
                     "headers": {
                         "content-type": "application/json"
