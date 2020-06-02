@@ -100,6 +100,7 @@
             function convertToBase64(url, callback) {
                 var img = new Image();
                 img.crossOrigin = 'Anonymous';
+                img.addEventListener("load", imageReceived, false);
                 img.onload = function () {
                     var canvas = document.createElement('CANVAS');
                     var ctx = canvas.getContext('2d');
