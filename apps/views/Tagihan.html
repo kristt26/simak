@@ -1,63 +1,128 @@
+<section class="content-header">
+    <h1 style="color: white;">
+        TAGIHAN KEUANGAN
+    </h1>
+</section>
 
-<!-- Main content -->
 <section class="content">
+    <div class="row" style="padding-left: 20px;">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Custom Tabs -->
+                <div class="nav-tabs-custom">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="" data-target="#info" data-toggle="tab">Info Tagihan</a></li>
+                        <li><a href="" data-target="#verify" data-toggle="tab" ng-click="GetTahunAjaran()">Confirm Pembayaran</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="info">
+                            <div class="box-group" id="accordion">
+                                <h4><b>Informasi Tagihan Keuangan</b></h4>
+                                <div class="line-head" style="margin-bottom:15px;">
+                                </div>
+                                <div class="bs-component">
+                                    <div data-loading></div>
+                                    <div class="table-responsive" ng-show="ShowDetailPembayaran"
+                                        ng-hide="HideDetailPembayaran">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th style="text-align:center;">Tahun Akademik</th>
+                                                    <th style="text-align:center;">Total Pembayar</th>
+                                                    <th style="text-align:center;">Total Dibayar</th>
+                                                    <th style="text-align:center;">Tunggakan</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="item in DataInformation.MasterBayar">
+                                                    <td>{{item.TA}}</td>
+                                                    <td style="text-align:right;"><a href="" id="modal-865424"
+                                                            data-toggle="modal" data-target="#DetailTotalTagihan"
+                                                            title="Detail Tagihan" ng-click="ShowDataTagihan(item)">{{item.Total
+                                                    | currency:"Rp. ":0}}</a></td>
+                                                    <td style="text-align:right;"><a href="" id="modal-865424"
+                                                            ng-click="ShowDataPembayaran(item)" data-toggle="modal"
+                                                            data-target="#DetailTotalBayar" title="Detail Pembayaran">{{item.Bayar
+                                                    | currency:"Rp. ":0}}</a></td>
+                                                    <td style="text-align:right;">{{item.Tunggakan | currency:"Rp.
+                                                ":0}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><b>Total</b></td>
+                                                    <td style="text-align:right;"><b>{{DataTotal.Total | currency:"Rp.
+                                                    ":0}}</b></td>
+                                                    <td style="text-align:right;"><b>{{DataTotal.Bayar | currency:"Rp.
+                                                    ":0}}</b></td>
+                                                    <td style="text-align:right;"><b>{{DataTotal.Tunggakan |
+                                                    currency:"Rp. ":0}}</b></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="line-head">
+                                </div>
+                            </div>
 
-    <!-- Default box -->
-    <div class="box">
-        <div class="box-body">
-            <div class="card border-primary col-md-12">
-                <div class="card-body">
-                    <h4><b>Informasi Tagihan Keuangan</b></h4>
-                    <div class="line-head" style="margin-bottom:15px;">
-                    </div>
-                    <div class="bs-component">
-                        <div data-loading></div>
-                        <div class="table-responsive" ng-show="ShowDetailPembayaran"
-                            ng-hide="HideDetailPembayaran">
-                            <table class="table table-bordered">
+                        </div>
+                        <!-- /.tab-pane -->
+                        <div class="tab-pane" id="verify">
+                            <button class="btn btn-primary pull-right" ng-click="Form('Tambah')"
+                                title="Tambah Pembayaran"><i class="fa fa-plus"></i></button>
+                            <table datatable="ng" class="table table-bordered table-hover">
                                 <thead>
                                     <tr>
-                                        <th style="text-align:center;">Tahun Akademik</th>
-                                        <th style="text-align:center;">Total Pembayar</th>
-                                        <th style="text-align:center;">Total Dibayar</th>
-                                        <th style="text-align:center;">Tunggakan</th>
+                                        <th>No</th>
+                                        <th>Thn. Akademik</th>
+                                        <th>Tanggal Bayar</th>
+                                        <th>Total Bayar</th>
+                                        <th>Deskripsi</th>
+                                        <th>Berkas</th>
+                                        <th>Status</th>
+                                        <!-- <th>Action</th> -->
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr ng-repeat="item in DataInformation.MasterBayar">
-                                        <td>{{item.TA}}</td>
-                                        <td style="text-align:right;"><a href="" id="modal-865424"
-                                                data-toggle="modal" data-target="#DetailTotalTagihan"
-                                                title="Detail Tagihan" ng-click="ShowDataTagihan(item)">{{item.Total
-                                                | currency:"Rp. ":0}}</a></td>
-                                        <td style="text-align:right;"><a href="" id="modal-865424"
-                                                ng-click="ShowDataPembayaran(item)" data-toggle="modal"
-                                                data-target="#DetailTotalBayar" title="Detail Pembayaran">{{item.Bayar
-                                                | currency:"Rp. ":0}}</a></td>
-                                        <td style="text-align:right;">{{item.Tunggakan | currency:"Rp.
-                                            ":0}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td><b>Total</b></td>
-                                        <td style="text-align:right;"><b>{{DataTotal.Total | currency:"Rp.
-                                                ":0}}</b></td>
-                                        <td style="text-align:right;"><b>{{DataTotal.Bayar | currency:"Rp.
-                                                ":0}}</b></td>
-                                        <td style="text-align:right;"><b>{{DataTotal.Tunggakan |
-                                                currency:"Rp. ":0}}</b></td>
+                                    <tr ng-repeat="item in pembayaranMahasiswa | orderBy:'-IdTrxBayar'">
+                                        <td>{{$index + 1}}</td>
+                                        <td>
+                                            {{item.TA}}
+                                        </td>
+                                        <td>
+                                            {{item.TglBayar}}
+                                        </td>
+                                        <td>
+                                            {{item.JumlahBayar}}
+                                        </td>
+                                        <td>
+                                            {{item.Description}}
+                                        </td>
+                                        <td>
+                                            <a ng-if="item.file" href="" ng-click="selected(item)" data-toggle="modal" data-target="#TampilGambar"><img ng-src="{{item.file}}" width="70px" height="70px" class="img-responsive "/></a>
+                                        </td>
+                                        <td>
+                                            {{item.Status}}
+                                        </td>
+                                        <!-- <td>
+                                            <button ng-if="item.Status != 'Konfirmasi'" class="btn btn-warning" ng-click="Setujui(item)">Ubah</button>
+                                            <button ng-if="item.Status != 'Konfirmasi'" class="btn btn-danger" ng-click="Hapus(item)">Hapus</button>
+                                        </td> -->
                                     </tr>
                                 </tbody>
                             </table>
+
+
+
                         </div>
-                    </div>
-                    <div class="line-head">
+                        
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
-<div class="modal modal-danger fade" id="DetailTotalTagihan" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal modal-danger fade" id="DetailTotalTagihan" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -136,7 +201,59 @@
     </div>
 </div>
 
-<div class="modal modal-danger fade" id="DetailTotalBayar" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal modal-danger fade" id="TambahPembayaran" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="myModalLabel">
+                    {{title}}
+                </h5>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <form role="form" ng-submit="Simpan()">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label>Tahun Ajaran</label>
+                                <select ui-select2 ng-model="model.TA" ng-change="GetDataDosen()" class="form-control select2" class="form-control">
+                                    <option>Pilih Tahun Ajaran</option>
+                                    <option ng-repeat="item in TA"  value="{{item.TA}}">{{item.TA}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Tanggal Bayar</label>
+                                <input type="text" class="form-control" ng-model="model.TglBayar" id="startpublish" datepicker="" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Total Bayar</label>
+                                <input type="number" class="form-control" ng-model="model.JumlahBayar">
+                            </div>
+                            <div class="form-group">
+                                <label>File Bukti Pembayaran</label>
+                                <input type = "file" class="form-control" file-model = "model.MyFile" accept="image/png, image/jpeg" required>
+                                    <p class="help-block" style="color: white;">Berkas png, jpg max size 2MB</p>
+                            </div>
+                            <div class="form-group">
+                                <label>Keterangan Pembayaran</label>
+                                <textarea rows="3" class="form-control" ng-model="model.Description"></textarea>
+                            </div>
+                        </div>
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-primary">Ajukan</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal modal-danger fade" id="DetailTotalBayar" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -177,5 +294,10 @@
                 </button>
             </div>
         </div>
+    </div>
+</div>
+<div class="modal modal-info fade" id="TampilGambar">
+    <div class="modal-dialog">
+        <img data-ng-src="{{File}}" width="100%" data-err-src="images/png/avatar.png"/>
     </div>
 </div>

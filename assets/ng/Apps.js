@@ -10,7 +10,9 @@
         "ui.toggle", 
         "ngSanitize", 
         "datatables", 
-        "ngResource"
+        "ngResource",
+        "ui.bootstrap",
+        "ngLocale"
     ])
         .config(function ($stateProvider, $urlRouterProvider) {
             $urlRouterProvider.otherwise('Beranda');
@@ -155,6 +157,7 @@
             var service = {};
             service.Token = $window.sessionStorage.getItem("Token");
             service.Header = getHeader();
+            service.dataUser = getUser();
             // service.Base = "http://localhost/RestSimak/";
             service.Base = "https://www.restsimak.stimiksepnop.ac.id/";
             function getHeader() {
@@ -163,6 +166,16 @@
                     "authorization": service.Token
                 }
                 return header;
+            }
+            function getUser(){
+                var user = {
+                    "Username" : $window.sessionStorage.getItem("Username"),
+                    "Token" : $window.sessionStorage.getItem("Token"),
+                    "Role" : JSON.parse($window.sessionStorage.getItem("Role")),
+                    "Email" : $window.sessionStorage.getItem("Email"),
+                    "Name" : $window.sessionStorage.getItem("NamaUser")
+                }
+                return user;
             }
             return service;
         })

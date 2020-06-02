@@ -36,7 +36,26 @@
                 })
                 return deferred.promise;
             }
-            return { upload: uploadFileToUrl };
+
+            function uploadTrxBayar(file) {
+                var deferred = $q.defer();
+                var fd = new FormData();
+                fd.append('file', file);
+                $http({
+                    method: "POST",
+                    url: 'https://keuangan.stimiksepnop.ac.id/api/datas/create/UploadTransaksiBayar.php',
+                    data: fd,
+                    headers: { 'Content-Type': undefined }
+                }).then(function (response) {
+                    service.namaFile = response.data.Berkas;
+                    deferred.resolve(service.namaFile);
+                }, function (error) {
+                    // console.log(error);
+                    deferred.reject(error);
+                })
+                return deferred.promise;
+            }
+            return { upload: uploadFileToUrl, uploadbayar: uploadTrxBayar };
         })
         .service('fileDelete', function ($http, AuthService, $q) {
             var service = {};

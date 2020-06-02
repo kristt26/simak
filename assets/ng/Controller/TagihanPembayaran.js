@@ -1,9 +1,12 @@
 (function (angular) {
     'use strict'
     angular.module('TagihanPembayaran', ['TagihanDirectives'])
-        .controller('TagihanController', function ($scope, tagihankeuangan, $http, $window) {
+        .controller('TagihanController', function ($scope, tagihankeuangan, $http, $window, fileUpload, fileDelete, $sce, SweetAlert, AuthService, fileToBase64) {
             $scope.DataTotal = {};
-            $scope.DataPembayaran={};
+            $scope.DataPembayaran = {};
+            $scope.pembayaranMahasiswa = [];
+            $scope.File;
+            $scope.TA;
             tagihankeuangan.get().then(tagihan => {
                 $scope.DataPembayaran = tagihan;
                 $scope.DataInformation = [];
@@ -19,7 +22,16 @@
                     angular.forEach(value1.BayarKhusus, function (value2) {
                         $scope.DataBayarKhusus += parseInt(angular.copy(value2.Nominal));
                     })
-
+                    value1.TrxBayar.forEach(itembayar => {
+                        if(itembayar.Berkas){
+                            var a = "https://keuangan.stimiksepnop.ac.id/assets/berkas/" + angular.copy(itembayar.Berkas);
+                            fileToBase64.convert(a, function (base64Img) {
+                                itembayar.File = base64Img;
+                            })
+                            itembayar.file = $sce.trustAsResourceUrl(a);
+                        }
+                        $scope.pembayaranMahasiswa.push(itembayar);
+                    })
                     $scope.DataTotal.Total += parseInt(value1.Total);
                     $scope.DataTotal.Bayar += parseInt(value1.Bayar);
                     $scope.DataTotal.Tunggakan += parseInt(value1.Tunggakan);
@@ -47,7 +59,7 @@
                 } else {
                     $scope.gg = "GENAP";
                 }
-    
+
                 var Url = "https://restsimak.stimiksepnop.ac.id/api/sksMahasiswa/AmbilSks?npm=" + $window.sessionStorage.getItem("Username") + "&thakademik=" + $scope.thakademik + "&gg=" + $scope.gg;
                 $http({
                     method: "GET",
@@ -113,7 +125,67 @@
                         alert("Mahasiswa Belum mengajukan KRS");
                     }
                 })
-    
+
+            }
+            $scope.Form = (set, item) => {
+                if (set == 'Tambah') {
+                    $scope.model = {};
+                    $scope.title = "Tambah Pembayaran"
+                    $("#TambahPembayaran").modal('show');
+                } else {
+                    $scope.model = item
+                    $scope.title = "Ubah Pembayaran"
+                    $("#TambahPembayaran").modal('show');
+                }
+            }
+            $scope.GetTahunAjaran = () => {
+                tagihankeuangan.GetTA().then(x => {
+                    $scope.TA = x;
+                })
+            }
+
+            $scope.Simpan = () => {
+                SweetAlert.swal({
+                    title: "Anda Yakin?",
+                    text: "Anda akan Menajukan bukti pembayaran?",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#0be7fb",
+                    confirmButtonText: "Yes, Simpan!",
+                    cancelButtonText: "No, Batal!",
+                    closeOnConfirm: false,
+                    closeOnCancel: false,
+                    showLoaderOnConfirm: true
+                },
+                    function (isConfirm) {
+                        if (isConfirm) {
+                            fileUpload.uploadbayar($scope.model.MyFile).then(Berkas => {
+                                $scope.model.MyFile = Berkas;
+
+                                tagihankeuangan.post($scope.model).then(x => {
+                                    $scope.model.Berkas = angular.copy($scope.model.MyFile);
+                                    $scope.model.IdTrxBayar = x.message;
+                                    var a = "https://keuangan.stimiksepnop.ac.id/assets/berkas/" + angular.copy($scope.model.Berkas);
+                                    fileToBase64.convert(a, function (base64Img) {
+                                        $scope.model.File = base64Img;
+                                    })
+                                    $scope.model.file = $sce.trustAsResourceUrl(a);
+                                    $scope.model.Status = 'Diajukan';
+                                    delete $scope.model.MyFile;
+                                    $scope.pembayaranMahasiswa.push(angular.copy($scope.model));
+                                    SweetAlert.swal("Information!", "Berhasil", "success");
+                                    $("#TambahPembayaran").modal('hide');
+                                })
+                            }, function (error) {
+                                SweetAlert.swal("Approved!", "Gagal Menyimpan", "error");
+                            });
+                        } else {
+                            SweetAlert.swal("Cancelled", "Your proses krsm has been cancelled :)", "error");
+                        }
+                    });
+            }
+            $scope.selected = function (item) {
+                $scope.File = item.File;
             }
 
         });
