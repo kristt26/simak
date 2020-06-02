@@ -47,16 +47,14 @@
                     "data": item
                 }
 
-                $.ajax(settings).done(function (response) {
-                    service.message = response;
-                    deferred.resolve(service.message);
-                })
-                .fail(function(xhr, status, error) {
-                    //Ajax request failed.
-                    var errorMessage = xhr.status + ': ' + xhr.statusText
-                    console.log(errorMessage);
-                    deferred.reject(error);
-                ;
+                $.ajax(settings)
+                    .done(function (response) {
+                        service.message = response;
+                        deferred.resolve(service.message);
+                    })
+                    .fail(function (jqXHR, textStatus, errorThrown) {
+                        deferred.reject(error);
+                    })
 
                 // $http({
                 //     method: "POST",
