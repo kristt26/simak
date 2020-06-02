@@ -58,8 +58,9 @@
 
                 $http({
                     method: "POST",
-                    url: "https://keuangan.stimiksepnop.ac.id/api/datas/create/CreatePembayaranByMhs.php",
-                    data: item
+                    url: "https://keuangan.stimiksepnop.ac.id/api/datas/create/UploadTransaksiBayar.php",
+                    data: item,
+                    headers: { 'Content-Type': 'application/json' }
                 }).then(function (response) {
                     service.message = response.data;
                     deferred.resolve(service.message);
