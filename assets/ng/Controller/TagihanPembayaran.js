@@ -7,6 +7,7 @@
             $scope.pembayaranMahasiswa = [];
             $scope.File;
             $scope.TA;
+            $scope.ListPotongan =[];
             tagihankeuangan.get().then(tagihan => {
                 $scope.DataPembayaran = tagihan;
                 $scope.DataInformation = [];
@@ -23,7 +24,7 @@
                         $scope.DataBayarKhusus += parseInt(angular.copy(value2.Nominal));
                     })
                     value1.TrxBayar.forEach(itembayar => {
-                        if(itembayar.Berkas){
+                        if (itembayar.Berkas) {
                             var a = "https://keuangan.stimiksepnop.ac.id/assets/berkas/" + angular.copy(itembayar.Berkas);
                             fileToBase64.convert(a, function (base64Img) {
                                 itembayar.File = base64Img;
@@ -32,10 +33,19 @@
                         }
                         $scope.pembayaranMahasiswa.push(itembayar);
                     })
+                    
+                    value1.Total = parseInt(value1.Total);
+                    angular.forEach(value1.BayarUmum, function (value3) {
+                        if (value3.Potongan) {
+                            $scope.ListPotongan.push(angular.copy(value3))
+                            value1.Total -= parseInt(angular.copy(value3.Potongan.Nominal));
+                        }
+
+                    })
                     $scope.DataTotal.Total += parseInt(value1.Total);
                     $scope.DataTotal.Bayar += parseInt(value1.Bayar);
-                    $scope.DataTotal.Tunggakan += parseInt(value1.Tunggakan);
-                    value1.Total = parseInt(value1.Total);
+                    value1.Tunggakan = value1.Total - parseInt(value1.Bayar);
+                    $scope.DataTotal.Tunggakan = $scope.DataTotal.Total-$scope.DataTotal.Bayar;
                 })
             })
             $scope.ShowDataPembayaran = function (item) {
@@ -119,6 +129,16 @@
                                 }
                             });
                             $scope.TotalBayar.BayarUmum += parseInt(value.Nominal);
+                            if(value.Potongan){
+                                $scope.TotalBayar.BayarUmum -= parseInt(value.Potongan.Nominal);
+                                if($scope.DataPembayaran.Mahasiswa.Angkatan.length>4){
+                                    value.Jenis = value.Jenis + ", Disc Rp. " + value.Potongan.Disc;
+                                    
+                                }else{
+                                    value.Jenis = value.Jenis + ", Disc " + value.Potongan.Disc + "%";
+                                    value.Nominal -= parseInt(value.Potongan.Nominal);
+                                }
+                            }
                         });
                         $scope.TotalBayar.IndexBayarUmum = $scope.DatasTagihan.BayarUmum.length + 1;
                     } else {
