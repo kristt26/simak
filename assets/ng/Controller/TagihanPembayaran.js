@@ -132,7 +132,7 @@
                             if(value.Potongan){
                                 $scope.TotalBayar.BayarUmum -= parseInt(value.Potongan.Nominal);
                                 if($scope.DataPembayaran.Mahasiswa.Angkatan.length>4){
-                                    value.Jenis = value.Jenis + ", Disc Rp. " + value.Potongan.Disc;
+                                    value.Jenis = value.Jenis + ", Potongan Rp. " + value.Potongan.Disc;
                                     
                                 }else{
                                     value.Jenis = value.Jenis + ", Disc " + value.Potongan.Disc + "%";
