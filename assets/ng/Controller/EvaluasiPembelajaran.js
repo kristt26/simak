@@ -15,7 +15,7 @@
             $scope.ThAktif = {};
             $http({
                 method: "get",
-                url: "http://restsimak.stimiksepnop.ac.id/api/Users/GetBiodata",
+                url: "https://restsimak.stimiksepnop.ac.id/api/Users/GetBiodata",
                 headers: {
                     "Content-Type": "application/json",
                     "authorization": token
