@@ -159,9 +159,10 @@
                 }
             }
             $scope.GetTahunAjaran = () => {
-                tagihankeuangan.GetTA().then(x => {
-                    $scope.TA = x;
-                })
+                // tagihankeuangan.GetTA().then(x => {
+                //     $scope.TA = x;
+                // })
+                SweetAlert.swal("Information!", "Centen ini belum tersedia", "success");
             }
 
             $scope.Simpan = () => {
