@@ -162,7 +162,7 @@
                 // tagihankeuangan.GetTA().then(x => {
                 //     $scope.TA = x;
                 // })
-                SweetAlert.swal("Information!", "Centen ini belum tersedia", "success");
+                SweetAlert.swal("Information!", "Fasilitas ini belum tersedia", "success");
             }
 
             $scope.Simpan = () => {
