@@ -41,13 +41,8 @@
                             $scope.model.jamselesai = selesai.replace('.', ':');
 
                             JadwalKuliah.post($scope.model).then(x => {
-                                $scope.model = {};
-                                $scope.prodi = {};
-                                $scope.matakuliah = {};
-                                $scope.dosen = {};
-                                $scope.kurikulum = {};
-                                $scope.kelas = {};
                                 SweetAlert.swal("Approved!", "Proses berhasil", "success");
+                                location.reload();
                             })
                         } else {
                             SweetAlert.swal("Cancelled", "Proses Dibatalkan :)", "error");
