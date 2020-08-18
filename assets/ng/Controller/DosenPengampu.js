@@ -29,21 +29,29 @@
                         if (isConfirm) {
                             if ($scope.model.idpengampu) {
                                 DosenAmpuServices.put($scope.model).then(x => {
-                                    SweetAlert.swal("Information", "Proses berhasil", "success");
-                                    $scope.model = {};
-                                    $scope.prodi = {};
-                                    $scope.matakuliah = {};
-                                    $scope.dosen = {};
-                                    $scope.kurikulum = {};
+                                    SweetAlert.swal({
+                                        text: "Berhasil",
+                                        type: "success",
+                                        confirmButtonColor: "#0be7fb",
+                                        confirmButtonText: "Yes",
+                                    },
+                                        function (isConfirm) {
+                                            location.reload(true)
+                                        });
                                 })
                             } else {
                                 DosenAmpuServices.post($scope.model).then(x => {
-                                    SweetAlert.swal("Information", "Proses berhasil", "success");
-                                    $scope.model = {};
-                                    $scope.prodi = {};
-                                    $scope.matakuliah = {};
-                                    $scope.dosen = {};
-                                    $scope.kurikulum = {};
+                                    DosenAmpuServices.put($scope.model).then(x => {
+                                        SweetAlert.swal({
+                                            text: "Berhasil",
+                                            type: "success",
+                                            confirmButtonColor: "#0be7fb",
+                                            confirmButtonText: "Yes",
+                                        },
+                                            function (isConfirm) {
+                                                location.reload(true)
+                                            });
+                                    })
                                 })
                             }
                         } else {
