@@ -26,7 +26,8 @@
         "BeritaAcara",
         "EvaluasiPembelajaran",
         "UserAkses",
-        "TagihanPembayaran"
+        "TagihanPembayaran",
+        "DosenPengampu"
     ]);
     app.config(['cfpLoadingBarProvider', function (cfpLoadingBarProvider) {
         cfpLoadingBarProvider.parentSelector = '#loading-bar-container';

@@ -43,11 +43,11 @@
                     templateUrl: "apps/views/Mahasiswa.html",
                     controller: "MahasiswaController"
                 })
-                .state("Jadwal", {
-                    url: "/Jadwal",
-                    templateUrl: "apps/views/Jadwal.html",
-                    controller: "JadwalController"
-                })
+                // .state("Jadwal", {
+                //     url: "/Jadwal",
+                //     templateUrl: "apps/views/Jadwal.html",
+                //     controller: "JadwalController"
+                // })
                 .state("Prodi", {
                     url: "/Prodi",
                     templateUrl: "apps/views/Prodi.html",
@@ -147,6 +147,16 @@
                     url: "/UserAkses",
                     templateUrl: "apps/views/UserAkses.html",
                     controller: "UserAksesController"
+                })
+                .state("JadwalKuliah", {
+                    url: "/JadwalKuliah",
+                    templateUrl: "apps/views/Jadwal.html",
+                    controller: "JadwalController"
+                })
+                .state("DosenPengampu", {
+                    url: "/DosenPengampu",
+                    templateUrl: "apps/views/DosenPengampu.html",
+                    controller: "DosenPengampuController"
                 });
         })
         .run(['uiSelect2Config', function (uiSelect2Config) {
@@ -167,8 +177,8 @@
             service.Token = $window.sessionStorage.getItem("Token");
             service.Header = getHeader();
             service.dataUser = getUser();
-            // service.Base = "http://localhost/RestSimak/";
-            service.Base = "https://www.restsimak.stimiksepnop.ac.id/";
+            service.Base = "http://localhost/RestSimak/";
+            // service.Base = "https://www.restsimak.stimiksepnop.ac.id/";
             function getHeader() {
                 var header = {
                     "content-type": "application/json",
@@ -343,7 +353,9 @@
                         $scope.MenuKaBaak = [
                             { 'href': 'UserAkses', 'Text': 'User', 'SetStatus': value.Nama },
                             { 'href': 'Pengumuman', 'Text': 'Pengumuman', 'SetStatus': value.Nama },
-                            { 'href': 'BeritaAcara', 'Text': 'Berita Acara', 'SetStatus': value.Nama }
+                            { 'href': 'BeritaAcara', 'Text': 'Berita Acara', 'SetStatus': value.Nama },
+                            { 'href': 'JadwalKuliah', 'Text': 'Jadwal Kuliah', 'SetStatus': value.Nama },
+                            { 'href': 'DosenPengampu', 'Text': 'Dosen Pengampu', 'SetStatus': value.Nama }
                         ]
                     } else if (value.Nama == "Keuangan") {
                         $scope.RoleKeuangan = true;

@@ -84,6 +84,22 @@
                 })
                 return deferred.promise;  
             }
-            return { get: getAction, getJadwal: getJadwalMahasiswa, getJadwalKuliah: JadwalKuliah, getJadwalDosen: JadwalDosen, getDosen: DataDosen};
+            function DataProdi(item){
+                var deferred = $q.defer();
+                var Url = AuthService.Base+"api/jadwal/jadwalprodi";
+                $http({
+                    method: "GET",
+                    url: Url,
+                    headers: AuthService.Header,
+                }).then(function (response) {
+                    service.DataDosen = response.data.data;
+                    deferred.resolve(service.DataDosen);
+                }, function (error) {
+                    // console.log(error);
+                    deferred.reject(error);
+                })
+                return deferred.promise;  
+            }
+            return { get: getAction, getJadwal: getJadwalMahasiswa, getJadwalKuliah: JadwalKuliah, getJadwalDosen: JadwalDosen, getDosen: DataDosen, getProdi:DataProdi};
         }]);
 })(window.angular);
