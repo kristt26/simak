@@ -30,6 +30,7 @@
                             if ($scope.model.idpengampu) {
                                 DosenAmpuServices.put($scope.model).then(x => {
                                     SweetAlert.swal({
+                                        title: "Information",
                                         text: "Berhasil",
                                         type: "success",
                                         confirmButtonColor: "#0be7fb",
@@ -41,17 +42,16 @@
                                 })
                             } else {
                                 DosenAmpuServices.post($scope.model).then(x => {
-                                    DosenAmpuServices.put($scope.model).then(x => {
-                                        SweetAlert.swal({
-                                            text: "Berhasil",
-                                            type: "success",
-                                            confirmButtonColor: "#0be7fb",
-                                            confirmButtonText: "Yes",
-                                        },
-                                            function (isConfirm) {
-                                                location.reload(true)
-                                            });
-                                    })
+                                    SweetAlert.swal({
+                                        title: "Information",
+                                        text: "Berhasil",
+                                        type: "success",
+                                        confirmButtonColor: "#0be7fb",
+                                        confirmButtonText: "Yes",
+                                    },
+                                        function (isConfirm) {
+                                            location.reload(true)
+                                        });
                                 })
                             }
                         } else {
