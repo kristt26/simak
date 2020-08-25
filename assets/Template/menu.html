@@ -1,0 +1,97 @@
+<ul class="sidebar-menu" data-widget="tree">
+    <li class="header">Menu Akses</li>
+    <li><a ui-sref="Beranda"><i class="fa fa-home"></i> <span>Beranda</span></a></li>
+    <li><a ui-sref="BaseProfile"><i class="fa fa-user"></i> <span>Profile</span></a></li>
+
+    <li class="treeview" ng-show="RoleKeuangan">
+        <a href="javascript:void(0)">
+            <i class="fa fa-pie-chart"></i>
+            <span>Keuangan</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+        <ul class="treeview-menu">
+            <li ng-repeat="item in MenuKeuangan"><a ui-sref="{{item.href}}" ui-sref-opts="{reload: true}"
+                    ng-click="SetStatus(item.SetStatus)"><i class="fa fa-th"></i> <span>{{item.Text}}</span></a></li>
+        </ul>
+    </li>
+    <li class="treeview" ng-show="RoleWali">
+        <a href="javascript:void(0)">
+            <i class="fa fa-pie-chart"></i>
+            <span>Dosen Wali</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+        <ul class="treeview-menu">
+            <li ng-repeat="item in MenuWali"><a ui-sref="{{item.href}}" ui-sref-opts="{reload: true}"
+                    ng-click="SetStatus(item.SetStatus)"><i class="fa fa-th"></i> <span>{{item.Text}}</span></a></li>
+        </ul>
+    </li>
+    <li class="treeview" ng-show="RoleKaprodi">
+        <a href="javascript:void(0)">
+            <i class="fa fa-pie-chart"></i>
+            <span>Program Studi</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+        <ul class="treeview-menu">
+            <li ng-repeat="item in MenuKaprodi"><a ui-sref="{{item.href}}" ui-sref-opts="{reload: true}"
+                    ng-click="SetStatus(item.SetStatus)"><i class="fa fa-th"></i> <span>{{item.Text}}</span></a></li>
+        </ul>
+    </li>
+    <li class="treeview" ng-show="RoleDosen">
+        <a href="javascript:void(0)">
+            <i class="fa fa-pie-chart"></i>
+            <span>Dosen</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+        <ul class="treeview-menu">
+            <li ng-repeat="item in MenuDosen"><a ui-sref="{{item.href}}" ui-sref-opts="{reload: true}"
+                    ng-click="SetStatus(item.SetStatus)"><i class="fa fa-th"></i> <span>{{item.Text}}</span></a></li>
+        </ul>
+    </li>
+    <li class="treeview" ng-show="RoleKemahasiswaan">
+        <a href="javascript:void(0)">
+            <i class="fa fa-pie-chart"></i>
+            <span>Kemahasiswaan</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+        <ul class="treeview-menu">
+            <li ng-repeat="item in MenuKemahasiswaan"><a ui-sref="{{item.href}}" ui-sref-opts="{reload: true}"
+                    ng-click="SetStatus(item.SetStatus)"><i class="fa fa-th"></i> <span>{{item.Text}}</span></a></li>
+        </ul>
+    </li>
+    <li class="treeview" ng-show="RoleKaBaak">
+        <a href="javascript:void(0)">
+            <i class="fa fa-pie-chart"></i>
+            <span>BAAK</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+        <ul class="treeview-menu">
+            <li ng-repeat="item in MenuKaBaak"><a ui-sref="{{item.href}}" ui-sref-opts="{reload: true}"
+                    ng-click="SetStatus(item.SetStatus)"><i class="fa fa-th"></i> <span>{{item.Text}}</span></a></li>
+        </ul>
+    </li>
+    <li ng-show="RoleMahasiswa" ng-repeat="item in MenuMahasiswa"><a ui-sref="{{item.href}}"><i
+                class="{{item.class}}"></i> <span>{{item.Text}}</span></a></li>
+
+    <li><a ui-sref="Penelitian"><i class="fa fa-copy"></i> <span>Penelitian Mahasiswa</span></a></li>
+    <!-- <li ng-show="RoleAdmin"><a href="#!Pegawai"><i class="fa fa-th"></i> <span>Pegawai</span></a></li>
+    <li ng-show="RoleAdmin"><a href="#!Jabatan"><i class="fa fa-th"></i> <span>Jabatan</span></a></li>
+    
+    <li ng-show="RoleAdmin"><a href="#!Jadwal"><i class="fa fa-th"></i> <span>Jadwal</span></a></li>
+    <li ng-show="RoleAdmin || RoleBaak"><a href="#!TahunAkademik"><i class="fa fa-th"></i> <span>Tahun Akademik</span></a></li>
+    <li ng-show="RoleAdmin || RoleMahasiswa"><a href="#!NilaiMahasiswa"><i class="fa fa-th"></i> <span>Nilai Mahsiswa</span></a></li>
+    <li ng-show="RoleAdmin"><a href="#!Pengumuman"><i class="fa fa-th"></i> <span>Pengumuman</span></a></li>
+   s-->
+
+</ul>

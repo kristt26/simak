@@ -5,27 +5,18 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>SISTEM AKADEMIK STIMIK1011</title>
-  <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="icon" href="assets/img/Logo.png">
-  <!-- Bootstrap 3.3.7 -->
   <link rel="stylesheet" href="assets/bower_components/bootstrap/dist/css/bootstrap.min.css">
-  <!-- Font Awesome -->
   <link rel="stylesheet" href="assets/bower_components/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="assets/bower_components/fontawesome-free/css/all.min.css">
-  <!-- Ionicons -->
   <link rel="stylesheet" href="assets/bower_components/Ionicons/css/ionicons.min.css">
-  <!-- Theme style -->
   <link rel="stylesheet" href="assets/dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="assets/dist/css/main.css">
   <link rel="stylesheet" href="assets/node_modules/angular-datatables/dist/css/angular-datatables.css">
   <link rel="stylesheet" href="assets/node_modules/datatables.net-dt/css/jquery.dataTables.css">
   <link rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/angular-bootstrap-toggle@0.4.0/dist/angular-bootstrap-toggle.min.css">
-
-  <!-- <link rel="stylesheet" href="node_modules/sweetalert2/dist/sweetalert2.css"> -->
-  <!-- AdminLTE Skins. Choose a skin from the css/skins
-       folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="assets/dist/css/skins/_all-skins.min.css">
   <link rel="stylesheet" href="assets/bower_components/sweetalert/dist/sweetalert.css">
 
@@ -40,16 +31,11 @@
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
-  <!-- Site wrapper -->
   <div class="wrapper">
-
     <div ng-controller="View">
       <div ng-include="header"></div>
-
       <aside class="main-sidebar" style="margin-top: 50px;">
-        <!-- sidebar: style can be found in sidebar.less -->
         <section class="sidebar">
-          <!-- Sidebar user panel -->
           <div choose-file ng-model="dataGambar" class="user-panel">
             <div class="pull-left image ">
               <img id="userImg" data-ng-src="{{Pict}}" data-err-src="images/png/avatar.png"
@@ -62,105 +48,8 @@
                   class="fa fa-circle text-success"></i> Online</a>
             </div>
           </div>
-          <ul class="sidebar-menu" data-widget="tree">
-            <li class="header">Menu Akses</li>
-            <li><a ui-sref="Beranda"><i class="fa fa-home"></i> <span>Beranda</span></a></li>
-            <li><a ui-sref="BaseProfile"><i class="fa fa-user"></i> <span>Profile</span></a></li>
-
-            <li class="treeview" ng-show="RoleKeuangan">
-              <a href="javascript:void(0)">
-                <i class="fa fa-pie-chart"></i>
-                <span>Keuangan</span>
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-              <ul class="treeview-menu">
-                <li ng-repeat="item in MenuKeuangan"><a ui-sref="{{item.href}}" ui-sref-opts="{reload: true}"
-                    ng-click="SetStatus(item.SetStatus)"><i class="fa fa-th"></i> <span>{{item.Text}}</span></a></li>
-              </ul>
-            </li>
-            <li class="treeview" ng-show="RoleWali">
-              <a href="javascript:void(0)">
-                <i class="fa fa-pie-chart"></i>
-                <span>Dosen Wali</span>
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-              <ul class="treeview-menu">
-                <li ng-repeat="item in MenuWali"><a ui-sref="{{item.href}}" ui-sref-opts="{reload: true}"
-                    ng-click="SetStatus(item.SetStatus)"><i class="fa fa-th"></i> <span>{{item.Text}}</span></a></li>
-              </ul>
-            </li>
-            <li class="treeview" ng-show="RoleKaprodi">
-              <a href="javascript:void(0)">
-                <i class="fa fa-pie-chart"></i>
-                <span>Program Studi</span>
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-              <ul class="treeview-menu">
-                <li ng-repeat="item in MenuKaprodi"><a ui-sref="{{item.href}}" ui-sref-opts="{reload: true}"
-                    ng-click="SetStatus(item.SetStatus)"><i class="fa fa-th"></i> <span>{{item.Text}}</span></a></li>
-              </ul>
-            </li>
-            <li class="treeview" ng-show="RoleDosen">
-              <a href="javascript:void(0)">
-                <i class="fa fa-pie-chart"></i>
-                <span>Dosen</span>
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-              <ul class="treeview-menu">
-                <li ng-repeat="item in MenuDosen"><a ui-sref="{{item.href}}" ui-sref-opts="{reload: true}"
-                    ng-click="SetStatus(item.SetStatus)"><i class="fa fa-th"></i> <span>{{item.Text}}</span></a></li>
-              </ul>
-            </li>
-            <li class="treeview" ng-show="RoleKemahasiswaan">
-              <a href="javascript:void(0)">
-                <i class="fa fa-pie-chart"></i>
-                <span>Kemahasiswaan</span>
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-              <ul class="treeview-menu">
-                <li ng-repeat="item in MenuKemahasiswaan"><a ui-sref="{{item.href}}" ui-sref-opts="{reload: true}"
-                    ng-click="SetStatus(item.SetStatus)"><i class="fa fa-th"></i> <span>{{item.Text}}</span></a></li>
-              </ul>
-            </li>
-            <li class="treeview" ng-show="RoleKaBaak">
-              <a href="javascript:void(0)">
-                <i class="fa fa-pie-chart"></i>
-                <span>BAAK</span>
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-              <ul class="treeview-menu">
-                <li ng-repeat="item in MenuKaBaak"><a ui-sref="{{item.href}}" ui-sref-opts="{reload: true}"
-                    ng-click="SetStatus(item.SetStatus)"><i class="fa fa-th"></i> <span>{{item.Text}}</span></a></li>
-              </ul>
-            </li>
-            <li ng-show="RoleMahasiswa" ng-repeat="item in MenuMahasiswa"><a ui-sref="{{item.href}}"><i
-                  class="{{item.class}}"></i> <span>{{item.Text}}</span></a></li>
-
-            <li><a ui-sref="Penelitian"><i class="fa fa-copy"></i> <span>Penelitian Mahasiswa</span></a></li>
-            <!-- <li ng-show="RoleAdmin"><a href="#!Pegawai"><i class="fa fa-th"></i> <span>Pegawai</span></a></li>
-            <li ng-show="RoleAdmin"><a href="#!Jabatan"><i class="fa fa-th"></i> <span>Jabatan</span></a></li>
-            
-            <li ng-show="RoleAdmin"><a href="#!Jadwal"><i class="fa fa-th"></i> <span>Jadwal</span></a></li>
-            <li ng-show="RoleAdmin || RoleBaak"><a href="#!TahunAkademik"><i class="fa fa-th"></i> <span>Tahun Akademik</span></a></li>
-            <li ng-show="RoleAdmin || RoleMahasiswa"><a href="#!NilaiMahasiswa"><i class="fa fa-th"></i> <span>Nilai Mahsiswa</span></a></li>
-            <li ng-show="RoleAdmin"><a href="#!Pengumuman"><i class="fa fa-th"></i> <span>Pengumuman</span></a></li>
-           s-->
-
-          </ul>
+          <div ng-include="menu"></div>
         </section>
-        <!-- /.sidebar -->
       </aside>
       <div class="content-wrapper">
         <ui-view></ui-view>
@@ -171,219 +60,9 @@
         <div ng-include="footer">
           <script src="//myradiostream.com/embed/labstimik1011"></script>
         </div>
-
       </div>
-      <!-- =============================================== -->
-
-      <!-- Left side column. contains the sidebar -->
-
-
-      <!-- =============================================== -->
-
-      <!-- Content Wrapper. Contains page content -->
-
-      <!-- /.content-wrapper -->
-
-      <!-- Control Sidebar -->
-      <aside class="control-sidebar control-sidebar-dark">
-        <!-- Create the tabs -->
-        <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
-          <li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
-
-          <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
-        </ul>
-        <!-- Tab panes -->
-        <div class="tab-content">
-          <!-- Home tab content -->
-          <div class="tab-pane" id="control-sidebar-home-tab">
-            <h3 class="control-sidebar-heading">Recent Activity</h3>
-            <ul class="control-sidebar-menu">
-              <li>
-                <a href="javascript:void(0)">
-                  <i class="menu-icon fa fa-birthday-cake bg-red"></i>
-
-                  <div class="menu-info">
-                    <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
-
-                    <p>Will be 23 on April 24th</p>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a href="javascript:void(0)">
-                  <i class="menu-icon fa fa-user bg-yellow"></i>
-
-                  <div class="menu-info">
-                    <h4 class="control-sidebar-subheading">Frodo Updated His Profile</h4>
-
-                    <p>New phone +1(800)555-1234</p>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a href="javascript:void(0)">
-                  <i class="menu-icon fa fa-envelope-o bg-light-blue"></i>
-
-                  <div class="menu-info">
-                    <h4 class="control-sidebar-subheading">Nora Joined Mailing List</h4>
-
-                    <p>nora@example.com</p>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a href="javascript:void(0)">
-                  <i class="menu-icon fa fa-file-code-o bg-green"></i>
-
-                  <div class="menu-info">
-                    <h4 class="control-sidebar-subheading">Cron Job 254 Executed</h4>
-
-                    <p>Execution time 5 seconds</p>
-                  </div>
-                </a>
-              </li>
-            </ul>
-            <!-- /.control-sidebar-menu -->
-
-            <h3 class="control-sidebar-heading">Tasks Progress</h3>
-            <ul class="control-sidebar-menu">
-              <li>
-                <a href="javascript:void(0)">
-                  <h4 class="control-sidebar-subheading">
-                    Custom Template Design
-                    <span class="label label-danger pull-right">70%</span>
-                  </h4>
-
-                  <div class="progress progress-xxs">
-                    <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a href="javascript:void(0)">
-                  <h4 class="control-sidebar-subheading">
-                    Update Resume
-                    <span class="label label-success pull-right">95%</span>
-                  </h4>
-
-                  <div class="progress progress-xxs">
-                    <div class="progress-bar progress-bar-success" style="width: 95%"></div>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a href="javascript:void(0)">
-                  <h4 class="control-sidebar-subheading">
-                    Laravel Integration
-                    <span class="label label-warning pull-right">50%</span>
-                  </h4>
-
-                  <div class="progress progress-xxs">
-                    <div class="progress-bar progress-bar-warning" style="width: 50%"></div>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a href="javascript:void(0)">
-                  <h4 class="control-sidebar-subheading">
-                    Back End Framework
-                    <span class="label label-primary pull-right">68%</span>
-                  </h4>
-
-                  <div class="progress progress-xxs">
-                    <div class="progress-bar progress-bar-primary" style="width: 68%"></div>
-                  </div>
-                </a>
-              </li>
-            </ul>
-            <!-- /.control-sidebar-menu -->
-
-          </div>
-          <!-- /.tab-pane -->
-          <!-- Stats tab content -->
-          <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
-          <!-- /.tab-pane -->
-          <!-- Settings tab content -->
-          <div class="tab-pane" id="control-sidebar-settings-tab">
-            <form method="post">
-              <h3 class="control-sidebar-heading">General Settings</h3>
-
-              <div class="form-group">
-                <label class="control-sidebar-subheading">
-                  Report panel usage
-                  <input type="checkbox" class="pull-right" checked>
-                </label>
-
-                <p>
-                  Some information about this general settings option
-                </p>
-              </div>
-              <!-- /.form-group -->
-
-              <div class="form-group">
-                <label class="control-sidebar-subheading">
-                  Allow mail redirect
-                  <input type="checkbox" class="pull-right" checked>
-                </label>
-
-                <p>
-                  Other sets of options are available
-                </p>
-              </div>
-              <!-- /.form-group -->
-
-              <div class="form-group">
-                <label class="control-sidebar-subheading">
-                  Expose author name in posts
-                  <input type="checkbox" class="pull-right" checked>
-                </label>
-
-                <p>
-                  Allow the user to show his name in blog posts
-                </p>
-              </div>
-              <!-- /.form-group -->
-
-              <h3 class="control-sidebar-heading">Chat Settings</h3>
-
-              <div class="form-group">
-                <label class="control-sidebar-subheading">
-                  Show me as online
-                  <input type="checkbox" class="pull-right" checked>
-                </label>
-              </div>
-              <!-- /.form-group -->
-
-              <div class="form-group">
-                <label class="control-sidebar-subheading">
-                  Turn off notifications
-                  <input type="checkbox" class="pull-right">
-                </label>
-              </div>
-              <!-- /.form-group -->
-
-              <div class="form-group">
-                <label class="control-sidebar-subheading">
-                  Delete chat history
-                  <a href="javascript:void(0)" class="text-red pull-right"><i class="fa fa-trash-o"></i></a>
-                </label>
-              </div>
-              <!-- /.form-group -->
-            </form>
-          </div>
-          <!-- /.tab-pane -->
-        </div>
-      </aside>
-      <!-- /.control-sidebar -->
-      <!-- Add the sidebar's background. This div must be placed
-       immediately after the control sidebar -->
       <div class="control-sidebar-bg"></div>
     </div>
-    <!-- ./wrapper -->
-
-    <!-- jQuery 3 -->
-
-    <!-- Bootstrap 3.3.7 -->
     <script src="assets/bower_components/jquery/dist/jquery.min.js"></script>
     <script src="assets/bower_components/angular/angular.min.js"></script>
     <script src="assets/bower_components/angular/angular-animate.min.js"></script>
@@ -392,11 +71,7 @@
     <script src="assets/bower_components/angular/angular-resource.js"></script>
     <script src="assets/bower_components/angular/angularjs/release/angular-ui-router.js"></script>
     <script src="assets/node_modules/ui-bootstrap4/dist/ui-bootstrap-tpls.js"></script>
-
     <script type='text/javascript' src='assets/bower_components/angular/loading-bar.js'></script>
-
-    <!-- Select2 -->
-    <!-- <script src="assets/bower_components/angular-select2/dist/angular-select2.min.js"></script> -->
     <script src="assets/bower_components/angular-ui-select2/src/select2.js"></script>
     <script src="assets/bower_components/select2/select2.js"></script>
     <script
@@ -457,25 +132,20 @@
     <!-- Service -->
     <script src="assets/ng/Service/serviceFile.js"></script>
     <script src="assets/ng/Service/helper.services.js"></script>
+
     <script src="assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <!-- SlimScroll -->
     <script src="assets/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-    <!-- FastClick -->
     <script src="assets/bower_components/fastclick/lib/fastclick.js"></script>
     <script src="assets/bower_components/ngSweetAlert/SweetAlert.min.js"></script>
     <script src="assets/bower_components/sweetalert/dist/sweetalert.min.js"></script>
 
-    <!-- AdminLTE App -->
     <script src="assets/dist/js/adminlte.min.js"></script>
-    <!-- AdminLTE for demo purposes -->
     <script src="assets/dist/js/demo.js"></script>+
     <script
       src="https://cdn.jsdelivr.net/npm/angular-bootstrap-toggle@0.4.0/dist/angular-bootstrap-toggle.min.js"></script>
     <script src="assets/node_modules/datatables.net/js/jquery.dataTables.js"></script>
     <script src="assets/node_modules/angular-datatables/dist/angular-datatables.js"></script>
     <script src="assets/bower_components/jquery-loading-overlay/dist/loadingoverlay.min.js"></script>
-    <!-- <script src="node_modules/sweetalert2/dist/sweetalert2.js"></script>
-  <script src="node_modules/swangular/swangular.js"></script> -->
     <script>
       $(document).ready(function () {
         $('.sidebar-menu').tree()

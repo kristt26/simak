@@ -219,6 +219,7 @@
             $scope.content = "assets/Template/content.html";
             $scope.footer = "assets/Template/footer.html";
             $scope.setting = "assets/Template/setting.html";
+            $scope.setting = "assets/Template/menu.html";
             $scope.RoleAdmin = false;
             $scope.RoleMahasiswa = false;
             $scope.RoleDosen = false;
