@@ -345,9 +345,9 @@
 						$scope.RoleKaprodi = true;
 						$scope.MenuKaprodi = [
 							{ href: 'ApprovedKRS', Text: 'Perwalian', SetStatus: value.Nama },
-							{ href: 'GradeNilai', Text: 'Grade Nilai', SetStatus: value.Nama },
-							{ href: 'Kurikulum', Text: 'Kurikulum', SetStatus: value.Nama },
-							{ href: 'ConversiKHS', Text: 'Conversi KHS', SetStatus: value.Nama },
+							// { href: 'GradeNilai', Text: 'Grade Nilai', SetStatus: value.Nama },
+							// { href: 'Kurikulum', Text: 'Kurikulum', SetStatus: value.Nama },
+							// { href: 'ConversiKHS', Text: 'Conversi KHS', SetStatus: value.Nama },
 							{ href: 'BeritaAcara', Text: 'Berita Acara', SetStatus: value.Nama },
 							{ href: 'Pengumuman', Text: 'Pengumuman', SetStatus: value.Nama },
 							{ href: 'mahasiswajurusan', Text: 'Mahasiswa', SetStatus: value.Nama }
