@@ -349,7 +349,8 @@
 							{ href: 'Kurikulum', Text: 'Kurikulum', SetStatus: value.Nama },
 							{ href: 'ConversiKHS', Text: 'Conversi KHS', SetStatus: value.Nama },
 							{ href: 'BeritaAcara', Text: 'Berita Acara', SetStatus: value.Nama },
-							{ href: 'Pengumuman', Text: 'Pengumuman', SetStatus: value.Nama }
+							{ href: 'Pengumuman', Text: 'Pengumuman', SetStatus: value.Nama },
+							{ href: 'mahasiswajurusan', Text: 'Mahasiswa', SetStatus: value.Nama }
 						];
 					} else if (value.Nama == 'Dosen') {
 						$scope.RoleDosen = true;
