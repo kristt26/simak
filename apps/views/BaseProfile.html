@@ -98,11 +98,11 @@
                     <div class="active tab-pane" id="activity">
                         <ul class="timeline timeline-inverse" ng-repeat="loop in DataLooping">
                             <li class="time-label" style="color:white;">
-                               <div class="time-label-container">
-                                <span >
-                                    Semester {{loop.semester}}
-                                </span>
-                               </div>
+                                <div class="time-label-container">
+                                    <span>
+                                        Semester {{loop.semester}}
+                                    </span>
+                                </div>
                             </li>
                             <li ng-repeat="item in Khsm.Datas | filter: { smt: loop.semester }">
                                 <i class="fa fa-item bg-blue"></i>
@@ -126,10 +126,10 @@
                         <ul class="timeline timeline-inverse">
                             <li class="time-label">
                                 <div class="time-label-container">
-                                    <span >
-                                       Senin
+                                    <span>
+                                        Senin
                                     </span>
-                                   </div>
+                                </div>
                             </li>
                             <li ng-repeat="item in DatasJadwal | filter: { hari: 'Senin' }">
                                 <i class="fa fa-item bg-blue"></i>
@@ -144,10 +144,10 @@
                         <ul class="timeline timeline-inverse">
                             <li class="time-label">
                                 <div class="time-label-container">
-                                    <span >
-                                       Selasa
+                                    <span>
+                                        Selasa
                                     </span>
-                                   </div>
+                                </div>
                             </li>
                             <li ng-repeat="item in DatasJadwal | filter: { hari: 'Selasa' }">
                                 <i class="fa fa-item bg-blue"></i>
@@ -162,10 +162,10 @@
                         <ul class="timeline timeline-inverse">
                             <li class="time-label">
                                 <div class="time-label-container">
-                                    <span >
-                                       Rabu
+                                    <span>
+                                        Rabu
                                     </span>
-                                   </div>
+                                </div>
                             </li>
                             <li ng-repeat="item in DatasJadwal | filter: { hari: 'Rabu' }">
                                 <i class="fa fa-item bg-blue"></i>
@@ -180,10 +180,10 @@
                         <ul class="timeline timeline-inverse">
                             <li class="time-label">
                                 <div class="time-label-container">
-                                    <span >
-                                       Kamis
+                                    <span>
+                                        Kamis
                                     </span>
-                                   </div>
+                                </div>
                             </li>
                             <li ng-repeat="item in DatasJadwal | filter: { hari: 'Kamis' }">
                                 <i class="fa fa-item bg-blue"></i>
@@ -198,10 +198,10 @@
                         <ul class="timeline timeline-inverse">
                             <li class="time-label">
                                 <div class="time-label-container">
-                                    <span >
-                                       Jumat
+                                    <span>
+                                        Jumat
                                     </span>
-                                   </div>
+                                </div>
                             </li>
                             <li ng-repeat="item in DatasJadwal | filter: { hari: 'Jumat' }">
                                 <i class="fa fa-item bg-blue"></i>
@@ -216,10 +216,10 @@
                         <ul class="timeline timeline-inverse">
                             <li class="time-label">
                                 <div class="time-label-container">
-                                    <span >
-                                       Sabtu
+                                    <span>
+                                        Sabtu
                                     </span>
-                                   </div>
+                                </div>
                             </li>
                             <li ng-repeat="item in DatasJadwal | filter: { hari: 'Sabtu' }">
                                 <i class="fa fa-item bg-blue"></i>
@@ -253,7 +253,7 @@
                     </div>
                     <hr>
                     <h3 class="profile-username text-center">{{DatasHome.Nama}}</h3>
-                   <h4 class="text-center">{{DatasHome.NIK}}</h4>
+                    <h4 class="text-center">{{DatasHome.NIK}}</h4>
                     <hr>
                     <strong><i class="fa fa-map-marker margin-r-5"></i>Tahun Akademin</strong>
                     <p class="text-muted">{{TahunAkademik.thakademik}}&nbsp;{{TahunAkademik.gg}}</p>
@@ -261,7 +261,7 @@
                     <strong><i class="fa fa-map-marker margin-r-5"></i>Status</strong>
                     <p class="text-muted">{{DatasHome.Status}}</p>
                     <hr>
-                  
+
                 </div>
             </div>
             <div class="box-body">
@@ -340,7 +340,7 @@
                             <li ng-repeat="item in DatasJadwal | filter: { hari: 'Senin' }">
                                 <i class="fa fa-item bg-blue"></i>
 
-                                <div class="timeline-item">
+                                <div class="timeline-item" ng-click="mahasiswaKelas(item)">
                                     <span class="time"><i class="fa fa-clock-o"></i> {{item.wm}} s/d
                                         {{item.ws}} | Ruang: {{item.ruangan}}</span>
                                     <h3 class="timeline-header">{{item.nmmk}} | Kelas : {{item.kelas}}</h3>
@@ -356,7 +356,7 @@
                             <li ng-repeat="item in DatasJadwal | filter: { hari: 'Selasa' }">
                                 <i class="fa fa-item bg-blue"></i>
 
-                                <div class="timeline-item">
+                                <div class="timeline-item" ng-click="mahasiswaKelas(item)">
                                     <span class="time"><i class="fa fa-clock-o"></i> {{item.wm}} s/d
                                         {{item.ws}} | Ruang: {{item.ruangan}}</span>
                                     <h3 class="timeline-header">{{item.nmmk}} | Kelas : {{item.kelas}}</h3>
@@ -372,7 +372,7 @@
                             <li ng-repeat="item in DatasJadwal | filter: { hari: 'Rabu' }">
                                 <i class="fa fa-item bg-blue"></i>
 
-                                <div class="timeline-item">
+                                <div class="timeline-item" ng-click="mahasiswaKelas(item)">
                                     <span class="time"><i class="fa fa-clock-o"></i> {{item.wm}} s/d
                                         {{item.ws}} | Ruang: {{item.ruangan}}</span>
                                     <h3 class="timeline-header">{{item.nmmk}} | Kelas : {{item.kelas}}</h3>
@@ -388,7 +388,7 @@
                             <li ng-repeat="item in DatasJadwal | filter: { hari: 'Kamis' }">
                                 <i class="fa fa-item bg-blue"></i>
 
-                                <div class="timeline-item">
+                                <div class="timeline-item" ng-click="mahasiswaKelas(item)">
                                     <span class="time"><i class="fa fa-clock-o"></i> {{item.wm}} s/d
                                         {{item.ws}} | Ruang: {{item.ruangan}}</span>
                                     <h3 class="timeline-header">{{item.nmmk}} | Kelas : {{item.kelas}}</h3>
@@ -404,7 +404,7 @@
                             <li ng-repeat="item in DatasJadwal | filter: { hari: 'Jumat' }">
                                 <i class="fa fa-item bg-blue"></i>
 
-                                <div class="timeline-item">
+                                <div class="timeline-item" ng-click="mahasiswaKelas(item)">
                                     <span class="time"><i class="fa fa-clock-o"></i> {{item.wm}} s/d
                                         {{item.ws}} | Ruang: {{item.ruangan}}</span>
                                     <h3 class="timeline-header">{{item.nmmk}} | Kelas : {{item.kelas}}</h3>
@@ -420,7 +420,7 @@
                             <li ng-repeat="item in DatasJadwal | filter: { hari: 'Sabtu' }">
                                 <i class="fa fa-item bg-blue"></i>
 
-                                <div class="timeline-item">
+                                <div class="timeline-item" ng-click="mahasiswaKelas(item)">
                                     <span class="time"><i class="fa fa-clock-o"></i> {{item.wm}} s/d
                                         {{item.ws}} | Ruang: {{item.ruangan}}</span>
                                     <h3 class="timeline-header">{{item.nmmk}} | Kelas : {{item.kelas}}</h3>
@@ -443,4 +443,34 @@
             </div>
         </div>
     </section>
+    <div class="modal modal-info fade" id="showmahasiswa">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Daftar Mahasiswa</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="box">
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>NPM</th>
+                                <th>Nama Mahasiswa</th>
+                                <th>Kelas</th>
+                            </tr>
+                            <tr ng-repeat="item in datamhs">
+                                <td>{{item.npm}}</td>
+                                <td>{{item.nmmhs}}</td>
+                                <td>{{item.kelas}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
 </div>
