@@ -159,6 +159,11 @@
 					url: '/DosenPengampu',
 					templateUrl: 'apps/views/DosenPengampu.html',
 					controller: 'DosenPengampuController'
+				})
+				.state('mahasiswajurusan', {
+					url: '/mahasiswajurusan',
+					templateUrl: 'apps/views/mahasiswajurusan.html',
+					controller: 'mahasiswajurusanController'
 				});
 		})
 		.run([
