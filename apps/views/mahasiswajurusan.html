@@ -1,0 +1,45 @@
+<div id="loading-bar-container"></div>
+<section class="content-header">
+    <h1 style="color: white;">
+        DATA MAHASISWA
+    </h1>
+</section>
+
+<section class="content">
+    <div class="row" style="padding-left: 20px;">
+        <div class="col-md-12">
+            <table datatable="ng" class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>NPM</th>
+                        <th>Nama Mahasiswa</th>
+                        <th>Kelas</th>
+                        <th>Kontak</th>
+                        <th>Status Perkulihan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in datas">
+                        <td>{{$index + 1}}</td>
+                        <td>
+                            {{item.npm}}
+                        </td>
+                        <td>
+                            {{item.nmmhs}}
+                        </td>
+                        <td>
+                            {{item.kelas}}
+                        </td>
+                        <td>
+                            {{item.notlp}}
+                        </td>
+                        <td>
+                            {{item.statuskul}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
