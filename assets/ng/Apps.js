@@ -12,7 +12,8 @@
         "datatables", 
         "ngResource",
         "ui.bootstrap",
-        "ngLocale"
+        "ngLocale",
+        "pdf"
     ])
         .config(function ($stateProvider, $urlRouterProvider) {
             $urlRouterProvider.otherwise('Beranda');
@@ -157,6 +158,11 @@
                     url: "/DosenPengampu",
                     templateUrl: "apps/views/DosenPengampu.html",
                     controller: "DosenPengampuController"
+                })
+                .state("Inbox", {
+                    url: "/Inbox",
+                    templateUrl: "apps/views/Inbox.html",
+                    controller: "InboxController"
                 });
         })
         .run(['uiSelect2Config', function (uiSelect2Config) {
@@ -298,13 +304,15 @@
                                 $scope.MenuMahasiswa = [
                                     { 'href': 'PengajuanKRS', 'Text': 'KRS', 'class': 'fa fa-file' },
                                     { 'href': 'EvaluasiPembelajaran', 'Text': 'Evaluasi Pembelajaran', 'class': 'fa fa-check' },
-                                    { 'href': 'Tagihan', 'Text': 'Tagihan Pembayaran', 'class': 'fa fa-money' }
+                                    { 'href': 'Tagihan', 'Text': 'Tagihan Pembayaran', 'class': 'fa fa-money' },
+                                    { 'href': 'Inbox', 'Text': 'Inbox', 'class': 'fa fa-envelope' }
                                 ]
                             } else {
                                 $scope.MenuMahasiswa = [
                                     { 'href': 'PengajuanKRS', 'Text': 'Pengajuan KRS', 'class': 'fa fa-file' },
                                     { 'href': 'EvaluasiPembelajaran', 'Text': 'Evaluasi Pembelajaran', 'class': 'fa fa-check' },
-                                    { 'href': 'Tagihan', 'Text': 'Tagihan Pembayaran', 'class': 'fa fa-money' }
+                                    { 'href': 'Tagihan', 'Text': 'Tagihan Pembayaran', 'class': 'fa fa-money' },
+                                    { 'href': 'Inbox', 'Text': 'Inbox', 'class': 'fa fa-envelope' },
                                 ]
                             }
                         }, error => {
@@ -344,6 +352,7 @@
                         $scope.RoleKaBaak = true;
                         $scope.MenuKaBaak = [
                             { 'href': 'UserAkses', 'Text': 'User', 'SetStatus': value.Nama },
+                            { 'href': 'Mahasiswa', 'Text': 'Mahasiswa', 'SetStatus': value.Nama },
                             { 'href': 'Pengumuman', 'Text': 'Pengumuman', 'SetStatus': value.Nama },
                             { 'href': 'BeritaAcara', 'Text': 'Berita Acara', 'SetStatus': value.Nama },
                             { 'href': 'JadwalKuliah', 'Text': 'Jadwal Kuliah', 'SetStatus': value.Nama },

@@ -6,6 +6,8 @@
             $scope.DataPassword = {};
             $scope.Title = "";
             $scope.Username = "";
+            $scope.Email = "";
+            $scope.chatid="";
             $scope.showPegawai = false;
             $scope.showMahasiswa = false;
             $scope.DataPassword.OldPassword = "";
@@ -96,6 +98,9 @@
                             if (isConfirm) {
                                 var a = {};
                                 a.Username = $scope.Username;
+                                a.Email = $scope.Email;
+                                a.chatid = $scope.chatid;
+                                a.jenis = $scope.showPegawai ? 'Pegawai':'Mahasiswa';
                                 UsersProses.post(a).then(response => {
                                     SweetAlert.swal({
                                         title: "Berhasil!!!",

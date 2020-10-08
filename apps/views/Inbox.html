@@ -1,0 +1,68 @@
+<div id="loading-bar-container"></div>
+<div class="box-header with-border">
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title"><i class="fa fa-envelope"></i> INBOX</h3>
+            <!-- <div class="box-tools">
+                <button type="button" class="btn btn-info btn-circle" data-toggle="modal" data-target="#addpengumuman">
+                    <i class="fa fa-plus"></i>
+                </button>
+            </div> -->
+        </div>
+        <div class="box-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="box-body table-responsive no-padding">
+                        <table datatable="ng" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Pengirim</th>
+                                    <th>Perihal</th>
+                                    <th>No Surat</th>
+                                    <th>Berkas</th>
+                                </tr>
+                            </thead>
+                            <tbody style="height: 700px;">
+                                <tr ng-repeat="item in datas | orderBy:'tanggal'">
+                                    <td>{{$index+1}}</td>
+                                    <td>{{item.nm_struktural}}</td>
+                                    <td>{{item.perihal}}</td>
+                                    <td>{{item.nomorsurat}}</td>
+                                    <td>
+                                        <!-- <a href="" class="btn btn-info" ng-click="show(item)"><i
+                                                class="fa fa-eye"></i></a> -->
+                                        <a href="{{item.berkas}}" class="btn btn-primary" target="_blank"><i
+                                                class="fa fa-download"></i></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="show">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Tambah Pengumuman</h4>
+                </div>
+                <div class="modal-body">
+                    <ng-pdf template-url="assets/dist/partials/viewer.html" scale="page-fit" page="1"
+                        usecredentials="false" debug="false"></ng-pdf>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="modal modal-info fade" id="TampilGambar">
+        <div class="modal-dialog">
+            <img data-ng-src="{{File}}" width="100%" data-err-src="images/png/avatar.png"/>
+        </div>
+    </div> -->
+</div>
