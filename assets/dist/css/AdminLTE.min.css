@@ -5257,4 +5257,24 @@ table.text-center, table.text-center td, table.text-center th {
     .table-responsive>.table tr th, .table-responsive>.table tr td {
         white-space: normal !important
     }
+    .d-flex {
+        display: -ms-flexbox !important;
+        display: flex !important
+    }
+    
+    .justify-content-between {
+        -ms-flex-pack: justify !important;
+        justify-content: space-between !important
+    }
 }
+.d-flex {
+    display: -ms-flexbox !important;
+    display: flex !important
+}
+
+.justify-content-between {
+    -ms-flex-pack: justify !important;
+    justify-content: space-between !important
+} 
+
+

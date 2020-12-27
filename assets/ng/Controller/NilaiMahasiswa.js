@@ -22,6 +22,7 @@
         $scope.GetMahasiswa = function(){
             var a = JSON.parse($scope.SelectedMatakuliah);
             $scope.SelectedMatakuliah = a;
+            $scope.Tanggal = new Date();
             $scope.Show = true;
         }
         $scope.Hitung = function(item){
@@ -65,6 +66,10 @@
                     }
                 });
             
+        }
+        $scope.print = () => {
+            // var OPTION = {mode:"popup", popHt: 500, popWd: 400,popX: 500,popY: 600, popClose: true, strict: undefined};
+            $("#print").printArea();
         }
     });
 })(window.angular);
