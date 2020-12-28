@@ -336,7 +336,7 @@
                         $scope.RoleDosen = true;
                         $scope.MenuDosen = [
                             { 'href': 'NilaiMahasiswa', 'Text': 'Input Nilai', 'SetStatus': value.Nama },
-                            { 'href': 'Kurikulum', 'Text': 'Kurikulum', 'SetStatus': value.Nama }
+                            // { 'href': 'Kurikulum', 'Text': 'Kurikulum', 'SetStatus': value.Nama }
                         ]
                     } else if (value.Nama == "Dosen Wali") {
                         $scope.RoleWali = true;
