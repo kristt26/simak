@@ -11,13 +11,13 @@
 
         GradeNilaiService.get().then(response => {
             $scope.GradeNilai = response;
+            KhsmServicee.get().then(response =>{
+                $scope.DatasMatakuliah = response;
+            }, error => {
+                console.log();
+            })
         }, error => {
             console.log(error.data);
-        })
-        KhsmServicee.get().then(response =>{
-            $scope.DatasMatakuliah = response;
-        }, error => {
-            console.log();
         })
         $scope.GetMahasiswa = function(){
             var a = JSON.parse($scope.SelectedMatakuliah);
@@ -55,6 +55,7 @@
                             SweetAlert.swal("Information!", "Berhasil", "success");
                             $scope.Tombol=true;
                             $scope.Show = false;
+                            $scope.SelectedMatakuliah = {};
                         }, error =>{
                             SweetAlert.swal(response.message);
                             $scope.Show = true;

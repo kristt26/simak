@@ -29,10 +29,16 @@
                     data: item,
                     headers: AuthService.Header
                 }).then(function (response) {
-                    service.data = [];
-                    service.data = response.data.data;
-                    service.instance = true;
-                    deferred.resolve(service.data);
+                    var data = service.data.find(x=>x.idjadwal = item.idjadwal);
+                    if(data){
+                        data.Mahasiswa.forEach(element => {
+                            var dataitem = item.Mahasiswa.find(mhs=>mhs.npm == element.npm);
+                            element.ket = dataitem.ket;
+                            element.nxsks = dataitem.nxsks;
+                            element.nhuruf = dataitem.nhuruf;
+                        });
+                    }
+                    deferred.resolve(response.data);
                 }, function (error) {
                     // console.log(error);
                     deferred.reject(error);
