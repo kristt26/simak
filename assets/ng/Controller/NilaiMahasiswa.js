@@ -53,13 +53,14 @@
                         $scope.Tombol=false;
                         KhsmServicee.put($scope.SelectedMatakuliah).then(response =>{
                             SweetAlert.swal("Information!", "Berhasil", "success");
-                            $scope.Tombol=true;
-                            $scope.Show = false;
-                            $scope.SelectedMatakuliah = {};
+                            KhsmServicee.get().then(response =>{
+                                $scope.DatasMatakuliah = response;
+                                $scope.SelectedMatakuliah = "";
+                                SweetAlert.swal(response.message);
+                                $scope.Show = true;
+                                $scope.Tombol=true;
+                            })
                         }, error =>{
-                            SweetAlert.swal(response.message);
-                            $scope.Show = true;
-                            $scope.Tombol=true;
                         })
                     } else {
                         SweetAlert.swal("Cancelled", "Anda Membatalkan Proses:)", "error");

@@ -11,7 +11,6 @@
                     url: AuthService.Base+"api/Khsm/GetlistKHS",
                     headers: AuthService.Header
                 }).then(function (response) {
-                    service.data = [];
                     service.data = response.data.data;
                     service.instance = true;
                     deferred.resolve(service.data);
@@ -30,10 +29,10 @@
                     headers: AuthService.Header
                 }).then(function (response) {
                     var data = {};
-                    service.data.forEach(itemdata => {
+                    angular.forEach(service.data, function(itemdata, key){
                         if(itemdata.idjadwal==item.idjadwal)
-                            data = itemdata;
-                    });
+                        data = itemdata;
+                    })
                     if(data){
                         data.Mahasiswa.forEach(element => {
                             var dataitem = item.Mahasiswa.find(mhs=>mhs.npm == element.npm);
