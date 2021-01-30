@@ -29,7 +29,11 @@
                     data: item,
                     headers: AuthService.Header
                 }).then(function (response) {
-                    var data = service.data.find(x=>x.idjadwal = item.idjadwal);
+                    var data = {};
+                    service.data.forEach(itemdata => {
+                        if(itemdata.idjadwal==item.idjadwal)
+                            data = itemdata;
+                    });
                     if(data){
                         data.Mahasiswa.forEach(element => {
                             var dataitem = item.Mahasiswa.find(mhs=>mhs.npm == element.npm);
