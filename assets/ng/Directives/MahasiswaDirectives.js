@@ -51,7 +51,7 @@
 				var deferred = $q.defer();
 				$http({
 					method: 'GET',
-					url: AuthService.Base + 'api/Mahasiswaall',
+					url: AuthService.Base + 'api/mahasiswaall',
 					headers: AuthService.Header
 				}).then(
 					function(response) {
