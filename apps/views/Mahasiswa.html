@@ -19,7 +19,7 @@
                         </tr>
                     </thead>
                     <tbody style="height: 700px;">
-                        <tr ng-repeat="item in datas | orderBy:'tanggal'">
+                        <tr ng-repeat="item in datas">
                             <td>{{$index+1}}</td>
                             <td>{{item.npm}}</td>
                             <td>{{item.nmmhs}}</td>
@@ -28,10 +28,10 @@
                             <td>{{item.jk}}</td>
                             <td>{{item.agama}}</td>
                             <td>{{item.Kontak}}</td>
-                            <td>
+                            <!-- <td>
                                 <a href="{{item.berkas}}" class="btn btn-primary" target="_blank"><i
                                         class="fa fa-download"></i></a>
-                            </td>
+                            </td> -->
                         </tr>
                     </tbody>
                 </table>
