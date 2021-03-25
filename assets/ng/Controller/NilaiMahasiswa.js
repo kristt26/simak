@@ -94,6 +94,7 @@
                         $scope.result = true;
                     } else {
                         $scope.result = false;
+                        SweetAlert.swal("Information!", "NPM Tidak Terdaftar", "error");
                     }
                 })
             }
