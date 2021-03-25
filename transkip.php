@@ -74,28 +74,30 @@
     </div>
     <div class="box-body">
       <div class="row" style="padding-left: 20px;">
-        <table class="table table-bordered">
-          <tr>
-            <th>Kode</th>
-            <th>MATAKULIAH</th>
-            <th>SEMESTER</th>
-            <th>SKS</th>
-            <th>NILAI</th>
-            <th>NXSKS</th>
-            <th>HURUF</th>
-            <th>Keterangan</th>
-          </tr>
-          <tr ng-repeat="item in datas.matakuliah">
-            <td>{{item.kmk}}</td>
-            <td>{{item.nmmk}}</td>
-            <td>{{item.smt}}</td>
-            <td>{{item.sks}}</td>
-            <td>{{item.valuee}}</td>
-            <td>{{item.nxsks}}</td>
-            <td>{{item.nilai}}</td>
-            <td>{{item.ket}}</td>
-          </tr>
-        </table>
+        <div class="table-responsive no-padding">
+          <table class="table table-bordered">
+            <tr>
+              <th>Kode</th>
+              <th>MATAKULIAH</th>
+              <th>SEMESTER</th>
+              <th>SKS</th>
+              <th>NILAI</th>
+              <th>NXSKS</th>
+              <th>HURUF</th>
+              <th>Keterangan</th>
+            </tr>
+            <tr ng-repeat="item in datas.matakuliah">
+              <td>{{item.kmk}}</td>
+              <td>{{item.nmmk}}</td>
+              <td>{{item.smt}}</td>
+              <td>{{item.sks}}</td>
+              <td>{{item.valuee}}</td>
+              <td>{{item.nxsks}}</td>
+              <td>{{item.nilai}}</td>
+              <td>{{item.ket}}</td>
+            </tr>
+          </table>
+        </div>
       </div>
 
 
