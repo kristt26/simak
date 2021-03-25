@@ -163,6 +163,11 @@
                     url: "/Inbox",
                     templateUrl: "apps/views/Inbox.html",
                     controller: "InboxController"
+                })
+                .state("linkTranskip", {
+                    url: "/linkTranskip",
+                    templateUrl: "apps/views/linkTranskip.html",
+                    controller: "linkTranskipController"
                 });
         })
         .run(['uiSelect2Config', function (uiSelect2Config) {
@@ -329,7 +334,8 @@
                             { 'href': 'Kurikulum', 'Text': 'Kurikulum', 'SetStatus': value.Nama },
                             { 'href': 'ConversiKHS', 'Text': 'Conversi KHS', 'SetStatus': value.Nama },
                             { 'href': 'BeritaAcara', 'Text': 'Berita Acara', 'SetStatus': value.Nama },
-                            { 'href': 'Pengumuman', 'Text': 'Pengumuman', 'SetStatus': value.Nama }
+                            { 'href': 'Pengumuman', 'Text': 'Pengumuman', 'SetStatus': value.Nama },
+                            { 'href': 'linkTranskip', 'Text': 'Link Transkip', 'SetStatus': value.Nama }
     
                         ]
                     } else if (value.Nama == "Dosen") {
