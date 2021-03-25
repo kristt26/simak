@@ -59,16 +59,29 @@
       <center>
         <h2 class="box-title">KEMAJUAN STUDI MAHASISWA</h2>
       </center>
+      <br>
+      <br>
       <div class="col-md-6">
-        <div class="row">
-          <div class="col-md-2">
-            <h3 class="box-title">Nama <br>NPM</h3>
+        <form class="form-horizontal">
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">Nama</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" ng-model="datas.nmmhs" disabled>
+            </div>
           </div>
-          <div class="col-md-4">
-            <h3 class="box-title">: {{datas.nmmhs}} <br>: {{datas.npm}}</h3>
-
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">NPM</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" ng-model="datas.npm" disabled>
+            </div>
           </div>
-        </div>
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">IPK</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" ng-model="ipk" disabled>
+            </div>
+          </div>
+        </form>
       </div>
 
     </div>
@@ -112,17 +125,24 @@
   <script src="assets/dist/js/lib/angular-pdf.min.js"></script>
   <script>
     angular.module('Apps', [])
-    .controller('transkipController', function($scope, $http){
-      $scope.datas = {};
-      const urlParams = new URLSearchParams(window.location.search);
-      console.log(urlParams.get('npm'));
-      $http({
-        method: "get",
-        url: "https://www.restsimak.stimiksepnop.ac.id/v2/transkip/" + urlParams.get('npm')
-      }).then(res=>{
-        $scope.datas = res.data;
+      .controller('transkipController', function ($scope, $http) {
+        $scope.datas = {};
+        $scope.ipk='';
+        const urlParams = new URLSearchParams(window.location.search);
+        console.log(urlParams.get('npm'));
+        $http({
+          method: "get",
+          url: "https://www.restsimak.stimiksepnop.ac.id/v2/transkip/" + urlParams.get('npm')
+        }).then(res => {
+          $scope.datas = res.data;
+          $http({
+            method: "get",
+            url: "https://www.restsimak.stimiksepnop.ac.id/v2/ipkmhs/" + urlParams.get('npm')
+          }).then(x=>{
+            $scope.ipk = x.data.IPK;
+          })
+        })
       })
-    })
   </script>
 </body>
 
