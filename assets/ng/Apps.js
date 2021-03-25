@@ -202,7 +202,7 @@
                 var a = JSON.parse($window.sessionStorage.getItem("Role"));
                 var statusRole = false;
                 angular.forEach(a, function (value, key) {
-                    if (value.Nama == "Keuangan") {
+                    if (value.Nama == "Keuangan" || value.Nama == "Prodi") {
                         statusRole = true;
                     }
                 });

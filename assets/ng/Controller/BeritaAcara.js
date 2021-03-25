@@ -6,6 +6,7 @@
             //     allowClear:true
             // };
             $scope.ClearItem = AuthRole.Role;
+            $scope.dataRole = AuthRole.cekRole;
             $scope.DatasBa = [];
             $scope.DatasLaporan = [];
             $scope.DatasPersetujuan = [];
@@ -23,7 +24,7 @@
             $scope.Input.sakit = 0;
             $scope.Input.izin = 0;
             $scope.ShowDetailDosen = false;
-            $scope.TanggalInput;
+            $scope.TanggalInput = new Date();
             $scope.TanggalLaporan = new Date();
             BaService.getlaporan().then(response => {
                 $scope.DatasBa = response.data;
@@ -99,6 +100,8 @@
                 $scope.Input.idjadwal = a.idjadwal;
                 $scope.Input.kmk = a.kmk;
                 $scope.ShowDetailDosen = true;
+                $scope.Input.jumlah = parseInt(a.jumlahmahasiswa);
+                $scope.Input.hadir = parseInt(a.jumlahmahasiswa);
             }
             $scope.Simpan = function () {
                 var Tanggal = angular.copy($scope.TanggalInput);
@@ -111,7 +114,7 @@
                     text: "Tambah Berita acara",
                     type: "warning",
                     showCancelButton: true,
-                    confirmButtonColor: "#DD6B55",
+                    // confirmButtonColor: "#DD6B55",
                     confirmButtonText: "Yes, Approved!",
                     cancelButtonText: "No, cancel!",
                     closeOnConfirm: false,
@@ -121,22 +124,23 @@
                     function (isConfirm) {
                         if (isConfirm) {
                             BaService.addBA($scope.Input).then(response => {
-                                var a = JSON.parse($scope.SelectedMatakuliah);
-                                $scope.Input.idbamengajardosen = response;
-                                $scope.Input.persetujuan1 = null;
-                                $scope.Input.persetujuan2 = null;
-                                $scope.Input.status = "non";
-                                $scope.Input.nmmk = a.nmmk;
-                                $scope.Input.sks = a.sks;
-                                $scope.Input.smt = a.smt;
-                                $scope.Input.kdps = a.kdps;
-                                $scope.Input.kelas = a.kelas;
-                                $scope.Input.dsn_saji = a.dsn_saji;
-                                $scope.Input.nmmk = a.nmmk;
-                                $scope.DatasPersetujuan.push(angular.copy($scope.Input));
-                                SweetAlert.swal("Information!", "Berhasil Simpan", "success");
-                                $scope.SelectedMatakuliah = "";
-                                $scope.Input={};
+                                SweetAlert.swal({
+                                    title: "Information!",
+                                    text: "Data Berhasil di Tambah",
+                                    type: "success",
+                                    showCancelButton: false,
+                                    // confirmButtonColor: "#DD6B55",
+                                    confirmButtonText: "Yes, Approved!",
+                                    closeOnConfirm: false,
+                                    showLoaderOnConfirm: true
+                                },
+                                    function (isConfirm) {
+                                        if (isConfirm) {
+                                            BaService.addBA($scope.Input).then(response => {
+                                                location.reload();
+                                            })
+                                        }
+                                    });
 
                             }, error => {
                                 SweetAlert.swal("Information!", "Data Gagal Simpan", "error");
