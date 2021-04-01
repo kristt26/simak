@@ -14,6 +14,7 @@
                     <ul class="nav nav-tabs">
                         <li class="active"><a href="" data-target="#tab_2" data-toggle="tab">Persetujuan</a></li>
                         <li><a href="" data-target="#tab_3" data-toggle="tab">Input Manual</a></li>
+                        <li><a href="" data-target="#tab_4" data-toggle="tab">Histori</a></li>
                         <!-- <li><a href="" data-target="#tab_1" data-toggle="tab">Laporan</a></li> -->
                     </ul>
                     <div class="tab-content">
@@ -75,6 +76,74 @@
                             <button ng-if="ClearItem" class="btn btn-primary pull-right" ng-click="PrintBA('DaftarBa')">Print</button>
                             <button ng-if="ClearItem" class="btn btn-primary pull-right" ng-click="toExcell('DaftarBa')">to Excell</button>
                             <button ng-if="ClearItem" class="btn btn-primary pull-right" ng-click="Rekap('DaftarBa')">Rekap</button>
+                            <table datatable="ng" class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th style="width: 6%;">Tanggal</th>
+                                        <th>Matakuliah</th>
+                                        <th>Program Studi</th>
+                                        <th>Kelas</th>
+                                        <th>Dosen</th>
+                                        <th style="width: 25%;">Materi</th>
+                                        <th>Hadir</th>
+                                        <th>Status</th>
+                                        <th ng-if="ClearItem" style="width: 10%;">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="ba in DatasPersetujuan | orderBy:'-idbamengajardosen'">
+                                        <td>{{$index + 1}}</td>
+                                        <td>
+                                            {{ba.tanggal}}
+                                        </td>
+                                        <td>
+                                            {{ba.nmmk}}
+                                        </td>
+                                        <td>
+                                            {{ba.nmps}}
+                                        </td>
+                                        <td>
+                                            {{ba.kelas}}
+                                        </td>
+                                        <td>
+                                            {{ba.dsn_saji}}
+                                        </td>
+                                        <td>
+                                            {{ba.materi}}
+                                        </td>
+                                        <td>
+                                            {{ba.hadir}}
+                                        </td>
+                                        <td>
+                                            {{ba.persetujuan1}}
+                                        </td>
+                                        <td ng-if="ClearItem" >
+                                            <button ng-show="ba.persetujuan1==null" class="btn btn-warning"
+                                                ng-click="Setujui(ba)">Setujui</button>
+                                            <button ng-show="ba.persetujuan1==null" class="btn btn-danger"
+                                                ng-click="Hapus(ba)">Hapus</button>
+                                                <h5 ng-show="ba.persetujuan1!=null">Valid</h5>
+                                            <!-- <button ng-show="ba.persetujuan1!=null" class="btn btn-info" disabled></button> -->
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+
+
+                        </div>
+                        <div class="tab-pane" id="tab_4">
+                            <form class="form-inline">
+                                <div class="form-group">
+                                    <label for="">Tanggal Rekap</label>
+                                    <select class="form-control"></select>
+                                </div>
+                            </form>
+                            <button ng-if="ClearItem" class="btn btn-primary pull-right" ng-click="PrintBA('LaporanBa')">Print Laporan</button>
+                            <!-- <button ng-if="ClearItem" class="btn btn-primary pull-right" ng-click="PrintBA('DaftarBa')">Print</button> -->
+                            <!-- <button ng-if="ClearItem" class="btn btn-primary pull-right" ng-click="toExcell('DaftarBa')">to Excell</button> -->
+                            <!-- <button ng-if="ClearItem" class="btn btn-primary pull-right" ng-click="Rekap('DaftarBa')">Rekap</button> -->
                             <table datatable="ng" class="table table-bordered table-hover">
                                 <thead>
                                     <tr>

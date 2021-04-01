@@ -14,6 +14,7 @@
             $scope.Hide = true;
             $scope.DatasJadwal = [];
             $scope.DatasMatakuliah = [];
+            $scope.DatasHistori = [];
             $scope.DataPrint = [];
             $scope.SelectedMatakuliah = "";
             $scope.DataDosen = "";
@@ -49,7 +50,8 @@
                 console.log(error);
             })
             BaService.getPersetujuan().then(response => {
-                $scope.DatasPersetujuan = response;
+                $scope.DatasPersetujuan = response.filter(x=>x.status=='non');
+                $scope.DatasHistori = response.filter(x=>x.status!='non');
             }, error => {
                 console.log(error);
             });
