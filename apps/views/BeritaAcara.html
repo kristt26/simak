@@ -14,7 +14,7 @@
                     <ul class="nav nav-tabs">
                         <li class="active"><a href="" data-target="#tab_2" data-toggle="tab">Persetujuan</a></li>
                         <li><a href="" data-target="#tab_3" data-toggle="tab">Input Manual</a></li>
-                        <li><a href="" data-target="#tab_4" data-toggle="tab">Histori</a></li>
+                        <li><a href="" data-target="#tab_4" data-toggle="tab" ng-click="getThBa()">Histori</a></li>
                         <!-- <li><a href="" data-target="#tab_1" data-toggle="tab">Laporan</a></li> -->
                     </ul>
                     <div class="tab-content">
@@ -136,63 +136,46 @@
                         <div class="tab-pane" id="tab_4">
                             <form class="form-inline">
                                 <div class="form-group">
-                                    <label for="">Tanggal Rekap</label>
-                                    <select class="form-control"></select>
+                                    <label for="">Thn. Akademik</label>
+                                    <select class="form-control" ng-options="item as item.setthakademik for item in thakademik" ng-model="itemthakademik" ng-change="getDataHistori(itemthakademik)"></select>
                                 </div>
                             </form>
-                            <button ng-if="ClearItem" class="btn btn-primary pull-right" ng-click="PrintBA('LaporanBa')">Print Laporan</button>
-                            <!-- <button ng-if="ClearItem" class="btn btn-primary pull-right" ng-click="PrintBA('DaftarBa')">Print</button> -->
-                            <!-- <button ng-if="ClearItem" class="btn btn-primary pull-right" ng-click="toExcell('DaftarBa')">to Excell</button> -->
+                            <!-- <button ng-if="ClearItem" class="btn btn-primary pull-right" ng-click="PrintBA('LaporanBa')">Print Laporan</button> -->
+                            <button ng-if="ClearItem" class="btn btn-primary pull-right" ng-click="PrintBA('DaftarBa')">Print</button>
+                            <button ng-if="ClearItem" class="btn btn-primary pull-right" ng-click="toExcell('DaftarBa')">to Excell</button>
                             <!-- <button ng-if="ClearItem" class="btn btn-primary pull-right" ng-click="Rekap('DaftarBa')">Rekap</button> -->
                             <table datatable="ng" class="table table-bordered table-hover">
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th style="width: 6%;">Tanggal</th>
-                                        <th>Matakuliah</th>
                                         <th>Program Studi</th>
+                                        <th style="width: 6%;">Kode Matakuliah</th>
+                                        <th>Matakuliah</th>
+                                        <th>SKS</th>
                                         <th>Kelas</th>
                                         <th>Dosen</th>
-                                        <th style="width: 25%;">Materi</th>
-                                        <th>Hadir</th>
-                                        <th>Status</th>
-                                        <th ng-if="ClearItem" style="width: 10%;">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr ng-repeat="ba in DatasPersetujuan | orderBy:'-idbamengajardosen'">
+                                    <tr ng-repeat="ba in dataHistori" ng-click="showDetailHistori(ba.beritaacara, ba.Matakuliah)">
                                         <td>{{$index + 1}}</td>
                                         <td>
-                                            {{ba.tanggal}}
+                                            {{ba.jurusan}}
                                         </td>
                                         <td>
-                                            {{ba.nmmk}}
+                                            {{ba.kmk}}
                                         </td>
                                         <td>
-                                            {{ba.nmps}}
+                                            {{ba.Matakuliah}}
+                                        </td>
+                                        <td>
+                                            {{ba.sks}}
                                         </td>
                                         <td>
                                             {{ba.kelas}}
                                         </td>
                                         <td>
-                                            {{ba.dsn_saji}}
-                                        </td>
-                                        <td>
-                                            {{ba.materi}}
-                                        </td>
-                                        <td>
-                                            {{ba.hadir}}
-                                        </td>
-                                        <td>
-                                            {{ba.persetujuan1}}
-                                        </td>
-                                        <td ng-if="ClearItem" >
-                                            <button ng-show="ba.persetujuan1==null" class="btn btn-warning"
-                                                ng-click="Setujui(ba)">Setujui</button>
-                                            <button ng-show="ba.persetujuan1==null" class="btn btn-danger"
-                                                ng-click="Hapus(ba)">Hapus</button>
-                                                <h5 ng-show="ba.persetujuan1!=null">Valid</h5>
-                                            <!-- <button ng-show="ba.persetujuan1!=null" class="btn btn-info" disabled></button> -->
+                                            {{ba.dosen}}
                                         </td>
                                     </tr>
                                 </tbody>
@@ -274,7 +257,7 @@
                     <th style="width: 6%;">Tanggal</th>
                     <th style="width: 35%;">Materi</th>
                     <th>Hadir</th>
-                    <th>Status</th>
+                    <th>Approved By</th>
                 </tr>
             </thead>
             <tbody>
@@ -328,5 +311,52 @@
                 </tr>
             </tbody>
         </table>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="detailHistori" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">{{Matakuliah}}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="color: black;">No</th>
+                            <th style="color: black;">Tanggal</th>
+                            <th style="width: 35%; color: black;">Materi</th>
+                            <th style="color: black;">Hadir</th>
+                            <th style="color: black;">Approved By</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="ba in detailBa">
+                            <td style="color: black;">{{$index + 1}}</td>
+                            <td style="color: black;">
+                                {{ba.tanggal}}
+                            </td>
+                            <td style="color: black;">
+                                {{ba.materi}}
+                            </td>
+                            <td style="color: black;">
+                                {{ba.hadir}}
+                            </td style="color: black;">
+                            <td style="color: black;">
+                                {{ba.persetujuan1}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
     </div>
 </div>

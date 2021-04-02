@@ -179,7 +179,7 @@
             service.Token = $window.sessionStorage.getItem("Token");
             service.Header = getHeader();
             service.dataUser = getUser();
-            // service.Base = "http://localhost/RestSimak/";
+            // service.Base = "http://localhost/restsimak/";
             service.Base = "https://www.restsimak.stimiksepnop.ac.id/";
             function getHeader() {
                 var header = {
