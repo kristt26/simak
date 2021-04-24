@@ -455,11 +455,13 @@
                     <div class="box">
                         <table class="table table-bordered">
                             <tr>
+                                <th>No</th>
                                 <th>NPM</th>
                                 <th>Nama Mahasiswa</th>
                                 <th>Kelas</th>
                             </tr>
                             <tr ng-repeat="item in datamhs">
+                                <td>{{$index+1}}</td>
                                 <td>{{item.npm}}</td>
                                 <td>{{item.nmmhs}}</td>
                                 <td>{{item.kelas}}</td>
