@@ -40,6 +40,37 @@
                 return deferred.promise;
             }
 
+            function histori(param) {
+                var deferred = $q.defer();
+                $http({
+                    method: "POST",
+                    url: AuthService.Base+"api/BeritaAcara/histori",
+                    headers: AuthService.Header,
+                    data: param
+                }).then(function (response) {
+                    deferred.resolve(response.data);
+                }, function (error) {
+                    // console.log(error);
+                    deferred.reject(error);
+                })
+                return deferred.promise;
+            }
+
+            function thba() {
+                var deferred = $q.defer();
+                $http({
+                    method: "GET",
+                    url: AuthService.Base+"api/BeritaAcara/thba",
+                    headers: AuthService.Header
+                }).then(function (response) {
+                    deferred.resolve(response.data);
+                }, function (error) {
+                    console.log(error);
+                    deferred.reject(error);
+                })
+                return deferred.promise;
+            }
+
             function persetujuan() {
                 var deferred = $q.defer();
                 $http({
@@ -126,6 +157,6 @@
                 })
                 return deferred.promise;
             }
-            return { getlaporan: getlaporan, getPersetujuan: persetujuan, putPersetujuan: ubahpersetujuan, putRekap: rekapBa, deleteBa: HapusBa, addBA: TambahBA, laporan:laporan};
+            return { getlaporan: getlaporan, getPersetujuan: persetujuan, putPersetujuan: ubahpersetujuan, putRekap: rekapBa, deleteBa: HapusBa, addBA: TambahBA, laporan:laporan, histori:histori, thba:thba};
     });
 })(window.angular);

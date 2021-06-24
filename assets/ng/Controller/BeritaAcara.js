@@ -233,5 +233,32 @@
                         }
                     });
             }
+            $scope.dataHistori = [];
+            $scope.thakademik = [];
+            $scope.historiFilter = [];
+            $scope.itemthakademik = {};
+            $scope.detailBa = [];
+            $scope.getThBa = ()=>{
+                BaService.thba().then(x=>{
+                    $scope.thakademik = x;
+                })
+            }
+            $scope.getDataHistori = (param)=>{
+                $scope.DataPrint = [];
+                BaService.histori(param).then(x=>{
+                    angular.forEach(x, function (value, key) {
+                        if (value.beritaacara.length > 0) {
+                            $scope.DataPrint.push(angular.copy(value));
+                            $scope.dataHistori.push(angular.copy(value));
+                        }
+                    })
+                })
+            }
+            $scope.Matakuliah="";
+            $scope.showDetailHistori=(item, Matakuliah)=>{
+                $scope.detailBa = item;
+                $scope.Matakuliah=Matakuliah;
+                $("#detailHistori").modal('show');
+            }
         });
 })(window.angular);
