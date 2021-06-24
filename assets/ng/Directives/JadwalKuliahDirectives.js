@@ -57,6 +57,26 @@
                 })
                 return deferred.promise;  
             }
-            return { get: getAction, post: postAction, getjadwal:getjadwal};
+            function deleteAction(param) {
+                var deferred = $q.defer();
+                var Url = AuthService.Base+"api/jadwal/delete/"+param.idjadwal;
+                $http({
+                    method: "delete",
+                    url: Url,
+                    headers: AuthService.Header
+                }).then(function (response) {
+                    var data = service.data.jadwal.find(x=>x.idjadwal==param.idjadwal);
+                    if(data){
+                        var index = service.data.jadwal.indexOf(data);
+                        service.data.jadwal.splice(index, 1);
+                    }
+                    deferred.resolve(response.data);
+                }, function (error) {
+                    SweetAlert.swal("Approved!", error.data, "error");
+                    deferred.reject(error);
+                })
+                return deferred.promise;  
+            }
+            return { get: getAction, post: postAction, getjadwal:getjadwal, delete:deleteAction};
         }]);
 })(window.angular);
