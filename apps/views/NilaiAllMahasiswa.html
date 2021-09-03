@@ -1,0 +1,234 @@
+<!-- <section class="content-header">
+    <h1 style="color: white;">
+        
+    </h1>
+</section> -->
+<section class="content">
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title">INPUT NILAI MAHASISWA</h3>
+            <div class="box-tools">
+                <div class="input-group input-group-sm" style="width: 500px;" ng-show="Tombol">
+                    <select ui-select2 ng-model="SelectedMatakuliah" ng-change="GetMahasiswa()"
+                        class="form-control select2">
+                        <option value=""></option>
+                        <option ng-repeat="item in DatasMatakuliah" value="{{item}}">{{item.nmmk}} - {{item.kelas}} -
+                            {{item.nmps}}</option>
+                    </select>
+                </div>
+                <div class="input-group input-group-sm" style="width: 500px;" ng-hide="Tombol">
+                    <select ng-model="SelectedMatakuliah" ng-change="GetMahasiswa()" disabled
+                        class="form-control select2">
+                        <option value=""></option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="box-body" style="height:auto;" ng-show="Show">
+            <div class="box-body table-responsive no-padding">
+                <table datatable="ng" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>NPM</th>
+                            <th>Nama Mahasiswa</th>
+                            <th>Nilai</th>
+                            <th>Huruf</th>
+                            <th>NXSKS</th>
+                            <th>Keterangan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in SelectedMatakuliah.Mahasiswa">
+                            <td>{{$index+1}}</td>
+                            <td>{{item.npm}}</td>
+                            <td>{{item.nmmhs}}</td>
+                            <td><input type="number" class="form-control" ng-change="Hitung(item)"
+                                    ng-model="item.nilai">
+                            </td>
+                            <td>{{item.nhuruf}}</td>
+                            <td>{{item.nxsks}}</td>
+                            <td>{{item.ket}}</td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+            <div class="box-footer">
+                <button type="button" class="btn btn-info pull-right" ng-click='Proses()' ng-show="Tombol"
+                    style="margin-right: 10px;">Simpan</button>
+                <button type="button" class="btn btn-info pull-right" ng-click='Proses()' ng-hide="Tombol"
+                    disabled>Simpan</button>
+                <button type="button" class="btn btn-primary pull-right" ng-click='print()'>Print</button>
+                <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#bobotNilai">Detail Bobot</button>
+            </div>
+        </div>
+        <div id="print">
+            <div class="screen">
+                <table width="100%">
+                    <td width ="20%"><img src="assets/img/Logo.png" alt="" width="60%"></td>
+                    <td width ="60%" class="text-center">
+                        <h2>BERITA ACARA NILAI KULIAH</h2>
+                        <h4 style="margin-top: -10px;">STIMIK SEPULUH NOPEMBER JAYAPURA <br> PROGRAM STUDI TEKNIK INFORMATIKA <br>SEMESTER {{SelectedMatakuliah.gg}} TAHUN AKADEMIK {{SelectedMatakuliah.thakademik}}</h4>
+                    </td>
+                    <td width ="20%"><img src="assets/img/blank.png" alt="" width="15%"></td>
+                </table>
+                <!-- <div class="col-md-12 d-flex justify-content-between">
+                    <div class="col-md-3"><img src="assets/img/Logo.png" alt="" width="30%"></div>
+                    <div class="col-md-6 text-center">
+                        
+                        <h4></h4>
+                    </div>
+                    <div class="col-md-2 text-right"><img src="assets/img/blank.png" alt="" width="15%"></div>
+                </div> -->
+                <hr class="style2" style="margin-bottom:12px;"><br>
+                <table>
+                    <tr>
+                        <td>Matakuliah</td>
+                        <td>&nbsp;:&nbsp; </td>
+                        <td>{{SelectedMatakuliah.kmk}} - {{SelectedMatakuliah.nmmk}}</td>
+                    </tr>
+                    <tr>
+                        <td>Dosen</td>
+                        <td>&nbsp;:&nbsp;</td>
+                        <td>{{SelectedMatakuliah.nmdsn}}</td>
+                    </tr>
+                    <tr>
+                        <td>Kelas</td>
+                        <td>&nbsp;:&nbsp;</td>
+                        <td>{{SelectedMatakuliah.kelas}}</td>
+                    </tr>
+                </table>
+                <table class="table table-bordered" style="width:99%; margin-right: 2px; margin-left: 2px;">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>NPM</th>
+                            <th>Nama Mahasiswa</th>
+                            <th>Nilai</th>
+                            <th>Huruf</th>
+                            <th>NXSKS</th>
+                            <th>Keterangan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in SelectedMatakuliah.Mahasiswa">
+                            <td>{{$index+1}}</td>
+                            <td>{{item.npm}}</td>
+                            <td>{{item.nmmhs}}</td>
+                            <td>{{item.nilai}}</td>
+                            <td>{{item.nhuruf}}</td>
+                            <td>{{item.nxsks}}</td>
+                            <td>{{item.ket}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table width="100%">
+                    <tr>
+                        <td width="50%">
+                            <h5><strong>Bobot Penilaian</strong></h5>
+                            <table border="1" width="70%">
+                                <tr>
+                                    <th>Hrf</th>
+                                    <th>Bobot</th>
+                                    <th>Min</th>
+                                    <th>Max</th>
+                                </tr>
+                                <tr ng-repeat="bobot in GradeNilai | orderBy: '-bobot'">
+                                    <th>{{bobot.nilai}}</th>
+                                    <th>{{bobot.bobot}}</th>
+                                    <th>{{bobot.range_awal}}</th>
+                                    <th>{{bobot.range_akhir}}</th>
+                                </tr>
+                            </table>
+                        </td>
+                        <td>
+                            <div class="text-center">
+                                <br />
+                                <br />
+                                <h4>Jayapura, {{Tanggal | date: 'd MMMM y'}}</h4>
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                                <h4><b><strong><u>{{SelectedMatakuliah.nmdsn}}</u></strong></b></h4>
+                                <h4 style="margin-top: -7px;">NIDN. {{SelectedMatakuliah.nidn}}</h4>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Button trigger modal -->
+<!-- Modal -->
+<div class="modal fade" id="bobotNilai" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Bobot Nilai</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+            </div>
+            <div class="modal-body">
+                <div class="box-body table-responsive no-padding">
+                    <table class="table table-bordered table-hover">
+                        <tr>
+                            <th style="color: black;">Huruf</th>
+                            <th style="color: black;">Bobot</th>
+                            <th style="color: black;">Nilai Min</th>
+                            <th style="color: black;">Nilai Max</th>
+                        </tr>
+                        <tr ng-repeat="bobot in GradeNilai | orderBy: '-bobot'">
+                            <th style="color: black;">{{bobot.nilai}}</th>
+                            <th style="color: black;">{{bobot.bobot}}</th>
+                            <th style="color: black;">{{bobot.range_awal}}</th>
+                            <th style="color: black;">{{bobot.range_akhir}}</th>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    @media screen {
+        .screen {
+            display: none;
+        }
+
+        .settt {
+            display: block;
+        }
+
+        @page {
+            size: landscape
+        }
+    }
+
+    @media print {
+
+        /* #print {font-family:georgia, times, serif;} */
+        .screen {
+            display: block;
+        }
+
+        .settt {
+            display: none;
+        }
+
+        .tandatangan2 {
+            text-align: center;
+            margin-left: 545px;
+        }
+
+    }
+
+    
+</style>

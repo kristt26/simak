@@ -20,6 +20,21 @@
                 })
                 return deferred.promise;
             }
+            function getAll(){
+                var deferred = $q.defer();
+                $http({
+                    method: "GET",
+                    url: AuthService.Base+"api/Khsm/GetalllistKHS",
+                    headers: AuthService.Header
+                }).then(function (response) {
+                    service.data = response.data.data;
+                    deferred.resolve(service.data);
+                }, function (error) {
+                    // console.log(error);
+                    deferred.reject(error);
+                })
+                return deferred.promise;
+            }
             function putAction(item){
                 var deferred = $q.defer();
                 $http({
@@ -48,6 +63,6 @@
                 })
                 return deferred.promise;
             }
-            return { get: getAction, put: putAction};
+            return { get: getAction, put: putAction, getAll:getAll};
         })
 })(window.angular);

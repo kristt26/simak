@@ -84,6 +84,11 @@
                     templateUrl: "apps/views/NilaiMahasiswa.html",
                     controller: "NilaiMahasiswaController"
                 })
+                .state("NilaiAllMahasiswa", {
+                    url: "/NilaiAllMahasiswa",
+                    templateUrl: "apps/views/NilaiAllMahasiswa.html",
+                    controller: "NilaiAllMahasiswaController"
+                })
                 .state("ConversiKHS", {
                     url: "/ConversiKHS",
                     templateUrl: "apps/views/ConversiKHS.html",
@@ -362,7 +367,8 @@
                             { 'href': 'Pengumuman', 'Text': 'Pengumuman', 'SetStatus': value.Nama },
                             { 'href': 'BeritaAcara', 'Text': 'Berita Acara', 'SetStatus': value.Nama },
                             { 'href': 'JadwalKuliah', 'Text': 'Jadwal Kuliah', 'SetStatus': value.Nama },
-                            { 'href': 'DosenPengampu', 'Text': 'Dosen Pengampu', 'SetStatus': value.Nama }
+                            { 'href': 'DosenPengampu', 'Text': 'Dosen Pengampu', 'SetStatus': value.Nama },
+                            { 'href': 'NilaiAllMahasiswa', 'Text': 'Nilai Mahasiswa', 'SetStatus': value.Nama }
                         ]
                     } else if (value.Nama == "Keuangan") {
                         $scope.RoleKeuangan = true;
