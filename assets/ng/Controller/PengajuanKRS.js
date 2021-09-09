@@ -68,7 +68,7 @@
                                             value.ngBinding = "success";
                                             $scope.DataTampung.push(value);
                                         }
-                                    } else if(response.mahasiswa.kelas == value.kelas) {
+                                    } else if (response.mahasiswa.kelas == value.kelas) {
                                         $scope.jmsks += parseInt(angular.copy(value.sks));
                                         value.status = false;
                                         value.ngBinding = "success";
@@ -79,7 +79,7 @@
                             })
                         } else {
                             angular.forEach($scope.DatasJadwal, function (value) {
-                                if (parseInt(value.smt) == response.semester+1 && response.mahasiswa.kelas == value.kelas) {
+                                if (parseInt(value.smt) == response.semester + 1 && response.mahasiswa.kelas == value.kelas) {
                                     $scope.jmsks += parseInt(angular.copy(value.sks));
                                     value.status = false;
                                     value.ngBinding = "success";
@@ -165,7 +165,8 @@
                     $scope.TemKrsmJadwal = false;
                     $scope.KrsmJadwal = false;
                     $scope.BatasReg = true;
-                    SweetAlert.swal("Registrasi KRS Belum di Buka");
+                    var tanggal = $scope.convertTanggal(new Date(response.dataReg.tglReg));
+                    SweetAlert.swal("Registrasi KRS dibuka pada\n" + tanggal);
                 } else {
                     $scope.showKrsm = false;
                     $scope.showJadwal = false;
@@ -183,6 +184,22 @@
                     SweetAlert.swal("Data Jadwal Belum Tersedia Segera Hubungi Bagian BAAK Untuk ketersediaan");
                 }
             });
+
+            $scope.convertTanggal = (valueTanggal) => {
+                var hari = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+                var bulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+
+                var tanggal = valueTanggal.getDate();
+                var xhari = valueTanggal.getDay();
+                var xbulan = valueTanggal.getMonth();valueTanggal
+                var xtahun = valueTanggal.getYear();
+
+                var hari = hari[xhari];
+                var bulan = bulan[xbulan];
+                var tahun = (xtahun < 1000) ? xtahun + 1900 : xtahun;
+
+                return hari +', ' + tanggal + ' ' + bulan + ' ' + tahun;
+            }
 
             $scope.PilihItem = function (item) {
                 if (item.ngBinding == "success") {
