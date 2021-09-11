@@ -1,7 +1,7 @@
 (function (angular) {
     'use strict'
     angular.module('JadwalKuliahDirectives', [])
-        .factory("JadwalKuliah", ["$q", "AuthService", "$http", function ($q, AuthService, $http) {
+        .factory("JadwalKuliah", ["$q", "AuthService", "$http", function ($q, AuthService, $http, SweetAlert) {
             var service = {};
             service.instance = false;
             service.data = [];
@@ -50,9 +50,9 @@
                     data:param
                 }).then(function (response) {
                     service.data.jadwal.push(response.data);
-                    deferred.resolve(service.jadwal);
+                    deferred.resolve(response.data);
                 }, function (error) {
-                    SweetAlert.swal("Approved!", error.data, "error");
+                    // SweetAlert.swal("Approved!", error.data, "error");
                     deferred.reject(error);
                 })
                 return deferred.promise;  

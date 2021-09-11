@@ -46,17 +46,19 @@
                     headers: AuthService.Header,
                     data: param
                 }).then(function (response) {
-                    var data = service.data.pengampu.find(x=>x.pengampu == param.idpengampu);
-                    data.nidn = param.nidn;
-                    data.kdps = param.kdps;
-                    data.kmk = param.kmk;
-                    data.thakademik = param.thakademik;
-                    data.gg = param.gg;
-                    data.iddosen = param.iddosen;
-                    data.idmatakuliah = param.idmatakuliah;
-                    data.jenis = param.jenis;
-                    data.mengajar = param.mengajar;
-                    data.idtahunakademik = param.idtahunakademik;
+                    var data = service.data.pengampu.find(x=>x.idpengampu == param.idpengampu);
+                    data = param;
+                    // data.nidn = param.nidn;
+                    // data.nm = param.nidn;
+                    // data.kdps = param.kdps;
+                    // data.kmk = param.kmk;
+                    // data.thakademik = param.thakademik;
+                    // data.gg = param.gg;
+                    // data.iddosen = param.iddosen;
+                    // data.idmatakuliah = param.idmatakuliah;
+                    // data.jenis = param.jenis;
+                    // data.mengajar = param.mengajar;
+                    // data.idtahunakademik = param.idtahunakademik;
                     deferred.resolve(service.data);
                 }, function (error) {
                     // console.log(error);

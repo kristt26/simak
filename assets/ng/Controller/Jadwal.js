@@ -41,8 +41,10 @@
                             $scope.model.jammulai = mulai.replace('.', ':');
                             var selesai = $scope.model.ws.toLocaleTimeString();
                             $scope.model.jamselesai = selesai.replace('.', ':');
+                            console.log($scope.model);
 
                             JadwalKuliah.post($scope.model).then(x => {
+                                // console.log(x);
                                 SweetAlert.swal("Approved!", "Proses berhasil", "success");
                                 location.reload();
                             })
