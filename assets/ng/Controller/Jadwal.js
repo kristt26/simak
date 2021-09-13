@@ -37,9 +37,9 @@
                 },
                     function (isConfirm) {
                         if (isConfirm) {
-                            var mulai = $scope.model.wm.toLocaleTimeString();
+                            var mulai = $scope.model.wm.getHours() + ":" + $scope.model.wm.getMinutes();
                             $scope.model.jammulai = mulai.replace('.', ':');
-                            var selesai = $scope.model.ws.toLocaleTimeString();
+                            var selesai = $scope.model.ws.getHours() + ":" + $scope.model.ws.getMinutes();
                             $scope.model.jamselesai = selesai.replace('.', ':');
                             console.log($scope.model);
 
