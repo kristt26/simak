@@ -61,16 +61,18 @@
                     });
             }
             $scope.ubah=(item)=>{
-                $scope.prodi = $scope.datas.prodi.find(x=>x.kdps = item.kdps);
-                $scope.model.kdps = $scope.prodi.kdps;
-                $scope.kurikulum = $scope.prodi.kurikulum.find(x=>x.kurikulum=item.kurikulum);
-                $scope.matakuliah = $scope.kurikulum.matakuliah.find(x=>x.kmk = item.kmk);
-                // dosens=matakuliah.dosen; model.sks=matakuliah.sks; model.thakademik=matakuliah.thakademik; model.gg=matakuliah.gg; model.kmk = matakuliah.kmk; model.nmmk=matakuliah.nmmk
-                console.log(item);
-                $scope.model=item;
-                console.log($scope.prodi);
-                console.log($scope.kurikulum);
-                console.log($scope.matakuliah);
+                $scope.$applyAsync(x=>{
+                    $scope.prodi = $scope.datas.prodi.find(x=>x.kdps = item.kdps);
+                    $scope.model.kdps = $scope.prodi.kdps;
+                    $scope.kurikulum = $scope.prodi.kurikulum.find(x=>x.kurikulum=item.kurikulum);
+                    $scope.matakuliah = $scope.kurikulum.matakuliah.find(x=>x.kmk = item.kmk);
+                    // dosens=matakuliah.dosen; model.sks=matakuliah.sks; model.thakademik=matakuliah.thakademik; model.gg=matakuliah.gg; model.kmk = matakuliah.kmk; model.nmmk=matakuliah.nmmk
+                    console.log(item);
+                    $scope.model=item;
+                    console.log($scope.prodi);
+                    console.log($scope.kurikulum);
+                    console.log($scope.matakuliah);
+                })
             }
             $scope.delete = (item)=>{
                 SweetAlert.swal({
