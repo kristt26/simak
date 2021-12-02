@@ -57,6 +57,23 @@
                 })
                 return deferred.promise;  
             }
+            function putAction(param) {
+                var deferred = $q.defer();
+                var Url = AuthService.Base+"api/jadwal/ubahjadwal";
+                $http({
+                    method: "PUT",
+                    url: Url,
+                    headers: AuthService.Header,
+                    data:param
+                }).then(function (response) {
+                    service.data.jadwal.push(response.data);
+                    deferred.resolve(response.data);
+                }, function (error) {
+                    // SweetAlert.swal("Approved!", error.data, "error");
+                    deferred.reject(error);
+                })
+                return deferred.promise;  
+            }
             function deleteAction(param) {
                 var deferred = $q.defer();
                 var Url = AuthService.Base+"api/jadwal/delete/"+param.idjadwal;
@@ -77,6 +94,6 @@
                 })
                 return deferred.promise;  
             }
-            return { get: getAction, post: postAction, getjadwal:getjadwal, delete:deleteAction};
+            return { get: getAction, post: postAction, put: putAction, getjadwal:getjadwal, delete:deleteAction};
         }]);
 })(window.angular);

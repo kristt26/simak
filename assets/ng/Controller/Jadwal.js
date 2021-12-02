@@ -42,12 +42,19 @@
                             var selesai = $scope.model.ws.getHours() + ":" + $scope.model.ws.getMinutes();
                             $scope.model.jamselesai = selesai.replace('.', ':');
                             console.log($scope.model);
-
-                            JadwalKuliah.post($scope.model).then(x => {
-                                // console.log(x);
-                                SweetAlert.swal("Approved!", "Proses berhasil", "success");
-                                location.reload();
-                            })
+                            if($scope.model.idjadwal){
+                                JadwalKuliah.put($scope.model).then(x => {
+                                    // console.log(x);
+                                    SweetAlert.swal("Approved!", "Proses berhasil", "success");
+                                    location.reload();
+                                })
+                            }else{
+                                JadwalKuliah.post($scope.model).then(x => {
+                                    // console.log(x);
+                                    SweetAlert.swal("Approved!", "Proses berhasil", "success");
+                                    location.reload();
+                                })
+                            }
                         } else {
                             SweetAlert.swal("Cancelled", "Proses Dibatalkan :)", "error");
                         }
@@ -60,6 +67,7 @@
                 $scope.matakuliah = $scope.kurikulum.matakuliah.find(x=>x.kmk = item.kmk);
                 // dosens=matakuliah.dosen; model.sks=matakuliah.sks; model.thakademik=matakuliah.thakademik; model.gg=matakuliah.gg; model.kmk = matakuliah.kmk; model.nmmk=matakuliah.nmmk
                 console.log(item);
+                $scope.model=item;
                 console.log($scope.prodi);
                 console.log($scope.kurikulum);
                 console.log($scope.matakuliah);
