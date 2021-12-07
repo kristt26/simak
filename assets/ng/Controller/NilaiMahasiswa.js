@@ -73,6 +73,10 @@
                 // var OPTION = {mode:"popup", popHt: 500, popWd: 400,popX: 500,popY: 600, popClose: true, strict: undefined};
                 $("#print").printArea();
             }
+            $scope.printForm = () => {
+                // var OPTION = {mode:"popup", popHt: 500, popWd: 400,popX: 500,popY: 600, popClose: true, strict: undefined};
+                $("#print1").printArea();
+            }
         })
         .controller('NilaiAllMahasiswaController', function ($scope, KhsmServicee, GradeNilaiService, SweetAlert) {
             $scope.DatasMatakuliah = [];
@@ -146,6 +150,7 @@
                 // var OPTION = {mode:"popup", popHt: 500, popWd: 400,popX: 500,popY: 600, popClose: true, strict: undefined};
                 $("#print").printArea();
             }
+            
         })
         .controller('linkTranskipController', function ($scope, MahasiswaService, SweetAlert) {
             $scope.npm = '';
