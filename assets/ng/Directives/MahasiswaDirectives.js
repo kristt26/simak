@@ -67,11 +67,12 @@
 				);
 				return deferred.promise;
 			}
-			function addmahasiswa() {
+			function addmahasiswa(param) {
 				var deferred = $q.defer();
 				$http({
-					method: 'GET',
-					url: AuthService.Base + 'api/mahasiswaall',
+					method: 'POST',
+					url: AuthService.Base + 'api/addmahasiswa',
+					data: param,
 					headers: AuthService.Header
 				}).then(
 					function(response) {
@@ -95,7 +96,7 @@
 					headers: AuthService.Header
 				}).then(
 					function(response) {
-						deferred.resolve(service.data);
+						deferred.resolve(response.data);
 					},
 					function(error) {
 						// console.log(error);

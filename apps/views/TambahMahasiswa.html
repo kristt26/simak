@@ -1,25 +1,20 @@
 <section class="content">
     <div class="box">
         <div class="box-header with-border">
-            <a href="" class="btn btn-primary btn-sm">Tambah</a>
+            <h4>Tambah Mahasiswa</h4>
         </div>
         <div class="box-body">
-            <form class="form" role="form">
+            <form ng-submit="save()" class="form" role="form">
                 <div class="box">
                     <div class="box-header with-border">
                         <h4>Biodata Mahasiswa</h4>
                     </div>
                     <div class="box-body">
                         <div class="col-md-12">
-                            <div class="col-md-2">
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <label>Program Studi</label>
-                                    <select class="form-control" ng-model='model.kdps'>
-                                        <option value="D3">D3</option>
-                                        <option value="S1">S1</option>
-                                        <option value="S2">S2</option>
-                                        <option value="S3">S3</option>
-                                    </select>
+                                    <select class="form-control" ng-options="item as (item.nmps + ' - ' + item.jenjang) for item in datas" ng-model='prodis' ng-change="model.kdps=prodis.kdps; kurikulum=prodis.kurikulum; model.npm=tahun+prodis.kdmhs;model.jenjang=prodis.jenjang"></select>
                                 </div>
                             </div>
                             <div class="col-md-2">
@@ -29,7 +24,7 @@
                                         ng-model="model.npm" placeholder="NPM">
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <label>Nama Mahasiswa</label>
                                     <input type="text" class="form-control" ng-model="model.nmmhs"
@@ -39,12 +34,7 @@
                             <div class="col-md-2">
                                 <div class="form-group">
                                     <label>Jenjang</label>
-                                    <select class="form-control" ng-model='model.jenjang'>
-                                        <option value="D3">D3</option>
-                                        <option value="S1">S1</option>
-                                        <option value="S2">S2</option>
-                                        <option value="S3">S3</option>
-                                    </select>
+                                    <input type="text" class="form-control" ng-model="model.jenjang" disabled>
                                 </div>
                             </div>
                             <div class="col-md-2">
@@ -131,10 +121,7 @@
                             <div class="col-md-2">
                                 <div class="form-group">
                                     <label>Kurikulum</label>
-                                    <select class="form-control" ng-model='model.kurikulum'>
-                                        <option value="Belum Menikah">Belum Menikah</option>
-                                        <option value="Menikah">Menikah</option>
-                                    </select>
+                                    <select class="form-control" ng-options="item as item.kurikulum for item in kurikulum" ng-model='itemKur' ng-change="model.kurikulum= itemkur.kurikulum"></select>
                                 </div>
                             </div>
                             <div class="col-md-2">
@@ -187,7 +174,7 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label>Kota SMU</label>
-                                    <input type="text" class="form-control" ng-model="model.jursmu">
+                                    <input type="text" class="form-control" ng-model="model.kotasmu">
                                 </div>
                             </div>
                             <div class="col-md-3">
@@ -227,7 +214,7 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label>Nama Ibu</label>
-                                    <input type="text" class="form-control" ng-model="model.jursmu"
+                                    <input type="text" class="form-control" ng-model="model.nmibu"
                                         placeholder="Jurusan SMU/PT">
                                 </div>
                             </div>
@@ -241,7 +228,7 @@
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-default">Sign in</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
                 </div>
             </form>
 
