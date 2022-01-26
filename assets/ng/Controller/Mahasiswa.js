@@ -35,6 +35,7 @@
 		$scope.save = ()=>{
 			MahasiswaService.addmahasiswa($scope.model).then(res=>{
 				SweetAlert.swal("Approved!", "Proses berhasil", "success");
+				document.location.href = "http://www.simak1011.stimiksepnop.ac.id/home.html#!/Mahasiswa";
 			})
 		}
 	}
