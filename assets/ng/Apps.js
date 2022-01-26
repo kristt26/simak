@@ -44,11 +44,11 @@
                     templateUrl: "apps/views/Mahasiswa.html",
                     controller: "MahasiswaController"
                 })
-                // .state("Jadwal", {
-                //     url: "/Jadwal",
-                //     templateUrl: "apps/views/Jadwal.html",
-                //     controller: "JadwalController"
-                // })
+                .state("addmahasiswa", {
+                    url: "/addmahasiswa",
+                    templateUrl: "apps/views/TambahMahasiswa.html",
+                    controller: "addMahasiswaController"
+                })
                 .state("Prodi", {
                     url: "/Prodi",
                     templateUrl: "apps/views/Prodi.html",

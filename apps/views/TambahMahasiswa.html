@@ -1,0 +1,253 @@
+<section class="content">
+    <div class="box">
+        <div class="box-header with-border">
+            <a href="" class="btn btn-primary btn-sm">Tambah</a>
+        </div>
+        <div class="box-body">
+            <form class="form" role="form">
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h4>Biodata Mahasiswa</h4>
+                    </div>
+                    <div class="box-body">
+                        <div class="col-md-12">
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label>Program Studi</label>
+                                    <select class="form-control" ng-model='model.kdps'>
+                                        <option value="D3">D3</option>
+                                        <option value="S1">S1</option>
+                                        <option value="S2">S2</option>
+                                        <option value="S3">S3</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label>NPM</label>
+                                    <input type="text" class="form-control" maxlength="9" minlength="9"
+                                        ng-model="model.npm" placeholder="NPM">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Nama Mahasiswa</label>
+                                    <input type="text" class="form-control" ng-model="model.nmmhs"
+                                        placeholder="Nama Mahasiswa">
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label>Jenjang</label>
+                                    <select class="form-control" ng-model='model.jenjang'>
+                                        <option value="D3">D3</option>
+                                        <option value="S1">S1</option>
+                                        <option value="S2">S2</option>
+                                        <option value="S3">S3</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label>Kelas</label>
+                                    <select class="form-control" ng-model='model.kelas'>
+                                        <option value="A">A</option>
+                                        <option value="B">B</option>
+                                        <option value="C">C</option>
+                                        <option value="D">D</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Tempat Lahir</label>
+                                    <input type="text" class="form-control" ng-model="model.tmlhr">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Tanggal Lahir</label>
+                                    <input type="date" class="form-control" ng-model="model.tglhr">
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label>Jenis Kelamin</label>
+                                    <select class="form-control" ng-model='model.jk'>
+                                        <option value="L">L</option>
+                                        <option value="P">P</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label>Agama</label>
+                                    <select class="form-control" ng-model='model.agama'>
+                                        <option value="Islam">Islam</option>
+                                        <option value="Kristen">Kristen</option>
+                                        <option value="Khatolik">Khatolik</option>
+                                        <option value="Hindu">Hindu</option>
+                                        <option value="Budha">Budha</option>
+                                        <option value="Konghuchu">Konghuchu</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label>Pendidikan</label>
+                                    <select class="form-control" ng-model='model.pendidikan'>
+                                        <option value="SMU">SMU/Sederajat</option>
+                                        <option value="D3">D3/Sederajat</option>
+                                        <option value="S1">S1</option>
+                                        <option value="S2">S2</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Pekerjaan</label>
+                                    <select class="form-control" ng-model='model.pekerjaan'>
+                                        <option value="Belum Bekerja">Belum Bekerja</option>
+                                        <option value="Petani">Petani</option>
+                                        <option value="PNS">PNS</option>
+                                        <option value="BUMN">BUMN</option>
+                                        <option value="Pelajar">Pelajar</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Status</label>
+                                    <select class="form-control" ng-model='model.status'>
+                                        <option value="Belum Menikah">Belum Menikah</option>
+                                        <option value="Menikah">Menikah</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label>Kurikulum</label>
+                                    <select class="form-control" ng-model='model.kurikulum'>
+                                        <option value="Belum Menikah">Belum Menikah</option>
+                                        <option value="Menikah">Menikah</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label>Kewarganegawaan</label>
+                                    <select class="form-control" ng-model='model.kewarga'>
+                                        <option value="WNI">WNI</option>
+                                        <option value="WNA">WNA</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label>Sumber Biaya</label>
+                                    <select class="form-control" ng-model='model.sumbiaya'>
+                                        <option value="Sendiri">Sendiri</option>
+                                        <option value="Orang Tua">Orang Tua</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Alamat</label>
+                                    <textarea class="form-control" rows="4" ng-model="model.alamat"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-header with-border">
+                        <h4>Data Sekolah Sebelumnya</h4>
+                    </div>
+                    <div class="box-body">
+                        <div class="col-md-12">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Nama SMU/PT</label>
+                                    <input type="text" class="form-control" ng-model="model.nmsmu"
+                                        placeholder="Nama SMU/PT">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Jurusan SMU</label>
+                                    <input type="text" class="form-control" ng-model="model.jursmu"
+                                        placeholder="Jurusan SMU/PT">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Kota SMU</label>
+                                    <input type="text" class="form-control" ng-model="model.jursmu">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Provinsi</label>
+                                    <input type="text" class="form-control" ng-model="model.provsmu">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Alamat</label>
+                                    <textarea class="form-control" rows="4" ng-model="model.almt"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-header with-border">
+                        <h4>Data Orang Tua</h4>
+                    </div>
+                    <div class="box-body">
+                        <div class="col-md-12">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Jumlah Saudara</label>
+                                    <input type="text" class="form-control" ng-model="model.jmsaudara">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Nama Ayah</label>
+                                    <input type="text" class="form-control" ng-model="model.nmayah"
+                                        placeholder="Nama SMU/PT">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Nama Ibu</label>
+                                    <input type="text" class="form-control" ng-model="model.jursmu"
+                                        placeholder="Jurusan SMU/PT">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Alamat</label>
+                                    <textarea class="form-control" rows="4" ng-model="model.almtayah"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-default">Sign in</button>
+                </div>
+            </form>
+
+        </div>
+        <!-- <div class="box-footer">
+            Footer
+        </div> -->
+    </div>
+</section>

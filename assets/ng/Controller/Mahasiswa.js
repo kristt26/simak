@@ -3,7 +3,8 @@
 	angular
 		.module('Mahasiswa', [])
 		.controller('MahasiswaController', MahasiswaController)
-		.controller('mahasiswajurusanController', mahasiswajurusanController);
+		.controller('mahasiswajurusanController', mahasiswajurusanController)
+		.controller('addMahasiswaController', addMahasiswaController);
 
 	function MahasiswaController($scope, MahasiswaService) {
 		$scope.datas = [];
@@ -15,6 +16,12 @@
 	function mahasiswajurusanController($scope, MahasiswaService) {
 		$scope.datas = [];
 		MahasiswaService.mahasiswaProdi().then((x) => {
+			$scope.datas = x;
+		});
+	}
+	function addMahasiswaController($scope, MahasiswaService) {
+		$scope.datas = [];
+		MahasiswaService.getadd().then((x) => {
 			$scope.datas = x;
 		});
 	}
