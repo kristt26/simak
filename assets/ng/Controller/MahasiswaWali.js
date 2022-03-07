@@ -19,8 +19,8 @@
             $scope.DataWali = [];
             $scope.ListMonitoring = [];
             WaliMahasiswa.mahasiswaProdi().then(response => {
-                $scope.ListMonitoring = response.data.data.mahasiswa;
-                $scope.DataWali = response.data.data.warning;
+                $scope.ListMonitoring = response.warning.data;
+                $scope.DataWali = response.mahasiswa;
             });
             // WaliMahasiswa.getMahasiswa().then(response => {
             //     $scope.DataWali = response;
