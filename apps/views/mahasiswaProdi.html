@@ -1,0 +1,78 @@
+<div id="loading-bar-container"></div>
+<div class="box-header with-border">
+    <h3 class="box-title">Daftar Mahasiswa Wali</h3>
+</div>
+<div class="box-body">
+    <div class="row" style="padding-left: 20px;">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Custom Tabs -->
+                <div class="nav-tabs-custom">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="" data-target="#listmahasiswa" data-toggle="tab">List Mahasiswa</a></li>
+                        <li><a href="" data-target="#warning" data-toggle="tab">Mahasiswa Warning</a></li>
+                        <!-- <li><a href="" data-target="#tab_1" data-toggle="tab">Laporan</a></li> -->
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="listmahasiswa">
+                            <div class="box-body table-responsive no-padding">
+                                <table datatable="ng" class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Nama/NPM</th>
+                                            <th>Kelas</th>
+                                            <th>Semester</th>
+                                            <th>SKS Tempuh</th>
+                                            <th>IPK</th>
+                                            <th>Kontak</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody style="height: 700px;">
+                                        <tr ng-repeat="item in DataWali | filter : SearchText | orderBy:'IPK'">
+                                            <td>{{item.npm}}&nbsp;-&nbsp;{{item.nmmhs}}</td>
+                                            <td>{{item.kelas}}</td>
+                                            <td>{{item.Semester}}</td>
+                                            <td>{{item.SKSLulus}}</td>
+                                            <td>{{item.IPK | number : 2}}</td>
+                                            <td>{{item.notlp}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="warning">
+                            <div class="box-body table-responsive no-padding">
+                                <table datatable="ng" class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Nama/NPM</th>
+                                            <th>SKS Lulus</th>
+                                            <th>SKS Sisa</th>
+                                            <th>IPK</th>
+                                            <th>Semester</th>
+                                            <th>Program Studi</th>
+                                            <th>Semester Butuh</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody style="height: 700px;">
+                                        <tr ng-repeat="item in ListMonitoring | orderBy:'Status'">
+                                            <td>{{item.npm}}&nbsp;-&nbsp;{{item.nmmhs}}</td>
+                                            <td>{{item.SKS_Lulus}}</td>
+                                            <td>{{item.SKS_Sisa}}</td>
+                                            <td>{{item.IPK | number : 2}}</td>
+                                            <td>{{item.SMT}}</td>
+                                            <td>{{item.nmps}}</td>
+                                            <td>{{item.SMT_Butuh}}</td>
+                                            <td>{{item.Status}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
