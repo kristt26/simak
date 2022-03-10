@@ -12,7 +12,7 @@
                     <select ui-select2 ng-model="SelectedMatakuliah" ng-change="GetMahasiswa()"
                         class="form-control select2">
                         <option value=""></option>
-                        <option ng-repeat="item in DatasMatakuliah" value="{{item}}">{{item.nmmk}} - {{item.kelas}} -
+                        <option ng-repeat="item in DatasMatakuliah" value="{{item}}">{{$index+1}}. {{item.nmmk}} - {{item.kelas}} -
                             {{item.nmps}}</option>
                     </select>
                 </div>
