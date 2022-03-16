@@ -78,7 +78,7 @@
                 $("#print1").printArea();
             }
         })
-        .controller('NilaiAllMahasiswaController', function ($scope, KhsmServicee, GradeNilaiService, SweetAlert) {
+        .controller('NilaiAllMahasiswaController', function ($scope, KhsmServicee, GradeNilaiService, SweetAlert, DosenAmpuServices) {
             $scope.DatasMatakuliah = [];
             $scope.SelectedMatakuliah = "";
             $scope.GradeNilai = [];
@@ -96,11 +96,24 @@
             }, error => {
                 console.log(error.data);
             })
+
+            $scope.setDosen = (item)=>{
+                $scope.SelectedMatakuliah.nmdsn=item.nmdsn;
+                $scope.SelectedMatakuliah.nidn=item.nidn;
+                $("#dsnsaji").modal('hide');
+                $scope.Show = true;
+            }
+
             $scope.GetMahasiswa = function () {
+                $scope.Show = false;
                 var a = JSON.parse($scope.SelectedMatakuliah);
                 $scope.SelectedMatakuliah = a;
                 $scope.Tanggal = new Date();
-                $scope.Show = true;
+                DosenAmpuServices.bymk($scope.SelectedMatakuliah.kmk).then(res=>{
+                    $scope.dosenPengampu=res;
+                    console.log($scope.dosenPengampu);
+                    $("#dsnsaji").modal('show');
+                })
             }
             $scope.Hitung = function (item) {
                 item.nilai = parseFloat(item.nilai);
@@ -149,6 +162,10 @@
             $scope.print = () => {
                 // var OPTION = {mode:"popup", popHt: 500, popWd: 400,popX: 500,popY: 600, popClose: true, strict: undefined};
                 $("#print").printArea();
+            }
+            $scope.printForm = () => {
+                // var OPTION = {mode:"popup", popHt: 500, popWd: 400,popX: 500,popY: 600, popClose: true, strict: undefined};
+                $("#print1").printArea();
             }
             
         })

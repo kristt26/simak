@@ -21,6 +21,20 @@
                 })
                 return deferred.promise;
             }
+            function bymk(mk){
+                var deferred = $q.defer();
+                $http({
+                    method: "GET",
+                    url: AuthService.Base+"api/dosenampu/bymk/"+mk,
+                    headers: AuthService.Header
+                }).then(function (response) {
+                    deferred.resolve(response.data);
+                }, function (error) {
+                    // console.log(error);
+                    deferred.reject(error);
+                })
+                return deferred.promise;
+            }
             function postAction(param){
                 var deferred = $q.defer();
                 $http({
@@ -66,6 +80,6 @@
                 })
                 return deferred.promise;
             }
-            return { get: getAction, post: postAction, put:putAction };
+            return { get: getAction, post: postAction, put:putAction, bymk:bymk };
         })
 })(window.angular);
