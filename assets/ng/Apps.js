@@ -16,17 +16,13 @@
         "pdf"
     ])
         .config(function ($stateProvider, $urlRouterProvider) {
-            $urlRouterProvider.otherwise('maintenance');
+            $urlRouterProvider.otherwise('Beranda');
             $stateProvider
                 // HOME STATES AND NESTED VIEWS ========================================
                 .state("Beranda", {
                     url: "/Beranda",
                     templateUrl: "apps/views/Beranda.html",
                     controller: "BerandaController"
-                })
-                .state("maintenance", {
-                    url: "/maintenance",
-                    templateUrl: "apps/views/maintenance.html"
                 })
                 .state("BaseProfile", {
                     url: "/baseprofile",
