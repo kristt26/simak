@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html ng-app="Apps">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  <title>SISTEM AKADEMIK STIMIK1011</title>
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <link rel="stylesheet" href="assets/bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bower_components/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="assets/bower_components/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="assets/bower_components/Ionicons/css/ionicons.min.css">
+  <link rel="stylesheet" href="assets/dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="assets/dist/css/main.css">
+  <link rel="stylesheet" href="assets/node_modules/angular-datatables/dist/css/angular-datatables.css">
+  <link rel="stylesheet" href="assets/node_modules/datatables.net-dt/css/jquery.dataTables.css">
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/angular-bootstrap-toggle@0.4.0/dist/angular-bootstrap-toggle.min.css">
+  <link rel="stylesheet" href="assets/dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="assets/bower_components/sweetalert/dist/sweetalert.css">
+
+
+  <link rel="stylesheet" href="assets/bower_components/select2/select2.css">
+  <link rel="stylesheet" href="assets/bower_components/select2/select2-bootstrap.css">
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+  <link rel='stylesheet' href='assets/bower_components/angular/loading-bar.css' type='text/css' media='all' />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <link rel="stylesheet" href="assets/node_modules/ui-bootstrap4/dist/ui-bootstrap-csp.css">
+  <script>
+    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+    (function () {
+      var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+      s1.async = true;
+      s1.src = 'https://embed.tawk.to/5f09b9955b59f94722ba88ad/default';
+      s1.charset = 'UTF-8';
+      s1.setAttribute('crossorigin', '*');
+      s0.parentNode.insertBefore(s1, s0);
+    })();
+  </script>
+</head>
+
+<body class="hold-transition skin-blue sidebar-mini">
+  <div class="wrapper">
+    <div ng-controller="View">
+      <div ng-include="header"></div>
+      <aside class="main-sidebar" style="margin-top: 50px;">
+        <section class="sidebar">
+          <div choose-file ng-model="dataGambar" class="user-panel">
+            <div class="pull-left image ">
+              <img id="userImg" data-ng-src="{{Pict}}" data-err-src="images/png/avatar.png"
+                src="assets/dist/img/User_Circle.png" class="img-circle photoProfile" alt="User Image">
+              <input class="ng-hide" id="fileInput" type="file" />
+            </div>
+            <div class="pull-left info">
+              <p>{{NamaUser}}</p>
+              <a href="javascript:void(0)" ng-click="uploadFotoProfile(dataGambar)"><i
+                  class="fa fa-circle text-success"></i> Online</a>
+            </div>
+          </div>
+          <div ng-include="menu"></div>
+        </section>
+      </aside>
+      <div class="content-wrapper">
+        <ui-view></ui-view>
+      </div>
+
+      </choose-file>
+
+      <div ng-controller="View">
+        <div ng-include="footer">
+          <!-- <script src="//myradiostream.com/embed/labstimik1011"></script> -->
+        </div>
+      </div>
+      <div class="control-sidebar-bg"></div>
+    </div>
+    <script src="assets/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="assets/bower_components/angular/angular.min.js"></script>
+    <script src="assets/bower_components/angular/angular-animate.min.js"></script>
+    <script src="assets/bower_components/angular/angular-route.min.js"></script>
+    <script src="assets/bower_components/angular/angular-sanitize.min.js"></script>
+    <script src="assets/bower_components/angular/angular-resource.js"></script>
+    <script src="assets/bower_components/angular/angularjs/release/angular-ui-router.js"></script>
+    <script src="assets/node_modules/ui-bootstrap4/dist/ui-bootstrap-tpls.js"></script>
+    <script type='text/javascript' src='assets/bower_components/angular/loading-bar.js'></script>
+    <script src="assets/bower_components/angular-ui-select2/src/select2.js"></script>
+    <script src="assets/bower_components/select2/select2.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="assets/dist/js/angular-locale_id-id.js"></script>
+
+    <script src="assets/ng/Apps.js"></script>
+    <script src="assets/ng/Controller.js"></script>
+    <script src="assets/ng/Controller/Pegawai.js"></script>
+    <script src="assets/ng/Controller/Jabatan.js"></script>
+    <script src="assets/ng/Controller/Mahasiswa.js"></script>
+    <script src="assets/ng/Controller/Jadwal.js"></script>
+    <script src="assets/ng/Controller/Beranda.js"></script>
+    <script src="assets/ng/Controller/BaseProfile.js"></script>
+    <script src="assets/ng/Controller/Prodi.js"></script>
+    <script src="assets/ng/Controller/TahunAkademik.js"></script>
+    <script src="assets/ng/Controller/GradeNilai.js"></script>
+    <script src="assets/ng/Controller/Kurikulum.js"></script>
+    <script src="assets/ng/Controller/KemajuanStudi.js"></script>
+    <script src="assets/ng/Controller/ApprovedKRS.js"></script>
+    <script src="assets/ng/Controller/NilaiMahasiswa.js"></script>
+    <script src="assets/ng/Controller/ConversiKHS.js"></script>
+    <script src="assets/ng/Controller/Pengumuman.js"></script>
+    <script src="assets/ng/Controller/BidikMisi.js"></script>
+    <script src="assets/ng/Controller/PengajuanKRS.js"></script>
+    <script src="assets/ng/Controller/Profile.js"></script>
+    <script src="assets/ng/Controller/Histori.js"></script>
+    <script src="assets/ng/Controller/Penelitian.js"></script>
+    <script src="assets/ng/Controller/MahasiswaWali.js"></script>
+    <script src="assets/ng/Controller/BeritaAcara.js"></script>
+    <script src="assets/ng/Controller/EvaluasiPembelajaran.js"></script>
+    <script src="assets/ng/Controller/UserAkses.js"></script>
+    <script src="assets/ng/Controller/TagihanPembayaran.js"></script>
+    <script src="assets/ng/Controller/DosenPengampu.js"></script>
+    <script src="assets/ng/Controller/Inbox.js"></script>
+
+    <!-- Directive -->
+    <script src="assets/ng/Directives/ApprovedDirectives.js"></script>
+    <script src="assets/ng/Directives/PengajuanKRSDirective.js"></script>
+    <script src="assets/ng/Directives/JadwalDirectives.js"></script>
+    <script src="assets/ng/Directives/JadwalKuliahDirectives.js"></script>
+    <script src="assets/ng/Directives/KemajuanStudiDirective.js"></script>
+    <script src="assets/ng/Directives/UserDirectives.js"></script>
+    <script src="assets/ng/Directives/BaseProfileDirectives.js"></script>
+    <script src="assets/ng/Directives/MahasiswaDirectives.js"></script>
+    <script src="assets/ng/Directives/PenelitianDirectives.js"></script>
+    <script src="assets/ng/Directives/MahasiswaWaliDirective.js"></script>
+    <script src="assets/ng/Directives/BeritaAcaraDirective.js"></script>
+    <script src="assets/ng/Directives/MatakuliahDirectives.js"></script>
+    <script src="assets/ng/Directives/KhsmDirectives.js"></script>
+    <script src="assets/ng/Directives/GradeNilaiDirectives.js"></script>
+    <script src="assets/ng/Directives/EvaluasiPembelajaranDirectives.js"></script>
+    <script src="assets/ng/Directives/TahunAkademikDirectives.js"></script>
+    <script src="assets/ng/Directives/BidikMisiDirectives.js"></script>
+    <script src="assets/ng/Directives/PengumumanDirectives.js"></script>
+    <script src="assets/ng/Directives/TagihanDirectives.js"></script>
+    <script src="assets/ng/Directives/DosenPengampuDirectives.js"></script>
+
+    <!-- Service -->
+    <script src="assets/ng/Service/serviceFile.js"></script>
+    <script src="assets/ng/Service/helper.services.js"></script>
+
+    <script src="assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="assets/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="assets/bower_components/fastclick/lib/fastclick.js"></script>
+    <script src="assets/bower_components/ngSweetAlert/SweetAlert.min.js"></script>
+    <script src="assets/bower_components/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script src="assets/dist/js/adminlte.min.js"></script>
+    <script src="assets/dist/js/demo.js"></script>+
+    <script
+      src="https://cdn.jsdelivr.net/npm/angular-bootstrap-toggle@0.4.0/dist/angular-bootstrap-toggle.min.js"></script>
+    <script src="assets/node_modules/datatables.net/js/jquery.dataTables.js"></script>
+    <script src="assets/node_modules/angular-datatables/dist/angular-datatables.js"></script>
+    <script src="assets/bower_components/jquery-loading-overlay/dist/loadingoverlay.min.js"></script>
+    <script src="assets/dist/js/lib/pdf.js"></script>
+    <script src="assets/dist/js/lib/angular-pdf.min.js"></script>
+    <script src="assets/dist/js/lib/jquery.PrintArea.js"></script>
+    <script>
+      $(document).ready(function () {
+        $('.sidebar-menu').tree()
+      })
+    </script>
+
+</body>
+
+</html>
