@@ -1,7 +1,7 @@
 (function (angular) {
     'use strict'
     angular.module("MahasiswaWali", ["MahasiswaWaliDirective"])
-        .controller("MahasiswaWaliController", function ($scope, $http, WaliMahasiswa) {
+        .controller("MahasiswaWaliController", function ($scope, $http, WaliMahasiswa, $window) {
             $scope.DataWali = [];
             $scope.ListMonitoring = [];
             WaliMahasiswa.getMahasiswa().then(response => {
@@ -12,6 +12,10 @@
             }, error => {
                 console.log(error);
             });
+
+            $scope.showNilai=(item)=>{
+                $window.open('https://www.simak1011.stimiksepnop.ac.id/transkip.php?npm='+item.npm, '_blank');
+            }
 
             
         })

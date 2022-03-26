@@ -17,7 +17,7 @@
     <div class="col-md-4">
         <div class="box">
             <div class="box-header">
-                <h3 class="box-title">Tambah Jadwal</h3>
+                <h3 class="box-title">{{titleForm}} Jadwal</h3>
             </div>
             <div class="box-body">
                 <div class="row">
@@ -25,39 +25,43 @@
                         <div class="form-group row kd_pemesanan" id="kd_pemesanan">
                             <label for="id" class="col-sm-3 col-form-label">Program Studi</label>
                             <div class="col-sm-9">
-                                <select class="form-control select2" id= "select2prodi"
-                                    ng-options="item as item.nmps for item in datas.prodi track by item.kdps" ng-model="prodi"
+                                <select ng-show="titleForm=='Tambah'" class="form-control select2" id= "select2prodi"
+                                    ng-options="item as item.nmps for item in datas.prodi" ng-model="prodi"
                                     ng-change="kurikulums = prodi.kurikulum; model.kdps = prodi.kdps" required>
                                 </select>
+                                <input ng-show="titleForm!='Tambah'" type="text" class="form-control" ng-model="prodi.nmps" disabled>
 
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="tgl_ambil" class="col-sm-3 col-form-label">Kurikulum</label>
                             <div class="col-sm-9">
-                                <select class="form-control select2"
+                                <select ng-show="titleForm=='Tambah'" class="form-control select2"
                                     ng-options="item as item.kurikulum for item in kurikulums" ng-model="kurikulum"
                                     ng-change="matakuliahs=kurikulum.matakuliah" required>
                                 </select>
+                                <input ng-show="titleForm!='Tambah'" type="text" class="form-control" ng-model="kurikulum.kurikulum" disabled>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="tgl_ambil" class="col-sm-3 col-form-label">Matakuliah</label>
                             <div class="col-sm-9">
-                                <select class="form-control select2"
+                                <select ng-show="titleForm=='Tambah'" class="form-control select2"
                                     ng-options="item as item.nmmk for item in matakuliahs" ng-model="matakuliah"
                                     ng-change="dosens=matakuliah.dosen; model.sks=matakuliah.sks; model.thakademik=matakuliah.thakademik; model.gg=matakuliah.gg; model.kmk = matakuliah.kmk; model.nmmk=matakuliah.nmmk"
                                     required>
                                 </select>
+                                <input ng-show="titleForm!='Tambah'" type="text" class="form-control" ng-model="matakuliah.nmmk" disabled>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="tgl_ambil" class="col-sm-3 col-form-label">Dosen Penyaji</label>
                             <div class="col-sm-9">
-                                <select class="form-control select2" ng-options="item as item.nmdsn for item in dosens"
+                                <select class="form-control" ng-options="item as item.nmdsn for item in dosens"
                                     ng-model="dosen"
                                     ng-change="model.dsn_saji=dosen.nmdsn; model.idpengampu=dosen.idpengampu" required>
                                 </select>
+                                <!-- <input ng-show="titleForm!='Tambah'" type="text" class="form-control" ng-model="dosen.nmdsn" disabled> -->
                             </div>
                         </div>
                         <div class="form-group row">
@@ -69,7 +73,7 @@
                         <div class="form-group row">
                             <label for="tgl_ambil" class="col-sm-3 col-form-label">Kelas</label>
                             <div class="col-sm-3">
-                                <select class="form-control select2"
+                                <select class="form-control"
                                     ng-options="item as item.kelas for item in datas.kelas" ng-model="kelas"
                                     ng-change="model.kelas=kelas.kelas" required>
                                 </select>
@@ -138,7 +142,7 @@
                                                         <th>Dosen</th>
                                                         <th>Ruangan</th>
                                                         <th>Jurusan</th>
-                                                        <!-- <th>Action</th> -->
+                                                        <th>Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -152,7 +156,7 @@
                                                         <td>{{item.dsn_saji}}</td>
                                                         <td>{{item.ruangan}}</td>
                                                         <td>{{item.nmps}}</td>
-                                                        <!-- <td>
+                                                        <td>
                                                             <div class="d-flex justify-content-center">
                                                                 <bottom class="btn btn-warning" title="Edit Jadwal"
                                                                     ng-click="ubah(item)">
@@ -163,7 +167,7 @@
                                                                     <i class="fa fa-trash"></i>
                                                                 </bottom>
                                                             </div>
-                                                        </td> -->
+                                                        </td>
                                                     </tr>
                                                 </tbody>
                                             </table>

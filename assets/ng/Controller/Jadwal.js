@@ -17,6 +17,7 @@
             $scope.kelas = {};
             $scope.matakuliahs = {};
             $scope.Testing = "Daftar Jadwal";
+            $scope.titleForm = "Tambah";
             JadwalKuliah.get().then(x => {
                 $scope.datas = x;
                 console.log(x);
@@ -61,17 +62,20 @@
                     });
             }
             $scope.ubah=(item)=>{
+                $scope.titleForm = "Ubah";
                 $scope.$applyAsync(x=>{
-                    $scope.prodi = $scope.datas.prodi.find(x=>x.kdps = item.kdps);
+                    $scope.prodi = $scope.datas.prodi.find(x=>x.kdps == item.kdps);
                     $scope.model.kdps = $scope.prodi.kdps;
-                    $scope.kurikulum = $scope.prodi.kurikulum.find(x=>x.kurikulum=item.kurikulum);
-                    $scope.matakuliah = $scope.kurikulum.matakuliah.find(x=>x.kmk = item.kmk);
-                    // dosens=matakuliah.dosen; model.sks=matakuliah.sks; model.thakademik=matakuliah.thakademik; model.gg=matakuliah.gg; model.kmk = matakuliah.kmk; model.nmmk=matakuliah.nmmk
-                    console.log(item);
-                    $scope.model=item;
-                    console.log($scope.prodi);
-                    console.log($scope.kurikulum);
-                    console.log($scope.matakuliah);
+                    $scope.kurikulums = $scope.prodi.kurikulum;
+                    $scope.kurikulum = $scope.prodi.kurikulum.find(x=>x.kurikulum==item.kurikulum);
+                    $scope.matakuliahs = $scope.kurikulum.matakuliah;
+                    $scope.matakuliah = $scope.kurikulum.matakuliah.find(x=>x.kmk == item.kmk);
+                    $scope.dosens= $scope.matakuliah.dosen;
+                    $scope.dosen= $scope.matakuliah.dosen.find(x=>x.idpengampu==item.idpengampu);
+                    $scope.kelas= $scope.datas.kelas.find(x=>x.kelas==item.kelas);
+                    $scope.model=angular.copy(item);
+                    $scope.model.wm= new Date('2020-01-01 '+$scope.model.wm);
+                    $scope.model.ws= new Date('2020-01-01 '+$scope.model.ws);
                 })
             }
             $scope.delete = (item)=>{

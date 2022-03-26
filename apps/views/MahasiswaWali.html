@@ -28,7 +28,7 @@
                                         </tr>
                                     </thead>
                                     <tbody style="height: 700px;">
-                                        <tr ng-repeat="item in DataWali | filter : SearchText | orderBy:'IPK'">
+                                        <tr ng-repeat="item in DataWali | filter : SearchText | orderBy:'IPK'" ng-click="showNilai(item)">
                                             <td>{{item.npm}}&nbsp;-&nbsp;{{item.nmmhs}}</td>
                                             <td>{{item.kelas}}</td>
                                             <td>{{item.Semester}}</td>
