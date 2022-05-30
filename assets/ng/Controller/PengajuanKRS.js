@@ -205,7 +205,7 @@
                 if (item.ngBinding == "success") {
                     alert("\nMatakuliah tersebut sudah dipilih");
                 } else {
-                    if ($scope.jmsks + parseInt(item.sks) <= 22) {
+                    if ($scope.jmsks + parseInt(item.sks) <= 24) {
                         SweetAlert.swal({
                             title: "Confirmation!!!",
                             text: "Anda Yakin ingin Menambah Matakuliah?",
