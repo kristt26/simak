@@ -164,6 +164,11 @@
                     templateUrl: "apps/views/DosenPengampu.html",
                     controller: "DosenPengampuController"
                 })
+                .state("DosenWali", {
+                    url: "/DosenWali",
+                    templateUrl: "apps/views/DosenWali.html",
+                    controller: "DosenWaliController"
+                })
                 .state("Inbox", {
                     url: "/Inbox",
                     templateUrl: "apps/views/Inbox.html",
@@ -370,6 +375,7 @@
                             { 'href': 'UserAkses', 'Text': 'User', 'SetStatus': value.Nama },
                             { 'href': 'Mahasiswa', 'Text': 'Mahasiswa', 'SetStatus': value.Nama },
                             { 'href': 'Pengumuman', 'Text': 'Pengumuman', 'SetStatus': value.Nama },
+                            { 'href': 'DosenWali', 'Text': 'Dosen Wali', 'SetStatus': value.Nama },
                             { 'href': 'BeritaAcara', 'Text': 'Berita Acara', 'SetStatus': value.Nama },
                             { 'href': 'JadwalKuliah', 'Text': 'Jadwal Kuliah', 'SetStatus': value.Nama },
                             { 'href': 'DosenPengampu', 'Text': 'Dosen Pengampu', 'SetStatus': value.Nama },

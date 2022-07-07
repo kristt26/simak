@@ -5,7 +5,8 @@
             var service = {};
             service.instance = false;
             service.data = [];
-
+            return { get: getAction, post: postAction, put: putAction, getjadwal:getjadwal, delete:deleteAction};
+            
             function getAction() {
                 var deferred = $q.defer();
                 var Url = AuthService.Base+"api/jadwal/jadwalprodi";
@@ -94,6 +95,6 @@
                 })
                 return deferred.promise;  
             }
-            return { get: getAction, post: postAction, put: putAction, getjadwal:getjadwal, delete:deleteAction};
+            
         }]);
 })(window.angular);

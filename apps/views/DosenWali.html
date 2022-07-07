@@ -1,0 +1,92 @@
+<!-- <div id="loading-bar-container"></div> -->
+<section class="content-header">
+    <h1 style="color: white;">
+        DOSEN WALI
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">BAAK</a></li>
+        <li class="active">Dosen Wali</li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+
+    <!-- Default box -->
+    <div class="col-md-4">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">{{titleForm}} Jadwal</h3>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <form ng-submit="save()" enctype="multipart/form-data">
+                        <div class="form-group row">
+                            <label for="tgl_ambil" class="col-sm-3 col-form-label">Dosen Wali</label>
+                            <div class="col-sm-9">
+                                <select ng-show="titleForm=='Tambah'" class="form-control select2" id="select2prodi"
+                                    ng-options="item as item.nmdsn for item in dosens" ng-model="dosen"
+                                    ng-change="model.nidn = dosen.nidn; model.iddosen = dosen.iddosen" required>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="tgl_ambil" class="col-sm-3 col-form-label">Mahasiswa</label>
+                            <div class="col-sm-9">
+                                <select ng-show="titleForm=='Tambah'" class="form-control select2" id="select2prodi"
+                                    ng-options="item as item.nmmhs for item in mahasiswas" ng-model="mhs"
+                                    ng-change="model.npm = mhs.npm" required>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="box-footer justify-content-between">
+                            <button type="submit" class="btn btn-primary">Simpan</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div class="box" style="padding-bottom:10px">
+            <div class="box-header">
+                <h3 class="box-title">Data Mahasiswa Wali</h3>
+            </div>
+            <div class="box-body" style="height: 750px; overflow-y:auto">
+                <div class="row" style="padding-left: 20px;">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <select ng-show="titleForm=='Tambah'" class="form-control select2" id="select2prodi"
+                                        ng-options="item as item.nmps for item in prodis" ng-model="itemProdi"
+                                        ng-change="getMhs(itemProdi.kdps, itemDosen.iddosen)" required>
+                                        <option value="">---Pilih Program Studi---</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <select ng-show="titleForm=='Tambah'" class="form-control select2" id="select2prodi"
+                                        ng-options="item as item.nmdsn for item in dosens" ng-model="itemDosen"
+                                        ng-change="getMhs(itemProdi.kdps, itemDosen.iddosen)" required>
+                                        <option value="">---Pilih Dosen Wali---</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    $('.select2').select2({
+        placeholder: "Pilih item"
+    });
+</script>
