@@ -36,6 +36,22 @@
             })
             return deferred.promise;
         }
+
+        function AmbilMahasiswaByDosen(param) {
+            var deferred = $q.defer();
+            $http({
+                method: "get",
+                url: AuthService.Base+"api/MahasiswaWali/getwali/"+param.kdps+"/"+param.iddosen,
+                headers: AuthService.Header,
+            }).then(function (response) {
+                service.message = response.data.data;
+                deferred.resolve(service.message);
+            }, function (error) {
+                // console.log(error);
+                deferred.reject(error);
+            })
+            return deferred.promise;
+        }
         function getListDO() {
             var deferred = $q.defer();
             $http({
@@ -67,6 +83,6 @@
             })
             return deferred.promise;
         }
-        return { get: getAction, getMahasiswa: AmbilMahasiswa, getList: getListDO, mahasiswaProdi:mahasiswaProdi};
+        return { get: getAction, getMahasiswa: AmbilMahasiswa, getList: getListDO, mahasiswaProdi:mahasiswaProdi, AmbilMahasiswaByDosen:AmbilMahasiswaByDosen};
     }]);
 })(window.angular);

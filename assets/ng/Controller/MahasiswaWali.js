@@ -32,7 +32,7 @@
             //     console.log(error);
             // });
         })
-        .controller("DosenWaliController", function($scope, ProdiServices){
+        .controller("DosenWaliController", function($scope, ProdiServices, WaliMahasiswa){
             $scope.titleForm = "Tambah";
             $scope.model = {};
             ProdiServices.get().then(res=>{
@@ -44,7 +44,7 @@
 
             $scope.getMhs = (kdps, iddosen)=>{
                 if(kdps && iddosen){
-                    ProdiServices.getByDosen({kdps:kdps, iddosen:iddosen}).then(res=>{
+                    WaliMahasiswa.AmbilMahasiswaByDosen({kdps:kdps, iddosen:iddosen}).then(res=>{
                         $scope.datas = res;
                         console.log(res);
                     })
@@ -56,6 +56,11 @@
                 ProdiServices.post($scope.model).then(res=>{
 
                 })
+            }
+            $scope.toExcell = function (item) {
+                var htmltable = document.getElementById(item);
+                var html = htmltable.outerHTML;
+                window.open('data:application/vnd.ms-excel,' + encodeURIComponent(html));
             }
         });
 })(window.angular);
