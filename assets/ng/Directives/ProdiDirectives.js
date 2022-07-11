@@ -43,8 +43,9 @@
         function getByDosen(param) {
             var deferred = $q.defer();
             $http({
-                method: "get",
-                url: AuthService.Base+"api/dosen_wali/read/"+param.kdps+"/"+param.iddosen,
+                method: "post",
+                url: AuthService.Base+"api/dosen_wali/read",
+                data:param,
                 headers: AuthService.Header,
             }).then(function (response) {
                 service.message = response.data.data;
