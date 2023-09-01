@@ -126,6 +126,9 @@
                                 <ul class="nav nav-tabs">
                                     <li class="active"><a href="" data-target="#teknikinformatika" data-toggle="tab">Teknik Informatika</a></li>
                                     <li><a href="" data-target="#sisteminformasi" data-toggle="tab">Sistem Informasi</a></li>
+                                    <li><a href="" data-target="#hukum" data-toggle="tab">Ilmu Hukum</a></li>
+                                    <li><a href="" data-target="#manajemen" data-toggle="tab">Manajemen</a></li>
+                                    <li><a href="" data-target="#tekpang" data-toggle="tab">TEKPANG</a></li>
                                 </ul>
                                 <div class="tab-content">
                                     <div class="tab-pane active" id="teknikinformatika">
@@ -192,6 +195,141 @@
                                                 </thead>
                                                 <tbody>
                                                     <tr ng-repeat="item in datas.jadwal | filter : 'Sistem Informasi'">
+                                                        <td>{{$index+1}}</td>
+                                                        <td>{{item.nmmk}}</td>
+                                                        <td>{{item.sks}}</td>
+                                                        <td>{{item.kelas}}</td>
+                                                        <td>{{item.hari}}</td>
+                                                        <td>{{item.wm}} s/d {{item.ws}}</td>
+                                                        <td>{{item.dsn_saji}}</td>
+                                                        <td>{{item.ruangan}}</td>
+                                                        <td>{{item.nmps}}</td>
+                                                        <td>
+                                                            <div class="d-flex justify-content-center">
+                                                                <bottom class="btn btn-warning" title="Edit Jadwal"
+                                                                    ng-click="ubah(item)">
+                                                                    <i class="fa fa-edit"></i>
+                                                                </bottom>
+                                                                <bottom class="btn btn-danger" title="Hapus Jadwal"
+                                                                    ng-click="showKegiatan(item);">
+                                                                    <i class="fa fa-trash"></i>
+                                                                </bottom>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="hukum">
+                                        <div class="box-body table-responsive no-padding">
+                                            <table datatable="ng" class="table table-bordered">
+                                                <thead>
+                                                    <tr style="color:black;">
+                                                        <th style="width: 10px">No</th>
+                                                        <th>Mata Kuliah</th>
+                                                        <th>SKS</th>
+                                                        <th>Kelas</th>
+                                                        <th>Hari</th>
+                                                        <th>Jam</th>
+                                                        <th>Dosen</th>
+                                                        <th>Ruangan</th>
+                                                        <th>Jurusan</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="item in datas.jadwal | filter : {npps: 'Hukum'}">
+                                                        <td>{{$index+1}}</td>
+                                                        <td>{{item.nmmk}}</td>
+                                                        <td>{{item.sks}}</td>
+                                                        <td>{{item.kelas}}</td>
+                                                        <td>{{item.hari}}</td>
+                                                        <td>{{item.wm}} s/d {{item.ws}}</td>
+                                                        <td>{{item.dsn_saji}}</td>
+                                                        <td>{{item.ruangan}}</td>
+                                                        <td>{{item.nmps}}</td>
+                                                        <td>
+                                                            <div class="d-flex justify-content-center">
+                                                                <bottom class="btn btn-warning" title="Edit Jadwal"
+                                                                    ng-click="ubah(item)">
+                                                                    <i class="fa fa-edit"></i>
+                                                                </bottom>
+                                                                <bottom class="btn btn-danger" title="Hapus Jadwal"
+                                                                    ng-click="showKegiatan(item);">
+                                                                    <i class="fa fa-trash"></i>
+                                                                </bottom>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="manajemen">
+                                        <div class="box-body table-responsive no-padding">
+                                            <table datatable="ng" class="table table-bordered">
+                                                <thead>
+                                                    <tr style="color:black;">
+                                                        <th style="width: 10px">No</th>
+                                                        <th>Mata Kuliah</th>
+                                                        <th>SKS</th>
+                                                        <th>Kelas</th>
+                                                        <th>Hari</th>
+                                                        <th>Jam</th>
+                                                        <th>Dosen</th>
+                                                        <th>Ruangan</th>
+                                                        <th>Jurusan</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="item in datas.jadwal | filter : {npps: 'Manajemen'}">
+                                                        <td>{{$index+1}}</td>
+                                                        <td>{{item.nmmk}}</td>
+                                                        <td>{{item.sks}}</td>
+                                                        <td>{{item.kelas}}</td>
+                                                        <td>{{item.hari}}</td>
+                                                        <td>{{item.wm}} s/d {{item.ws}}</td>
+                                                        <td>{{item.dsn_saji}}</td>
+                                                        <td>{{item.ruangan}}</td>
+                                                        <td>{{item.nmps}}</td>
+                                                        <td>
+                                                            <div class="d-flex justify-content-center">
+                                                                <bottom class="btn btn-warning" title="Edit Jadwal"
+                                                                    ng-click="ubah(item)">
+                                                                    <i class="fa fa-edit"></i>
+                                                                </bottom>
+                                                                <bottom class="btn btn-danger" title="Hapus Jadwal"
+                                                                    ng-click="showKegiatan(item);">
+                                                                    <i class="fa fa-trash"></i>
+                                                                </bottom>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="tekpang">
+                                        <div class="box-body table-responsive no-padding">
+                                            <table datatable="ng" class="table table-bordered">
+                                                <thead>
+                                                    <tr style="color:black;">
+                                                        <th style="width: 10px">No</th>
+                                                        <th>Mata Kuliah</th>
+                                                        <th>SKS</th>
+                                                        <th>Kelas</th>
+                                                        <th>Hari</th>
+                                                        <th>Jam</th>
+                                                        <th>Dosen</th>
+                                                        <th>Ruangan</th>
+                                                        <th>Jurusan</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="item in datas.jadwal | filter : {nmps: 'TEKNOLOGI PANGAN DAN HASIL PERTANIAN'}">
                                                         <td>{{$index+1}}</td>
                                                         <td>{{item.nmmk}}</td>
                                                         <td>{{item.sks}}</td>
