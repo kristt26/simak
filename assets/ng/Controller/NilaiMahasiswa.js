@@ -185,7 +185,7 @@
                 MahasiswaService.get($scope.npm).then(res => {
                     console.log(res.data[0]);
                     if (res.data.length > 0) {
-                        $scope.link = "https://www.simak1011.stimiksepnop.ac.id/transkip.php?npm=" + $scope.npm;
+                        $scope.link = "https://www.simak.usn-papua.ac.id/transkip.php?npm=" + $scope.npm;
                         $scope.result = true;
                     } else {
                         $scope.result = false;
