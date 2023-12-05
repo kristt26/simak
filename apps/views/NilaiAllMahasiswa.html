@@ -59,8 +59,7 @@
                     style="margin-right: 10px;">Simpan</button>
                 <button type="button" class="btn btn-info pull-right" ng-click='Proses()' ng-hide="Tombol"
                     disabled>Simpan</button>
-                <button type="button" class="btn btn-primary pull-right" ng-click="print(nilai=true)">Print Nilai</button>
-                <button type="button" class="btn btn-primary pull-right" ng-click="print(nilai=false)">Print BA</button>
+                <button type="button" class="btn btn-primary pull-right" ng-click='print()'>Print Nilai</button>
                 <button type="button" class="btn btn-primary pull-right" ng-click='printForm()'>Print Form Absen</button>
                 <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#bobotNilai">Detail Bobot</button>
             </div>
@@ -118,8 +117,7 @@
                             <td>{{$index+1}}</td>
                             <td>{{item.npm}}</td>
                             <td>{{item.nmmhs}}</td>
-                            <td ng-show="nilai">{{item.nilai}}</td>
-                            <td ng-show="!nilai"></td>
+                            <td>{{item.nilai}}</td>
                             <td>{{item.nhuruf}}</td>
                             <td>{{item.nxsks}}</td>
                             <td>{{item.ket}}</td>
