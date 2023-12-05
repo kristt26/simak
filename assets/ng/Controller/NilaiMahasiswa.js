@@ -159,8 +159,7 @@
                     });
 
             }
-            $scope.print = (param) => {
-                $scope.nilai = param;
+            $scope.print = () => {
                 // var OPTION = {mode:"popup", popHt: 500, popWd: 400,popX: 500,popY: 600, popClose: true, strict: undefined};
                 $("#print").printArea();
             }
