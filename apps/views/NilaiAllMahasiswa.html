@@ -118,8 +118,8 @@
                             <td>{{$index+1}}</td>
                             <td>{{item.npm}}</td>
                             <td>{{item.nmmhs}}</td>
-                            <td ng-if="nilai==true">{{item.nilai}}</td>
-                            <td ng-if="nilai==false"></td>
+                            <td ng-show="nilai">{{item.nilai}}</td>
+                            <td ng-show="!nilai"></td>
                             <td>{{item.nhuruf}}</td>
                             <td>{{item.nxsks}}</td>
                             <td>{{item.ket}}</td>
