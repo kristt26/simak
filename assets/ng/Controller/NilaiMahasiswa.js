@@ -17,6 +17,7 @@
                     console.log();
                 })
             }, error => {
+                SweetAlert.swal(error.data.message,"" , "error");
                 console.log(error.data);
             })
             $scope.GetMahasiswa = function () {
