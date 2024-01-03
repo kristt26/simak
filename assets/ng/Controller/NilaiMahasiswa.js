@@ -14,10 +14,9 @@
                 KhsmServicee.get().then(response => {
                     $scope.DatasMatakuliah = response;
                 }, error => {
-                    console.log();
+                    SweetAlert.swal(error.data.message,"" , "error");
                 })
             }, error => {
-                SweetAlert.swal(error.data.message,"" , "error");
                 console.log(error.data);
             })
             $scope.GetMahasiswa = function () {
