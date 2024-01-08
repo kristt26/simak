@@ -200,5 +200,34 @@
                 document.execCommand("copy");
                 SweetAlert.swal("Information!", "Copied the text", "success");
             }
+        })
+        .controller('progressNilaiController', function ($scope, KhsmServicee, SweetAlert) {
+            $scope.datas = [];
+            $scope.SelectedMatakuliah = "";
+            $scope.GradeNilai = [];
+            $scope.Nilai = 0;
+            $scope.Show = false;
+            $scope.Tombol = true;
+
+            KhsmServicee.getProgress().then(response => {
+                $scope.datas = response;
+                console.log(response);
+            }, error => {
+                SweetAlert.swal(error.data.message,"" , "error");
+            })
+
+            $scope.persen = (n1,n2)=>{
+                if(parseInt(n1)!=0) return Math.round((parseFloat(n1)/parseFloat(n2)*100)*100)/100 ;
+                else return 0.00;
+            }
+
+            $scope.print = () => {
+                // var OPTION = {mode:"popup", popHt: 500, popWd: 400,popX: 500,popY: 600, popClose: true, strict: undefined};
+                $("#print").printArea();
+            }
+            $scope.printForm = () => {
+                // var OPTION = {mode:"popup", popHt: 500, popWd: 400,popX: 500,popY: 600, popClose: true, strict: undefined};
+                $("#print1").printArea();
+            }
         });
 })(window.angular);

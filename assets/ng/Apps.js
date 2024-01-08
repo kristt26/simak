@@ -89,6 +89,11 @@
                     templateUrl: "apps/views/NilaiAllMahasiswa.html",
                     controller: "NilaiAllMahasiswaController"
                 })
+                .state("progress_nilai", {
+                    url: "/progress_nilai",
+                    templateUrl: "apps/views/progressNilai.html",
+                    controller: "progressNilaiController"
+                })
                 .state("ConversiKHS", {
                     url: "/ConversiKHS",
                     templateUrl: "apps/views/ConversiKHS.html",
@@ -346,11 +351,12 @@
                         $scope.MenuKaprodi = [
                             { 'href': 'ApprovedKRS', 'Text': 'Perwalian', 'SetStatus': value.Nama },
                             { 'href': 'mahasiswaprodi', 'Text': 'Mahasiswa', 'SetStatus': value.Nama },
-                            { 'href': 'Kurikulum', 'Text': 'Kurikulum', 'SetStatus': value.Nama },
-                            { 'href': 'ConversiKHS', 'Text': 'Conversi KHS', 'SetStatus': value.Nama },
+                            // { 'href': 'Kurikulum', 'Text': 'Kurikulum', 'SetStatus': value.Nama },
+                            // { 'href': 'ConversiKHS', 'Text': 'Conversi KHS', 'SetStatus': value.Nama },
                             { 'href': 'BeritaAcara', 'Text': 'Berita Acara', 'SetStatus': value.Nama },
                             { 'href': 'Pengumuman', 'Text': 'Pengumuman', 'SetStatus': value.Nama },
-                            { 'href': 'linkTranskip', 'Text': 'Link Transkip', 'SetStatus': value.Nama }
+                            { 'href': 'linkTranskip', 'Text': 'Link Transkip', 'SetStatus': value.Nama },
+                            { 'href': 'progress_nilai', 'Text': 'Progress Nilai', 'SetStatus': value.Nama }
     
                         ]
                     } else if (value.Nama == "Dosen") {
