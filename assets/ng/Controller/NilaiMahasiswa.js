@@ -143,7 +143,7 @@
                             $scope.Tombol = false;
                             KhsmServicee.put($scope.SelectedMatakuliah).then(response => {
                                 SweetAlert.swal("Information!", "Berhasil", "success");
-                                KhsmServicee.get().then(response => {
+                                KhsmServicee.getAll().then(response => {
                                     $scope.DatasMatakuliah = response;
                                     $scope.SelectedMatakuliah = "";
                                     SweetAlert.swal(response.message);
