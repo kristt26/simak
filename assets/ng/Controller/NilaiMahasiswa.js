@@ -211,7 +211,14 @@
 
             KhsmServicee.getProgress().then(response => {
                 $scope.datas = response;
-                console.log(response);
+                $scope.totalMahasiswa = $scope.datas.reduce((accumulate, object)=>{
+                    return accumulate + parseFloat(object.total);
+                }, 0);
+                $scope.totalLulus = $scope.datas.reduce((accumulate, object)=>{
+                    return accumulate + parseFloat(object.lulus);
+                }, 0);;
+                $scope.totalPresentase = Math.round(($scope.totalLulus/$scope.totalMahasiswa*100)*1000)/1000;
+                // console.log(response);
             }, error => {
                 SweetAlert.swal(error.data.message,"" , "error");
             })
