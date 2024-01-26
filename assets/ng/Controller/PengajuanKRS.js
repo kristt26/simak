@@ -46,7 +46,7 @@
                     $scope.BatasReg = false;
                     $scope.DatasJadwal = response.data.data;
                     $scope.GetValue = angular.copy($scope.DatasJadwal[0]);
-                    if (response.mahasiswa.kurikulum == "2018") {
+                    if (response.mahasiswa.kurikulum == "2018" || response.mahasiswa.kurikulum == "2019" || response.mahasiswa.kurikulum == "2022" || response.mahasiswa.kurikulum == "2023") {
                         if (parseInt(response.semester) + 1 == 2) {
                             var agama;
                             if (response.mahasiswa.agama == "Islam") {
@@ -58,11 +58,19 @@
                                 if (parseInt(value.smt) == 2) {
                                     if (value.nmmk == "PENDIDIKAN AGAMA") {
                                         if (agama == "Islam" && value.kelas == "A") {
+                                            value.nmmk += (' ISLAM');
+                                            var dataAgama = $scope.DatasJadwal.find(x=>x.kelas=='B' && x.nmmk=='PENDIDIKAN AGAMA');
+                                            var index = $scope.DatasJadwal.indexOf(dataAgama);
+                                            $scope.DatasJadwal.splice(index,1);
                                             $scope.jmsks += parseInt(angular.copy(value.sks));
                                             value.status = false;
                                             value.ngBinding = "success";
                                             $scope.DataTampung.push(value);
                                         } else if (agama == "Kristen" && value.kelas == "B") {
+                                            value.nmmk += (' KRISTEN/KATOLIK');
+                                            var dataAgama = $scope.DatasJadwal.find(x=>x.kelas=='A' && x.nmmk=='PENDIDIKAN AGAMA');
+                                            var index = $scope.DatasJadwal.indexOf(dataAgama);
+                                            $scope.DatasJadwal.splice(index,1);
                                             $scope.jmsks += parseInt(angular.copy(value.sks));
                                             value.status = false;
                                             value.ngBinding = "success";

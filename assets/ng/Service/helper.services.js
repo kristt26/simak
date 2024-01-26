@@ -22,7 +22,7 @@ function helperServices($location) {
 		});
 		return map;
     };
-    service.ruangan = ['+','++','IIIA','IIIB','IIIC','IIIDE', 'IVA' ,'IVB', 'IVC', 'IVD', 'IVE' , 'KEEROM1', 'KEEROM2', 'KEEROM3',  'LAB-S', 'LABHW', 'LABSW', 'LABTEKPANG', 'ZOOM' ];
+    service.ruangan = ['AULA','IIIA','IIIB','IIIC','IIIDE', 'IVA' ,'IVB', 'IVC', 'IVD', 'IVE' , 'KR1', 'KR2', 'LABHW', 'LABSW', 'LABTEKPANG', 'ZOOM' ];
     service.hari = ['SENIN','SELASA','RABU','KAMIS','JUMAT','SABTU'];
     service.jenis = ['DOSEN','ASISTEN'];
     service.statusmengajar = ['Y','T'];
