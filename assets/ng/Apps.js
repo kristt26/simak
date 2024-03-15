@@ -188,6 +188,11 @@
                     url: "/mahasiswaprodi",
                     templateUrl: "apps/views/mahasiswaProdi.html",
                     controller: "mahasiswaProdiController"
+                })
+                .state("statusDaftarUlang", {
+                    url: "/statusDaftarUlang",
+                    templateUrl: "apps/views/statusDaftarUlang.html",
+                    controller: "statusDaftarUlangController"
                 });
         })
         .run(['uiSelect2Config', function (uiSelect2Config) {
@@ -373,6 +378,9 @@
                             },
                             {
                                 'href': 'MahasiswaWali', 'Text': 'Mahasiswa Wali', 'SetStatus': value.Nama
+                            },
+                            {
+                                'href': 'statusDaftarUlang', 'Text': 'Status Daftar Ulang', 'SetStatus': value.Nama
                             }
                         ]
                     } else if (value.Nama == "Ka Baak") {

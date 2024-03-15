@@ -1,5 +1,6 @@
 body {
-  background: url("../img/bghover1.png") !important;
+  /* background: url("../img/bghover1.png") !important; */
+  background-color: maroon;
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;

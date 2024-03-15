@@ -83,6 +83,28 @@
             })
             return deferred.promise;
         }
-        return { get: getAction, getMahasiswa: AmbilMahasiswa, getList: getListDO, mahasiswaProdi:mahasiswaProdi, AmbilMahasiswaByDosen:AmbilMahasiswaByDosen};
+        function StatusDaftarUlang() {
+            var deferred = $q.defer();
+            $http({
+                method: "get",
+                url: AuthService.Base+"api/StatusDaftar",
+                headers: AuthService.Header,
+            }).then(function (response) {
+                service.message = response.data;
+                deferred.resolve(service.message);
+            }, function (error) {
+                // console.log(error);
+                deferred.reject(error);
+            })
+            return deferred.promise;
+        }
+        return { 
+            get: getAction, 
+            getMahasiswa: AmbilMahasiswa, 
+            getList: getListDO, 
+            mahasiswaProdi:mahasiswaProdi, 
+            AmbilMahasiswaByDosen:AmbilMahasiswaByDosen,
+            StatusDaftarUlang:StatusDaftarUlang
+        };
     }]);
 })(window.angular);
