@@ -1,33 +1,37 @@
 <section class="content">
     <div class="box">
-        <div class="box-header with-border">
-            <a ui-sref="addmahasiswa" class="btn btn-primary btn-sm">Tambah</a>
-        </div>
         <div class="box-body">
+            <table>
+                <tr><td style="font-size: medium; width: 130px;">Mahasiswa Aktif</td><td style="font-size: medium;">:</td><td style="font-size: medium;">&nbsp;{{aktif}}</td></tr>
+                <tr><td style="font-size: medium; width: 130px;">Proses Registrasi</td><td style="font-size: medium;">:</td><td style="font-size: medium;">&nbsp;{{proses}}</td></tr>
+                <tr><td style="font-size: medium; width: 130px;">Belum Registrasi</td><td style="font-size: medium;">:</td><td style="font-size: medium;">&nbsp;{{belum}}</td></tr>
+            </table>
             <div class="box-body table-responsive no-padding">
                 <table datatable="ng" class="table table-bordered table-hover">
                     <thead>
                         <tr>
                             <th>No</th>
+                            <th>PROGRAM STUDI</th>
                             <th>NPM</th>
-                            <th>nmmhs</th>
-                            <th>Kelas</th>
-                            <th>TTL</th>
-                            <th>JK</th>
-                            <th>Agama</th>
-                            <th>Kontak</th>
+                            <th>NAMA</th>
+                            <th>KELAS</th>
+                            <th>SEMESTER</th>
+                            <th>HP</th>
+                            <th>STATUS DAFTAR</th>
+                            <th>STATUS PENGAJUAN</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr ng-repeat="item in datas">
                             <td>{{$index+1}}</td>
+                            <td>{{item.nmps}}</td>
                             <td>{{item.npm}}</td>
                             <td>{{item.nmmhs}}</td>
                             <td>{{item.kelas}}</td>
-                            <td>{{item.tmlhr}}, {{item.tglhr}}</td>
-                            <td>{{item.jk}}</td>
-                            <td>{{item.agama}}</td>
-                            <td>{{item.Kontak}}</td>
+                            <td>{{item.Semester}}</td>
+                            <td>{{item.notlp}}</td>
+                            <td>{{item.stdu}}</td>
+                            <td>{{(!item.status && item.stdu == 'TIDAK AKTIF') ? 'Belum Pengajuan' : item.status ? item.status : 'AKTIF' | uppercase}}</td>
                             <!-- <td>
                                 <a href="{{item.berkas}}" class="btn btn-primary" target="_blank"><i
                                         class="fa fa-download"></i></a>
