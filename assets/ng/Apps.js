@@ -205,6 +205,8 @@
             service.Header = getHeader();
             service.dataUser = getUser();
             // service.Base = "http://localhost/restsimak/";
+
+            
             service.Base = "https://www.restsimak.usn-papua.ac.id/";
             function getHeader() {
                 var header = {
