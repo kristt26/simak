@@ -132,12 +132,12 @@
         console.log(urlParams.get('npm'));
         $http({
           method: "get",
-          url: "https://www.restsimak.stimiksepnop.ac.id/v2/transkip/" + urlParams.get('npm')
+          url: "https://www.restsimak.usn-papua.ac.id/v2/transkip/" + urlParams.get('npm')
         }).then(res => {
           $scope.datas = res.data;
           $http({
             method: "get",
-            url: "https://www.restsimak.stimiksepnop.ac.id/v2/ipkmhs/" + urlParams.get('npm')
+            url: "https://www.restsimak.usn-papua.ac.id/v2/ipkmhs/" + urlParams.get('npm')
           }).then(x=>{
             $scope.ipk = x.data.IPK;
           })
