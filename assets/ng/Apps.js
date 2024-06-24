@@ -207,7 +207,7 @@
             // service.Base = "http://localhost/restsimak/";
 
             
-            service.Base = "https://www.restsimak.usn-papua.ac.id/";
+            service.Base = "https://restsimak.usn-papua.ac.id/";
             function getHeader() {
                 var header = {
                     "content-type": "application/json",
