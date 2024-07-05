@@ -106,8 +106,9 @@
                             <th>No</th>
                             <th>NPM</th>
                             <th>Nama Mahasiswa</th>
-                            <th>Nilai</th>
+                            <th>SKS</th>
                             <th>Huruf</th>
+                            <th>Bobot Nilai</th>
                             <th>NXSKS</th>
                             <th>Keterangan</th>
                         </tr>
@@ -117,8 +118,9 @@
                             <td>{{$index+1}}</td>
                             <td>{{item.npm}}</td>
                             <td>{{item.nmmhs}}</td>
-                            <td>{{item.nilai}}</td>
+                            <td>{{item.sks}}</td>
                             <td>{{item.nhuruf}}</td>
+                            <td>{{item.nhuruf=='A' ? '4':item.nhuruf=='B+' ? '3.5' : item.nhuruf=='B' ? '3': item.nhuruf=='C+' ? '2.5': item.nhuruf=='C' ? '2': item.nhuruf=='D' ? '1' :'0'}}</td>
                             <td>{{item.nxsks}}</td>
                             <td>{{item.ket}}</td>
                         </tr>
